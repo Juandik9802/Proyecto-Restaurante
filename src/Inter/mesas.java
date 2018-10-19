@@ -9,12 +9,12 @@ package Inter;
  *
  * @author josep
  */
-public class NewJPanel extends javax.swing.JPanel {
+public class mesas extends javax.swing.JPanel {
 
     /**
      * Creates new form NewJPanel
      */
-    public NewJPanel() {
+    public mesas() {
         initComponents();
     }
 
