@@ -36,6 +36,7 @@ public static Principal i;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 300));
+        setResizable(false);
 
         menuParaAdmin.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
         menuParaAdmin.setText("Administrador");

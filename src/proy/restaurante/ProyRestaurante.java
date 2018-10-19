@@ -17,6 +17,8 @@ public class ProyRestaurante {
     public static void main(String[] args) {
         Principal obt =new Principal();
         obt.setVisible(true);
+        
+        
     }
     
 }
