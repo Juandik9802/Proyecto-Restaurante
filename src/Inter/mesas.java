@@ -35,13 +35,13 @@ public class mesas extends javax.swing.JPanel {
 
         jLabel1.setText("Cantidad de mesas:");
         add(jLabel1);
-        jLabel1.setBounds(64, 94, 95, 14);
+        jLabel1.setBounds(30, 90, 120, 14);
         add(cantidad_Mesas);
-        cantidad_Mesas.setBounds(169, 90, 70, 20);
+        cantidad_Mesas.setBounds(160, 90, 110, 20);
 
         aceptar.setText("Aceptar");
         add(aceptar);
-        aceptar.setBounds(160, 230, 71, 23);
+        aceptar.setBounds(280, 90, 90, 23);
     }// </editor-fold>//GEN-END:initComponents
 
 
