@@ -17,10 +17,14 @@ public class Informes extends javax.swing.JPanel {
     public Informes() {
         initComponents();
         Abrir_pagos();
+        Abrir_platos();
     }
     Interfaces_administrador.Informe_modos_de_pago panelpagos;
-    
+    Interfaces_administrador.Informe_platos panelplatos;
     private String vp1="0";
+    private String vp2="0";
+    private String vp3="0";
+    private String vp4="0";
     
     private void Abrir_pagos(){
         if(vp1.equals("0")){
@@ -32,6 +36,36 @@ public class Informes extends javax.swing.JPanel {
         }
         vp1="1";
     }
+    private void Abrir_platos(){
+        if(vp2.equals("0")){
+        panelplatos=new Interfaces_administrador.Informe_platos();
+        principal_informes.addTab("menu", panelplatos);
+        principal_informes.setSelectedComponent(panelplatos);
+        }else{
+        principal_informes.setSelectedComponent(panelplatos);
+        }
+        vp2="1";
+    }
+    /*private void Abrir_panel3(){
+        if(vp3.equals("0")){
+        panel3=new Interfaces_administrador.Informes();
+        principal.addTab("Informes", panel3);
+        principal.setSelectedComponent(panel3);
+        }else{
+        principal.setSelectedComponent(panel3);
+        }
+        vp3="1";
+    }
+    private void Abrir_panel4(){
+        if(vp4.equals("0")){
+        panel4=new Interfaces_administrador.meseros();
+        principal.addTab("meseros", panel4);
+        principal.setSelectedComponent(panel4);
+        }else{
+        principal.setSelectedComponent(panel4);
+        }
+        vp4="1";
+    }*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

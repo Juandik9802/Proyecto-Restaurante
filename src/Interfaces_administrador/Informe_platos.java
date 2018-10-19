@@ -9,12 +9,12 @@ package Interfaces_administrador;
  *
  * @author josep
  */
-public class Informe_modos_de_pago extends javax.swing.JPanel {
+public class Informe_platos extends javax.swing.JPanel {
 
     /**
-     * Creates new form Informe_modos_de_pago
+     * Creates new form Informe_platos
      */
-    public Informe_modos_de_pago() {
+    public Informe_platos() {
         initComponents();
     }
 
@@ -29,23 +29,23 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("ejemplo para metodos de pago");
+        jLabel1.setText("Ejemplo para informe de platos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
+                .addGap(131, 131, 131)
                 .addComponent(jLabel1)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(95, 95, 95)
                 .addComponent(jLabel1)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
