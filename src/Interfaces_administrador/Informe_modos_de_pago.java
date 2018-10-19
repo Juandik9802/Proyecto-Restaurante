@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces;
+package Interfaces_administrador;
 
 /**
  *
  * @author josep
  */
-public class mesas extends javax.swing.JPanel {
+public class Informe_modos_de_pago extends javax.swing.JPanel {
 
     /**
-     * Creates new form NewJPanel
+     * Creates new form Informe_modos_de_pago
      */
-    public mesas() {
+    public Informe_modos_de_pago() {
         initComponents();
     }
 
@@ -27,27 +27,19 @@ public class mesas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        cantidad_Mesas = new javax.swing.JTextField();
-        aceptar = new javax.swing.JButton();
-
-        setLayout(null);
-
-        jLabel1.setText("Cantidad de mesas:");
-        add(jLabel1);
-        jLabel1.setBounds(170, 180, 120, 14);
-        add(cantidad_Mesas);
-        cantidad_Mesas.setBounds(300, 180, 110, 20);
-
-        aceptar.setText("Aceptar");
-        add(aceptar);
-        aceptar.setBounds(420, 180, 90, 23);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aceptar;
-    private javax.swing.JTextField cantidad_Mesas;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

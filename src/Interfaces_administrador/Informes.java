@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces;
+package Interfaces_administrador;
 
 /**
  *
@@ -16,8 +16,22 @@ public class Informes extends javax.swing.JPanel {
      */
     public Informes() {
         initComponents();
+        Abrir_pagos();
     }
-
+    Interfaces_administrador.Informe_modos_de_pago panelpagos;
+    
+    private String vp1="0";
+    
+    private void Abrir_pagos(){
+        if(vp1.equals("0")){
+        panelpagos=new Interfaces_administrador.Informe_modos_de_pago();
+        principal_informes.addTab("Informe de pagos", panelpagos);
+        principal_informes.setSelectedComponent(panelpagos);
+        }else{
+        principal_informes.setSelectedComponent(panelpagos);
+        }
+        vp1="1";
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,7 +41,7 @@ public class Informes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        principal_informes = new javax.swing.JTabbedPane();
         modo_pago = new javax.swing.JButton();
         platos_dia = new javax.swing.JButton();
         informe_meseros = new javax.swing.JButton();
@@ -48,7 +62,7 @@ public class Informes extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTabbedPane1)
+                    .addComponent(principal_informes)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(modo_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -69,7 +83,7 @@ public class Informes extends javax.swing.JPanel {
                     .addComponent(informe_meseros)
                     .addComponent(informe_tiempo))
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                .addComponent(principal_informes, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -78,8 +92,10 @@ public class Informes extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton informe_meseros;
     private javax.swing.JButton informe_tiempo;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton modo_pago;
     private javax.swing.JButton platos_dia;
+    private javax.swing.JTabbedPane principal_informes;
     // End of variables declaration//GEN-END:variables
+
+    
 }
