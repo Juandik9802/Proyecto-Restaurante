@@ -18,12 +18,15 @@ public class administrador extends javax.swing.JFrame {
         initComponents();
         Abrir_panel1();
         Abrir_panel2();
+        Abrir_panel3();
     }
     Inter.mesas panel1;
     Inter.menu panel2;
+    Inter.Informes panel3;
     
     public String vp1="0";
     public String vp2="0";
+    public String vp3="0";
     
     private void Abrir_panel1(){
         if(vp1.equals("0")){
@@ -34,7 +37,6 @@ public class administrador extends javax.swing.JFrame {
         principal.setSelectedComponent(panel1);
         }
         vp1="1";
-        
     }
     private void Abrir_panel2(){
         if(vp2.equals("0")){
@@ -45,7 +47,16 @@ public class administrador extends javax.swing.JFrame {
         principal.setSelectedComponent(panel2);
         }
         vp2="1";
-        
+    }
+    private void Abrir_panel3(){
+        if(vp3.equals("0")){
+        panel3=new Inter.Informes();
+        principal.addTab("Informes", panel3);
+        principal.setSelectedComponent(panel3);
+        }else{
+        principal.setSelectedComponent(panel3);
+        }
+        vp3="1";
     }
     /**
      * This method is called from within the constructor to initialize the form.
