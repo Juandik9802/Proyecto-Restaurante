@@ -28,8 +28,11 @@ public class Informe_platos extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        cerrar_platos = new javax.swing.JButton();
 
         jLabel1.setText("Ejemplo para informe de platos");
+
+        cerrar_platos.setText("Cerrar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -39,18 +42,25 @@ public class Informe_platos extends javax.swing.JPanel {
                 .addGap(131, 131, 131)
                 .addComponent(jLabel1)
                 .addContainerGap(121, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cerrar_platos)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(95, 95, 95)
                 .addComponent(jLabel1)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addComponent(cerrar_platos)
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cerrar_platos;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,7 @@ package proy.restaurante;
  */
 public class administrador extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form administrador
      */
@@ -112,6 +113,7 @@ public class administrador extends javax.swing.JFrame {
     public static void main(String[] args) {
         administrador obt =new administrador();
         obt.setVisible(true);
+        
     }
     
     

@@ -10,7 +10,7 @@ package proy.restaurante;
  * @author josep
  */
 public class Principal extends javax.swing.JFrame {
-
+public static Principal i;
     /**
      * Creates new form Principal
      */
@@ -126,7 +126,7 @@ public class Principal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

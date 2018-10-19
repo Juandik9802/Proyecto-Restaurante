@@ -45,8 +45,8 @@
                   <Component id="informe_tiempo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="principal_informes" pref="435" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="principal_informes" min="-2" pref="377" max="-2" attributes="0"/>
+              <EmptySpace pref="69" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,11 +60,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Modo de pago"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modo_pagoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="platos_dia">
       <Properties>
         <Property name="text" type="java.lang.String" value="Platos pedidos en el dia"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="platos_diaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="informe_meseros">
       <Properties>

@@ -10,17 +10,18 @@ package Interfaces_administrador;
  * @author josep
  */
 public class Informes extends javax.swing.JPanel {
-
+    
     /**
      * Creates new form Informes
      */
     public Informes() {
         initComponents();
-        Abrir_pagos();
-        Abrir_platos();
+        
     }
+   
     Interfaces_administrador.Informe_modos_de_pago panelpagos;
     Interfaces_administrador.Informe_platos panelplatos;
+    
     private String vp1="0";
     private String vp2="0";
     private String vp3="0";
@@ -36,10 +37,11 @@ public class Informes extends javax.swing.JPanel {
         }
         vp1="1";
     }
+    
     private void Abrir_platos(){
         if(vp2.equals("0")){
         panelplatos=new Interfaces_administrador.Informe_platos();
-        principal_informes.addTab("menu", panelplatos);
+        principal_informes.addTab("Platos del día", panelplatos);
         principal_informes.setSelectedComponent(panelplatos);
         }else{
         principal_informes.setSelectedComponent(panelplatos);
@@ -82,8 +84,18 @@ public class Informes extends javax.swing.JPanel {
         informe_tiempo = new javax.swing.JButton();
 
         modo_pago.setText("Modo de pago");
+        modo_pago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modo_pagoActionPerformed(evt);
+            }
+        });
 
         platos_dia.setText("Platos pedidos en el dia");
+        platos_dia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                platos_diaActionPerformed(evt);
+            }
+        });
 
         informe_meseros.setText("Meseros");
 
@@ -117,10 +129,18 @@ public class Informes extends javax.swing.JPanel {
                     .addComponent(informe_meseros)
                     .addComponent(informe_tiempo))
                 .addGap(18, 18, 18)
-                .addComponent(principal_informes, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(principal_informes, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void modo_pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modo_pagoActionPerformed
+        Abrir_pagos();
+    }//GEN-LAST:event_modo_pagoActionPerformed
+
+    private void platos_diaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_platos_diaActionPerformed
+        Abrir_platos();
+    }//GEN-LAST:event_platos_diaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

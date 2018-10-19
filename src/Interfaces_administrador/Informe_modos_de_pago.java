@@ -10,7 +10,7 @@ package Interfaces_administrador;
  * @author josep
  */
 public class Informe_modos_de_pago extends javax.swing.JPanel {
-
+    
     /**
      * Creates new form Informe_modos_de_pago
      */
