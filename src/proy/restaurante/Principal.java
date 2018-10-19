@@ -16,6 +16,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,10 +32,10 @@ public class Principal extends javax.swing.JFrame {
         menuParaCocina = new javax.swing.JButton();
         menuParaCaja = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        icono = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 300));
-        getContentPane().setLayout(null);
 
         menuParaAdmin.setText("Administrador");
         menuParaAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -42,20 +43,50 @@ public class Principal extends javax.swing.JFrame {
                 menuParaAdminActionPerformed(evt);
             }
         });
-        getContentPane().add(menuParaAdmin);
-        menuParaAdmin.setBounds(70, 70, 99, 23);
 
         menuParaCocina.setText("Cocina");
-        getContentPane().add(menuParaCocina);
-        menuParaCocina.setBounds(240, 70, 80, 23);
 
         menuParaCaja.setText("Caja");
-        getContentPane().add(menuParaCaja);
-        menuParaCaja.setBounds(74, 155, 100, 23);
 
         jButton4.setText("Mesero");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(247, 155, 67, 23);
+
+        icono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/1.png"))); // NOI18N
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(menuParaCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(menuParaAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(199, 199, 199)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(menuParaCocina, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(171, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(menuParaAdmin)
+                    .addComponent(menuParaCocina))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(menuParaCaja)
+                    .addComponent(jButton4))
+                .addGap(76, 76, 76))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -101,6 +132,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel icono;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton menuParaAdmin;
     private javax.swing.JButton menuParaCaja;
