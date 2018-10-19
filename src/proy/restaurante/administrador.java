@@ -19,13 +19,15 @@ public class administrador extends javax.swing.JFrame {
         Abrir_panel1();
         Abrir_panel2();
     }
-    Inter.NewJPanel panel1;
+    Inter.mesas panel1;
+    Inter.menu panel2;
+    
     public String vp1="0";
     public String vp2="0";
     
     private void Abrir_panel1(){
         if(vp1.equals("0")){
-        panel1=new Inter.NewJPanel();
+        panel1=new Inter.mesas();
         principal.addTab("cantidad mesas", panel1);
         principal.setSelectedComponent(panel1);
         }else{
@@ -36,8 +38,8 @@ public class administrador extends javax.swing.JFrame {
     }
     private void Abrir_panel2(){
         if(vp2.equals("0")){
-        panel1=new Inter.NewJPanel();
-        principal.addTab("cantidad mesas", panel2);
+        panel2=new Inter.menu();
+        principal.addTab("menu", panel2);
         principal.setSelectedComponent(panel2);
         }else{
         principal.setSelectedComponent(panel2);
