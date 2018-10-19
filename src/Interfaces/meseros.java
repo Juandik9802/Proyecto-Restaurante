@@ -35,7 +35,7 @@ public class meseros extends javax.swing.JPanel {
 
         jLabel1.setText("cantidad de meseros");
         add(jLabel1);
-        jLabel1.setBounds(50, 20, 127, 14);
+        jLabel1.setBounds(200, 160, 127, 14);
 
         cantidad_meseros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -43,11 +43,11 @@ public class meseros extends javax.swing.JPanel {
             }
         });
         add(cantidad_meseros);
-        cantidad_meseros.setBounds(210, 20, 110, 20);
+        cantidad_meseros.setBounds(360, 160, 110, 20);
 
         aceptar_meseros.setText("aceptar");
         add(aceptar_meseros);
-        aceptar_meseros.setBounds(140, 60, 100, 23);
+        aceptar_meseros.setBounds(290, 200, 100, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cantidad_meserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidad_meserosActionPerformed

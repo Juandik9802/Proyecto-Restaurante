@@ -16,6 +16,7 @@ public class administrador extends javax.swing.JFrame {
      */
     public administrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
         Abrir_panel1();
         Abrir_panel2();
         Abrir_panel3();
@@ -81,44 +82,29 @@ public class administrador extends javax.swing.JFrame {
     private void initComponents() {
 
         principal = new javax.swing.JTabbedPane();
-        cantidad_mesas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
-
-        cantidad_mesas.setText("jButton1");
-        cantidad_mesas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidad_mesasActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(cantidad_mesas))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(cantidad_mesas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(principal, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(principal, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cantidad_mesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidad_mesasActionPerformed
-        Abrir_panel1();
-    }//GEN-LAST:event_cantidad_mesasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,7 +117,6 @@ public class administrador extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cantidad_mesas;
     private javax.swing.JTabbedPane principal;
     // End of variables declaration//GEN-END:variables
 }
