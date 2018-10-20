@@ -8,7 +8,8 @@ package proy.restaurante;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * @author 
+ *  @author juan diego 
  * @author josep
  */
 public class Principal extends javax.swing.JFrame {
@@ -21,6 +22,7 @@ public static Principal i;
         this.setLocationRelativeTo(null);
     }
     private String cont="123456";
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,13 +103,12 @@ public static Principal i;
     private void menuParaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaAdminActionPerformed
         //JOptionPane.showMessageDialog(rootPane, evt);
         String contraseña;
-        contraseña=JOptionPane.showInputDialog("DIGITE CONTRASEÑA DEL ADMINISTRADOR");
-        System.out.println(contraseña);
-        if (contraseña.equals(cont)){
+        //contraseña=JOptionPane.showInputDialog("DIGITE CONTRASEÑA DEL ADMINISTRADOR");
+        //if (contraseña.equals(cont)){
             administrador adm =new administrador();
             adm.setVisible(true);
-        }else{
-            JOptionPane.showMessageDialog(null,"Error de contraseña");
+        //}else{
+          //  JOptionPane.showMessageDialog(null,"Error de contraseña");
         }
     }//GEN-LAST:event_menuParaAdminActionPerformed
 
