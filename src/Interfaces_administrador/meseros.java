@@ -30,12 +30,13 @@ public class meseros extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         cantidad_meseros = new javax.swing.JTextField();
         aceptar_meseros = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(null);
 
         jLabel1.setText("cantidad de meseros");
         add(jLabel1);
-        jLabel1.setBounds(200, 160, 127, 14);
+        jLabel1.setBounds(10, 190, 150, 30);
 
         cantidad_meseros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -43,11 +44,15 @@ public class meseros extends javax.swing.JPanel {
             }
         });
         add(cantidad_meseros);
-        cantidad_meseros.setBounds(360, 160, 110, 20);
+        cantidad_meseros.setBounds(140, 190, 140, 30);
 
         aceptar_meseros.setText("aceptar");
         add(aceptar_meseros);
-        aceptar_meseros.setBounds(290, 200, 100, 23);
+        aceptar_meseros.setBounds(90, 280, 270, 40);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/mesero.png"))); // NOI18N
+        add(jLabel3);
+        jLabel3.setBounds(400, 10, 450, 390);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cantidad_meserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidad_meserosActionPerformed
@@ -59,5 +64,6 @@ public class meseros extends javax.swing.JPanel {
     private javax.swing.JButton aceptar_meseros;
     private javax.swing.JTextField cantidad_meseros;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

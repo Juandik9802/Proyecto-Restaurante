@@ -30,18 +30,24 @@ public class mesas extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         cantidad_Mesas = new javax.swing.JTextField();
         aceptar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setLayout(null);
 
         jLabel1.setText("Cantidad de mesas:");
         add(jLabel1);
-        jLabel1.setBounds(170, 180, 120, 14);
+        jLabel1.setBounds(40, 60, 130, 20);
         add(cantidad_Mesas);
-        cantidad_Mesas.setBounds(300, 180, 110, 20);
+        cantidad_Mesas.setBounds(160, 50, 230, 30);
 
         aceptar.setText("Aceptar");
         add(aceptar);
-        aceptar.setBounds(420, 180, 90, 23);
+        aceptar.setBounds(100, 110, 200, 40);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/mesas.jpg"))); // NOI18N
+        add(jLabel3);
+        jLabel3.setBounds(50, 180, 330, 210);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -49,5 +55,6 @@ public class mesas extends javax.swing.JPanel {
     private javax.swing.JButton aceptar;
     private javax.swing.JTextField cantidad_Mesas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
