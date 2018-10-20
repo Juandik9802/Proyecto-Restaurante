@@ -109,7 +109,7 @@ public static Principal i;
             adm.setVisible(true);
         //}else{
           //  JOptionPane.showMessageDialog(null,"Error de contraseña");
-        }
+        //}
     }//GEN-LAST:event_menuParaAdminActionPerformed
 
     /**
