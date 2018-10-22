@@ -112,7 +112,7 @@ public static Principal i;
     private void menuParaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaAdminActionPerformed
         String pas=null;
         JPanel panel = new JPanel();
-        JLabel label = new JLabel("Enter a password:");
+        JLabel label = new JLabel("Ingrese la Contraseña:");
         JPasswordField pass = new JPasswordField(10);
         panel.add(label);
         panel.add(pass);
@@ -123,8 +123,6 @@ public static Principal i;
         if(option == 0){
             char[] password = pass.getPassword();
             pas=String.valueOf(password);
-            System.out.println("Your password is: " + new String(password));
-            System.out.println(pas);
         }
         if (this.contra.equals(pas)){
             administrador adm =new administrador();
