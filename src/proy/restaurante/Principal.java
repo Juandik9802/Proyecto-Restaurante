@@ -5,7 +5,9 @@
  */
 package proy.restaurante;
 
+import Interfaces_administrador.contraseña;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  * @author 
@@ -21,7 +23,7 @@ public static Principal i;
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    private String cont="123456";
+    private String contra="123456";
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,9 +108,19 @@ public static Principal i;
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuParaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaAdminActionPerformed
-        String contraseña;
-        contraseña=JOptionPane.showInputDialog("DIGITE CONTRASEÑA DEL ADMINISTRADOR");
-        if (contraseña.equals(cont)){
+        int  cont;
+        contraseña contraseña =new contraseña(); 
+        String[] options =new String[]{"ok","Cancelar"};
+        cont=JOptionPane.showOptionDialog(null,contraseña,"DIGITE CONTRASEÑA DEL ADMINISTRADOR",JOptionPane.NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,options,options[1]);
+        //System.out.println(cont);
+        String contr=null;
+        //if (cont==0){
+            char[] password = contraseña.getPassword();
+            System.out.println(password);
+            contr=String.valueOf(password);
+            System.out.println(contr);
+        //}
+        if (contra.equals(contr)){
             administrador adm =new administrador();
             adm.setVisible(true);
         }else{
