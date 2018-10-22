@@ -5,8 +5,10 @@
  */
 package proy.restaurante;
 
+import Interfaces_administrador.*;
+
 /**
- *
+ *@author Juan Diego
  * @author josep
  */
 public class administrador extends javax.swing.JFrame {
@@ -19,37 +21,38 @@ public class administrador extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         Abrir_panel1();
-        Abrir_panel4();
         Abrir_panel2();
         Abrir_panel3();
+        Abrir_panel4();
+        Abrir_panel5();
         
     }
-    Interfaces_administrador.mesas panel1;
-    Interfaces_administrador.menu panel2;
-    Interfaces_administrador.Informes panel3;
-    Interfaces_administrador.meseros panel4;
+    mesas panel1;
+    menu panel4;
+    Informes panel2;
+    meseros panel3;
+    platos plato;
     
     private String vp1="0";
     private String vp2="0";
     private String vp3="0";
-    private String vp4="0";
+    private String vp4="0",vp5="0";
     
     private void Abrir_panel1(){
         if(vp1.equals("0")){
         panel1=new Interfaces_administrador.mesas();
-        principal.addTab("cantidad mesas", panel1);
+        principal.addTab("Cantidad mesas", panel1);
         principal.setSelectedComponent(panel1);
         }else{
         principal.setSelectedComponent(panel1);
         }
         vp1="1";
-    }
-    
+    }    
     private void Abrir_panel4(){
         if(vp4.equals("0")){
-        panel4=new Interfaces_administrador.meseros();
-        principal.addTab("meseros", panel4);
-        principal.setSelectedComponent(panel4);
+        panel4=new Interfaces_administrador.menu();
+        principal.addTab("Menus", panel4);
+        //principal.setSelectedComponent(panel4);
         }else{
         principal.setSelectedComponent(panel4);
         }
@@ -57,9 +60,9 @@ public class administrador extends javax.swing.JFrame {
     }
     private void Abrir_panel2(){
         if(vp2.equals("0")){
-        panel2=new Interfaces_administrador.menu();
-        principal.addTab("menu", panel2);
-        principal.setSelectedComponent(panel2);
+        panel2=new Interfaces_administrador.Informes();
+        principal.addTab("Informes", panel2);
+        //principal.setSelectedComponent(panel2);
         }else{
         principal.setSelectedComponent(panel2);
         }
@@ -67,13 +70,23 @@ public class administrador extends javax.swing.JFrame {
     }
     private void Abrir_panel3(){
         if(vp3.equals("0")){
-        panel3=new Interfaces_administrador.Informes();
-        principal.addTab("Informes", panel3);
-        principal.setSelectedComponent(panel3);
+        panel3=new Interfaces_administrador.meseros();
+        principal.addTab("Cantidad de meseros", panel3);
+        //principal.setSelectedComponent(panel3);
         }else{
         principal.setSelectedComponent(panel3);
         }
         vp3="1";
+    }    
+    private void Abrir_panel5(){
+        if(vp5.equals("0")){
+        plato=new Interfaces_administrador.platos();
+        principal.addTab("Agregar platillos", plato);
+        //principal.setSelectedComponent(plato);
+        }else{
+        principal.setSelectedComponent(plato);
+        }
+        vp1="5";
     }
     
     /**
@@ -97,7 +110,7 @@ public class administrador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE)
+                .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -118,9 +131,6 @@ public class administrador extends javax.swing.JFrame {
         obt.setVisible(true);
         
     }
-    
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane principal;
     // End of variables declaration//GEN-END:variables
