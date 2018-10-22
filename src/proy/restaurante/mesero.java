@@ -93,6 +93,13 @@ public class mesero extends javax.swing.JFrame {
             }
         });
     }
+    
+    /*interfaces_mesero
+    private void pedido(){
+        if (){
+            
+        }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
