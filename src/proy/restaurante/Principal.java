@@ -110,7 +110,7 @@ public static Principal i;
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuParaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaAdminActionPerformed
-        String pas;
+        String pas=null;
         JPanel panel = new JPanel();
         JLabel label = new JLabel("Enter a password:");
         JPasswordField pass = new JPasswordField(10);
@@ -124,14 +124,14 @@ public static Principal i;
             char[] password = pass.getPassword();
             pas=String.valueOf(password);
             System.out.println("Your password is: " + new String(password));
-            System.out.println(pass);
+            System.out.println(pas);
         }
-        /*if (this.contra.equals(){
+        if (this.contra.equals(pas)){
             administrador adm =new administrador();
             adm.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null,"Error de contraseña");
-        }*/
+        }
     }//GEN-LAST:event_menuParaAdminActionPerformed
     
     private void menuParaCocinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaCocinaActionPerformed
