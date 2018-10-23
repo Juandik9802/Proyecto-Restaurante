@@ -21,6 +21,7 @@ public class Informes extends javax.swing.JPanel {
    
     Interfaces_administrador.Informe_modos_de_pago panelpagos;
     Interfaces_administrador.Informe_platos panelplatos;
+    Interfaces_administrador.Informe_meseros panelmeseros;
     
     private String vp1="0";
     private String vp2="0";
@@ -48,17 +49,17 @@ public class Informes extends javax.swing.JPanel {
         }
         vp2="1";
     }
-    /*private void Abrir_panel3(){
+    private void Abrir_meseros(){
         if(vp3.equals("0")){
-        panel3=new Interfaces_administrador.Informes();
-        principal.addTab("Informes", panel3);
-        principal.setSelectedComponent(panel3);
+        panelmeseros=new Interfaces_administrador.Informe_meseros();
+        principal_informes.addTab("Informes meseros", panelmeseros);
+        principal_informes.setSelectedComponent(panelmeseros);
         }else{
-        principal.setSelectedComponent(panel3);
+        principal_informes.setSelectedComponent(panelmeseros);
         }
         vp3="1";
     }
-    private void Abrir_panel4(){
+    /*private void Abrir_panel4(){
         if(vp4.equals("0")){
         panel4=new Interfaces_administrador.meseros();
         principal.addTab("meseros", panel4);
@@ -98,6 +99,11 @@ public class Informes extends javax.swing.JPanel {
         });
 
         informe_meseros.setText("Meseros");
+        informe_meseros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                informe_meserosActionPerformed(evt);
+            }
+        });
 
         informe_tiempo.setText("Tiempos");
 
@@ -142,6 +148,10 @@ public class Informes extends javax.swing.JPanel {
     private void platos_diaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_platos_diaActionPerformed
         Abrir_platos();
     }//GEN-LAST:event_platos_diaActionPerformed
+
+    private void informe_meserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informe_meserosActionPerformed
+        Abrir_meseros();
+    }//GEN-LAST:event_informe_meserosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
