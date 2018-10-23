@@ -22,6 +22,7 @@ public class Informes extends javax.swing.JPanel {
     Interfaces_administrador.Informe_modos_de_pago panelpagos;
     Interfaces_administrador.Informe_platos panelplatos;
     Interfaces_administrador.Informe_meseros panelmeseros;
+    Interfaces_administrador.Informe_tiempo paneltiempos;
     
     private String vp1="0";
     private String vp2="0";
@@ -59,16 +60,16 @@ public class Informes extends javax.swing.JPanel {
         }
         vp3="1";
     }
-    /*private void Abrir_panel4(){
+    private void Abrir_tiempo(){
         if(vp4.equals("0")){
-        panel4=new Interfaces_administrador.meseros();
-        principal.addTab("meseros", panel4);
-        principal.setSelectedComponent(panel4);
+        paneltiempos=new Interfaces_administrador.Informe_tiempo();
+        principal_informes.addTab("Informes tiempo", paneltiempos);
+        principal_informes.setSelectedComponent(paneltiempos);
         }else{
-        principal.setSelectedComponent(panel4);
+        principal_informes.setSelectedComponent(paneltiempos);
         }
         vp4="1";
-    }*/
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
