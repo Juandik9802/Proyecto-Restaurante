@@ -15,6 +15,7 @@ public class ProyRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         Principal obt =new Principal();
         obt.setVisible(true);
         

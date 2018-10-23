@@ -5,6 +5,7 @@
  */
 package proy.restaurante;
 
+import interfaces_caja.pago_efectivo;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -19,6 +20,7 @@ public class caja extends javax.swing.JFrame {
      */
     public caja() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -40,6 +42,7 @@ public class caja extends javax.swing.JFrame {
         facturar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -128,6 +131,18 @@ public class caja extends javax.swing.JFrame {
         JComboBox jcb = new JComboBox(list);
         jcb.setEditable(true);
         JOptionPane.showMessageDialog( null, jcb, "Tipo de Pago", JOptionPane.QUESTION_MESSAGE);
+        if(jcb.getSelectedItem()=="Efectivo"){
+            pago_efectivo efectivo=new pago_efectivo();
+            efectivo.setVisible(true);
+        }else{
+         if(jcb.getSelectedItem()=="Targeta de credito"){
+          System.err.println("2");
+         }else{
+          if(jcb.getSelectedItem()=="Targeta de Debito"){
+         System.err.println("3");
+         }
+         }
+        }
     }//GEN-LAST:event_facturarActionPerformed
 
     /**

@@ -127,18 +127,24 @@ public static Principal i;
         panel.add(label);
         panel.add(pass);
         String[] options = new String[]{"OK", "Cancel"};
-        int option = JOptionPane.showOptionDialog(null, panel, "The title",
+        int option = JOptionPane.showOptionDialog(null, panel, "Contraseña Administrador",
                          JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
                          null, options, options[1]);
         if(option == 0){
             char[] password = pass.getPassword();
             pas=String.valueOf(password);
-        }
-        if (this.contra.equals(pas)){
-            administrador adm =new administrador();
-            adm.setVisible(true);
-        }else{
-            JOptionPane.showMessageDialog(null,"Error de contraseña");
+            if (this.contra.equals(pas)){
+                administrador adm =new administrador();
+                adm.setVisible(true);
+            }else{
+                String vacio = "";
+                if(pas.equals(vacio)){
+                    JOptionPane.showMessageDialog(null,"Debe ingresar  una contraseña");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Error de contraseña");
+                }
+            }            
+            
         }
     }//GEN-LAST:event_menuParaAdminActionPerformed
     

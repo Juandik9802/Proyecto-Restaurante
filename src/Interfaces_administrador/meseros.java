@@ -31,12 +31,14 @@ public class meseros extends javax.swing.JPanel {
         cantidad_meseros = new javax.swing.JTextField();
         aceptar_meseros = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setLayout(null);
 
-        jLabel1.setText("cantidad de meseros");
+        jLabel1.setText("Nombre del mesero");
         add(jLabel1);
-        jLabel1.setBounds(10, 190, 150, 30);
+        jLabel1.setBounds(20, 60, 170, 30);
 
         cantidad_meseros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,15 +46,21 @@ public class meseros extends javax.swing.JPanel {
             }
         });
         add(cantidad_meseros);
-        cantidad_meseros.setBounds(140, 190, 140, 30);
+        cantidad_meseros.setBounds(210, 60, 140, 30);
 
         aceptar_meseros.setText("aceptar");
         add(aceptar_meseros);
-        aceptar_meseros.setBounds(90, 280, 270, 40);
+        aceptar_meseros.setBounds(120, 200, 150, 40);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/mesero.png"))); // NOI18N
         add(jLabel3);
         jLabel3.setBounds(400, 10, 450, 390);
+
+        jLabel2.setText("Codigo");
+        add(jLabel2);
+        jLabel2.setBounds(20, 130, 160, 14);
+        add(jTextField1);
+        jTextField1.setBounds(210, 120, 140, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cantidad_meserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidad_meserosActionPerformed
@@ -64,6 +72,8 @@ public class meseros extends javax.swing.JPanel {
     private javax.swing.JButton aceptar_meseros;
     private javax.swing.JTextField cantidad_meseros;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
