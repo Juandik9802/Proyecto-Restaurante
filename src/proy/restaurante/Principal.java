@@ -131,23 +131,19 @@ public static Principal i;
                          JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
                          null, options, options[1]);
         if(option == 0){
-            try{
             char[] password = pass.getPassword();
             pas=String.valueOf(password);
-            }catch(Exception e){
-                System.out.println("proy.restaurante.Principal.menuParaAdminActionPerformed()");
-            }
-        }
-        if (this.contra.equals(pas)){
-            administrador adm =new administrador();
-            adm.setVisible(true);
-        }else{
-            String vacio = "";
-            if(pas.equals(vacio)){
-            JOptionPane.showMessageDialog(null,"Debe ingresar  una contraseña");
+            if (this.contra.equals(pas)){
+                administrador adm =new administrador();
+                adm.setVisible(true);
             }else{
-            JOptionPane.showMessageDialog(null,"Error de contraseña");
-            }
+                String vacio = "";
+                if(pas.equals(vacio)){
+                    JOptionPane.showMessageDialog(null,"Debe ingresar  una contraseña");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Error de contraseña");
+                }
+            }            
             
         }
     }//GEN-LAST:event_menuParaAdminActionPerformed
