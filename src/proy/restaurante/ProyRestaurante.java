@@ -15,12 +15,10 @@ public class ProyRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try{
+        
         Principal obt =new Principal();
         obt.setVisible(true);
-        }catch(Exception e){
-            System.out.println("Error de sistema.");
-        }
+        
         
     }
     
