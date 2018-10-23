@@ -64,9 +64,19 @@ public static Principal i;
 
         menuParaCaja.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
         menuParaCaja.setText("Caja");
+        menuParaCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuParaCajaActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
         jButton4.setText("Mesero");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         icono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/1.png"))); // NOI18N
 
@@ -136,6 +146,16 @@ public static Principal i;
         cocina cocina = new cocina();
         cocina.setVisible(true);
     }//GEN-LAST:event_menuParaCocinaActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        mesero mesero = new mesero();
+        mesero.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void menuParaCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaCajaActionPerformed
+        caja caja = new caja();
+        caja.setVisible(true);
+    }//GEN-LAST:event_menuParaCajaActionPerformed
 
     /**
      * @param args the command line arguments
