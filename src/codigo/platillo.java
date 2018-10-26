@@ -14,14 +14,20 @@ import java.util.ArrayList;
 public class platillo {
     private String tipo;
     private String nombre;
-    private short precio;
+    private int precio;
     private ArrayList<String> porcion;
 
-    public platillo(String tipo, String nombre, short precio, ArrayList<String> porcion) {
+    public platillo() {
+    }
+    
+    public platillo(String tipo, String nombre, short precio) {
         this.tipo = tipo;
         this.nombre = nombre;
         this.precio = precio;
-        this.porcion = porcion;
+    }
+    
+    public void porcion(String p){
+        porcion.add(p);
     }
 
     public String getTipo() {
@@ -40,11 +46,11 @@ public class platillo {
         this.nombre = nombre;
     }
 
-    public short getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(short precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 

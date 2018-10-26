@@ -5,19 +5,34 @@
  */
 package Interfaces_administrador;
 
+import codigo.platillo;
+import codigo.platosDisponibles;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan Diego Pachón
  */
 public class platos extends javax.swing.JPanel {
 
+    ArrayList<platillo> listaPlatos;
+    //private ArrayList<String> porcion;
+    private String tipo,nombre;
+    private int precio,contador=0;
+    
     /**
      * Creates new form platos
      */
     public platos() {
         initComponents();
+        detalles.setEnabled(false);
+        agregarPorcion.setEnabled(false);
+        precioPlato.setEnabled(false);
+        nombrePlato.setEnabled(false);
+        listaPlatos=new ArrayList();                        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,42 +44,22 @@ public class platos extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         labelNombre = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nombrePlato = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        precioPlato = new javax.swing.JTextField();
         comidas = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        ingredientes = new javax.swing.JTextField();
-        agregar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        detalles = new javax.swing.JTextField();
+        agregarPorcion = new javax.swing.JButton();
+        tomarPlatillo = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-
-        jPanel1.setLayout(null);
+        tomarPlato = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         labelNombre.setText("Nombre del plato");
-        jPanel1.add(labelNombre);
-        labelNombre.setBounds(30, 110, 200, 14);
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(30, 130, 230, 50);
 
         jLabel2.setText("Precio");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(350, 110, 69, 14);
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField2);
-        jTextField2.setBounds(350, 130, 167, 50);
 
         comidas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Almuerzo", "Cena", "Postres", "Bebidas" }));
         comidas.addItemListener(new java.awt.event.ItemListener() {
@@ -72,107 +67,221 @@ public class platos extends javax.swing.JPanel {
                 comidasItemStateChanged(evt);
             }
         });
-        comidas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comidasActionPerformed(evt);
-            }
-        });
-        jPanel1.add(comidas);
-        comidas.setBounds(13, 47, 182, 33);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Ingredientes");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 190, 106, 47);
+        jLabel3.setText("Porcion");
 
-        ingredientes.addActionListener(new java.awt.event.ActionListener() {
+        agregarPorcion.setText("Agregar");
+        agregarPorcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingredientesActionPerformed(evt);
+                agregarPorcionActionPerformed(evt);
             }
         });
-        jPanel1.add(ingredientes);
-        ingredientes.setBounds(30, 230, 230, 47);
 
-        agregar.setText("Agregar");
-        jPanel1.add(agregar);
-        agregar.setBounds(70, 300, 120, 23);
-
-        jButton2.setText("Aceptar");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(210, 360, 139, 43);
+        tomarPlatillo.setText("Aceptar");
+        tomarPlatillo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tomarPlatilloActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         jLabel5.setText("Comidas");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(285, 11, 133, 63);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/ingredientes.jpg"))); // NOI18N
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(320, 200, 220, 130);
+
+        tomarPlato.setText("Cargar");
+        tomarPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tomarPlatoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(comidas, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(nombrePlato, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(precioPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(410, 410, 410)
+                .addComponent(tomarPlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(detalles, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(94, 94, 94))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(agregarPorcion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(151, 151, 151)))
+                .addComponent(jLabel6))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(405, 405, 405)
+                .addComponent(tomarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(comidas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelNombre)
+                    .addComponent(jLabel2))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombrePlato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(precioPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(tomarPlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(detalles, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(agregarPorcion))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23)
+                .addComponent(tomarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void comidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comidasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comidasActionPerformed
-
-    private void ingredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingredientesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ingredientesActionPerformed
-
     private void comidasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comidasItemStateChanged
+        if (comidas.getSelectedItem()!="Seleccionar"){
+            detalles.setEnabled(true);
+            agregarPorcion.setEnabled(true);
+            precioPlato.setEnabled(true);
+            nombrePlato.setEnabled(true);
+        }
         if (comidas.getSelectedItem()=="Bebidas"|| comidas.getSelectedItem()=="Postres"){
-            ingredientes.setEnabled(false);
-            agregar.setEnabled(false);
+            detalles.setEnabled(false);
+            agregarPorcion.setEnabled(false);
             labelNombre.setText("Nombre");
         }else{
-            ingredientes.setEnabled(true);
-            agregar.setEnabled(true);
+            detalles.setEnabled(true);
+            agregarPorcion.setEnabled(true);
             labelNombre.setText("Nombre del plato");
         }
     }//GEN-LAST:event_comidasItemStateChanged
 
+    private void agregarPorcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPorcionActionPerformed
+       detalles.setText("");
+    }//GEN-LAST:event_agregarPorcionActionPerformed
 
+    private void tomarPlatilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tomarPlatilloActionPerformed
+        if (comidas.getSelectedItem()=="Seleccionar"){
+            JOptionPane.showMessageDialog(null, "Errror de Seleccion");
+        }else{
+            nombre=nombrePlato.getText();
+            precio=Short.parseShort(precioPlato.getText());
+            if (comidas.getSelectedItem()=="Almuerzo"){
+                tipo="Almuerzo";
+            }
+            if (comidas.getSelectedItem()=="Cena"){
+                tipo="Cena";
+            }
+            if (comidas.getSelectedItem()=="Postres"){
+                tipo="Postres";
+            }
+            if (comidas.getSelectedItem()=="Bebidas"){
+                tipo="Bebidas";
+            }        
+            cargar();
+            int c=0;
+            for (platillo listaPlato : listaPlatos) {
+                System.out.println(listaPlatos.get(c).getPorcion());
+                c++;
+            }     
+            contador++;
+        }    
+        nombrePlato.setText("");
+        precioPlato.setText("");
+    }//GEN-LAST:event_tomarPlatilloActionPerformed
+
+    private void tomarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tomarPlatoActionPerformed
+        im();
+    }//GEN-LAST:event_tomarPlatoActionPerformed
+    
+    private void im(){
+        int cont=0;
+        for (platillo listaPlato : listaPlatos) {
+            //ArrayList<String> porcion1 =new ArrayList();             
+            System.out.println(listaPlato.getNombre());
+            System.out.println(listaPlato.getPrecio());
+            System.out.println(listaPlato.getTipo());
+                int cont2=0;
+                //porcion1=listaPlato.getPorcion();
+                System.out.println(listaPlatos.get(cont).getPorcion().get(cont2));
+                for (String string :listaPlatos.get(cont).getPorcion()) {
+                    System.out.println(listaPlatos.get(cont).getPorcion().get(cont2));
+                    cont2++;
+                }
+                cont++;
+            } 
+        }
+    
+    private void cargar() {
+        listaPlatos.get(contador).setNombre(nombre);
+        listaPlatos.get(contador).setPrecio(precio);
+        listaPlatos.get(contador).setTipo(tipo);
+    }    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton agregar;
+    private javax.swing.JButton agregarPorcion;
     private javax.swing.JComboBox<String> comidas;
-    private javax.swing.JTextField ingredientes;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField detalles;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelNombre;
+    private javax.swing.JTextField nombrePlato;
+    private javax.swing.JTextField precioPlato;
+    private javax.swing.JButton tomarPlatillo;
+    private javax.swing.JButton tomarPlato;
     // End of variables declaration//GEN-END:variables
 }

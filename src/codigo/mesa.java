@@ -11,6 +11,7 @@ package codigo;
  */
 public class mesa {
     private boolean estado;
+    
 
     public mesa(boolean estado) {
         this.estado = estado;
