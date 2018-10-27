@@ -235,6 +235,7 @@ public class menuDia extends javax.swing.JPanel {
     
     private void cargarListas() {
         codigo.archivoPlatos.mostrar();        
+        
         for (int i=0;i<codigo.archivoPlatos.mostrarPlato.size();i++){
             String evaluar=codigo.archivoPlatos.mostrarPlato.get(i).getTipo();
             if (evaluar.equals("Almuerzo") ){
