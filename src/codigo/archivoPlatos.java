@@ -32,26 +32,6 @@ public class archivoPlatos {
         String cadena = null; //tipo;nombre;precio;porcion
         FileWriter fichero = null;  //objeto principal (archivo)
         PrintWriter linea = null;   //objeto de contenido de archivo
-        /*
-          try {
-            //SE CREA UN OBJETO DE TIPO BUFFEREDWRITER PARA PODER ESCRIBIR DENTRO DEL ARCHIVO
- 
-            BufferedWriter bw = new BufferedWriter(new FileWriter(nombre_de_objeto_fichero));
- 
-            //DEPENDIENDO DEL TIPO DE OBJETOS QUE ESTE GUARDANDO DENTRO DEL ARRAYLIST, RECORRES EL 
-            //ARRAY Y SEPARAS CADA ATRIBUTO POR TABULACION O COMO QUIERAS.
-            //Y AL FINAL DE CADA LINEA HACES UN SALTO.
-              for (platillo object : p) {
-               
-                bw.write(p.get(0).getNombre() + "\t" + p.get(0).getPrecio() + "\t" + p.get(0).getTipo() +"\r\n");   
-              }
-            
-            bw.close();
-        } catch (Exception ex) {
-            //Captura un posible error le imprime en pantalla   
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }*/
-
         try{
             fichero = new FileWriter("src/ficheros/platos.txt",true); //crea el archivo 
             linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
