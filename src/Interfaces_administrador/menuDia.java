@@ -54,6 +54,7 @@ public class menuDia extends javax.swing.JPanel {
         prostreDos = new javax.swing.JComboBox<>();
         postreTres = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        Actualizar = new javax.swing.JButton();
 
         jLabel5.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -92,6 +93,13 @@ public class menuDia extends javax.swing.JPanel {
         postreTres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
         jButton1.setText("Aceptar");
+
+        Actualizar.setText("Actualizar ");
+        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -134,14 +142,21 @@ public class menuDia extends javax.swing.JPanel {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(190, 190, 190)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(Actualizar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Actualizar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -187,8 +202,14 @@ public class menuDia extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+        // TODO add your handling code here:
+        //cargarListas();
+    }//GEN-LAST:event_ActualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actualizar;
     private javax.swing.JComboBox<String> cenaDos;
     private javax.swing.JComboBox<String> cenaTres;
     private javax.swing.JComboBox<String> cenaUno;
@@ -220,7 +241,12 @@ public class menuDia extends javax.swing.JPanel {
                 primerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
                 segundoAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
                 tercerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());               
-            }                
+            }
+             if (evaluar.equals("Cena") ){
+                cenaUno.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                cenaDos.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                cenaTres.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());               
+            }      
         }
     }
 }
