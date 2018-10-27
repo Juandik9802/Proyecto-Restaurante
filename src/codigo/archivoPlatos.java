@@ -6,29 +6,66 @@
 package codigo;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Juan Diego
  */
+ public static platos = new File("src/Archivos_Planos/platos.txt");
+    //SE CREA EL ARRAYLISY
+    public static Arraylist nombre_de_Arraylist = new Arraylist<>();
 public class archivoPlatos {
     
-    static void crear(){
+    public static void crear(ArrayList<platillo> p){
         String dato; //variable para almacenar nombre y apellido
         String cadena; //nombre;apellido
         FileWriter fichero = null;  //objeto principal (archivo)
         PrintWriter linea = null;   //objeto de contenido de archivo
         
+          try {
+            //SE CREA UN OBJETO DE TIPO BUFFEREDWRITER PARA PODER ESCRIBIR DENTRO DEL ARCHIVO
+ 
+            BufferedWriter bw = new BufferedWriter(new FileWriter(nombre_de_objeto_fichero));
+ 
+            //DEPENDIENDO DEL TIPO DE OBJETOS QUE ESTE GUARDANDO DENTRO DEL ARRAYLIST, RECORRES EL 
+            //ARRAY Y SEPARAS CADA ATRIBUTO POR TABULACION O COMO QUIERAS.
+            //Y AL FINAL DE CADA LINEA HACES UN SALTO.
+              for (platillo object : p) {
+               
+                bw.write(p.get(0).getNombre() + "\t" + p.get(0).getPrecio() + "\t" + p.get(0).getTipo() +"\r\n");   
+              }
+            
+            bw.close();
+        } catch (Exception ex) {
+            //Captura un posible error le imprime en pantalla   
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+        
+        
+        /*
         try{
-            fichero = new FileWriter("C:\\Users\\EDUARDO JIMENEZ\\Documents\\NetBeansProjects\\proyecto\\src\\ficheros\\platos.txt",true); //crea el archivo 
+            /*fichero = new FileWriter("C:\\Users\\EDUARDO JIMENEZ\\Documents\\NetBeansProjects\\proyecto\\src\\ficheros\\platos.txt",true); //crea el archivo 
             linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
             // Inicia captura de datos del usuario
+            
+
+ 
+        
+            
+            
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Digite nombre:");
             dato = br.readLine();
@@ -52,7 +89,7 @@ public class archivoPlatos {
             }
         }
         
-    
+    */
     }
      
     static void mostrar(){
@@ -61,7 +98,7 @@ public class archivoPlatos {
         BufferedReader linea = null; //accede linea a linea al contenido
         
         try{
-            archivo = new File("d:/ejemplo.txt");
+            archivo = new File("C:\\Users\\EDUARDO JIMENEZ\\Documents\\NetBeansProjects\\proyecto\\src\\ficheros\\platos.txt");
             contenido = new FileReader(archivo);
             linea = new BufferedReader(contenido);
             
@@ -118,7 +155,7 @@ public class archivoPlatos {
             }
         }
     }
-   
+   /*
     public static void main(String[] args) {
         crear();
         crear();
@@ -129,4 +166,5 @@ public class archivoPlatos {
         System.out.println("================");
         buscar("perez",1);
     }
+*/
 }
