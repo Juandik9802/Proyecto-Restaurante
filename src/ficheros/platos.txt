@@ -1,4 +1,3 @@
-juan;pachon;
 Almuerzo;pastas;12;[arroz, papa, pasta];
 Almuerzo;cuchuco;20000;[agua, criolla];
 Bebidas;colombiana;6000;[];

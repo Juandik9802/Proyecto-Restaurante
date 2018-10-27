@@ -25,7 +25,7 @@ public static Principal i;
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    private String contra="123456";
+    private String contra="1";
     
     /**
      * This method is called from within the constructor to initialize the form.

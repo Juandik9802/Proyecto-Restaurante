@@ -6,18 +6,15 @@
 package codigo;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
+
 
 /**
  *
@@ -42,7 +39,7 @@ public class archivoPlatos {
             linea.println(cadena); //escribiendo en el archivo
             
       }catch(IOException e){
-           System.out.print("Error creando archivo");
+            JOptionPane.showMessageDialog(null,"Error creando archivo");
         }
         finally{
             try{
@@ -50,7 +47,7 @@ public class archivoPlatos {
                     fichero.close();
                 }
             }catch(IOException e1){
-                System.out.print("Error cerrando archivo");
+                JOptionPane.showMessageDialog(null,"Error cerrando archivo");
             }
         }
        
@@ -62,15 +59,15 @@ public class archivoPlatos {
         BufferedReader linea = null; //accede linea a linea al contenido
         
         try{
-            archivo = new File("C:\\Users\\EDUARDO JIMENEZ\\Documents\\NetBeansProjects\\proyecto\\src\\ficheros\\platos.txt");
+            archivo = new File("src/ficheros/platos.txt");
             contenido = new FileReader(archivo);
             linea = new BufferedReader(contenido);
             
             String cadena=""; //variable captura los datos del archivo
             while((cadena=linea.readLine()) != null){ //recorre todo el archivo
                 String dato[] = cadena.split(";");
-                System.out.print("Nombre: "+ dato[0]);
-                System.out.println(" Apellido: "+ dato[1]);  
+                System.out.print("Tipo: "+ dato[0]);
+                System.out.println("Nombre: "+ dato[1]);  
 
             }
          }catch(IOException e){
@@ -82,7 +79,7 @@ public class archivoPlatos {
                     contenido.close();
                 }
             }catch(IOException e1){
-                System.out.print("Error cerrando archivo");
+                JOptionPane.showMessageDialog(null,"Error cerrando archivo");
             }
         }
     }
