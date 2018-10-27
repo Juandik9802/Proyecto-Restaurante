@@ -98,7 +98,7 @@ public class menu extends javax.swing.JPanel {
     String vp1="0",vp2="0";
     
     private void panelmenu(){
-        System.out.println("hola mundo");
+        
         if (vp1.equals("0")){
             menu=new menuDia();
             contenedorMenus.addTab("Menu del Dia", menu);
@@ -107,6 +107,7 @@ public class menu extends javax.swing.JPanel {
             contenedorMenus.setSelectedComponent(menu);
         }
         vp1="1";
+        System.out.println("hola mundo");
     }
     private void panelmenu1(){
         if (vp2.equals("0")){
