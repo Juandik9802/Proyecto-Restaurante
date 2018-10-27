@@ -20,11 +20,15 @@ import javax.swing.JOptionPane;
  *
  * @author Juan Diego
  */
- //public static platos = new File("src/Archivos_Planos/platos.txt");
-    //SE CREA EL ARRAYLISY
-   // public static Arraylist nombre_de_Arraylist = new Arraylist<>();
+ 
 public class archivoPlatos {
     
+    public static ArrayList<cargarCombos> mostrarPlato= new ArrayList();;
+    
+    /**
+     * crea el archivo
+     * @param p 
+     */
     public static void crear(ArrayList<platillo> p){
         String cadena = null; //tipo;nombre;precio;porcion
         FileWriter fichero = null;  //objeto principal (archivo)
@@ -53,11 +57,10 @@ public class archivoPlatos {
        
     }
      
-    static void mostrar(){
+    public static void mostrar(){
         File archivo = null;  //apuntar al archivo almancenado DD
         FileReader contenido = null;  //acceder a todo el contenido del archivo
-        BufferedReader linea = null; //accede linea a linea al contenido
-        
+        BufferedReader linea = null; //accede linea a linea al contenido        
         try{
             archivo = new File("src/ficheros/platos.txt");
             contenido = new FileReader(archivo);
@@ -66,8 +69,7 @@ public class archivoPlatos {
             String cadena=""; //variable captura los datos del archivo
             while((cadena=linea.readLine()) != null){ //recorre todo el archivo
                 String dato[] = cadena.split(";");
-                System.out.print("Tipo: "+ dato[0]);
-                System.out.println("Nombre: "+ dato[1]);  
+                mostrarPlato.add(new cargarCombos(dato[0],dato[1]));
 
             }
          }catch(IOException e){
@@ -82,6 +84,7 @@ public class archivoPlatos {
                 JOptionPane.showMessageDialog(null,"Error cerrando archivo");
             }
         }
+        //return mostrarPlato;
     }
     
     static void buscar(String filtro, int index){
@@ -128,4 +131,12 @@ public class archivoPlatos {
         buscar("perez",1);
     }
 */
+
+    public ArrayList<cargarCombos> getMostrarPlato() {
+        return mostrarPlato;
+    }
+
+    public void setMostrarPlato(ArrayList<cargarCombos> mostrarPlato) {
+        this.mostrarPlato = mostrarPlato;
+    } 
 }

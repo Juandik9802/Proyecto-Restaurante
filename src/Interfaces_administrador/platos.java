@@ -6,7 +6,6 @@
 package Interfaces_administrador;
 
 import codigo.platillo;
-import codigo.platosDisponibles;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 

@@ -36,9 +36,9 @@
                           <Component id="cenaDos" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                           <Component id="cenaTres" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="primerPlato" max="32767" attributes="0"/>
-                              <Component id="segundoPlato" max="32767" attributes="0"/>
-                              <Component id="tercerPlato" min="-2" pref="162" max="-2" attributes="0"/>
+                              <Component id="primerAlmuerzo" max="32767" attributes="0"/>
+                              <Component id="segundoAlmuerzo" max="32767" attributes="0"/>
+                              <Component id="tercerAlmuerzo" min="-2" pref="162" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -114,11 +114,11 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="primerPlato" min="-2" max="-2" attributes="0"/>
+                              <Component id="primerAlmuerzo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="segundoPlato" min="-2" max="-2" attributes="0"/>
+                              <Component id="segundoAlmuerzo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tercerPlato" min="-2" max="-2" attributes="0"/>
+                              <Component id="tercerAlmuerzo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="47" pref="47" max="-2" attributes="0"/>
                               <Component id="cenaUno" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -153,7 +153,7 @@
         <Property name="text" type="java.lang.String" value="Almuerzo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="primerPlato">
+    <Component class="javax.swing.JComboBox" name="primerAlmuerzo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
@@ -165,7 +165,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="segundoPlato">
+    <Component class="javax.swing.JComboBox" name="segundoAlmuerzo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
@@ -177,7 +177,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="tercerPlato">
+    <Component class="javax.swing.JComboBox" name="tercerAlmuerzo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">

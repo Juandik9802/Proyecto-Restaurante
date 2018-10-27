@@ -6,15 +6,23 @@
 
 package Interfaces_administrador;
 
+import java.util.ArrayList;
+
+
 /**
  *
  * @author Juan Diego Pachón
  */
 public class menuDia extends javax.swing.JPanel {
-
+    ArrayList<String> almuerzo;
+    ArrayList<String> cena;
+    ArrayList<String> bebidas;
+    ArrayList<String> postres;
+    
     /** Creates new form menuDisa */
     public menuDia() {
         initComponents();
+        cargarListas();
     }
 
     /** This method is called from within the constructor to
@@ -30,9 +38,9 @@ public class menuDia extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
-        primerPlato = new javax.swing.JComboBox<>();
-        segundoPlato = new javax.swing.JComboBox<>();
-        tercerPlato = new javax.swing.JComboBox<>();
+        primerAlmuerzo = new javax.swing.JComboBox<>();
+        segundoAlmuerzo = new javax.swing.JComboBox<>();
+        tercerAlmuerzo = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         cenaUno = new javax.swing.JComboBox<>();
         cenaDos = new javax.swing.JComboBox<>();
@@ -53,11 +61,11 @@ public class menuDia extends javax.swing.JPanel {
 
         jLabel7.setText("Almuerzo");
 
-        primerPlato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        primerAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
-        segundoPlato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        segundoAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
-        tercerPlato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        tercerAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
         jLabel8.setText("Cena");
 
@@ -101,9 +109,9 @@ public class menuDia extends javax.swing.JPanel {
                             .addComponent(cenaDos, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cenaTres, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(primerPlato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(segundoPlato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tercerPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(primerAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(segundoAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tercerAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(283, 283, 283)
@@ -162,11 +170,11 @@ public class menuDia extends javax.swing.JPanel {
                                     .addComponent(jLabel1)))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(primerPlato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(primerAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(segundoPlato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(segundoAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tercerPlato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tercerAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(47, 47, 47)
                                 .addComponent(cenaUno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -194,13 +202,25 @@ public class menuDia extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JComboBox<String> postreTres;
     private javax.swing.JComboBox<String> postreUno;
-    private javax.swing.JComboBox<String> primerPlato;
+    private javax.swing.JComboBox<String> primerAlmuerzo;
     private javax.swing.JComboBox<String> primeraBebida;
     private javax.swing.JComboBox<String> prostreDos;
     private javax.swing.JComboBox<String> segundaBebida;
-    private javax.swing.JComboBox<String> segundoPlato;
-    private javax.swing.JComboBox<String> tercerPlato;
+    private javax.swing.JComboBox<String> segundoAlmuerzo;
+    private javax.swing.JComboBox<String> tercerAlmuerzo;
     private javax.swing.JComboBox<String> trecerBebida;
     // End of variables declaration//GEN-END:variables
-
+    String tipo,nombre;
+    
+    private void cargarListas() {
+        codigo.archivoPlatos.mostrar();        
+        for (int i=0;i<codigo.archivoPlatos.mostrarPlato.size();i++){
+            String evaluar=codigo.archivoPlatos.mostrarPlato.get(i).getTipo();
+            if (evaluar.equals("Almuerzo") ){
+                primerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                segundoAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                tercerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());               
+            }                
+        }
+    }
 }
