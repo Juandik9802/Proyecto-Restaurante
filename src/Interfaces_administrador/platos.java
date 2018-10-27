@@ -252,6 +252,7 @@ public class platos extends javax.swing.JPanel {
         comidas.setSelectedItem("Seleccionar");
         comidas.setEnabled(true);
         tomarPlatillo.setEnabled(!false);
+        codigo.archivoPlatos.crear(listaPlatos);
     }//GEN-LAST:event_tomarPlatoActionPerformed
     
     private void im(){

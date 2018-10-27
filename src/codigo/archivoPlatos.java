@@ -23,17 +23,16 @@ import javax.swing.JOptionPane;
  *
  * @author Juan Diego
  */
- public static platos = new File("src/Archivos_Planos/platos.txt");
+ //public static platos = new File("src/Archivos_Planos/platos.txt");
     //SE CREA EL ARRAYLISY
-    public static Arraylist nombre_de_Arraylist = new Arraylist<>();
+   // public static Arraylist nombre_de_Arraylist = new Arraylist<>();
 public class archivoPlatos {
     
     public static void crear(ArrayList<platillo> p){
-        String dato; //variable para almacenar nombre y apellido
-        String cadena; //nombre;apellido
+        String cadena = null; //tipo;nombre;precio;porcion
         FileWriter fichero = null;  //objeto principal (archivo)
         PrintWriter linea = null;   //objeto de contenido de archivo
-        
+        /*
           try {
             //SE CREA UN OBJETO DE TIPO BUFFEREDWRITER PARA PODER ESCRIBIR DENTRO DEL ARCHIVO
  
@@ -51,29 +50,15 @@ public class archivoPlatos {
         } catch (Exception ex) {
             //Captura un posible error le imprime en pantalla   
             JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        
-        
-        
-        /*
-        try{
-            /*fichero = new FileWriter("C:\\Users\\EDUARDO JIMENEZ\\Documents\\NetBeansProjects\\proyecto\\src\\ficheros\\platos.txt",true); //crea el archivo 
-            linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
-            // Inicia captura de datos del usuario
-            
+        }*/
 
- 
-        
-            
-            
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Digite nombre:");
-            dato = br.readLine();
-            cadena = dato + ";";
-            System.out.println("Digite apellido:");
-            dato = br.readLine();
-            cadena = cadena + dato + ";";
-            
+        try{
+            fichero = new FileWriter("src/ficheros/platos.txt",true); //crea el archivo 
+            linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
+            // Inicia captura de datos del usuario           
+            for (platillo object : p) {
+                cadena = object.getTipo()+";"+object.getNombre()+";"+object.getPrecio()+";"+object.getPorcion()+";";
+            }
             linea.println(cadena); //escribiendo en el archivo
             
       }catch(IOException e){
@@ -88,8 +73,7 @@ public class archivoPlatos {
                 System.out.print("Error cerrando archivo");
             }
         }
-        
-    */
+       
     }
      
     static void mostrar(){
