@@ -275,6 +275,7 @@ public class platos extends javax.swing.JPanel {
     private void cargar() {
         listaPlatos.add(new platillo(tipo,nombre,precio));
         intento++;
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarPorcion;
