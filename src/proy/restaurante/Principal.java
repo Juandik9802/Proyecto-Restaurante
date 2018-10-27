@@ -26,7 +26,7 @@ public static Principal i;
         this.setLocationRelativeTo(null);
     }
     private String contra="1";
-    
+    private String codigoM="01";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +39,7 @@ public static Principal i;
         menuParaAdmin = new javax.swing.JButton();
         menuParaCocina = new javax.swing.JButton();
         menuParaCaja = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        menumesero = new javax.swing.JButton();
         icono = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,11 +70,11 @@ public static Principal i;
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
-        jButton4.setText("Mesero");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        menumesero.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
+        menumesero.setText("Mesero");
+        menumesero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                menumeseroActionPerformed(evt);
             }
         });
 
@@ -97,7 +97,7 @@ public static Principal i;
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(menuParaCocina, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(menumesero, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -112,7 +112,7 @@ public static Principal i;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(menuParaCaja)
-                    .addComponent(jButton4))
+                    .addComponent(menumesero))
                 .addGap(76, 76, 76))
         );
 
@@ -153,10 +153,38 @@ public static Principal i;
         cocina.setVisible(true);
     }//GEN-LAST:event_menuParaCocinaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        mesero mesero = new mesero();
-        mesero.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void menumeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menumeseroActionPerformed
+        String pas=null;
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel("Ingrese su  codigo:");
+        JPasswordField pass = new JPasswordField(2);
+        panel.add(label);
+        panel.add(pass);
+        String[] options = new String[]{"OK", "Cancel"};
+        int option = JOptionPane.showOptionDialog(null, panel, "Codigo mesero",
+                         JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                         null, options, options[1]);
+        if(option == 0){
+            char[] password = pass.getPassword();
+            pas=String.valueOf(password);
+            if (this.codigoM.equals(pas)){
+                mesero mesero = new mesero();
+                mesero.setVisible(true);
+            }else{
+                String vacio = "";
+                if(pas.equals(vacio)){
+                    JOptionPane.showMessageDialog(null,"Debe ingresar  un codigo");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Error de codigo");
+                }
+            }            
+            
+        }
+        
+        
+        
+       
+    }//GEN-LAST:event_menumeseroActionPerformed
 
     private void menuParaCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaCajaActionPerformed
         caja caja = new caja();
@@ -170,9 +198,9 @@ public static Principal i;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel icono;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton menuParaAdmin;
     private javax.swing.JButton menuParaCaja;
     private javax.swing.JButton menuParaCocina;
+    private javax.swing.JButton menumesero;
     // End of variables declaration//GEN-END:variables
 }
