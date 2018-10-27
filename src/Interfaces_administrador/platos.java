@@ -19,7 +19,7 @@ public class platos extends javax.swing.JPanel {
     ArrayList<platillo> listaPlatos;
     //private ArrayList<String> porcion;
     private String tipo,nombre;
-    private int precio,contador=0;
+    private int precio,contador=0,intento=-1;
     
     /**
      * Creates new form platos
@@ -208,7 +208,8 @@ public class platos extends javax.swing.JPanel {
     }//GEN-LAST:event_comidasItemStateChanged
 
     private void agregarPorcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPorcionActionPerformed
-       detalles.setText("");
+        listaPlatos.get(intento).porcion(detalles.getText());
+        detalles.setText("");
     }//GEN-LAST:event_agregarPorcionActionPerformed
 
     private void tomarPlatilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tomarPlatilloActionPerformed
@@ -216,7 +217,7 @@ public class platos extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Errror de Seleccion");
         }else{
             nombre=nombrePlato.getText();
-            precio=Short.parseShort(precioPlato.getText());
+            precio=Integer.parseInt(precioPlato.getText());
             if (comidas.getSelectedItem()=="Almuerzo"){
                 tipo="Almuerzo";
             }
@@ -230,19 +231,27 @@ public class platos extends javax.swing.JPanel {
                 tipo="Bebidas";
             }        
             cargar();
-            int c=0;
-            for (platillo listaPlato : listaPlatos) {
-                System.out.println(listaPlatos.get(c).getPorcion());
-                c++;
-            }     
-            contador++;
-        }    
-        nombrePlato.setText("");
-        precioPlato.setText("");
+            /**/
+            nombrePlato.setEnabled(false);            
+            precioPlato.setEnabled(false);
+            detalles.setEnabled(true);
+            agregarPorcion.setEnabled(true);
+            comidas.setEnabled(false);
+            tomarPlatillo.setEnabled(false);
+        }
     }//GEN-LAST:event_tomarPlatilloActionPerformed
 
     private void tomarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tomarPlatoActionPerformed
         im();
+        nombrePlato.setText("");
+        precioPlato.setText("");
+        nombrePlato.setEnabled(!false);            
+        precioPlato.setEnabled(!false);
+        detalles.setEnabled(false);
+        agregarPorcion.setEnabled(false);
+        comidas.setSelectedItem("Seleccionar");
+        comidas.setEnabled(true);
+        tomarPlatillo.setEnabled(!false);
     }//GEN-LAST:event_tomarPlatoActionPerformed
     
     private void im(){
@@ -254,7 +263,7 @@ public class platos extends javax.swing.JPanel {
             System.out.println(listaPlato.getTipo());
                 int cont2=0;
                 //porcion1=listaPlato.getPorcion();
-                System.out.println(listaPlatos.get(cont).getPorcion().get(cont2));
+                System.out.println(listaPlatos.get(cont).getPorcion());
                 for (String string :listaPlatos.get(cont).getPorcion()) {
                     System.out.println(listaPlatos.get(cont).getPorcion().get(cont2));
                     cont2++;
@@ -264,10 +273,9 @@ public class platos extends javax.swing.JPanel {
         }
     
     private void cargar() {
-        listaPlatos.get(contador).setNombre(nombre);
-        listaPlatos.get(contador).setPrecio(precio);
-        listaPlatos.get(contador).setTipo(tipo);
-    }    
+        listaPlatos.add(new platillo(tipo,nombre,precio));
+        intento++;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarPorcion;
     private javax.swing.JComboBox<String> comidas;

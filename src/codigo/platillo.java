@@ -15,12 +15,9 @@ public class platillo {
     private String tipo;
     private String nombre;
     private int precio;
-    private ArrayList<String> porcion;
-
-    public platillo() {
-    }
+    private ArrayList<String> porcion =new ArrayList();
     
-    public platillo(String tipo, String nombre, short precio) {
+    public platillo(String tipo, String nombre, int precio) {
         this.tipo = tipo;
         this.nombre = nombre;
         this.precio = precio;
