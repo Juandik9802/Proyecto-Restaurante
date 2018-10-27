@@ -26,7 +26,7 @@ public class archivoPlatos {
         PrintWriter linea = null;   //objeto de contenido de archivo
         
         try{
-            fichero = new FileWriter("d:/ejemplo.txt",true); //crea el archivo 
+            fichero = new FileWriter("C:\\Users\\EDUARDO JIMENEZ\\Documents\\NetBeansProjects\\proyecto\\src\\ficheros\\platos.txt",true); //crea el archivo 
             linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
             // Inicia captura de datos del usuario
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
