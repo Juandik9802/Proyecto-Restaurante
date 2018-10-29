@@ -107,7 +107,6 @@ public class menu extends javax.swing.JPanel {
             contenedorMenus.setSelectedComponent(menu);
         }
         vp1="1";
-        System.out.println("hola mundo");
     }
     private void panelmenu1(){
         if (vp2.equals("0")){

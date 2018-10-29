@@ -14,31 +14,30 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-
-
 /**
  *
  * @author Juan Diego
  */
- 
-public class archivoPlatos {
-    
-    public static ArrayList<cargarCombos> mostrarPlato= new ArrayList();;
+public class archivoMenus {
+    public static ArrayList<menusCarga> mostrarPlato= new ArrayList();;
+
+    public archivoMenus() {
+    }
     
     /**
      * crea el archivo
      * @param p 
      */
-    public static void crear(ArrayList<platillo> p){
+    public static void crear(ArrayList<menusCarga> p){
         String cadena = null; //tipo;nombre;precio;porcion
         FileWriter fichero = null;  //objeto principal (archivo)
         PrintWriter linea = null;   //objeto de contenido de archivo
         try{
-            fichero = new FileWriter("src/ficheros/platos.txt",true); //crea el archivo 
+            fichero = new FileWriter("src/ficheros/Menu.txt",true); //crea el archivo 
             linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
             // Inicia            
-            for (platillo object : p) {
-                cadena = object.getTipo()+";"+object.getNombre()+";"+object.getPrecio()+";"+object.getPorcion()+";";
+            for (menusCarga carga : p) {
+                cadena = carga.getDia()+";"+carga.getAlmuerzos()+";"+carga.getCenas()+";"+carga.getBebidas()+";"+carga.getPostres()+";";
             }
             linea.println(cadena); //escribiendo en el archivo
             
@@ -62,14 +61,14 @@ public class archivoPlatos {
         FileReader contenido = null;  //acceder a todo el contenido del archivo
         BufferedReader linea = null; //accede linea a linea al contenido        
         try{
-            archivo = new File("src/ficheros/platos.txt");
+            archivo = new File("src/ficheros/Menu.txt");
             contenido = new FileReader(archivo);
             linea = new BufferedReader(contenido);
             
             String cadena=""; //variable captura los datos del archivo
             while((cadena=linea.readLine()) != null){ //recorre todo el archivo
                 String dato[] = cadena.split(";");
-                mostrarPlato.add(new cargarCombos(dato[0],dato[1]));
+               // mostrarPlato.add(new cargarCombos(dato[0],dato[1]));
 
             }
          }catch(IOException e){
@@ -119,16 +118,27 @@ public class archivoPlatos {
             }
         }
     }
-   /*
-    public static void main(String[] args) {
-        crear();
-        crear();
-        crear();
-        mostrar();
-        System.out.println("================");
-        buscar("juan",0);
-        System.out.println("================");
-        buscar("perez",1);
+    
+    public static void añadirMenu(String Dia,ArrayList<String> Almuerzo,ArrayList<String> cena,ArrayList<String> bebida, ArrayList<String> postre){
+        mostrarPlato.add(new menusCarga(Dia));
+        int cont=mostrarPlato.size()-1;
+        for (String string : postre) {
+            mostrarPlato.get(cont).postres.add(string);
+        }
+        
+        for (String string :bebida) {
+            mostrarPlato.get(cont).bebidas.add(string);            
+        }
+        for (String string :cena) {
+            mostrarPlato.get(cont).cenas.add(string);            
+        }
+        for (String string :Almuerzo) {
+            mostrarPlato.get(cont).almuerzos.add(string);
+        }
     }
-*/
+
+    public static ArrayList<menusCarga> getMostrarPlato() {
+        return mostrarPlato;
+    }
+    
 }

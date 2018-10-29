@@ -1,5 +1,6 @@
 Almuerzo;pastas;12;[arroz, papa, pasta];
 Almuerzo;cuchuco;20000;[agua, criolla];
 Bebidas;colombiana;6000;[];
-Almuerzo;pasta;43;[jej];
-Almuerzo;arroz con pollo;6000;[pollo, arroz, condimetos];
+Postres;pasta;43;[jej];
+Cena;arroz con pollo;6000;[pollo, arroz, condimetos];
+Cena;pollo;12;[pollo, arroz];

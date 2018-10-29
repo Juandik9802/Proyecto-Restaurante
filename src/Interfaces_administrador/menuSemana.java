@@ -5,17 +5,30 @@
  */
 package Interfaces_administrador;
 
+import codigo.archivoMenus;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan Diego Pachón
  */
 public class menuSemana extends javax.swing.JPanel {
-
+    
+    ArrayList<String> almuerzo= new ArrayList();
+    ArrayList<String> cena= new ArrayList();
+    ArrayList<String> Bebidas= new ArrayList();
+    ArrayList<String> Postre= new ArrayList();
+    archivoMenus archivo=new archivoMenus();
     /**
      * Creates new form menuSemana
      */
     public menuSemana() {
         initComponents();
+        dia.setText("Lunes");
+        Aceptar.setEnabled(!true);
+        cargarListas();//cargar los combobox
+        codigo.archivoPlatos.mostrarPlato.clear();//limpiar el ArrayList        
     }
 
     /**
@@ -29,9 +42,9 @@ public class menuSemana extends javax.swing.JPanel {
 
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        primerPlato = new javax.swing.JComboBox<>();
-        segundoPlato = new javax.swing.JComboBox<>();
-        tercerPlato = new javax.swing.JComboBox<>();
+        primerAlmuerzo = new javax.swing.JComboBox<>();
+        segundoAlmuerzo = new javax.swing.JComboBox<>();
+        tercerAlmerzo = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         cenaUno = new javax.swing.JComboBox<>();
         cenaDos = new javax.swing.JComboBox<>();
@@ -45,7 +58,7 @@ public class menuSemana extends javax.swing.JPanel {
         prostreDos = new javax.swing.JComboBox<>();
         postreTres = new javax.swing.JComboBox<>();
         dia = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        agregarMenu = new javax.swing.JButton();
         Aceptar = new javax.swing.JButton();
 
         jLabel5.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
@@ -53,11 +66,11 @@ public class menuSemana extends javax.swing.JPanel {
 
         jLabel7.setText("Almuerzo");
 
-        primerPlato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        primerAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
-        segundoPlato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        segundoAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
-        tercerPlato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        tercerAlmerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
         jLabel8.setText("Cena");
 
@@ -86,9 +99,19 @@ public class menuSemana extends javax.swing.JPanel {
         dia.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 36)); // NOI18N
         dia.setText("Dia");
 
-        jButton1.setText("Agregar");
+        agregarMenu.setText("Agregar");
+        agregarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarMenuActionPerformed(evt);
+            }
+        });
 
         Aceptar.setText("Aceptar");
+        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -114,9 +137,9 @@ public class menuSemana extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(primerPlato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(segundoPlato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tercerPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(primerAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(segundoAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tercerAlmerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(137, 137, 137)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -132,11 +155,11 @@ public class menuSemana extends javax.swing.JPanel {
                 .addContainerGap(62, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Aceptar)
-                    .addComponent(jButton1))
+                    .addComponent(agregarMenu))
                 .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
@@ -151,11 +174,11 @@ public class menuSemana extends javax.swing.JPanel {
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(primerPlato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(primerAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(segundoPlato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(segundoAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tercerPlato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tercerAlmerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -179,23 +202,39 @@ public class menuSemana extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(postreTres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(agregarMenu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Aceptar)
-                    .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    int intento=1;
+    private void agregarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarMenuActionPerformed
+        if (primerAlmuerzo.getSelectedItem()=="Seleccionar"||segundoAlmuerzo.getSelectedItem()=="Seleccionar"|| tercerAlmerzo.getSelectedItem()=="Seleccionar"
+                ||cenaUno.getSelectedItem()=="Seleccionar"||cenaDos.getSelectedItem()=="Seleccionar"||cenaTres.getSelectedItem()=="Seleccionar"
+                ||primeraBebida.getSelectedItem()=="Seleccionar"||segundaBebida.getSelectedItem()=="Seleccionar"||trecerBebida.getSelectedItem()=="Seleccionar"
+                ||postreUno.getSelectedItem()=="Seleccionar"||prostreDos.getSelectedItem()=="Seleccionar"||postreTres.getSelectedItem()=="Seleccionar"){
+            JOptionPane.showMessageDialog(null, "Error de Seleccion");
+        }else{
+            /* cotrol de añadir a la semana*/
+            controlDias();
+        }       
+    }//GEN-LAST:event_agregarMenuActionPerformed
+
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+        
+    }//GEN-LAST:event_AceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
+    private javax.swing.JButton agregarMenu;
     private javax.swing.JComboBox<String> cenaDos;
     private javax.swing.JComboBox<String> cenaTres;
     private javax.swing.JComboBox<String> cenaUno;
     private javax.swing.JLabel dia;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -203,12 +242,203 @@ public class menuSemana extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JComboBox<String> postreTres;
     private javax.swing.JComboBox<String> postreUno;
-    private javax.swing.JComboBox<String> primerPlato;
+    private javax.swing.JComboBox<String> primerAlmuerzo;
     private javax.swing.JComboBox<String> primeraBebida;
     private javax.swing.JComboBox<String> prostreDos;
     private javax.swing.JComboBox<String> segundaBebida;
-    private javax.swing.JComboBox<String> segundoPlato;
-    private javax.swing.JComboBox<String> tercerPlato;
+    private javax.swing.JComboBox<String> segundoAlmuerzo;
+    private javax.swing.JComboBox<String> tercerAlmerzo;
     private javax.swing.JComboBox<String> trecerBebida;
     // End of variables declaration//GEN-END:variables
+    
+    private void cargarListas() {
+        codigo.archivoPlatos.mostrar();        
+        for (int i=0;i<codigo.archivoPlatos.mostrarPlato.size();i++){
+            String evaluar=codigo.archivoPlatos.mostrarPlato.get(i).getTipo();
+            if (evaluar.equals("Almuerzo") ){
+                primerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                segundoAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                tercerAlmerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());               
+            }
+             if (evaluar.equals("Cena") ){
+                cenaUno.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                cenaDos.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                cenaTres.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());               
+            }
+             if (evaluar.equals("Bebidas") ){
+                    primeraBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                    segundaBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                    trecerBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+            }
+             if (evaluar.equals("Postres") ){
+                    postreUno.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                    prostreDos.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                    postreTres.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+            }
+        }
+    }
+
+    private void almuerzoActualizar() {        
+        int contador = 0;
+        boolean control;
+        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+            control=false;
+            String datosRevisar = codigo.archivoPlatos.mostrarPlato.get(contador).getNombre();
+            for (int j=0;j< primerAlmuerzo.getItemCount();j++) {
+                String comparar= primerAlmuerzo.getItemAt(j);
+                if  (comparar.equals(datosRevisar)){
+                    control=true;
+                }
+            }
+            if(control==false){
+                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                if (evaluar.equals("Almuerzo") ){
+                    primerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    segundoAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    tercerAlmerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                }
+            }
+            contador++;
+        }
+    }
+
+    private void cenaActualizar() {
+        int contador = 0;
+        boolean control;
+        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+            control=false;
+            String datosRevisar = object.getNombre();
+            for (int j=0;j< cenaUno.getItemCount();j++) {
+                String comparar= cenaUno.getItemAt(j); 
+                if  (comparar.equals(datosRevisar)){
+                    control=true;
+                }
+            }
+            if(control==false){
+                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                if (evaluar.equals("Cena") ){
+                    cenaUno.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    cenaDos.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    cenaTres.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                }
+            } 
+            contador++;
+        }
+    }
+
+    private void bebidasActualizar() {
+        int contador = 0;
+        boolean control;
+        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+            control=false;
+            String datosRevisar = codigo.archivoPlatos.mostrarPlato.get(contador).getNombre();
+            for (int j=0;j< primeraBebida.getItemCount();j++) {
+                String comparar= primeraBebida.getItemAt(j); 
+                if  (comparar.equals(datosRevisar)){
+                    control=true;
+                }
+            }
+            if(control==false){
+                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                if (evaluar.equals("Bebidas") ){
+                    primeraBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    segundaBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    trecerBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                }
+            }
+            contador++;
+        }
+    }
+
+    private void postresActualizar() {
+        int contador = 0;
+        boolean control;
+        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+            control=false;
+            String datosRevisar = codigo.archivoPlatos.mostrarPlato.get(contador).getNombre();
+            for (int j=0;j< postreUno.getItemCount();j++) {
+                String comparar= postreUno.getItemAt(j); 
+                if  (comparar.equals(datosRevisar)){
+                    control=true;
+                }
+            }
+            if(control==false){
+                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                if (evaluar.equals("Postres") ){
+                    postreUno.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    prostreDos.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    postreTres.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                }
+            }
+            contador++;
+        }
+    }
+    
+    private void controlDias(){
+        if(intento==1){
+            /*añadir a los arraylist*/
+            cargarArryList(); 
+            archivo.añadirMenu("lunes", almuerzo, cena, Bebidas, Postre);
+            dia.setText("Martes");
+        }
+        if(intento==2){
+            /*añadir a los arraylist*/
+            cargarArryList(); 
+            archivo.añadirMenu("Martes", almuerzo, cena, Bebidas, Postre);
+            dia.setText("Miercoles");
+        }
+        if(intento==3){
+            /*añadir a los arraylist*/
+            cargarArryList(); 
+            archivo.añadirMenu("Miercoles", almuerzo, cena, Bebidas, Postre);
+            dia.setText("Jueves");
+        }
+        if(intento==4){
+            /*añadir a los arraylist*/
+            cargarArryList(); 
+            archivo.añadirMenu("Jueves", almuerzo, cena, Bebidas, Postre);
+            dia.setText("Viernes");
+        }
+        if(intento==5){
+            /*añadir a los arraylist*/
+            cargarArryList(); 
+            archivo.añadirMenu("Viernes", almuerzo, cena, Bebidas, Postre);
+            dia.setText("Sabado");
+        }
+        if(intento==6){
+            /*añadir a los arraylist*/
+            cargarArryList(); 
+            archivo.añadirMenu("Sabado", almuerzo, cena, Bebidas, Postre);
+            dia.setText("Domindo");
+        }
+        if (intento==7){
+            /*añadir a los arraylist*/
+            cargarArryList(); 
+            archivo.añadirMenu("Domingo", almuerzo, cena, Bebidas, Postre);
+            //dia.setText("Dia");
+            JOptionPane.showMessageDialog(null, "Menu de la Semana Creado");
+            archivo.crear(archivo.mostrarPlato);
+            Aceptar.setEnabled(true);
+        }        
+        intento++;
+        if (intento==8){
+            dia.setText("Lunes");
+            intento=1;            
+        }
+    }
+    
+    private void cargarArryList(){
+            almuerzo.add((String) primerAlmuerzo.getSelectedItem());
+            almuerzo.add((String) segundoAlmuerzo.getSelectedItem());
+            almuerzo.add((String) tercerAlmerzo.getSelectedItem());
+            cena.add((String) cenaUno.getSelectedItem());
+            cena.add((String) cenaDos.getSelectedItem());
+            cena.add((String) cenaTres.getSelectedItem());
+            Bebidas.add((String) primeraBebida.getSelectedItem());
+            Bebidas.add((String) segundaBebida.getSelectedItem());
+            Bebidas.add((String) trecerBebida.getSelectedItem());
+            Postre.add((String) postreUno.getSelectedItem());
+            Postre.add((String) prostreDos.getSelectedItem());
+            Postre.add((String) postreTres.getSelectedItem());
+    }
 }

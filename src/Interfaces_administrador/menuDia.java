@@ -6,23 +6,18 @@
 
 package Interfaces_administrador;
 
-import java.util.ArrayList;
-
 
 /**
  *
  * @author Juan Diego Pachón
  */
 public class menuDia extends javax.swing.JPanel {
-    ArrayList<String> almuerzo;
-    ArrayList<String> cena;
-    ArrayList<String> bebidas;
-    ArrayList<String> postres;
-    
+  
     /** Creates new form menuDisa */
     public menuDia() {
         initComponents();
         cargarListas();
+        codigo.archivoPlatos.mostrarPlato.clear();
     }
 
     /** This method is called from within the constructor to
@@ -93,6 +88,11 @@ public class menuDia extends javax.swing.JPanel {
         postreTres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
         jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         Actualizar.setText("Actualizar ");
         Actualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -203,9 +203,17 @@ public class menuDia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
-        // TODO add your handling code here:
-        //cargarListas();
+        codigo.archivoPlatos.mostrar();
+        almuerzoActualizar();
+        cenaActualizar();
+        bebidasActualizar();
+        postresActualizar();
+        codigo.archivoPlatos.mostrarPlato.clear();
     }//GEN-LAST:event_ActualizarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -246,7 +254,113 @@ public class menuDia extends javax.swing.JPanel {
                 cenaUno.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
                 cenaDos.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
                 cenaTres.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());               
-            }      
+            }
+             if (evaluar.equals("Bebidas") ){
+                    primeraBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                    segundaBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                    trecerBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+            }
+             if (evaluar.equals("Postres") ){
+                    postreUno.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                    prostreDos.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+                    postreTres.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
+            }
+        }
+    }
+
+    private void almuerzoActualizar() {        
+        int contador = 0;
+        boolean control;
+        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+            control=false;
+            String datosRevisar = codigo.archivoPlatos.mostrarPlato.get(contador).getNombre();
+            for (int j=0;j< primerAlmuerzo.getItemCount();j++) {
+                String comparar= primerAlmuerzo.getItemAt(j);
+                if  (comparar.equals(datosRevisar)){
+                    control=true;
+                }
+            }
+            if(control==false){
+                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                if (evaluar.equals("Almuerzo") ){
+                    primerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    segundoAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    tercerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                }
+            }
+            contador++;
+        }
+    }
+
+    private void cenaActualizar() {
+        int contador = 0;
+        boolean control;
+        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+            control=false;
+            String datosRevisar = object.getNombre();
+            for (int j=0;j< cenaUno.getItemCount();j++) {
+                String comparar= cenaUno.getItemAt(j); 
+                if  (comparar.equals(datosRevisar)){
+                    control=true;
+                }
+            }
+            if(control==false){
+                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                if (evaluar.equals("Cena") ){
+                    cenaUno.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    cenaDos.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    cenaTres.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                }
+            } 
+            contador++;
+        }
+    }
+
+    private void bebidasActualizar() {
+        int contador = 0;
+        boolean control;
+        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+            control=false;
+            String datosRevisar = codigo.archivoPlatos.mostrarPlato.get(contador).getNombre();
+            for (int j=0;j< primeraBebida.getItemCount();j++) {
+                String comparar= primeraBebida.getItemAt(j); 
+                if  (comparar.equals(datosRevisar)){
+                    control=true;
+                }
+            }
+            if(control==false){
+                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                if (evaluar.equals("Bebidas") ){
+                    primeraBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    segundaBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    trecerBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                }
+            }
+            contador++;
+        }
+    }
+
+    private void postresActualizar() {
+        int contador = 0;
+        boolean control;
+        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+            control=false;
+            String datosRevisar = codigo.archivoPlatos.mostrarPlato.get(contador).getNombre();
+            for (int j=0;j< postreUno.getItemCount();j++) {
+                String comparar= postreUno.getItemAt(j); 
+                if  (comparar.equals(datosRevisar)){
+                    control=true;
+                }
+            }
+            if(control==false){
+                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                if (evaluar.equals("Postres") ){
+                    postreUno.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    prostreDos.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    postreTres.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                }
+            }
+            contador++;
         }
     }
 }

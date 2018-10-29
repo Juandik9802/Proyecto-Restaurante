@@ -18,7 +18,7 @@ public class platos extends javax.swing.JPanel {
     ArrayList<platillo> listaPlatos;
     //private ArrayList<String> porcion;
     private String tipo,nombre;
-    private int precio,contador=0,intento=-1;
+    private int precio,intento=-1;
     
     /**
      * Creates new form platos
@@ -241,7 +241,6 @@ public class platos extends javax.swing.JPanel {
     }//GEN-LAST:event_tomarPlatilloActionPerformed
 
     private void tomarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tomarPlatoActionPerformed
-        im();
         nombrePlato.setText("");
         precioPlato.setText("");
         nombrePlato.setEnabled(!false);            
@@ -253,24 +252,6 @@ public class platos extends javax.swing.JPanel {
         tomarPlatillo.setEnabled(!false);
         codigo.archivoPlatos.crear(listaPlatos);
     }//GEN-LAST:event_tomarPlatoActionPerformed
-    
-    private void im(){
-        int cont=0;
-        for (platillo listaPlato : listaPlatos) {
-            //ArrayList<String> porcion1 =new ArrayList();             
-            System.out.println(listaPlato.getNombre());
-            System.out.println(listaPlato.getPrecio());
-            System.out.println(listaPlato.getTipo());
-                int cont2=0;
-                //porcion1=listaPlato.getPorcion();
-                System.out.println(listaPlatos.get(cont).getPorcion());
-                for (String string :listaPlatos.get(cont).getPorcion()) {
-                    System.out.println(listaPlatos.get(cont).getPorcion().get(cont2));
-                    cont2++;
-                }
-                cont++;
-            } 
-        }
     
     private void cargar() {
         listaPlatos.add(new platillo(tipo,nombre,precio));
