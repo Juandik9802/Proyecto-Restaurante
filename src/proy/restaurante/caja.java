@@ -6,7 +6,7 @@
 package proy.restaurante;
 
 import interfaces_caja.pago_efectivo;
-import java.util.List;
+
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -22,7 +22,7 @@ public final class caja extends javax.swing.JFrame {
         cant_mesas=Interfaces_administrador.mesas.num_mesas;
     }
     
-    public List<JButton> botones;
+    public ArrayList<JButton> botones= new ArrayList();
     public short indice;
     public short cont=1;
     public int cant_mesas;
@@ -32,8 +32,7 @@ public final class caja extends javax.swing.JFrame {
     public caja() {
         initComponents();
         this.setLocationRelativeTo(null);
-        botones=new ArrayList<>();
-        indice=0;
+        indice=1;
         crea_mesas();
         espacio_mesas();
     }
