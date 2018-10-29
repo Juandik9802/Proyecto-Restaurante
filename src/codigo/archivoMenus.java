@@ -38,8 +38,9 @@ public class archivoMenus {
             // Inicia            
             for (menusCarga carga : p) {
                 cadena = carga.getDia()+";"+carga.getAlmuerzos()+";"+carga.getCenas()+";"+carga.getBebidas()+";"+carga.getPostres()+";";
+                linea.println(cadena);
             }
-            linea.println(cadena); //escribiendo en el archivo
+             //escribiendo en el archivo
             
       }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Error creando archivo");

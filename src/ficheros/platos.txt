@@ -4,3 +4,4 @@ Bebidas;colombiana;6000;[];
 Postres;pasta;43;[jej];
 Cena;arroz con pollo;6000;[pollo, arroz, condimetos];
 Cena;pollo;12;[pollo, arroz];
+Almuerzo;arroz chino;25000;[];

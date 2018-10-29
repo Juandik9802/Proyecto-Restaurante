@@ -379,42 +379,49 @@ public class menuSemana extends javax.swing.JPanel {
             /*añadir a los arraylist*/
             cargarArryList(); 
             archivo.añadirMenu("lunes", almuerzo, cena, Bebidas, Postre);
+            almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
             dia.setText("Martes");
         }
         if(intento==2){
             /*añadir a los arraylist*/
             cargarArryList(); 
             archivo.añadirMenu("Martes", almuerzo, cena, Bebidas, Postre);
+            almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
             dia.setText("Miercoles");
         }
         if(intento==3){
             /*añadir a los arraylist*/
             cargarArryList(); 
             archivo.añadirMenu("Miercoles", almuerzo, cena, Bebidas, Postre);
+            almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
             dia.setText("Jueves");
         }
         if(intento==4){
             /*añadir a los arraylist*/
             cargarArryList(); 
             archivo.añadirMenu("Jueves", almuerzo, cena, Bebidas, Postre);
+            almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
             dia.setText("Viernes");
         }
         if(intento==5){
             /*añadir a los arraylist*/
             cargarArryList(); 
             archivo.añadirMenu("Viernes", almuerzo, cena, Bebidas, Postre);
+            almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
             dia.setText("Sabado");
         }
         if(intento==6){
             /*añadir a los arraylist*/
             cargarArryList(); 
             archivo.añadirMenu("Sabado", almuerzo, cena, Bebidas, Postre);
+            almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
             dia.setText("Domindo");
         }
         if (intento==7){
             /*añadir a los arraylist*/
             cargarArryList(); 
             archivo.añadirMenu("Domingo", almuerzo, cena, Bebidas, Postre);
+            almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
             //dia.setText("Dia");
             JOptionPane.showMessageDialog(null, "Menu de la Semana Creado");
             archivo.crear(archivo.mostrarPlato);
