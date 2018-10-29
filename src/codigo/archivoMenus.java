@@ -39,9 +39,8 @@ public class archivoMenus {
             for (menusCarga carga : p) {
                 cadena = carga.getDia()+";"+carga.getAlmuerzos()+";"+carga.getCenas()+";"+carga.getBebidas()+";"+carga.getPostres()+";";
                 linea.println(cadena);
-            }
-             //escribiendo en el archivo
-            
+            }            
+             //escribiendo en el archivo            
       }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Error creando archivo");
         }
@@ -137,6 +136,47 @@ public class archivoMenus {
             mostrarPlato.get(cont).almuerzos.add(string);
         }
     }
+    
+    public static void ingresar(String nuevaLinea, int posicion){
+        FileWriter fichero = null;
+        PrintWriter escritor = null;
+        try {
+            fichero = new FileWriter("src/ficheros/Menu.txt",true);
+            escritor = new PrintWriter(fichero);
+            escritor.flush();
+            String split[] = leerArchivo().split(";");
+            split[posicion] = nuevaLinea;
+        for(int x = 0; x < split.length; x++){
+            escritor.write(split[x]);
+            escritor.println();
+         }
+        escritor.close();
+        }catch(IOException e) {
+        JOptionPane.showMessageDialog(null, "Error al escribir en el archivo de texto: "+e.getMessage());
+        } finally {
+            if(fichero != null){
+                try {
+                fichero.close();
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar archivo de texto: "+e.getMessage());
+            }
+        }
+    }
+}
+    public static String leerArchivo(){
+    String cadena = "";
+    FileReader entrada = null;
+    try {
+        entrada = new FileReader("src/ficheros/Menu.txt");
+        int c;
+        while((c = entrada.read()) != -1){
+            cadena += (char)c;
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al leer archivo: "+e.getMessage());
+    }
+    return cadena;
+}
 
     public static ArrayList<menusCarga> getMostrarPlato() {
         return mostrarPlato;

@@ -255,7 +255,7 @@ public class menuSemana extends javax.swing.JPanel {
         codigo.archivoPlatos.mostrar();        
         for (int i=0;i<codigo.archivoPlatos.mostrarPlato.size();i++){
             String evaluar=codigo.archivoPlatos.mostrarPlato.get(i).getTipo();
-            if (evaluar.equals("Almuerzo") ){
+           if (evaluar.equals("Almuerzo") ){
                 primerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
                 segundoAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
                 tercerAlmerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());               
@@ -274,7 +274,7 @@ public class menuSemana extends javax.swing.JPanel {
                     postreUno.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
                     prostreDos.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
                     postreTres.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-            }
+            } 
         }
     }
 

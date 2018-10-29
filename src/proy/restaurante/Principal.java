@@ -179,9 +179,7 @@ public static Principal i;
                 }
             }            
             
-        }
-        
-        
+        }       
         
        
     }//GEN-LAST:event_menumeseroActionPerformed

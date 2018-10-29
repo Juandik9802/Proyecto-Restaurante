@@ -6,13 +6,22 @@
 
 package Interfaces_administrador;
 
+import codigo.archivoMenus;
+import java.util.ArrayList;
+
 
 /**
  *
  * @author Juan Diego Pachón
  */
 public class menuDia extends javax.swing.JPanel {
-  
+    
+    ArrayList<String> almuerzo= new ArrayList();
+    ArrayList<String> cena= new ArrayList();
+    ArrayList<String> Bebidas= new ArrayList();
+    ArrayList<String> Postre= new ArrayList();
+    archivoMenus archivo=new archivoMenus();
+    
     /** Creates new form menuDisa */
     public menuDia() {
         initComponents();
@@ -48,8 +57,8 @@ public class menuDia extends javax.swing.JPanel {
         postreUno = new javax.swing.JComboBox<>();
         prostreDos = new javax.swing.JComboBox<>();
         postreTres = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        Actualizar = new javax.swing.JButton();
+        diaMenu = new javax.swing.JComboBox<>();
+        editar = new javax.swing.JButton();
 
         jLabel5.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -58,46 +67,101 @@ public class menuDia extends javax.swing.JPanel {
         jLabel7.setText("Almuerzo");
 
         primerAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        primerAlmuerzo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                primerAlmuerzoMouseClicked(evt);
+            }
+        });
 
         segundoAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        segundoAlmuerzo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                segundoAlmuerzoMouseClicked(evt);
+            }
+        });
 
         tercerAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        tercerAlmuerzo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tercerAlmuerzoMouseClicked(evt);
+            }
+        });
 
         jLabel8.setText("Cena");
 
         cenaUno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cenaUno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cenaUnoMouseClicked(evt);
+            }
+        });
 
         cenaDos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cenaDos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cenaDosMouseClicked(evt);
+            }
+        });
 
         cenaTres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cenaTres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cenaTresMouseClicked(evt);
+            }
+        });
 
         jLabel9.setText("Bebidas");
 
         primeraBebida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        primeraBebida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                primeraBebidaMouseClicked(evt);
+            }
+        });
 
         segundaBebida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        segundaBebida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                segundaBebidaMouseClicked(evt);
+            }
+        });
 
         trecerBebida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        trecerBebida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                trecerBebidaMouseClicked(evt);
+            }
+        });
 
         jLabel1.setText("Postres");
 
         postreUno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
-
-        prostreDos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
-
-        postreTres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
-
-        jButton1.setText("Aceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        postreUno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                postreUnoMouseClicked(evt);
             }
         });
 
-        Actualizar.setText("Actualizar ");
-        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+        prostreDos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        prostreDos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prostreDosMouseClicked(evt);
+            }
+        });
+
+        postreTres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        postreTres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                postreTresMouseClicked(evt);
+            }
+        });
+
+        diaMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "MIercoles", "Jueves", "Viernes", "Sabado", "Domingo" }));
+
+        editar.setText("Editar Plato");
+        editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizarActionPerformed(evt);
+                editarActionPerformed(evt);
             }
         });
 
@@ -109,6 +173,7 @@ public class menuDia extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -119,13 +184,11 @@ public class menuDia extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(primerAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(segundoAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tercerAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(283, 283, 283)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel9))))
+                                .addComponent(tercerAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(173, 173, 173)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(postreTres, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -134,29 +197,25 @@ public class menuDia extends javax.swing.JPanel {
                     .addComponent(segundaBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(trecerBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(postreUno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 41, Short.MAX_VALUE))
+                .addGap(0, 26, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(Actualizar)))
+                .addGap(190, 190, 190)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(diaMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(219, 219, 219))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Actualizar)))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(diaMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -196,32 +255,81 @@ public class menuDia extends javax.swing.JPanel {
                                 .addComponent(cenaDos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cenaTres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(editar)
+                .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+    private void primerAlmuerzoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primerAlmuerzoMouseClicked
+       actualizar();
+    }//GEN-LAST:event_primerAlmuerzoMouseClicked
+
+    private void segundoAlmuerzoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundoAlmuerzoMouseClicked
+        actualizar();
+    }//GEN-LAST:event_segundoAlmuerzoMouseClicked
+
+    private void tercerAlmuerzoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tercerAlmuerzoMouseClicked
+        actualizar();
+    }//GEN-LAST:event_tercerAlmuerzoMouseClicked
+
+    private void cenaUnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cenaUnoMouseClicked
+        actualizar();        // TODO add your handling code here:
+    }//GEN-LAST:event_cenaUnoMouseClicked
+
+    private void cenaDosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cenaDosMouseClicked
+        actualizar();
+    }//GEN-LAST:event_cenaDosMouseClicked
+
+    private void cenaTresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cenaTresMouseClicked
+        actualizar();
+    }//GEN-LAST:event_cenaTresMouseClicked
+
+    private void primeraBebidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primeraBebidaMouseClicked
+        actualizar();
+    }//GEN-LAST:event_primeraBebidaMouseClicked
+
+    private void segundaBebidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaBebidaMouseClicked
+        actualizar();
+    }//GEN-LAST:event_segundaBebidaMouseClicked
+
+    private void trecerBebidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trecerBebidaMouseClicked
+        actualizar();
+    }//GEN-LAST:event_trecerBebidaMouseClicked
+
+    private void postreUnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postreUnoMouseClicked
+        actualizar();
+    }//GEN-LAST:event_postreUnoMouseClicked
+
+    private void prostreDosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prostreDosMouseClicked
+        actualizar();
+    }//GEN-LAST:event_prostreDosMouseClicked
+
+    private void postreTresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postreTresMouseClicked
+        actualizar();
+    }//GEN-LAST:event_postreTresMouseClicked
+
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+        cargarArryList();
+        cargar();
+        //codigo.archivoMenus.ingresar(archivo.mostrarPlato, SOMEBITS);
+    }//GEN-LAST:event_editarActionPerformed
+    
+    private void actualizar(){
         codigo.archivoPlatos.mostrar();
         almuerzoActualizar();
         cenaActualizar();
         bebidasActualizar();
         postresActualizar();
         codigo.archivoPlatos.mostrarPlato.clear();
-    }//GEN-LAST:event_ActualizarActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Actualizar;
     private javax.swing.JComboBox<String> cenaDos;
     private javax.swing.JComboBox<String> cenaTres;
     private javax.swing.JComboBox<String> cenaUno;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> diaMenu;
+    private javax.swing.JButton editar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -363,4 +471,24 @@ public class menuDia extends javax.swing.JPanel {
             contador++;
         }
     }
+    
+    private void cargarArryList(){
+            almuerzo.add((String) primerAlmuerzo.getSelectedItem());
+            almuerzo.add((String) segundoAlmuerzo.getSelectedItem());
+            almuerzo.add((String) tercerAlmuerzo.getSelectedItem());
+            cena.add((String) cenaUno.getSelectedItem());
+            cena.add((String) cenaDos.getSelectedItem());
+            cena.add((String) cenaTres.getSelectedItem());
+            Bebidas.add((String) primeraBebida.getSelectedItem());
+            Bebidas.add((String) segundaBebida.getSelectedItem());
+            Bebidas.add((String) trecerBebida.getSelectedItem());
+            Postre.add((String) postreUno.getSelectedItem());
+            Postre.add((String) prostreDos.getSelectedItem());
+            Postre.add((String) postreTres.getSelectedItem());
+    }
+    
+    private void cargar(){
+            archivo.añadirMenu("lunes", almuerzo, cena, Bebidas, Postre);
+            almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
+    }  
 }

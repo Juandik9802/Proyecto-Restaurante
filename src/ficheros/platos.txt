@@ -5,3 +5,6 @@ Postres;pasta;43;[jej];
 Cena;arroz con pollo;6000;[pollo, arroz, condimetos];
 Cena;pollo;12;[pollo, arroz];
 Almuerzo;arroz chino;25000;[];
+Almuerzo;mazamorra;4300;[agua, demas];
+Almuerzo;mazamoroptero;2300;[wef, fwefw, wfefwef];
+Almuerzo;holaword;3200;[jeiurhj, knweifhwio, mjbwfkjwebf];
