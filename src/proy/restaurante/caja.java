@@ -24,7 +24,7 @@ public final class caja extends javax.swing.JFrame {
     
     public List<JButton> botones;
     public short indice;
-    public short cont;
+    public short cont=1;
     public int cant_mesas;
     /**
      * Creates new form caja
