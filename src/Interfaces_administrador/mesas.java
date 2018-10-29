@@ -56,7 +56,8 @@ public class mesas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        
+        String numero=null;
+        num_mesas=Integer.parseInt(cantidad_Mesas.getText());
     }//GEN-LAST:event_aceptarActionPerformed
 
 
