@@ -10,7 +10,7 @@ package Interfaces_administrador;
  * @author josep
  */
 public class mesas extends javax.swing.JPanel {
-
+    public static int num_mesas;
     /**
      * Creates new form NewJPanel
      */
@@ -42,6 +42,11 @@ public class mesas extends javax.swing.JPanel {
         cantidad_Mesas.setBounds(160, 50, 230, 30);
 
         aceptar.setText("Aceptar");
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarActionPerformed(evt);
+            }
+        });
         add(aceptar);
         aceptar.setBounds(100, 110, 200, 40);
 
@@ -49,6 +54,10 @@ public class mesas extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(50, 180, 330, 210);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+        
+    }//GEN-LAST:event_aceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
