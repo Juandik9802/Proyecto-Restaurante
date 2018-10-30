@@ -6,8 +6,10 @@
 package proy.restaurante;
 
 import interfaces_caja.pago_efectivo;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -16,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author Juan Diego
  */
-public final class caja extends javax.swing.JFrame {
+public final class caja extends javax.swing.JFrame implements ActionListener{
     
     public void crea_mesas(){
         cant_mesas=Interfaces_administrador.mesas.num_mesas;
@@ -26,6 +28,7 @@ public final class caja extends javax.swing.JFrame {
     public short indice;
     public short cont=1;
     public int cant_mesas;
+    public static JButton boton;
     /**
      * Creates new form caja
      */
@@ -39,7 +42,12 @@ public final class caja extends javax.swing.JFrame {
     
     public void espacio_mesas(){
         while(cont<=cant_mesas){
-           JButton boton=new JButton("Boton"+indice);
+            Listener_caja listener=new Listener_caja();
+            boton=new JButton();
+            ImageIcon icono=new ImageIcon("/mesas.png");
+            boton.setIcon(icono);
+            boton.addActionListener(listener);
+            
             mesas_caja.add(boton);
             botones.add(boton);
             indice++;
@@ -47,6 +55,7 @@ public final class caja extends javax.swing.JFrame {
             cont++;
         }
     }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -224,4 +233,9 @@ public final class caja extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel mesas_caja;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

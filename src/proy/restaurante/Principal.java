@@ -5,7 +5,6 @@
  */
 package proy.restaurante;
 
-import Interfaces_administrador.contraseña;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,8 +24,7 @@ public static Principal i;
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    private String contra="1";
-    private String codigoM="01";
+    private final String contra="1";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,34 +152,8 @@ public static Principal i;
     }//GEN-LAST:event_menuParaCocinaActionPerformed
 
     private void menumeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menumeseroActionPerformed
-        String pas=null;
-        JPanel panel = new JPanel();
-        JLabel label = new JLabel("Ingrese su  codigo:");
-        JPasswordField pass = new JPasswordField(2);
-        panel.add(label);
-        panel.add(pass);
-        String[] options = new String[]{"OK", "Cancel"};
-        int option = JOptionPane.showOptionDialog(null, panel, "Codigo mesero",
-                         JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
-                         null, options, options[1]);
-        if(option == 0){
-            char[] password = pass.getPassword();
-            pas=String.valueOf(password);
-            if (this.codigoM.equals(pas)){
-                mesero mesero = new mesero();
-                mesero.setVisible(true);
-            }else{
-                String vacio = "";
-                if(pas.equals(vacio)){
-                    JOptionPane.showMessageDialog(null,"Debe ingresar  un codigo");
-                }else{
-                    JOptionPane.showMessageDialog(null,"Error de codigo");
-                }
-            }            
-            
-        }       
-        
-       
+        mesero mesero = new mesero();
+        mesero.setVisible(true);
     }//GEN-LAST:event_menumeseroActionPerformed
 
     private void menuParaCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaCajaActionPerformed
