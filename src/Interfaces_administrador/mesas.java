@@ -37,9 +37,9 @@ public class mesas extends javax.swing.JPanel {
 
         jLabel1.setText("Cantidad de mesas:");
         add(jLabel1);
-        jLabel1.setBounds(40, 60, 130, 20);
+        jLabel1.setBounds(20, 90, 130, 20);
         add(cantidad_Mesas);
-        cantidad_Mesas.setBounds(160, 50, 230, 30);
+        cantidad_Mesas.setBounds(150, 80, 230, 30);
 
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -48,11 +48,11 @@ public class mesas extends javax.swing.JPanel {
             }
         });
         add(aceptar);
-        aceptar.setBounds(100, 110, 200, 40);
+        aceptar.setBounds(80, 160, 200, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/mesas.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/mesa.png"))); // NOI18N
         add(jLabel3);
-        jLabel3.setBounds(50, 180, 330, 210);
+        jLabel3.setBounds(230, 70, 590, 310);
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed

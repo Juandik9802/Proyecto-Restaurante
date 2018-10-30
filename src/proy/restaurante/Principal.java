@@ -44,7 +44,7 @@ public static Principal i;
         setMinimumSize(new java.awt.Dimension(400, 300));
         setResizable(false);
 
-        menuParaAdmin.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
+        menuParaAdmin.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         menuParaAdmin.setText("Administrador");
         menuParaAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,7 +52,7 @@ public static Principal i;
             }
         });
 
-        menuParaCocina.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
+        menuParaCocina.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         menuParaCocina.setText("Cocina");
         menuParaCocina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +60,7 @@ public static Principal i;
             }
         });
 
-        menuParaCaja.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
+        menuParaCaja.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         menuParaCaja.setText("Caja");
         menuParaCaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +68,7 @@ public static Principal i;
             }
         });
 
-        menumesero.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
+        menumesero.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         menumesero.setText("Mesero");
         menumesero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +107,7 @@ public static Principal i;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(menuParaAdmin)
                     .addComponent(menuParaCocina))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(menuParaCaja)
                     .addComponent(menumesero))
