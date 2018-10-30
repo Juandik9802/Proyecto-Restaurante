@@ -84,6 +84,9 @@ public class Informes extends javax.swing.JPanel {
         platos_dia = new javax.swing.JButton();
         informe_meseros = new javax.swing.JButton();
         informe_tiempo = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         modo_pago.setText("Modo de pago");
         modo_pago.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +116,12 @@ public class Informes extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
+
+        jButton3.setText("jButton3");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,14 +131,20 @@ public class Informes extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(principal_informes)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(modo_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(modo_pago)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(platos_dia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(informe_meseros)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(informe_tiempo)
                         .addGap(18, 18, 18)
-                        .addComponent(informe_meseros, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(informe_tiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 101, Short.MAX_VALUE)))
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3)
+                        .addGap(0, 50, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -140,7 +155,10 @@ public class Informes extends javax.swing.JPanel {
                     .addComponent(modo_pago)
                     .addComponent(platos_dia)
                     .addComponent(informe_meseros)
-                    .addComponent(informe_tiempo))
+                    .addComponent(informe_tiempo)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addGap(18, 18, 18)
                 .addComponent(principal_informes, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
                 .addContainerGap())
@@ -168,6 +186,9 @@ public class Informes extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton informe_meseros;
     private javax.swing.JButton informe_tiempo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton modo_pago;
     private javax.swing.JButton platos_dia;
     private javax.swing.JTabbedPane principal_informes;
