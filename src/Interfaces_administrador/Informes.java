@@ -107,6 +107,11 @@ public class Informes extends javax.swing.JPanel {
         });
 
         informe_tiempo.setText("Tiempos");
+        informe_tiempo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                informe_tiempoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,6 +158,11 @@ public class Informes extends javax.swing.JPanel {
     private void informe_meserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informe_meserosActionPerformed
         Abrir_meseros();
     }//GEN-LAST:event_informe_meserosActionPerformed
+
+    private void informe_tiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informe_tiempoActionPerformed
+        // TODO add your handling code here:
+        Abrir_tiempo();
+    }//GEN-LAST:event_informe_tiempoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
