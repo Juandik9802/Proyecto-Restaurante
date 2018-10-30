@@ -56,6 +56,8 @@ public class platos extends javax.swing.JPanel {
         tomarPlato = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         labelNombre.setText("Nombre del plato");
 
         jLabel2.setText("Precio");

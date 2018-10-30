@@ -35,6 +35,7 @@ public static String nom_mesero;
         jLabel2 = new javax.swing.JLabel();
         codigo_mesero = new javax.swing.JTextField();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setLayout(null);
 
         jLabel1.setText("Nombre del mesero");

@@ -37,6 +37,8 @@ public class mesero extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         jMenu1.setText("Pedido");
         jMenu1.setActionCommand("archivo");
 

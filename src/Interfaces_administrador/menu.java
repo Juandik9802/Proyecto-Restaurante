@@ -33,6 +33,8 @@ public class menu extends javax.swing.JPanel {
         menuSemana = new javax.swing.JRadioButton();
         contenedorMenus = new javax.swing.JTabbedPane();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         icono_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/menu.png"))); // NOI18N
 
         gruposMenu.add(menuDia);
@@ -63,7 +65,7 @@ public class menu extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(menuDia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
                         .addComponent(menuSemana)
                         .addGap(127, 127, 127))
                     .addGroup(layout.createSequentialGroup()
@@ -74,7 +76,7 @@ public class menu extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(icono_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
+                .addComponent(icono_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
