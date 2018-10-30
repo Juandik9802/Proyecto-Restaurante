@@ -6,6 +6,7 @@
 package codigo;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -20,6 +21,10 @@ import javax.swing.JOptionPane;
  */
 public class archivoMenus {
     public static ArrayList<menusCarga> mostrarPlato= new ArrayList();;
+
+    public static void ingresar(ArrayList<menusCarga> mostrarPlato, int SOMEBITS) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public archivoMenus() {
     }
@@ -137,32 +142,34 @@ public class archivoMenus {
         }
     }
     
-    public static void ingresar(String nuevaLinea, int posicion){
-        FileWriter fichero = null;
-        PrintWriter escritor = null;
-        try {
-            fichero = new FileWriter("src/ficheros/Menu.txt",true);
-            escritor = new PrintWriter(fichero);
-            escritor.flush();
-            String split[] = leerArchivo().split(";");
-            split[posicion] = nuevaLinea;
-        for(int x = 0; x < split.length; x++){
-            escritor.write(split[x]);
-            escritor.println();
-         }
-        escritor.close();
-        }catch(IOException e) {
-        JOptionPane.showMessageDialog(null, "Error al escribir en el archivo de texto: "+e.getMessage());
-        } finally {
-            if(fichero != null){
-                try {
-                fichero.close();
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Error al cerrar archivo de texto: "+e.getMessage());
-            }
-        }
-    }
+    public static void aniadirArchivo(ArrayList<menusCarga> lista) {
+		FileWriter flwriter = null;
+		try {//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
+			flwriter = new FileWriter("src/ficheros/Menu.txt", true);
+			BufferedWriter bfwriter = new BufferedWriter(flwriter);
+			for (menusCarga estudiante : mostrarPlato) {
+				//escribe los datos en el archivo
+	bfwriter.write(estudiante.getDia() + "," + estudiante.getAlmuerzos() + "," + estudiante.getBebidas()
+	   + "," + estudiante.getCenas() + "," + estudiante.getPostres() + "\n");
+			}
+			bfwriter.close();
+			System.out.println("Archivo modificado satisfactoriamente..");
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (flwriter != null) {
+				try {
+					flwriter.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 }
+    
+    
     public static String leerArchivo(){
     String cadena = "";
     FileReader entrada = null;

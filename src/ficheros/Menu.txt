@@ -5,3 +5,9 @@ Jueves;[pastas, cuchuco, arroz chino];[arroz con pollo, pollo, pollo];[colombian
 Viernes;[pastas, cuchuco, arroz chino];[arroz con pollo, pollo, pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
 Sabado;[pastas, cuchuco, arroz chino];[arroz con pollo, pollo, pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
 Domingo;[pastas, cuchuco, arroz chino];[arroz con pollo, pollo, pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
+lunes;[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];
+lunes;[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];
+lunes;[pastas, arroz chino, pastas];[arroz con pollo, pollo, arroz con pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
+lunes;[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];
+lunes;[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];
+lunes;[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];

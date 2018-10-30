@@ -33,7 +33,7 @@ public class menu extends javax.swing.JPanel {
         menuSemana = new javax.swing.JRadioButton();
         contenedorMenus = new javax.swing.JTabbedPane();
 
-        icono_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/menu.jpg"))); // NOI18N
+        icono_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/menu.png"))); // NOI18N
 
         gruposMenu.add(menuDia);
         menuDia.setText("Menu Dia");
@@ -56,17 +56,17 @@ public class menu extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(icono_menu)
+                .addGap(6, 6, 6)
+                .addComponent(icono_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
+                        .addGap(158, 158, 158)
                         .addComponent(menuDia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
                         .addComponent(menuSemana)
                         .addGap(127, 127, 127))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(contenedorMenus)
                         .addContainerGap())))
         );
@@ -74,7 +74,7 @@ public class menu extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(icono_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+                .addComponent(icono_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)

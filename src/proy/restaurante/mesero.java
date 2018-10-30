@@ -12,7 +12,7 @@ import interfaces_mesero.pedido;
  * @author Juan Diego Pachón
  */
 public class mesero extends javax.swing.JFrame {
-
+ 
     /**
      * Creates new form mesero
      */

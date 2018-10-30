@@ -312,7 +312,7 @@ public class menuDia extends javax.swing.JPanel {
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
         cargarArryList();
         cargar();
-        //codigo.archivoMenus.ingresar(archivo.mostrarPlato, SOMEBITS);
+        //codigo.archivoMenus.añadirMenu(codigo.archivoMenus.mostrarPlato);
     }//GEN-LAST:event_editarActionPerformed
     
     private void actualizar(){

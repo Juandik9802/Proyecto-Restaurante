@@ -10,7 +10,8 @@ package Interfaces_administrador;
  * @author Eduardo Jimenez
  */
 public class meseros extends javax.swing.JPanel {
-
+public static int codi_mesero;
+public static String nom_mesero;
     /**
      * Creates new form meseros
      */
@@ -28,52 +29,56 @@ public class meseros extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        cantidad_meseros = new javax.swing.JTextField();
+        nombre_mesero = new javax.swing.JTextField();
         aceptar_meseros = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        codigo_mesero = new javax.swing.JTextField();
 
         setLayout(null);
 
         jLabel1.setText("Nombre del mesero");
         add(jLabel1);
-        jLabel1.setBounds(20, 60, 170, 30);
+        jLabel1.setBounds(10, 50, 170, 30);
 
-        cantidad_meseros.addActionListener(new java.awt.event.ActionListener() {
+        nombre_mesero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidad_meserosActionPerformed(evt);
+                nombre_meseroActionPerformed(evt);
             }
         });
-        add(cantidad_meseros);
-        cantidad_meseros.setBounds(210, 60, 140, 30);
+        add(nombre_mesero);
+        nombre_mesero.setBounds(130, 50, 140, 30);
 
         aceptar_meseros.setText("aceptar");
         add(aceptar_meseros);
-        aceptar_meseros.setBounds(120, 200, 150, 40);
+        aceptar_meseros.setBounds(40, 180, 150, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/mesero.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/meseros-1.png"))); // NOI18N
         add(jLabel3);
-        jLabel3.setBounds(400, 10, 450, 390);
+        jLabel3.setBounds(340, 10, 470, 390);
 
         jLabel2.setText("Codigo");
         add(jLabel2);
         jLabel2.setBounds(20, 130, 160, 14);
-        add(jTextField1);
-        jTextField1.setBounds(210, 120, 140, 30);
+        add(codigo_mesero);
+        codigo_mesero.setBounds(130, 110, 140, 30);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cantidad_meserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidad_meserosActionPerformed
+    private void nombre_meseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_meseroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cantidad_meserosActionPerformed
+        String numero=null;
+        String nombre=null;
+        codi_mesero=Integer.parseInt(codigo_mesero.getText());
+        nom_mesero=(nombre_mesero.getText());
+    }//GEN-LAST:event_nombre_meseroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar_meseros;
-    private javax.swing.JTextField cantidad_meseros;
+    private javax.swing.JTextField codigo_mesero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField nombre_mesero;
     // End of variables declaration//GEN-END:variables
 }
