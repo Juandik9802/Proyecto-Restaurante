@@ -44,7 +44,10 @@ public final class caja extends javax.swing.JFrame implements ActionListener{
         while(cont<=cant_mesas){
             Listener_caja listener=new Listener_caja();
             boton=new JButton();
-            ImageIcon icono=new ImageIcon("/mesas.png");
+            ImageIcon icono=new ImageIcon("mesas.jpg");
+            byte altura=(byte) new ImageIcon("mesas.jpg").getIconHeight();
+            byte ancho=(byte) new ImageIcon("mesas.jpg").getIconWidth();
+            boton.setBounds(altura, ancho, altura, ancho);
             boton.setIcon(icono);
             boton.addActionListener(listener);
             
