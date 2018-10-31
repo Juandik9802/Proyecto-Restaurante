@@ -58,7 +58,7 @@ public class menuDia extends javax.swing.JPanel {
         prostreDos = new javax.swing.JComboBox<>();
         postreTres = new javax.swing.JComboBox<>();
         diaMenu = new javax.swing.JComboBox<>();
-        editar = new javax.swing.JButton();
+        editar_plato = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -160,10 +160,10 @@ public class menuDia extends javax.swing.JPanel {
 
         diaMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "MIercoles", "Jueves", "Viernes", "Sabado", "Domingo" }));
 
-        editar.setText("Editar Plato");
-        editar.addActionListener(new java.awt.event.ActionListener() {
+        editar_plato.setText("Editar Plato");
+        editar_plato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editarActionPerformed(evt);
+                editar_platoActionPerformed(evt);
             }
         });
 
@@ -208,7 +208,7 @@ public class menuDia extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editar_plato, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(219, 219, 219))
         );
         layout.setVerticalGroup(
@@ -258,7 +258,7 @@ public class menuDia extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cenaTres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(editar)
+                .addComponent(editar_plato)
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -311,11 +311,11 @@ public class menuDia extends javax.swing.JPanel {
         actualizar();
     }//GEN-LAST:event_postreTresMouseClicked
 
-    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+    private void editar_platoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_platoActionPerformed
         cargarArryList();
         cargar();
         //codigo.archivoMenus.añadirMenu(codigo.archivoMenus.mostrarPlato);
-    }//GEN-LAST:event_editarActionPerformed
+    }//GEN-LAST:event_editar_platoActionPerformed
     
     private void actualizar(){
         codigo.archivoPlatos.mostrar();
@@ -331,7 +331,7 @@ public class menuDia extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cenaTres;
     private javax.swing.JComboBox<String> cenaUno;
     private javax.swing.JComboBox<String> diaMenu;
-    private javax.swing.JButton editar;
+    private javax.swing.JButton editar_plato;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -490,7 +490,7 @@ public class menuDia extends javax.swing.JPanel {
     }
     
     private void cargar(){
-            archivo.añadirMenu("lunes", almuerzo, cena, Bebidas, Postre);
+            archivoMenus.añadirMenu("lunes", almuerzo, cena, Bebidas, Postre);
             almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
     }  
 }
