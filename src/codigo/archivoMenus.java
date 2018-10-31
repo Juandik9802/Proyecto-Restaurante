@@ -20,15 +20,13 @@ import javax.swing.JOptionPane;
  * @author Juan Diego
  */
 public class archivoMenus {
-    public static ArrayList<menusCarga> mostrarPlato= new ArrayList();;
+    public static ArrayList<menusCarga> mostrarPlato= new ArrayList();
+    public static ArrayList<menusCarga> modificar= new ArrayList();
 
     public static void ingresar(ArrayList<menusCarga> mostrarPlato, int SOMEBITS) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
-    public archivoMenus() {
-    }
-    
     /**
      * crea el archivo
      * @param p 
@@ -123,14 +121,15 @@ public class archivoMenus {
             }
         }
     }
-    
-    public static void añadirMenu(String Dia,ArrayList<String> Almuerzo,ArrayList<String> cena,ArrayList<String> bebida, ArrayList<String> postre){
+    /**
+     * metodo para añadir al array el menu
+    */
+   public static void añadirMenu(String Dia,ArrayList<String> Almuerzo,ArrayList<String> cena,ArrayList<String> bebida, ArrayList<String> postre){
         mostrarPlato.add(new menusCarga(Dia));
         int cont=mostrarPlato.size()-1;
         for (String string : postre) {
             mostrarPlato.get(cont).postres.add(string);
-        }
-        
+        }        
         for (String string :bebida) {
             mostrarPlato.get(cont).bebidas.add(string);            
         }
@@ -141,33 +140,48 @@ public class archivoMenus {
             mostrarPlato.get(cont).almuerzos.add(string);
         }
     }
-    
-    public static void aniadirArchivo(ArrayList<menusCarga> lista) {
-		FileWriter flwriter = null;
-		try {//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
-			flwriter = new FileWriter("src/ficheros/Menu.txt", true);
-			BufferedWriter bfwriter = new BufferedWriter(flwriter);
-			for (menusCarga estudiante : mostrarPlato) {
-				//escribe los datos en el archivo
-	bfwriter.write(estudiante.getDia() + "," + estudiante.getAlmuerzos() + "," + estudiante.getBebidas()
-	   + "," + estudiante.getCenas() + "," + estudiante.getPostres() + "\n");
-			}
-			bfwriter.close();
-			System.out.println("Archivo modificado satisfactoriamente..");
- 
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (flwriter != null) {
-				try {
-					flwriter.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		
-}
+   
+   /**
+    * Añade al array que va a modificar el repectivo el menu
+    * @param Dia
+    * @param Almuerzo
+    * @param cena
+    * @param bebida
+    * @param postre 
+    */
+   public static void añadirmodificacion(String Dia,ArrayList<String> Almuerzo,ArrayList<String> cena,ArrayList<String> bebida, ArrayList<String> postre){
+        modificar.add(new menusCarga(Dia));
+        int cont=modificar.size()-1;
+        for (String string : postre) {
+            modificar.get(cont).postres.add(string);
+        }
+        
+        for (String string :bebida) {
+            modificar.get(cont).bebidas.add(string);            
+        }
+        for (String string :cena) {
+            modificar.get(cont).cenas.add(string);            
+        }
+        for (String string :Almuerzo) {
+            modificar.get(cont).almuerzos.add(string);
+        }
+    }
+     
+   public static void crearModificacion(){
+       
+   }
+    public static void Modificacion() {
+        for (menusCarga carga : modificar) {
+            for (menusCarga modifica : mostrarPlato) {
+                if (carga.Dia.equals(modifica.Dia)){
+                    modifica.setAlmuerzos(carga.almuerzos);
+                    modifica.setBebidas(carga.bebidas);
+                    modifica.setCenas(carga.almuerzos);
+                    modifica.setAlmuerzos(carga.almuerzos);
+                }
+            }
+        }
+     }
     
     
     public static String leerArchivo(){
