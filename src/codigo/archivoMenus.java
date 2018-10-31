@@ -22,11 +22,7 @@ import javax.swing.JOptionPane;
 public class archivoMenus {
     public static ArrayList<menusCarga> mostrarPlato= new ArrayList();
     public static ArrayList<menusCarga> modificar= new ArrayList();
-
-    public static void ingresar(ArrayList<menusCarga> mostrarPlato, int SOMEBITS) {
-        
-    }
-
+    
     /**
      * crea el archivo
      * @param p 
@@ -149,7 +145,7 @@ public class archivoMenus {
     * @param bebida
     * @param postre 
     */
-   public static void añadirmodificacion(String Dia,ArrayList<String> Almuerzo,ArrayList<String> cena,ArrayList<String> bebida, ArrayList<String> postre){
+   public static void añadirModificacion(String Dia,ArrayList<String> Almuerzo,ArrayList<String> cena,ArrayList<String> bebida, ArrayList<String> postre){
         modificar.add(new menusCarga(Dia));
         int cont=modificar.size()-1;
         for (String string : postre) {
@@ -165,24 +161,54 @@ public class archivoMenus {
         for (String string :Almuerzo) {
             modificar.get(cont).almuerzos.add(string);
         }
+        crearModificacion();
     }
      
    public static void crearModificacion(){
-       
+       Modificacion();
+       archivoCrear();
    }
+   
     public static void Modificacion() {
-        for (menusCarga carga : modificar) {
-            for (menusCarga modifica : mostrarPlato) {
-                if (carga.Dia.equals(modifica.Dia)){
-                    modifica.setAlmuerzos(carga.almuerzos);
-                    modifica.setBebidas(carga.bebidas);
-                    modifica.setCenas(carga.almuerzos);
-                    modifica.setAlmuerzos(carga.almuerzos);
+        if (mostrarPlato.isEmpty()|| modificar.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Elemeto se encuentra vacio");
+        }else{
+           for (menusCarga carga : modificar) {
+                for (menusCarga modifica : mostrarPlato) {
+                    if (carga.Dia.equals(modifica.getDia())){
+                        modifica.setAlmuerzos(carga.almuerzos);
+                        modifica.setBebidas(carga.bebidas);
+                        modifica.setCenas(carga.almuerzos);
+                        modifica.setAlmuerzos(carga.almuerzos);
+                    }
                 }
-            }
+            }  
+        }
+        for (menusCarga carga : mostrarPlato) {
+            System.out.println(carga.Dia);
+            System.out.println(carga.almuerzos);
         }
      }
     
+    public static void archivoCrear(){
+        
+    }
+    
+    void borrar (File Ffichero){
+        try
+        {
+           // Comprovamos si el fichero existe  de ser así procedemos a borrar el archivo
+            if(Ffichero.exists())
+            {
+                Ffichero.delete();
+                System.out.println("Ficherro Borrado");
+            }
+
+        }catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
     
     public static String leerArchivo(){
     String cadena = "";

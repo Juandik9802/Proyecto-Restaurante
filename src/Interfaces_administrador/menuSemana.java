@@ -380,7 +380,7 @@ public class menuSemana extends javax.swing.JPanel {
         if(intento==1){
             /*añadir a los arraylist*/
             cargarArryList(); 
-            archivo.añadirMenu("lunes", almuerzo, cena, Bebidas, Postre);
+            archivo.añadirMenu("Lunes", almuerzo, cena, Bebidas, Postre);
             almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
             dia.setText("Martes");
         }

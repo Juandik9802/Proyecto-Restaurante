@@ -314,7 +314,7 @@ public class menuDia extends javax.swing.JPanel {
     private void editar_platoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_platoActionPerformed
         cargarArryList();
         cargar();
-        //codigo.archivoMenus.añadirMenu(codigo.archivoMenus.mostrarPlato);
+        //codigo.archivoMenus.añadirModificacion(tipo, almuerzo, cena, Bebidas, Postre);
     }//GEN-LAST:event_editar_platoActionPerformed
     
     private void actualizar(){
@@ -490,7 +490,7 @@ public class menuDia extends javax.swing.JPanel {
     }
     
     private void cargar(){
-            archivoMenus.añadirMenu("lunes", almuerzo, cena, Bebidas, Postre);
+            archivoMenus.añadirModificacion((String) diaMenu.getSelectedItem(), almuerzo, cena, Bebidas, Postre);
             almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
     }  
 }
