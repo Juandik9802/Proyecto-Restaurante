@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +19,9 @@ public class pedido extends javax.swing.JPanel {
 
     FileWriter archivo_pedidos=null;
     PrintWriter linea=null;
+    
+    private DefaultTableModel model;
+    int cont=0;
     /**
      * Creates new form pedido
      */
@@ -71,49 +75,16 @@ public class pedido extends javax.swing.JPanel {
         TablaMesero.setAutoCreateRowSorter(true);
         TablaMesero.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Plato", "Cantidad", "Añadir", "Retirar", "Precio", "Estado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         TablaMesero.setColumnSelectionAllowed(true);
         TablaMesero.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TablaMesero);
+        TablaMesero.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         jLabel4.setText("Cantidad:");
 
@@ -199,12 +170,7 @@ public class pedido extends javax.swing.JPanel {
             pedido=(String)numero_mesa.getText()+";"+combo_platos.getSelectedItem()+";"+cantidad_platos.getText()
                     +";"+añadir_porcion.getText()+";"+quitar_porcion.getText();
             historial_pedidos=pedido;
-           // pedido=cant_platos.getText();
-           // pedido=numero_mesa.getText();
-           // pedido=añadir_porcion.getText();
-           // pedido=quitar_porcion.getText();
-            //historial_pedidos=historial_pedidos+pedido+";";
-            
+           
             linea.println(historial_pedidos);
             
         } catch (IOException ex) {
@@ -219,6 +185,26 @@ public class pedido extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Error creando el archivo");
             }
         }
+       
+       String data[][]={};
+       String col[]={"Mesa","Plato","Cantidad","Añadir","Quitar","Precio"};
+       for(int i=0; i<=6; i++){
+       model = new DefaultTableModel(data,col);
+       model.insertRow(cont, new Object[]{});
+       model.setValueAt(numero_mesa.getText(), cont, 0);
+       model.setValueAt(combo_platos.getSelectedItem(), cont, 1);
+       model.setValueAt(cantidad_platos.getText(), cont, 2);
+       model.setValueAt(añadir_porcion.getText(), cont, 3);
+       model.setValueAt(quitar_porcion.getText(), cont, 4);
+       TablaMesero.setModel(model);
+       }
+            
+           
+        
+       
+       
+       
+       
     }//GEN-LAST:event_cargar_pedidoActionPerformed
 
 
