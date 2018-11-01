@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  * @author josep
  */
 public class Listener_caja implements ActionListener {
-     proy.restaurante.mesero obt=new proy.restaurante.mesero();
+     //roy.restaurante.mesero obt=new proy.restaurante.mesero();
     
     /**
      *
@@ -20,6 +20,6 @@ public class Listener_caja implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        obt.setVisible(true);
+        //modificar
     }
 }
