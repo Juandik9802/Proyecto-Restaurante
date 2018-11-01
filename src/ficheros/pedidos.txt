@@ -1,0 +1,8 @@
+Plato 1;7;
+Plato 4;90;
+Plato 3;frijoles;
+Plato 1;salsas;
+Plato 2;;;;pecantes;
+1;Plato 2;arroz;papa
+5;Plato 39;arbeja;papa
+10;Plato 4;2;pan;sal

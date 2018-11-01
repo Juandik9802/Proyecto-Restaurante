@@ -18,7 +18,7 @@ public class mesero extends javax.swing.JFrame {
      */
     public mesero() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -36,6 +36,7 @@ public class mesero extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jMenuBar1.setBorder(null);
 
