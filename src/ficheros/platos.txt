@@ -1,10 +1,5 @@
-Almuerzo;pastas;12;[arroz, papa, pasta];
-Almuerzo;cuchuco;20000;[agua, criolla];
-Bebidas;colombiana;6000;[];
-Postres;pasta;43;[jej];
-Cena;arroz con pollo;6000;[pollo, arroz, condimetos];
-Cena;pollo;12;[pollo, arroz];
-Almuerzo;arroz chino;25000;[];
-Almuerzo;mazamorra;4300;[agua, demas];
-Almuerzo;mazamoroptero;2300;[wef, fwefw, wfefwef];
-Almuerzo;holaword;3200;[jeiurhj, knweifhwio, mjbwfkjwebf];
+Almuerzo;qwerty;123456;[qwertyu, asdfgh];
+Almuerzo;asdfghj;234567;[2345678];
+Cena;123456789;234567890;[sdghjkl, qwertybn];
+Postres;12345678;34567;[wfghj, fghj];
+Bebidas;zxcv;2;[23456, fghjkl];

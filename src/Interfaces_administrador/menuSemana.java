@@ -69,8 +69,18 @@ public class menuSemana extends javax.swing.JPanel {
         jLabel7.setText("Almuerzo");
 
         primerAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        primerAlmuerzo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                primerAlmuerzoMouseClicked(evt);
+            }
+        });
 
         segundoAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        segundoAlmuerzo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                segundoAlmuerzoMouseClicked(evt);
+            }
+        });
 
         tercerAlmerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
@@ -229,6 +239,15 @@ public class menuSemana extends javax.swing.JPanel {
         
     }//GEN-LAST:event_AceptarActionPerformed
 
+    private void primerAlmuerzoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primerAlmuerzoMouseClicked
+        actualizar();
+    }//GEN-LAST:event_primerAlmuerzoMouseClicked
+
+    private void segundoAlmuerzoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundoAlmuerzoMouseClicked
+        actualizar();
+        segundoAlmuerzo.removeItem((String)primerAlmuerzo.getSelectedItem());
+    }//GEN-LAST:event_segundoAlmuerzoMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
@@ -280,6 +299,14 @@ public class menuSemana extends javax.swing.JPanel {
         }
     }
 
+    private void actualizar(){
+        codigo.archivoPlatos.mostrar();
+        almuerzoActualizar();
+        cenaActualizar();
+        bebidasActualizar();
+        postresActualizar();
+    }
+    
     private void almuerzoActualizar() {        
         int contador = 0;
         boolean control;

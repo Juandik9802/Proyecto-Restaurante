@@ -1,7 +1,7 @@
-Lunes;[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[pasta, pasta, pasta];
-Martes;[pastas, pastas, pastas];[pollo, pollo, pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
-Miercoles;[pastas, pastas, pastas];[pollo, pollo, pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
-Jueves;[pastas, pastas, pastas];[pollo, pollo, pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
-Viernes;[pastas, pastas, pastas];[pollo, pollo, pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
-Sabado;[pastas, pastas, pastas];[pollo, pollo, pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
-Domingo;[pastas, pastas, pastas];[pollo, pollo, pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
+Lunes;[asdfghj, asdfghj, asdfghj];[123456789, 123456789, 123456789];[zxcv, zxcv, zxcv];[12345678, 12345678, 12345678];
+Martes;[qwerty, qwerty, qwerty];[123456789, 123456789, 123456789];[zxcv, zxcv, zxcv];[12345678, 12345678, 12345678];
+Miercoles;[qwerty, qwerty, qwerty];[123456789, 123456789, 123456789];[zxcv, zxcv, zxcv];[12345678, 12345678, 12345678];
+Jueves;[qwerty, qwerty, qwerty];[123456789, 123456789, 123456789];[zxcv, zxcv, zxcv];[12345678, 12345678, 12345678];
+Viernes;[qwerty, qwerty, qwerty];[123456789, 123456789, 123456789];[zxcv, zxcv, zxcv];[12345678, 12345678, 12345678];
+Sabado;[qwerty, qwerty, qwerty];[123456789, 123456789, 123456789];[zxcv, zxcv, zxcv];[12345678, 12345678, 12345678];
+Domingo;[qwerty, qwerty, qwerty];[123456789, 123456789, 123456789];[zxcv, zxcv, zxcv];[12345678, 12345678, 12345678];

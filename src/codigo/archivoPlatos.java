@@ -23,7 +23,8 @@ import javax.swing.JOptionPane;
  
 public class archivoPlatos {
     
-    public static ArrayList<cargarCombos> mostrarPlato= new ArrayList();;
+    public static ArrayList<cargarCombos> mostrarPlato= new ArrayList();
+    //public static ArrayList<cargarCombos> mostrar= new ArrayList();
     
     /**
      * crea el archivo
@@ -119,16 +120,5 @@ public class archivoPlatos {
             }
         }
     }
-   /*
-    public static void main(String[] args) {
-        crear();
-        crear();
-        crear();
-        mostrar();
-        System.out.println("================");
-        buscar("juan",0);
-        System.out.println("================");
-        buscar("perez",1);
-    }
-*/
+   
 }

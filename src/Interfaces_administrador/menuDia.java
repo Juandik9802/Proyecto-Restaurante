@@ -8,6 +8,7 @@ package Interfaces_administrador;
 
 import codigo.archivoMenus;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -269,6 +270,7 @@ public class menuDia extends javax.swing.JPanel {
 
     private void segundoAlmuerzoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundoAlmuerzoMouseClicked
         actualizar();
+        segundoAlmuerzo.removeItem((String)primerAlmuerzo.getSelectedItem());
     }//GEN-LAST:event_segundoAlmuerzoMouseClicked
 
     private void tercerAlmuerzoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tercerAlmuerzoMouseClicked
@@ -312,8 +314,17 @@ public class menuDia extends javax.swing.JPanel {
     }//GEN-LAST:event_postreTresMouseClicked
 
     private void editar_platoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_platoActionPerformed
-        cargarArryList();
-        cargar();
+        if (primerAlmuerzo.getSelectedItem()=="Seleccionar"||segundoAlmuerzo.getSelectedItem()=="Seleccionar"|| tercerAlmuerzo.getSelectedItem()=="Seleccionar"
+                ||cenaUno.getSelectedItem()=="Seleccionar"||cenaDos.getSelectedItem()=="Seleccionar"||cenaTres.getSelectedItem()=="Seleccionar"
+                ||primeraBebida.getSelectedItem()=="Seleccionar"||segundaBebida.getSelectedItem()=="Seleccionar"||trecerBebida.getSelectedItem()=="Seleccionar"
+                ||postreUno.getSelectedItem()=="Seleccionar"||prostreDos.getSelectedItem()=="Seleccionar"||postreTres.getSelectedItem()=="Seleccionar"){
+            JOptionPane.showMessageDialog(null, "Error de Seleccion");
+        }else{
+            cargarArryList();
+            cargar();
+            /* cotrol de añadir a la semana*/
+        }  
+        
         //codigo.archivoMenus.añadirModificacion(tipo, almuerzo, cena, Bebidas, Postre);
     }//GEN-LAST:event_editar_platoActionPerformed
     
@@ -323,7 +334,6 @@ public class menuDia extends javax.swing.JPanel {
         cenaActualizar();
         bebidasActualizar();
         postresActualizar();
-        codigo.archivoPlatos.mostrarPlato.clear();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
