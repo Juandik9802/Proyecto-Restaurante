@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,7 @@ import javax.swing.JOptionPane;
 public class archivoMenus {
     public static ArrayList<menusCarga> mostrarPlato= new ArrayList();
     public static ArrayList<menusCarga> modificar= new ArrayList();
+    static  File nuevo=new File("src/ficheros/Menu.txt");
     
     /**
      * crea el archivo
@@ -55,68 +57,8 @@ public class archivoMenus {
        
     }
      
-    public static void mostrar(){
-        File archivo = null;  //apuntar al archivo almancenado DD
-        FileReader contenido = null;  //acceder a todo el contenido del archivo
-        BufferedReader linea = null; //accede linea a linea al contenido        
-        try{
-            archivo = new File("src/ficheros/Menu.txt");
-            contenido = new FileReader(archivo);
-            linea = new BufferedReader(contenido);
-            
-            String cadena=""; //variable captura los datos del archivo
-            while((cadena=linea.readLine()) != null){ //recorre todo el archivo
-                String dato[] = cadena.split(";");
-               // mostrarPlato.add(new cargarCombos(dato[0],dato[1]));
-
-            }
-         }catch(IOException e){
-           System.out.print("Error creando archivo");
-        }
-        finally{
-            try{
-                if(contenido != null){
-                    contenido.close();
-                }
-            }catch(IOException e1){
-                JOptionPane.showMessageDialog(null,"Error cerrando archivo");
-            }
-        }
-        //return mostrarPlato;
-    }
     
-    static void buscar(String filtro, int index){
-        File archivo = null;  //apuntar al archivo almancenado DD
-        FileReader contenido = null;  //acceder a todo el contenido del archivo
-        BufferedReader linea = null; //accede linea a linea al contenido
-        
-        try{
-            archivo = new File("d:/ejemplo.txt");
-            contenido = new FileReader(archivo);
-            linea = new BufferedReader(contenido);
-            
-            String cadena=""; //variable captura los datos del archivo
-            while((cadena=linea.readLine()) != null){ //recorre todo el archivo
-                String dato[] = cadena.split(";");
-                if(dato[index].equals(filtro)){
-                    System.out.print("Nombre: "+ dato[0]);
-                    System.out.println(" Apellido: "+ dato[1]);  
-                }
-                
-            }
-         }catch(IOException e){
-           System.out.print("Error creando archivo");
-        }
-        finally{
-            try{
-                if(contenido != null){
-                    contenido.close();
-                }
-            }catch(IOException e1){
-                System.out.print("Error cerrando archivo");
-            }
-        }
-    }
+    
     /**
      * metodo para añadir al array el menu
     */
@@ -190,11 +132,12 @@ public class archivoMenus {
         }
      }
     
-    public static void archivoCrear(){
-        
+    public static  void archivoCrear(){
+        borrar(nuevo);
+        crear(mostrarPlato);
     }
     
-    void borrar (File Ffichero){
+    public static void borrar (File Ffichero){
         try
         {
            // Comprovamos si el fichero existe  de ser así procedemos a borrar el archivo

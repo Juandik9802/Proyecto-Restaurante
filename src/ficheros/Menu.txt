@@ -1,0 +1,7 @@
+Lunes;[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[pasta, pasta, pasta];
+Martes;[cuchuco, cuchuco, mazamorra];[arroz con pollo, arroz con pollo, arroz con pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
+Miercoles;[cuchuco, cuchuco, mazamorra];[arroz con pollo, arroz con pollo, arroz con pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
+Jueves;[cuchuco, cuchuco, mazamorra];[arroz con pollo, arroz con pollo, arroz con pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
+Viernes;[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[Seleccionar, Seleccionar, Seleccionar];[pasta, pasta, pasta];
+Sabado;[cuchuco, cuchuco, mazamorra];[arroz con pollo, arroz con pollo, arroz con pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
+Domingo;[cuchuco, cuchuco, mazamorra];[arroz con pollo, arroz con pollo, arroz con pollo];[colombiana, colombiana, colombiana];[pasta, pasta, pasta];
