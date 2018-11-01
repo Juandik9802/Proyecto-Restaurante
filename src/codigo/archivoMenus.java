@@ -126,10 +126,6 @@ public class archivoMenus {
                 }
             }  
         }
-        for (menusCarga carga : mostrarPlato) {
-            System.out.println(carga.Dia);
-            System.out.println(carga.almuerzos);
-        }
      }
     
     public static  void archivoCrear(){

@@ -3,3 +3,5 @@ Almuerzo;asdfghj;234567;[2345678];
 Cena;123456789;234567890;[sdghjkl, qwertybn];
 Postres;12345678;34567;[wfghj, fghj];
 Bebidas;zxcv;2;[23456, fghjkl];
+Cena;45678;687587;[];
+Cena;hello;1234;[];

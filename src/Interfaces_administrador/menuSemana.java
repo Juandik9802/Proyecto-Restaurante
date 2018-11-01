@@ -83,30 +83,80 @@ public class menuSemana extends javax.swing.JPanel {
         });
 
         tercerAlmerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        tercerAlmerzo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tercerAlmerzoMouseClicked(evt);
+            }
+        });
 
         jLabel8.setText("Cena");
 
         cenaUno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cenaUno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cenaUnoMouseClicked(evt);
+            }
+        });
 
         cenaDos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cenaDos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cenaDosMouseClicked(evt);
+            }
+        });
 
         cenaTres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cenaTres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cenaTresMouseClicked(evt);
+            }
+        });
 
         jLabel9.setText("Bebidas");
 
         jLabel1.setText("Postres");
 
         primeraBebida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        primeraBebida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                primeraBebidaMouseClicked(evt);
+            }
+        });
 
         segundaBebida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        segundaBebida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                segundaBebidaMouseClicked(evt);
+            }
+        });
 
         trecerBebida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        trecerBebida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                trecerBebidaMouseClicked(evt);
+            }
+        });
 
         postreUno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        postreUno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                postreUnoMouseClicked(evt);
+            }
+        });
 
         prostreDos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        prostreDos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prostreDosMouseClicked(evt);
+            }
+        });
 
         postreTres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        postreTres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                postreTresMouseClicked(evt);
+            }
+        });
 
         dia.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 36)); // NOI18N
         dia.setText("Dia");
@@ -247,6 +297,57 @@ public class menuSemana extends javax.swing.JPanel {
         actualizar();
         segundoAlmuerzo.removeItem((String)primerAlmuerzo.getSelectedItem());
     }//GEN-LAST:event_segundoAlmuerzoMouseClicked
+
+    private void tercerAlmerzoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tercerAlmerzoMouseClicked
+       actualizar();
+       tercerAlmerzo.removeItem((String)primerAlmuerzo.getSelectedItem());
+       tercerAlmerzo.removeItem((String)segundoAlmuerzo.getSelectedItem());
+    }//GEN-LAST:event_tercerAlmerzoMouseClicked
+
+    private void cenaUnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cenaUnoMouseClicked
+        actualizar();
+    }//GEN-LAST:event_cenaUnoMouseClicked
+
+    private void cenaDosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cenaDosMouseClicked
+        actualizar();
+        cenaDos.removeItem((String) cenaUno.getSelectedItem());
+    }//GEN-LAST:event_cenaDosMouseClicked
+
+    private void cenaTresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cenaTresMouseClicked
+        actualizar();
+        cenaTres.removeItem((String) cenaUno.getSelectedItem());
+        cenaTres.removeItem((String) cenaDos.getSelectedItem());
+    }//GEN-LAST:event_cenaTresMouseClicked
+
+    private void primeraBebidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primeraBebidaMouseClicked
+        actualizar();
+    }//GEN-LAST:event_primeraBebidaMouseClicked
+
+    private void segundaBebidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaBebidaMouseClicked
+        actualizar();
+        segundaBebida.removeItem((String) primeraBebida.getSelectedItem());
+    }//GEN-LAST:event_segundaBebidaMouseClicked
+
+    private void trecerBebidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trecerBebidaMouseClicked
+        actualizar();
+        trecerBebida.removeItem((String) primeraBebida.getSelectedItem());
+        trecerBebida.removeItem((String) segundoAlmuerzo.getSelectedItem());
+    }//GEN-LAST:event_trecerBebidaMouseClicked
+
+    private void postreUnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postreUnoMouseClicked
+        actualizar();
+    }//GEN-LAST:event_postreUnoMouseClicked
+
+    private void prostreDosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prostreDosMouseClicked
+        actualizar();
+        prostreDos.removeItem((String) postreUno.getSelectedItem());
+    }//GEN-LAST:event_prostreDosMouseClicked
+
+    private void postreTresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postreTresMouseClicked
+        actualizar();
+        postreTres.removeItem((String) postreUno.getSelectedItem());
+        postreTres.removeItem((String) prostreDos.getSelectedItem());
+    }//GEN-LAST:event_postreTresMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
