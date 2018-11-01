@@ -120,8 +120,8 @@ public class archivoMenus {
                     if (carga.Dia.equals(modifica.getDia())){
                         modifica.setAlmuerzos(carga.almuerzos);
                         modifica.setBebidas(carga.bebidas);
-                        modifica.setCenas(carga.almuerzos);
-                        modifica.setAlmuerzos(carga.almuerzos);
+                        modifica.setCenas(carga.cenas);
+                        modifica.setPostres(carga.postres);
                     }
                 }
             }  
