@@ -5,6 +5,9 @@
  */
 package interfaces_mesero;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,9 +30,36 @@ public class pedido extends javax.swing.JPanel {
      */
     public pedido() {
         initComponents();
-        
+        cargar_platos();
     }
-
+    private void cargar_platos(){
+        File archivo;  //apuntar al archivo almancenado DD
+        FileReader contenido = null;  //acceder a todo el contenido del archivo
+        BufferedReader linea_menu; //accede linea a linea al contenido
+        
+        try{
+            archivo = new File("src/ficheros/platos.txt");
+            contenido = new FileReader(archivo);
+            linea_menu = new BufferedReader(contenido);
+            
+            String cadena; //variable captura los datos del archivo
+            while((cadena=linea_menu.readLine()) != null){ //recorre todo el archivo
+                String dato[] = cadena.split(";");
+                combo_platos.addItem(dato[1]);
+            }
+        }catch(IOException e){
+           System.out.print("Error creando archivo");
+        }
+        finally{
+            try{
+                if(contenido != null){
+                    contenido.close();
+                }
+            }catch(IOException e1){
+                System.out.print("Error cerrando archivo");
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,8 +88,6 @@ public class pedido extends javax.swing.JPanel {
         jLabel1.setText("Mesa:");
 
         jLabel2.setText("Porciones:");
-
-        combo_platos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plato 1", "Plato 2", "Plato 3", "Plato 4" }));
 
         jLabel3.setText("Quitar porcion:");
 
@@ -101,25 +129,26 @@ public class pedido extends javax.swing.JPanel {
                         .addComponent(numero_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80)
                         .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(combo_platos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cantidad_platos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(añadir_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(quitar_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(cargar_pedido)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(combo_platos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(79, 79, 79)
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cantidad_platos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(añadir_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(quitar_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(18, 18, 18)
+                            .addComponent(cargar_pedido))))
                 .addGap(49, 62, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 10, Short.MAX_VALUE)
@@ -182,22 +211,22 @@ public class pedido extends javax.swing.JPanel {
                     archivo_pedidos.close();
                 }
             }catch(IOException e1){
-                JOptionPane.showMessageDialog(null, "Error creando el archivo");
+                JOptionPane.showMessageDialog(null, "Error cerrando el archivo");
             }
         }
        
-       String data[][]={};
-       String col[]={"Mesa","Plato","Cantidad","Añadir","Quitar","Precio"};
-       for(int i=0; i<=6; i++){
-       model = new DefaultTableModel(data,col);
-       model.insertRow(cont, new Object[]{});
-       model.setValueAt(numero_mesa.getText(), cont, 0);
-       model.setValueAt(combo_platos.getSelectedItem(), cont, 1);
-       model.setValueAt(cantidad_platos.getText(), cont, 2);
-       model.setValueAt(añadir_porcion.getText(), cont, 3);
-       model.setValueAt(quitar_porcion.getText(), cont, 4);
-       TablaMesero.setModel(model);
-       }
+        String data[][]={};
+        String col[]={"Mesa","Plato","Cantidad","Añadir","Quitar","Precio"};
+        for(int i=0; i<=6; i++){
+            model = new DefaultTableModel(data,col);
+            model.insertRow(cont, new Object[]{});
+            model.setValueAt(numero_mesa.getText(), cont, 0);
+            model.setValueAt(combo_platos.getSelectedItem(), cont, 1);
+            model.setValueAt(cantidad_platos.getText(), cont, 2);
+            model.setValueAt(añadir_porcion.getText(), cont, 3);
+            model.setValueAt(quitar_porcion.getText(), cont, 4);
+            TablaMesero.setModel(model);
+        }
             
            
         

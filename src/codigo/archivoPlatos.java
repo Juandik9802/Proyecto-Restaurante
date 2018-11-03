@@ -33,11 +33,11 @@ public class archivoPlatos {
     public static void crear(ArrayList<platillo> p){
         String cadena = null; //tipo;nombre;precio;porcion
         FileWriter fichero = null;  //objeto principal (archivo)
-        PrintWriter linea = null;   //objeto de contenido de archivo
+        PrintWriter linea;   //objeto de contenido de archivo
         try{
             fichero = new FileWriter("src/ficheros/platos.txt",true); //crea el archivo 
             linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
-            // Inicia            
+            // Inicia
             for (platillo object : p) {
                 cadena = object.getTipo()+";"+object.getNombre()+";"+object.getPrecio()+";"+object.getPorcion()+";";
             }
@@ -59,15 +59,15 @@ public class archivoPlatos {
     }
      
     public static void mostrar(){
-        File archivo = null;  //apuntar al archivo almancenado DD
+        File archivo;  //apuntar al archivo almancenado DD
         FileReader contenido = null;  //acceder a todo el contenido del archivo
-        BufferedReader linea = null; //accede linea a linea al contenido        
+        BufferedReader linea; //accede linea a linea al contenido        
         try{
             archivo = new File("src/ficheros/platos.txt");
             contenido = new FileReader(archivo);
             linea = new BufferedReader(contenido);
             
-            String cadena=""; //variable captura los datos del archivo
+            String cadena; //variable captura los datos del archivo
             while((cadena=linea.readLine()) != null){ //recorre todo el archivo
                 String dato[] = cadena.split(";");
                 mostrarPlato.add(new cargarCombos(dato[0],dato[1]));
@@ -89,16 +89,16 @@ public class archivoPlatos {
     }
     
     static void buscar(String filtro, int index){
-        File archivo = null;  //apuntar al archivo almancenado DD
-        FileReader contenido = null;  //acceder a todo el contenido del archivo
-        BufferedReader linea = null; //accede linea a linea al contenido
+        File archivo;  //apuntar al archivo almancenado DD
+        FileReader contenido = null ;  //acceder a todo el contenido del archivo
+        BufferedReader linea ; //accede linea a linea al contenido
         
         try{
             archivo = new File("d:/ejemplo.txt");
             contenido = new FileReader(archivo);
             linea = new BufferedReader(contenido);
             
-            String cadena=""; //variable captura los datos del archivo
+            String cadena; //variable captura los datos del archivo
             while((cadena=linea.readLine()) != null){ //recorre todo el archivo
                 String dato[] = cadena.split(";");
                 if(dato[index].equals(filtro)){

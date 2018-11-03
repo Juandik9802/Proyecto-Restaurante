@@ -75,6 +75,11 @@ public class menuDia extends javax.swing.JPanel {
                 primerAlmuerzoMouseClicked(evt);
             }
         });
+        primerAlmuerzo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                primerAlmuerzoActionPerformed(evt);
+            }
+        });
 
         segundoAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
         segundoAlmuerzo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -327,6 +332,10 @@ public class menuDia extends javax.swing.JPanel {
         
         //codigo.archivoMenus.añadirModificacion(tipo, almuerzo, cena, Bebidas, Postre);
     }//GEN-LAST:event_editar_platoActionPerformed
+
+    private void primerAlmuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primerAlmuerzoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_primerAlmuerzoActionPerformed
     
     private void actualizar(){
         codigo.archivoPlatos.mostrar();

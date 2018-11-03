@@ -5,3 +5,5 @@ Postres;12345678;34567;[wfghj, fghj];
 Bebidas;zxcv;2;[23456, fghjkl];
 Cena;45678;687587;[];
 Cena;hello;1234;[];
+Almuerzo;huevos;12000;[asdfwqeraadsf, asdfadsfadsfzcv];
+Almuerzo;pollo;23000;[qwerqwer, sadfwertgdfh];

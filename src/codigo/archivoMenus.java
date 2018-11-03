@@ -5,15 +5,12 @@
  */
 package codigo;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,9 +27,9 @@ public class archivoMenus {
      * @param p 
      */
     public static void crear(ArrayList<menusCarga> p){
-        String cadena = null; //tipo;nombre;precio;porcion
+        String cadena; //tipo;nombre;precio;porcion
         FileWriter fichero = null;  //objeto principal (archivo)
-        PrintWriter linea = null;   //objeto de contenido de archivo
+        PrintWriter linea;   //objeto de contenido de archivo
         try{
             fichero = new FileWriter("src/ficheros/Menu.txt",true); //crea el archivo 
             linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
@@ -93,7 +90,6 @@ public class archivoMenus {
         for (String string : postre) {
             modificar.get(cont).postres.add(string);
         }
-        
         for (String string :bebida) {
             modificar.get(cont).bebidas.add(string);            
         }
@@ -126,7 +122,7 @@ public class archivoMenus {
                 }
             }  
         }
-     }
+    }
     
     public static  void archivoCrear(){
         borrar(nuevo);
@@ -140,7 +136,7 @@ public class archivoMenus {
             if(Ffichero.exists())
             {
                 Ffichero.delete();
-                System.out.println("Ficherro Borrado");
+                System.out.println("Fichero Borrado");
             }
 
         }catch(Exception e)
@@ -150,15 +146,15 @@ public class archivoMenus {
     }
     
     public static String leerArchivo(){
-    String cadena = "";
-    FileReader entrada = null;
+    String cadena = null;
+    FileReader entrada;
     try {
         entrada = new FileReader("src/ficheros/Menu.txt");
         int c;
         while((c = entrada.read()) != -1){
             cadena += (char)c;
         }
-    } catch (Exception e) {
+    } catch (IOException e) {
         JOptionPane.showMessageDialog(null, "Error al leer archivo: "+e.getMessage());
     }
     return cadena;
