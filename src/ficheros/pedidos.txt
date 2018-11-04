@@ -1,14 +1,3 @@
-8;Plato 1;34;papa;papa
-8;Plato 1;34;papa;papa
-4;Plato 1;4;SDASD;SDDSD
-4;Plato 1;3;weee;rer
-5;Plato 1;3;weee;rer
-9;Plato 1;3;weee;rer
-56;Plato 1;5;asd;sdcs
-57;Plato 1;5;asd;sdcs
-57;Plato 1;5;asd;sdcs
-4;Plato 1;4;wef;df
-5;Plato 1;4;wef;df
-9;Plato 1;56;jhgjhv;vhggh
-7;Plato 1;56;jhgjhv;vhggh
-2;Plato 2;4;asdfadsffdsa;qwerrewqqwer
+2;Bandeja Paisa;Pony Malta;Tarta;;
+2;Ternera a la llanera;colombiana;Tarta;;
+2;Mazamorra ;Pepsy;Tarta;;

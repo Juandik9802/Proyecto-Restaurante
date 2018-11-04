@@ -160,6 +160,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="precioPlato">
+          <Events>
+            <EventHandler event="componentAdded" listener="java.awt.event.ContainerListener" parameters="java.awt.event.ContainerEvent" handler="precioPlatoComponentAdded"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="comidas">
           <Properties>

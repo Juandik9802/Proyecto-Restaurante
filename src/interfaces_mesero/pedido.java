@@ -5,12 +5,12 @@
  */
 package interfaces_mesero;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import codigo.menusCarga;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,43 +23,18 @@ public class pedido extends javax.swing.JPanel {
     FileWriter archivo_pedidos=null;
     PrintWriter linea=null;
     
-    private DefaultTableModel model;
     int cont=0;
     /**
      * Creates new form pedido
      */
-    public pedido() {
+    public pedido() {/**
+     * "Mesa","Plato","Bebidas","Postre","Añadir","Quitar","Precio"
+     */ 
         initComponents();
-        cargar_platos();
+        cargartabla();
+        cargarComidas();
     }
-    private void cargar_platos(){
-        File archivo;  //apuntar al archivo almancenado DD
-        FileReader contenido = null;  //acceder a todo el contenido del archivo
-        BufferedReader linea_menu; //accede linea a linea al contenido
-        
-        try{
-            archivo = new File("src/ficheros/platos.txt");
-            contenido = new FileReader(archivo);
-            linea_menu = new BufferedReader(contenido);
-            
-            String cadena; //variable captura los datos del archivo
-            while((cadena=linea_menu.readLine()) != null){ //recorre todo el archivo
-                String dato[] = cadena.split(";");
-                combo_platos.addItem(dato[1]);
-            }
-        }catch(IOException e){
-           System.out.print("Error creando archivo");
-        }
-        finally{
-            try{
-                if(contenido != null){
-                    contenido.close();
-                }
-            }catch(IOException e1){
-                System.out.print("Error cerrando archivo");
-            }
-        }
-    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,8 +45,6 @@ public class pedido extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        cantidad_platos = new javax.swing.JTextField();
         combo_platos = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         quitar_porcion = new javax.swing.JTextField();
@@ -79,15 +52,17 @@ public class pedido extends javax.swing.JPanel {
         cargar_pedido = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaMesero = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
         añadir_porcion = new javax.swing.JTextField();
         numero_mesa = new javax.swing.JTextField();
+        comboBebidas = new javax.swing.JComboBox<>();
+        comboPostres = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setText("Mesa:");
 
-        jLabel2.setText("Porciones:");
+        combo_platos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Comida--" }));
 
         jLabel3.setText("Quitar porcion:");
 
@@ -114,142 +89,221 @@ public class pedido extends javax.swing.JPanel {
         jScrollPane1.setViewportView(TablaMesero);
         TablaMesero.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        jLabel4.setText("Cantidad:");
+        comboBebidas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Bebida--" }));
+
+        comboPostres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Postres--" }));
+
+        jButton1.setText("Enviar pedido");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(numero_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(combo_platos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(79, 79, 79)
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cantidad_platos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(añadir_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(quitar_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(18, 18, 18)
-                            .addComponent(cargar_pedido))))
-                .addGap(49, 62, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addComponent(combo_platos, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(comboBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comboPostres, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(numero_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(añadir_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(quitar_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(384, 384, 384)
+                                .addComponent(cargar_pedido))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(10, 10, 10))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(227, 227, 227))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(numero_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2)))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(combo_platos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(cantidad_platos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(añadir_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(quitar_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel1))
+                    .addComponent(numero_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(combo_platos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboPostres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 124, Short.MAX_VALUE)
-                        .addComponent(cargar_pedido)
-                        .addGap(52, 52, 52)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel5))
+                    .addComponent(añadir_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel3))
+                    .addComponent(quitar_porcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addComponent(cargar_pedido)
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private DefaultTableModel model= new DefaultTableModel();
+    private ArrayList<codigo.pedido> Array=new ArrayList();
+    
     private void cargar_pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargar_pedidoActionPerformed
-        // TODO add your handling code here:
-        String pedido;
-        String historial_pedidos;
-        
-        try {
-            archivo_pedidos= new FileWriter("src/ficheros/pedidos.txt",true);
-            linea=new PrintWriter(archivo_pedidos);
-            pedido=(String)numero_mesa.getText()+";"+combo_platos.getSelectedItem()+";"+cantidad_platos.getText()
-                    +";"+añadir_porcion.getText()+";"+quitar_porcion.getText();
-            historial_pedidos=pedido;
-           
-            linea.println(historial_pedidos);
-            
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Error creando el archivo");
-  
-        } finally{
-            try{
-                if(archivo_pedidos != null){
-                    archivo_pedidos.close();
+        if(combo_platos.getSelectedItem()=="--Comida--"||comboBebidas.getSelectedItem()=="--Bebida--"||comboPostres.getSelectedItem()=="--Postres--"||numero_mesa.getText()==""){
+            JOptionPane.showMessageDialog(null, "Error. verifique que los campos esten llenos");
+        }else{
+            String pedido;
+            try {
+                archivo_pedidos= new FileWriter("src/ficheros/pedidos.txt",true);
+                linea=new PrintWriter(archivo_pedidos);
+                pedido=(String)numero_mesa.getText()+";"+combo_platos.getSelectedItem()+";"+comboBebidas.getSelectedItem()+";"+comboPostres.getSelectedItem()
+                        +";"+añadir_porcion.getText()+";"+quitar_porcion.getText();
+                linea.println(pedido);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error creando el archivo");
+                } finally{
+                    try{
+                        if(archivo_pedidos != null){
+                            archivo_pedidos.close();
+                        }
+                    }catch(IOException e1){
+                        JOptionPane.showMessageDialog(null, "Error cerrando el archivo");
+                    }
                 }
-            }catch(IOException e1){
-                JOptionPane.showMessageDialog(null, "Error cerrando el archivo");
-            }
-        }
-       
-        String data[][]={};
-        String col[]={"Mesa","Plato","Cantidad","Añadir","Quitar","Precio"};
-        for(int i=0; i<=6; i++){
-            model = new DefaultTableModel(data,col);
+            //String data[][]={};
+            Calendar calendario = Calendar.getInstance();
+            String hora=String.valueOf(calendario.get(Calendar.HOUR_OF_DAY));
+            hora=hora+";"+String.valueOf(calendario.get(Calendar.MINUTE));
+            System.out.println(hora);
+            Array.add(new codigo.pedido(Integer.parseInt(numero_mesa.getText()),(String)combo_platos.getSelectedItem(),(String)comboBebidas.getSelectedItem(),(String)comboPostres.getSelectedItem(),
+            (String)añadir_porcion.getText(), (String)quitar_porcion.getText(), Integer.parseInt(codigo.archivoPlatos.buscar((String)combo_platos.getSelectedItem())), hora));
+            int contador=Array.size()-1;
             model.insertRow(cont, new Object[]{});
-            model.setValueAt(numero_mesa.getText(), cont, 0);
-            model.setValueAt(combo_platos.getSelectedItem(), cont, 1);
-            model.setValueAt(cantidad_platos.getText(), cont, 2);
-            model.setValueAt(añadir_porcion.getText(), cont, 3);
-            model.setValueAt(quitar_porcion.getText(), cont, 4);
-            TablaMesero.setModel(model);
+            model.setValueAt(Array.get(contador).getNumMesas(), cont, 0);
+            model.setValueAt(Array.get(contador).getPlato(), cont, 1);
+            model.setValueAt(Array.get(contador).getBebida(), cont, 2);
+            model.setValueAt(Array.get(contador).getPostre(), cont, 3);
+            model.setValueAt(Array.get(contador).getAñadirPorcion(), cont, 4);
+            model.setValueAt(Array.get(contador).getQuitarPotcion(), cont, 5);
+            model.setValueAt(Array.get(contador).getPlato(), cont, 6);
+            cont++;
         }
-            
-           
         
-       
-       
-       
-       
     }//GEN-LAST:event_cargar_pedidoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //for (codigo.pedido string : Array) {    
+            
+        //}
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaMesero;
     private javax.swing.JTextField añadir_porcion;
-    private javax.swing.JTextField cantidad_platos;
     private javax.swing.JButton cargar_pedido;
+    private javax.swing.JComboBox<String> comboBebidas;
+    private javax.swing.JComboBox<String> comboPostres;
     private javax.swing.JComboBox<String> combo_platos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField numero_mesa;
     private javax.swing.JTextField quitar_porcion;
     // End of variables declaration//GEN-END:variables
+    
+    private void cargarComidas(){
+        String Dia = null;
+        Calendar calendario = Calendar.getInstance();
+        int dia=calendario.get(Calendar.DAY_OF_WEEK);
+        switch(dia){
+            case 1:
+                Dia = "Domingo";
+                break;
+            case 2:
+                Dia="Lunes";
+                break;
+            case 3:
+                Dia = "Martes";
+                break;
+            case 4:
+                Dia = "Miercoles";
+                break;
+            case 5:
+                Dia = "Jueves";
+                break;
+            case 6:
+                Dia = "Viernes";
+                break;
+            case 7:
+                Dia = "Sabado";
+                break;
+        }
+        //codigo.archivoMenus.mostrarPlato;
+        for (menusCarga carga : codigo.archivoMenus.mostrarMenu) {
+            if (Dia.equals(carga.getDia())){
+                for (String string : carga.getAlmuerzos()){
+                    combo_platos.addItem(string);
+                }
+                for (String string : carga.getCenas()){
+                    combo_platos.addItem(string);
+                }
+                for (String string : carga.getBebidas()){
+                    comboBebidas.addItem(string);
+                }
+                for (String string : carga.getPostres()){
+                    comboPostres.addItem(string);
+                }
+            }            
+        }
+    }    
+
+    private void cargartabla() {
+        model.addColumn("Mesa");
+        model.addColumn("Plato");
+        model.addColumn("Bebidas");
+        model.addColumn("Postre");
+        model.addColumn("Añadir");
+        model.addColumn("Quitar");
+        model.addColumn("Precio");
+        TablaMesero.setModel(model);
+    }
 }

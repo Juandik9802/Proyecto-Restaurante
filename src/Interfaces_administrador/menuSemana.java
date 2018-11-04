@@ -6,6 +6,7 @@
 package Interfaces_administrador;
 
 import codigo.archivoMenus;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -26,9 +27,7 @@ public class menuSemana extends javax.swing.JPanel {
     public menuSemana() {
         initComponents();
         dia.setText("Lunes");
-        Aceptar.setEnabled(!true);
-        cargarListas();//cargar los combobox
-        codigo.archivoPlatos.mostrarPlato.clear();//limpiar el ArrayList        
+        actualizar();      
     }
 
     /**
@@ -59,7 +58,6 @@ public class menuSemana extends javax.swing.JPanel {
         postreTres = new javax.swing.JComboBox<>();
         dia = new javax.swing.JLabel();
         agregarMenu = new javax.swing.JButton();
-        Aceptar = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -168,13 +166,6 @@ public class menuSemana extends javax.swing.JPanel {
             }
         });
 
-        Aceptar.setText("Aceptar");
-        Aceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -184,45 +175,44 @@ public class menuSemana extends javax.swing.JPanel {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(142, 142, 142))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cenaUno, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cenaDos, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cenaTres, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(primerAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(segundoAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tercerAlmerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(137, 137, 137)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel9))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(postreTres, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(prostreDos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(primeraBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(segundaBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(trecerBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(postreUno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cenaUno, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cenaDos, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cenaTres, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(50, 50, 50)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(primerAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(segundoAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(tercerAlmerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(137, 137, 137)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel9))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(postreTres, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(prostreDos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(primeraBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(segundaBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(trecerBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(postreUno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(agregarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(60, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Aceptar)
-                    .addComponent(agregarMenu))
-                .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,12 +253,10 @@ public class menuSemana extends javax.swing.JPanel {
                         .addComponent(prostreDos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(postreTres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(agregarMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Aceptar)
-                    .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(agregarMenu))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -284,10 +272,6 @@ public class menuSemana extends javax.swing.JPanel {
             controlDias();
         }       
     }//GEN-LAST:event_agregarMenuActionPerformed
-
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        
-    }//GEN-LAST:event_AceptarActionPerformed
 
     private void primerAlmuerzoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primerAlmuerzoMouseClicked
         actualizar();
@@ -351,7 +335,6 @@ public class menuSemana extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Aceptar;
     private javax.swing.JButton agregarMenu;
     private javax.swing.JComboBox<String> cenaDos;
     private javax.swing.JComboBox<String> cenaTres;
@@ -373,39 +356,13 @@ public class menuSemana extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> trecerBebida;
     // End of variables declaration//GEN-END:variables
     
-    private void cargarListas() {
-        codigo.archivoPlatos.mostrar();        
-        for (int i=0;i<codigo.archivoPlatos.mostrarPlato.size();i++){
-            String evaluar=codigo.archivoPlatos.mostrarPlato.get(i).getTipo();
-           if (evaluar.equals("Almuerzo") ){
-                primerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                segundoAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                tercerAlmerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());               
-            }
-             if (evaluar.equals("Cena") ){
-                cenaUno.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                cenaDos.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                cenaTres.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());               
-            }
-             if (evaluar.equals("Bebidas") ){
-                    primeraBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                    segundaBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                    trecerBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-            }
-             if (evaluar.equals("Postres") ){
-                    postreUno.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                    prostreDos.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                    postreTres.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-            } 
-        }
-    }
-
     private void actualizar(){
         codigo.archivoPlatos.mostrar();
         almuerzoActualizar();
         cenaActualizar();
         bebidasActualizar();
         postresActualizar();
+        codigo.archivoPlatos.mostrarPlato.clear();
     }
     
     private void almuerzoActualizar() {        
@@ -506,7 +463,7 @@ public class menuSemana extends javax.swing.JPanel {
     
     private void controlDias(){
         if(intento==1){
-            codigo.archivoMenus.mostrarPlato.clear();
+            codigo.archivoMenus.mostrarMenu.clear();
             /*añadir a los arraylist*/
             cargarArryList(); 
             archivo.añadirMenu("Lunes", almuerzo, cena, Bebidas, Postre);
@@ -549,14 +506,20 @@ public class menuSemana extends javax.swing.JPanel {
             dia.setText("Domindo");
         }
         if (intento==7){
+            
             /*añadir a los arraylist*/
             cargarArryList(); 
             archivo.añadirMenu("Domingo", almuerzo, cena, Bebidas, Postre);
             almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
             //dia.setText("Dia");
             JOptionPane.showMessageDialog(null, "Menu de la Semana Creado");
-            archivo.crear(archivo.mostrarPlato);
-            Aceptar.setEnabled(true);
+            File file =new File("src/ficheros/Menu.txt");
+            if(file.exists()){
+                codigo.archivoMenus.archivoCrear();
+            }else{
+                archivo.crear(archivo.mostrarMenu);
+            }
+            
         }        
         intento++;
         if (intento==8){

@@ -39,7 +39,10 @@ public class archivoPlatos {
             linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
             // Inicia
             for (platillo object : p) {
-                cadena = object.getTipo()+";"+object.getNombre()+";"+object.getPrecio()+";"+object.getPorcion()+";";
+                cadena = object.getTipo()+";"+object.getNombre()+";"+object.getPrecio()+";";
+                for (String string : object.getPorcion()) {
+                    cadena+=string+";";
+                }                
             }
             linea.println(cadena); //escribiendo en el archivo
             
@@ -74,7 +77,7 @@ public class archivoPlatos {
 
             }
          }catch(IOException e){
-           System.out.print("Error creando archivo");
+            JOptionPane.showMessageDialog(null, "Error lectutra de datos. Achivo esta vacio");
         }
         finally{
             try{
@@ -88,22 +91,20 @@ public class archivoPlatos {
         //return mostrarPlato;
     }
     
-    static void buscar(String filtro, int index){
+    public static String buscar(String filtro){
+        String retorno = null;
         File archivo;  //apuntar al archivo almancenado DD
         FileReader contenido = null ;  //acceder a todo el contenido del archivo
         BufferedReader linea ; //accede linea a linea al contenido
-        
         try{
-            archivo = new File("d:/ejemplo.txt");
+            archivo = new File("src/ficheros/platos.txt");
             contenido = new FileReader(archivo);
             linea = new BufferedReader(contenido);
-            
             String cadena; //variable captura los datos del archivo
             while((cadena=linea.readLine()) != null){ //recorre todo el archivo
                 String dato[] = cadena.split(";");
-                if(dato[index].equals(filtro)){
-                    System.out.print("Nombre: "+ dato[0]);
-                    System.out.println(" Apellido: "+ dato[1]);  
+                if(dato[1].equals(filtro)){
+                    retorno=dato[2];  
                 }
                 
             }
@@ -119,6 +120,7 @@ public class archivoPlatos {
                 System.out.print("Error cerrando archivo");
             }
         }
+    return retorno;
     }
    
 }

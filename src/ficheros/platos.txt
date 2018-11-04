@@ -1,9 +1,8 @@
-Almuerzo;qwerty;123456;[qwertyu, asdfgh];
-Almuerzo;asdfghj;234567;[2345678];
-Cena;123456789;234567890;[sdghjkl, qwertybn];
-Postres;12345678;34567;[wfghj, fghj];
-Bebidas;zxcv;2;[23456, fghjkl];
-Cena;45678;687587;[];
-Cena;hello;1234;[];
-Almuerzo;huevos;12000;[asdfwqeraadsf, asdfadsfadsfzcv];
-Almuerzo;pollo;23000;[qwerqwer, sadfwertgdfh];
+Bebidas;colombiana;2500;Almuerzo;Ternera a la llanera;2500;carne;papa;yuca;platano;
+Almuerzo;Bandeja Paisa;12000;huevo;arepa;arroz;frijoles;
+Almuerzo;Ternera a la llanera;20000;carne;opapa;yuca;
+Almuerzo;Mazamorra ;6000;
+Bebidas;Pony Malta;1500;
+Bebidas;Pepsy;2000;
+Cena;vagre;12000;vagre;arroz;arepa;
+Postres;Tarta;1500;

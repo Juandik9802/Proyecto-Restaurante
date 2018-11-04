@@ -26,8 +26,8 @@ public class menuDia extends javax.swing.JPanel {
     /** Creates new form menuDisa */
     public menuDia() {
         initComponents();
-        cargarListas();
-        codigo.archivoPlatos.mostrarPlato.clear();
+        actualizar();
+        
     }
 
     /** This method is called from within the constructor to
@@ -65,7 +65,7 @@ public class menuDia extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("menu del dia");
+        jLabel5.setText("Editar el menu del dia:");
 
         jLabel7.setText("Almuerzo");
 
@@ -207,8 +207,8 @@ public class menuDia extends javax.swing.JPanel {
                     .addComponent(postreUno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 24, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(diaMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -370,32 +370,7 @@ public class menuDia extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     String tipo,nombre;
     
-    private void cargarListas() {
-        codigo.archivoPlatos.mostrar();        
-        for (int i=0;i<codigo.archivoPlatos.mostrarPlato.size();i++){
-            String evaluar=codigo.archivoPlatos.mostrarPlato.get(i).getTipo();
-            if (evaluar.equals("Almuerzo") ){
-                primerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                segundoAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                tercerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());               
-            }
-             if (evaluar.equals("Cena") ){
-                cenaUno.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                cenaDos.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                cenaTres.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());               
-            }
-             if (evaluar.equals("Bebidas") ){
-                    primeraBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                    segundaBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                    trecerBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-            }
-             if (evaluar.equals("Postres") ){
-                    postreUno.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                    prostreDos.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-                    postreTres.addItem(codigo.archivoPlatos.mostrarPlato.get(i).getNombre());
-            }
-        }
-    }
+    
 
     private void almuerzoActualizar() {        
         int contador = 0;

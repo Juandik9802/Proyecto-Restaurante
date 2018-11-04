@@ -25,10 +25,12 @@ public class platos extends javax.swing.JPanel {
      */
     public platos() {
         initComponents();
+        nombrePlato.setEnabled(false);            
+        precioPlato.setEnabled(false);
         detalles.setEnabled(false);
         agregarPorcion.setEnabled(false);
-        precioPlato.setEnabled(false);
-        nombrePlato.setEnabled(false);
+        tomarPlato.setEnabled(false);
+        tomarPlatillo.setEnabled(false);
         listaPlatos=new ArrayList();                        
     }
     
@@ -61,6 +63,12 @@ public class platos extends javax.swing.JPanel {
         labelNombre.setText("Nombre del plato");
 
         jLabel2.setText("Precio");
+
+        precioPlato.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                precioPlatoComponentAdded(evt);
+            }
+        });
 
         comidas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Almuerzo", "Cena", "Postres", "Bebidas" }));
         comidas.addItemListener(new java.awt.event.ItemListener() {
@@ -196,21 +204,33 @@ public class platos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comidasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comidasItemStateChanged
-        if (comidas.getSelectedItem()!="Seleccionar"){
-            detalles.setEnabled(true);
-            agregarPorcion.setEnabled(true);
-            precioPlato.setEnabled(true);
-            nombrePlato.setEnabled(true);
-        }
-        if (comidas.getSelectedItem()=="Bebidas"|| comidas.getSelectedItem()=="Postres"){
+        if (comidas.getSelectedItem()=="Seleccionar"){
+            nombrePlato.setEnabled(false);            
+            precioPlato.setEnabled(false);
             detalles.setEnabled(false);
             agregarPorcion.setEnabled(false);
-            labelNombre.setText("Nombre");
+            tomarPlato.setEnabled(false);
+            tomarPlatillo.setEnabled(false);
         }else{
-            detalles.setEnabled(true);
-            agregarPorcion.setEnabled(true);
-            labelNombre.setText("Nombre del plato");
+            if (comidas.getSelectedItem()=="Bebidas"|| comidas.getSelectedItem()=="Postres"){
+                detalles.setEnabled(false);
+                agregarPorcion.setEnabled(false);
+                labelNombre.setText("Nombre");
+                nombrePlato.setEnabled(!false);            
+                precioPlato.setEnabled(!false);
+                tomarPlato.setEnabled(true);
+                tomarPlatillo.setEnabled(true);
+            }else{
+                tomarPlato.setEnabled(true);
+                tomarPlatillo.setEnabled(true);
+                nombrePlato.setEnabled(!false);            
+                precioPlato.setEnabled(!false);
+                detalles.setEnabled(true);
+                agregarPorcion.setEnabled(true);
+                labelNombre.setText("Nombre del plato");
+            }
         }
+        
     }//GEN-LAST:event_comidasItemStateChanged
 
     private void agregarPorcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPorcionActionPerformed
@@ -219,8 +239,8 @@ public class platos extends javax.swing.JPanel {
     }//GEN-LAST:event_agregarPorcionActionPerformed
 
     private void tomarPlatilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tomarPlatilloActionPerformed
-        if (comidas.getSelectedItem()=="Seleccionar"){
-            JOptionPane.showMessageDialog(null, "Errror de Seleccion");
+        if (comidas.getSelectedItem()=="Seleccionar"||nombrePlato.getText()==""||precioPlato.getText()==""){
+            JOptionPane.showMessageDialog(null, "Error de Seleccion");
         }else{
             nombre=nombrePlato.getText();
             precio=Integer.parseInt(precioPlato.getText());
@@ -237,13 +257,13 @@ public class platos extends javax.swing.JPanel {
                 tipo="Bebidas";
             }        
             cargar();
-            /**/
+            /*
             nombrePlato.setEnabled(false);            
             precioPlato.setEnabled(false);
             detalles.setEnabled(true);
             agregarPorcion.setEnabled(true);
             comidas.setEnabled(false);
-            tomarPlatillo.setEnabled(false);
+            tomarPlatillo.setEnabled(false);*/
         }
     }//GEN-LAST:event_tomarPlatilloActionPerformed
 
@@ -259,6 +279,12 @@ public class platos extends javax.swing.JPanel {
         tomarPlatillo.setEnabled(!false);
         codigo.archivoPlatos.crear(listaPlatos);
     }//GEN-LAST:event_tomarPlatoActionPerformed
+
+    private void precioPlatoComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_precioPlatoComponentAdded
+        /*if (Character.isDigit(Character.precioPlato.getText()))){
+            
+        }*/
+    }//GEN-LAST:event_precioPlatoComponentAdded
     
     private void cargar() {
         listaPlatos.add(new platillo(tipo,nombre,precio));

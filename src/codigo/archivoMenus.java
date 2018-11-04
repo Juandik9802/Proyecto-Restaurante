@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author Juan Diego
  */
 public class archivoMenus {
-    public static ArrayList<menusCarga> mostrarPlato= new ArrayList();
+    public static ArrayList<menusCarga> mostrarMenu= new ArrayList();
     public static ArrayList<menusCarga> modificar= new ArrayList();
     static  File nuevo=new File("src/ficheros/Menu.txt");
     
@@ -26,8 +26,7 @@ public class archivoMenus {
      * crea el archivo
      * @param p 
      */
-    public static void crear(ArrayList<menusCarga> p){
-        String cadena; //tipo;nombre;precio;porcion
+    public static void crear(ArrayList<menusCarga> p){        
         FileWriter fichero = null;  //objeto principal (archivo)
         PrintWriter linea;   //objeto de contenido de archivo
         try{
@@ -35,7 +34,20 @@ public class archivoMenus {
             linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
             // Inicia            
             for (menusCarga carga : p) {
-                cadena = carga.getDia()+";"+carga.getAlmuerzos()+";"+carga.getCenas()+";"+carga.getBebidas()+";"+carga.getPostres()+";";
+                String cadena; 
+                cadena = carga.getDia()+";";
+                for (String alm : carga.almuerzos) {
+                    cadena+=alm+";";
+                }
+                for (String alm : carga.cenas) {
+                    cadena+=alm+";";
+                }
+                for (String alm : carga.bebidas) {
+                    cadena+=alm+";";
+                }                
+                for (String alm : carga.postres) {
+                    cadena+=alm+";";
+                }
                 linea.println(cadena);
             }            
              //escribiendo en el archivo            
@@ -53,26 +65,24 @@ public class archivoMenus {
         }
        
     }
-     
-    
     
     /**
      * metodo para añadir al array el menu
     */
    public static void añadirMenu(String Dia,ArrayList<String> Almuerzo,ArrayList<String> cena,ArrayList<String> bebida, ArrayList<String> postre){
-        mostrarPlato.add(new menusCarga(Dia));
-        int cont=mostrarPlato.size()-1;
+        mostrarMenu.add(new menusCarga(Dia));
+        int cont=mostrarMenu.size()-1;
         for (String string : postre) {
-            mostrarPlato.get(cont).postres.add(string);
+            mostrarMenu.get(cont).postres.add(string);
         }        
         for (String string :bebida) {
-            mostrarPlato.get(cont).bebidas.add(string);            
+            mostrarMenu.get(cont).bebidas.add(string);            
         }
         for (String string :cena) {
-            mostrarPlato.get(cont).cenas.add(string);            
+            mostrarMenu.get(cont).cenas.add(string);            
         }
         for (String string :Almuerzo) {
-            mostrarPlato.get(cont).almuerzos.add(string);
+            mostrarMenu.get(cont).almuerzos.add(string);
         }
     }
    
@@ -108,11 +118,11 @@ public class archivoMenus {
    }
    
     public static void Modificacion() {
-        if (mostrarPlato.isEmpty()|| modificar.isEmpty()){
+        if (mostrarMenu.isEmpty()|| modificar.isEmpty()){
             JOptionPane.showMessageDialog(null, "Elemeto se encuentra vacio");
         }else{
            for (menusCarga carga : modificar) {
-                for (menusCarga modifica : mostrarPlato) {
+                for (menusCarga modifica : mostrarMenu) {
                     if (carga.Dia.equals(modifica.getDia())){
                         modifica.setAlmuerzos(carga.almuerzos);
                         modifica.setBebidas(carga.bebidas);
@@ -126,7 +136,7 @@ public class archivoMenus {
     
     public static  void archivoCrear(){
         borrar(nuevo);
-        crear(mostrarPlato);
+        crear(mostrarMenu);
     }
     
     public static void borrar (File Ffichero){
@@ -136,12 +146,10 @@ public class archivoMenus {
             if(Ffichero.exists())
             {
                 Ffichero.delete();
-                System.out.println("Fichero Borrado");
             }
 
         }catch(Exception e)
         {
-            System.out.println(e);
         }
     }
     
@@ -161,7 +169,7 @@ public class archivoMenus {
 }
 
     public static ArrayList<menusCarga> getMostrarPlato() {
-        return mostrarPlato;
+        return mostrarMenu;
     }
     
 }
