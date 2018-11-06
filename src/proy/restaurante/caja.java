@@ -5,30 +5,33 @@
  */
 package proy.restaurante;
 
+import codigo.boton;
 import interfaces_caja.pago_efectivo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import static proy.restaurante.caja.boton;
+
+
 
 /**
  *
  * @author Juan Diego
  */
-public final class caja extends javax.swing.JFrame implements ActionListener{
+public final class caja extends javax.swing.JFrame{
     
     public void crea_mesas(){
         cant_mesas=Interfaces_administrador.mesas.num_mesas;
     }
     
-    public ArrayList<JButton> botones= new ArrayList();
+    public ArrayList<boton> botones= new ArrayList();
     public short indice;
     public short cont=1;
     public int cant_mesas;
-    public static JButton boton;
+    public static boton boton;
     /**
      * Creates new form caja
      */
@@ -42,17 +45,23 @@ public final class caja extends javax.swing.JFrame implements ActionListener{
     
     public void espacio_mesas(){
         while(cont<=cant_mesas){
-            Listener_caja listener=new Listener_caja();
-            boton=new JButton();
-            ImageIcon icono=new ImageIcon("mesas.jpg");
-            byte altura=(byte) new ImageIcon("mesas.jpg").getIconHeight();
-            byte ancho=(byte) new ImageIcon("mesas.jpg").getIconWidth();
-            boton.setBounds(altura, ancho, altura, ancho);
-            boton.setIcon(icono);
-            boton.addActionListener(listener);
-            
+            //ImageIcon icono=new ImageIcon("mesas.jpg");
+            boton=new boton(indice);
             mesas_caja.add(boton);
-            botones.add(boton);
+            botones.add(boton);            
+            boton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //System.out.println(boton.getClass().get);
+                }
+            });
+            //byte altura=(byte) new ImageIcon("mesas.jpg").getIconHeight();
+            //byte ancho=(byte) new ImageIcon("mesas.jpg").getIconWidth();
+            //boton.setBounds(altura, ancho, altura, ancho);
+            //boton.setIcon(icono);
+            //boton.addActionListener(listener);
+            
+            
             indice++;
             mesas_caja.updateUI();
             cont++;
@@ -125,12 +134,9 @@ public final class caja extends javax.swing.JFrame implements ActionListener{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 615, Short.MAX_VALUE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 741, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -165,8 +171,8 @@ public final class caja extends javax.swing.JFrame implements ActionListener{
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(facturar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
+            .addComponent(jSeparator1)
         );
 
         pack();
@@ -191,40 +197,6 @@ public final class caja extends javax.swing.JFrame implements ActionListener{
         }
     }//GEN-LAST:event_facturarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new caja().setVisible(true);
-            
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton facturar;
     private javax.swing.JLabel jLabel1;
@@ -237,8 +209,4 @@ public final class caja extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JPanel mesas_caja;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

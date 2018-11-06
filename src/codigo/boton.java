@@ -13,25 +13,20 @@ import javax.swing.Icon;
  * @author Juan Diego
  */
 public class boton extends  javax.swing.JButton{
+    
+    int numero;
 
-    public boton() {
-       
+    public boton(int numero) {
+        this.numero = numero;
     }
 
-    public boton(Icon icon) {
-        super(icon);
+    public int getNumero() {
+        return numero;
     }
 
-    public boton(String text) {
-        super(text);
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
-
-    public boton(Action a) {
-        super(a);
-    }
-
-    public boton(String text, Icon icon) {
-        super(text, icon);
-    }
+    
     
 }
