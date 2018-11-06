@@ -75,11 +75,6 @@ public class menuDia extends javax.swing.JPanel {
                 primerAlmuerzoMouseClicked(evt);
             }
         });
-        primerAlmuerzo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                primerAlmuerzoActionPerformed(evt);
-            }
-        });
 
         segundoAlmuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
         segundoAlmuerzo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -193,7 +188,7 @@ public class menuDia extends javax.swing.JPanel {
                                 .addComponent(primerAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(segundoAlmuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tercerAlmuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(173, 173, 173)
+                .addGap(170, 170, 170)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel9))
@@ -205,7 +200,7 @@ public class menuDia extends javax.swing.JPanel {
                     .addComponent(segundaBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(trecerBebida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(postreUno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 27, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,10 +327,6 @@ public class menuDia extends javax.swing.JPanel {
         
         //codigo.archivoMenus.añadirModificacion(tipo, almuerzo, cena, Bebidas, Postre);
     }//GEN-LAST:event_editar_platoActionPerformed
-
-    private void primerAlmuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primerAlmuerzoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_primerAlmuerzoActionPerformed
     
     private void actualizar(){
         codigo.archivoPlatos.mostrar();

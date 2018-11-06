@@ -10,10 +10,10 @@ import interfaces_caja.pago_efectivo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import static proy.restaurante.caja.boton;
 
 
 
@@ -28,10 +28,10 @@ public final class caja extends javax.swing.JFrame{
     }
     
     public ArrayList<boton> botones= new ArrayList();
-    public short indice;
+    public int indice;
     public short cont=1;
     public int cant_mesas;
-    public static boton boton;
+    public boton boton;
     /**
      * Creates new form caja
      */
@@ -45,22 +45,22 @@ public final class caja extends javax.swing.JFrame{
     
     public void espacio_mesas(){
         while(cont<=cant_mesas){
-            //ImageIcon icono=new ImageIcon("mesas.jpg");
-            boton=new boton(indice);
+            ImageIcon icono=new ImageIcon("src/imagenes/iconoMesa.png");
+            boton=new boton(indice,false, "mesa "+String.valueOf(indice), icono);
             mesas_caja.add(boton);
             botones.add(boton);            
-            boton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    //System.out.println(boton.getClass().get);
-                }
-            });
-            //byte altura=(byte) new ImageIcon("mesas.jpg").getIconHeight();
-            //byte ancho=(byte) new ImageIcon("mesas.jpg").getIconWidth();
-            //boton.setBounds(altura, ancho, altura, ancho);
-            //boton.setIcon(icono);
-            //boton.addActionListener(listener);
+           // boton.addActionListener(new ActionListener() {
+               // @Override
+                //public void actionPerformed(ActionEvent e) {
+                  //  System.out.println(boton.getNumero());
+                //}
+            /*//});/*
+            byte altura=(byte) new ImageIcon("src/Imágenes/mesa.jpg").getIconHeight();
+            byte ancho=(byte) new ImageIcon("src/Imágenes/mesa.jpg").getIconWidth();
+            boton.setBounds(altura, ancho, altura, ancho);
             
+            //boton.addActionListener(listener);
+            */
             
             indice++;
             mesas_caja.updateUI();
