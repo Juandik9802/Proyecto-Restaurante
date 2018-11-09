@@ -44,14 +44,11 @@ public class boton extends  javax.swing.JButton implements ActionListener{
     public void setEstadoMesa(boolean estadoMesa) {
         this.estadoMesa = estadoMesa;
     }
-
-    
     
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("mesa "+numeroMesa);
         this.setBackground(Color.red);
-    }
-
-    
+        //proy.restaurante.caja.class.
+    }   
 }

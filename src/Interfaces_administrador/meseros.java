@@ -34,6 +34,8 @@ public static String nom_mesero;
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         codigo_mesero = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setLayout(null);
@@ -52,7 +54,7 @@ public static String nom_mesero;
 
         aceptar_meseros.setText("aceptar");
         add(aceptar_meseros);
-        aceptar_meseros.setBounds(40, 180, 150, 40);
+        aceptar_meseros.setBounds(60, 270, 150, 40);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/meseros-1.png"))); // NOI18N
         add(jLabel3);
@@ -60,9 +62,15 @@ public static String nom_mesero;
 
         jLabel2.setText("Codigo");
         add(jLabel2);
-        jLabel2.setBounds(20, 130, 160, 14);
+        jLabel2.setBounds(10, 150, 160, 30);
         add(codigo_mesero);
-        codigo_mesero.setBounds(130, 110, 140, 30);
+        codigo_mesero.setBounds(130, 150, 140, 30);
+        add(jTextField1);
+        jTextField1.setBounds(130, 100, 140, 30);
+
+        jLabel4.setText("Apellido del mesero");
+        add(jLabel4);
+        jLabel4.setBounds(10, 104, 110, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nombre_meseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_meseroActionPerformed
@@ -80,6 +88,8 @@ public static String nom_mesero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField nombre_mesero;
     // End of variables declaration//GEN-END:variables
 }

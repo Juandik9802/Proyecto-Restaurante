@@ -5,6 +5,7 @@
  */
 package codigo;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -115,6 +116,7 @@ public class archivoMenus {
    public static void crearModificacion(){
        Modificacion();
        archivoCrear();
+       modificar.clear();
    }
    
     public static void Modificacion() {
@@ -152,23 +154,39 @@ public class archivoMenus {
         }
     }
     
-    public static String leerArchivo(){
-    String cadena = null;
-    FileReader entrada;
-    try {
-        entrada = new FileReader("src/ficheros/Menu.txt");
-        int c;
-        while((c = entrada.read()) != -1){
-            cadena += (char)c;
-        }
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, "Error al leer archivo: "+e.getMessage());
-    }
-    return cadena;
-}
-
-    public static ArrayList<menusCarga> getMostrarPlato() {
-        return mostrarMenu;
-    }
     
+    public static void llenarArray(){    
+        File archivo;  //apuntar al archivo almancenado DD
+        FileReader contenido = null ;  //acceder a todo el contenido del archivo
+        BufferedReader linea ; //accede linea a linea al contenido
+        try {
+            String Dia;
+            archivo = new File("src/ficheros/Menu.txt");
+            contenido = new FileReader(archivo);
+            linea = new BufferedReader(contenido);
+            String cadena; 
+            while((cadena=linea.readLine()) != null){
+                ArrayList<String> Almuerzo =new ArrayList(); ArrayList<String> cena = new ArrayList(); ArrayList<String> bebida = new ArrayList(); 
+                ArrayList<String> postre = new ArrayList();
+                String dato[] = cadena.split(";");
+                Dia=dato[0];
+                for (int i = 1; i <= 3; i++) {
+                    Almuerzo.add(dato[i]);
+                }
+                for (int i = 4; i <= 7; i++) {
+                    cena.add(dato[i]);
+                }
+                for (int i = 8; i <= 10; i++) {
+                    bebida.add(dato[i]);
+                }
+                for (int i = 11; i <13; i++) {
+                    postre.add(dato[i]);
+                }
+                añadirMenu(Dia, Almuerzo, cena, bebida, postre);
+            }   
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al leer archivo: "+e.getMessage());
+        }
+    }
+
 }
