@@ -9,12 +9,12 @@ package codigo;
  *
  * @author Juan Diego
  */
-public class meseros {
+public class datosMesero {
     private String nombre;
     private String apellido;
     private int codigo;
 
-    public meseros(String nombre, String apellido, int codigo) {
+    public datosMesero(String nombre, String apellido, int codigo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.codigo = codigo;

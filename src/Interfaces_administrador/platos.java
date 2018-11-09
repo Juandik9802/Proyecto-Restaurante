@@ -239,8 +239,8 @@ public class platos extends javax.swing.JPanel {
     }//GEN-LAST:event_agregarPorcionActionPerformed
 
     private void tomarPlatilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tomarPlatilloActionPerformed
-        if (comidas.getSelectedItem()=="Seleccionar"||nombrePlato.getText()==""||precioPlato.getText()==""){
-            JOptionPane.showMessageDialog(null, "Error de Seleccion");
+        if (comidas.getSelectedItem()=="Seleccionar"||nombrePlato.getText().equals("")||precioPlato.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Complete todos los campos");
         }else{
             nombre=nombrePlato.getText();
             precio=Integer.parseInt(precioPlato.getText());

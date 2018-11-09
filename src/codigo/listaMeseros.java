@@ -5,8 +5,6 @@
  */
 package codigo;
 
-import static codigo.archivoMenus.añadirMenu;
-import static codigo.archivoMenus.mostrarMenu;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -21,20 +19,20 @@ import javax.swing.JOptionPane;
  * @author Juan Diego
  */
 public class listaMeseros {
-    private static ArrayList<meseros> meseros = new ArrayList();
+    private static ArrayList<datosMesero> meseros = new ArrayList();
     
     public static void añadirMesero(String nombre,String apellido,int codigo){
-        meseros.add(new meseros(nombre,apellido,codigo));        
+        meseros.add(new datosMesero(nombre,apellido,codigo));        
     }
     
-    private static void crear(){        
+    public  static void crear(){        
         FileWriter fichero = null;  //objeto principal (archivo)
         PrintWriter linea;   //objeto de contenido de archivo
         try{
             fichero = new FileWriter("src/ficheros/Meseros.txt",true); //crea el archivo 
             linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
             // Inicia           
-                String cadena=meseros.get(meseros.size()-1).getNombre()+";"+meseros.get(meseros.size()-1).getNombre()+";"+meseros.get(meseros.size()-1).getCodigo()+";";
+                String cadena=meseros.get(meseros.size()-1).getCodigo()+";"+meseros.get(meseros.size()-1).getNombre()+";"+meseros.get(meseros.size()-1).getApellido()+";";
                 linea.println(cadena);                        
              //escribiendo en el archivo            
       }catch(IOException e){
@@ -55,7 +53,7 @@ public class listaMeseros {
         File archivo;  //apuntar al archivo almancenado DD
         FileReader contenido = null ;  //acceder a todo el contenido del archivo
         BufferedReader linea ; //accede linea a linea al contenido
-        try {
+        try { 
             String nombre,apellido;
             int codigo;
             archivo = new File("src/ficheros/Meseros.txt");
@@ -64,18 +62,31 @@ public class listaMeseros {
             String cadena; 
             while((cadena=linea.readLine()) != null){
                 String dato[] = cadena.split(";");
-                nombre=dato[0];
-                apellido=dato[1];
-                codigo=Integer.parseInt(dato[2]);
+                codigo=Integer.parseInt(dato[0]);
+                nombre=dato[1];
+                apellido=dato[2];                
                 añadirMesero(nombre,apellido,codigo);
-            }   
-        } catch (IOException e) {
+            } 
+        }catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al leer archivo: "+e.getMessage());
+        }catch (Exception e) {
+            //JOptionPane.showMessageDialog(null, "Error al leer archivo: "+e.getMessage());
+        }
+        for (datosMesero mesero : meseros) {
+            System.out.println(mesero.getCodigo()+" codigo");
         }
     }
     
-     public static void añadirMenu(String nombre,String apellido,int codigo){
-        meseros.add(new meseros(nombre,apellido,codigo));
+    public static boolean isCodigo(int codigo){
+        boolean existe=false;
+        for (datosMesero mesero : meseros) {
+            System.out.println(mesero.getCodigo()+" "+codigo);
+           if (mesero.getCodigo()==codigo){
+               existe=true;
+           } 
+        }
+        return existe;
     }
+    
 }
 
