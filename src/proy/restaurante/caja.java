@@ -10,6 +10,8 @@ import interfaces_caja.pago_efectivo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -24,7 +26,7 @@ import javax.swing.JOptionPane;
 public final class caja extends javax.swing.JFrame{
     
     public void crea_mesas(){
-        cant_mesas=Interfaces_administrador.mesas.num_mesas;
+        cant_mesas=codigo.archivoGeneral.buscar();
     }
     
     public ArrayList<boton> botones= new ArrayList();
@@ -32,6 +34,7 @@ public final class caja extends javax.swing.JFrame{
     public short cont=1;
     public int cant_mesas;
     public boton boton;
+    
     /**
      * Creates new form caja
      */
@@ -41,6 +44,7 @@ public final class caja extends javax.swing.JFrame{
         indice=1;
         crea_mesas();
         espacio_mesas();
+       
     }
     
     public void espacio_mesas(){
@@ -48,19 +52,7 @@ public final class caja extends javax.swing.JFrame{
             ImageIcon icono=new ImageIcon("src/imagenes/iconoMesa.png");
             boton=new boton(indice,false, "mesa "+String.valueOf(indice), icono);
             mesas_caja.add(boton);
-            botones.add(boton);            
-           // boton.addActionListener(new ActionListener() {
-               // @Override
-                //public void actionPerformed(ActionEvent e) {
-                  //  System.out.println(boton.getNumero());
-                //}
-            /*//});/*
-            byte altura=(byte) new ImageIcon("src/Imágenes/mesa.jpg").getIconHeight();
-            byte ancho=(byte) new ImageIcon("src/Imágenes/mesa.jpg").getIconWidth();
-            boton.setBounds(altura, ancho, altura, ancho);
-            
-            //boton.addActionListener(listener);
-            */
+            botones.add(boton); 
             
             indice++;
             mesas_caja.updateUI();

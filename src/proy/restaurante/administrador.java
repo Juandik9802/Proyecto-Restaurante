@@ -21,10 +21,12 @@ public class administrador extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         Abrir_panel1();
-        Abrir_panel2();
+        Abrir_panel6();
         Abrir_panel3();
-        Abrir_panel4();
         Abrir_panel5();
+        Abrir_panel7();
+        Abrir_panel4();
+        Abrir_panel2();
         
     }
     mesas panel1;
@@ -32,6 +34,8 @@ public class administrador extends javax.swing.JFrame {
     Informes panel2;
     meseros panel3;
     platos plato;
+    muestraMenuSemana menu;
+    InterfasListaMeseros listamesero;
     
     private String vp1="0";
     private String vp2="0";
@@ -51,7 +55,7 @@ public class administrador extends javax.swing.JFrame {
     private void Abrir_panel4(){
         if(vp4.equals("0")){
         panel4=new Interfaces_administrador.menu();
-        principal.addTab("Menus", panel4);
+        principal.addTab("Creacion de Menu", panel4);
         //principal.setSelectedComponent(panel4);
         }else{
         principal.setSelectedComponent(panel4);
@@ -71,7 +75,7 @@ public class administrador extends javax.swing.JFrame {
     private void Abrir_panel3(){
         if(vp3.equals("0")){
         panel3=new Interfaces_administrador.meseros();
-        principal.addTab("Cantidad de meseros", panel3);
+        principal.addTab("Añadir Mesero", panel3);
         //principal.setSelectedComponent(panel3);
         }else{
         principal.setSelectedComponent(panel3);
@@ -126,12 +130,28 @@ public class administrador extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        administrador obt =new administrador();
-        obt.setVisible(true);
-        
-    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane principal;
     // End of variables declaration//GEN-END:variables
+    String vpl6="0";
+    private void Abrir_panel6() {
+        if(vpl6.equals("0")){
+            listamesero=new InterfasListaMeseros();
+            principal.addTab("Lista de Meseros", listamesero);
+        }else{
+            principal.setSelectedComponent(panel1);
+        }
+        vpl6="1";
+    }
+    String vpl7="0";
+    private void Abrir_panel7() {
+        if(vpl7.equals("0")){
+            menu=new muestraMenuSemana();
+            principal.addTab("Ver menu", menu);
+        }else{
+            principal.setSelectedComponent(menu);
+        }
+        vpl7="1";
+    }
 }

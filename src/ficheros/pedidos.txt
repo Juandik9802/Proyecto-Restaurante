@@ -1,3 +1,6 @@
-2;Bandeja Paisa;Pony Malta;Tarta;;
-2;Ternera a la llanera;colombiana;Tarta;;
-2;Mazamorra ;Pepsy;Tarta;;
+1;Bandeja Paisa;colombiana;Tarta;--Seleccionar--;--Seleccionar--;12000;22;39;false;true;
+10;Bandeja Paisa;colombiana;Tarta;--Seleccionar--;--Seleccionar--;12000;22;39;false;true;
+10;Bandeja Paisa;colombiana;Tarta;--Seleccionar--;--Seleccionar--;12000;22;40;false;true;
+10;Bandeja Paisa;colombiana;Tarta;--Seleccionar--;--Seleccionar--;12000;22;40;false;true;
+10;Bandeja Paisa;colombiana;Tarta;--Seleccionar--;--Seleccionar--;12000;22;40;false;true;
+7;Bandeja Paisa;colombiana;Tarta;--Seleccionar--;--Seleccionar--;12000;22;40;false;true;

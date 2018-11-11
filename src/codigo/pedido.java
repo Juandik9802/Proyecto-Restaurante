@@ -10,16 +10,18 @@ package codigo;
  * @author Juan Diego
  */
 public class pedido {
-    int numMesas;
-    String plato;
-    String bebida;
-    String Postre;
-    String añadirPorcion;
-    String quitarPotcion;
-    int precio;
-    String fecha;
+    private int numMesas;
+    private String plato;
+    private String bebida;
+    private String Postre;
+    private String añadirPorcion;
+    private String quitarPotcion;
+    private int precio;
+    private String fecha;
+    private boolean entregado;
+    private boolean estado;
 
-    public pedido(int numMesas, String plato, String bebida, String Postre, String añadirPorcion, String quitarPotcion, int precio, String fecha) {
+    public pedido(int numMesas, String plato, String bebida, String Postre, String añadirPorcion, String quitarPotcion, int precio, String fecha, boolean entregado, boolean estado) {
         this.numMesas = numMesas;
         this.plato = plato;
         this.bebida = bebida;
@@ -28,6 +30,8 @@ public class pedido {
         this.quitarPotcion = quitarPotcion;
         this.precio = precio;
         this.fecha = fecha;
+        this.entregado = entregado;
+        this.estado = estado;
     }
 
     public int getNumMesas() {
@@ -93,4 +97,22 @@ public class pedido {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    public boolean isEntregado() {
+        return entregado;
+    }
+
+    public void setEntregado(boolean entregado) {
+        this.entregado = entregado;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    
 }

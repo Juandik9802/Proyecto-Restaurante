@@ -503,7 +503,7 @@ public class menuSemana extends javax.swing.JPanel {
             cargarArryList(); 
             archivo.añadirMenu("Sabado", almuerzo, cena, Bebidas, Postre);
             almuerzo.clear();cena.clear();Bebidas.clear();Postre.clear();
-            dia.setText("Domindo");
+            dia.setText("Domingo");
         }
         if (intento==7){
             

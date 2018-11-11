@@ -55,7 +55,7 @@ public static String nom_mesero,apellido;
         add(nombre_mesero);
         nombre_mesero.setBounds(130, 50, 140, 30);
 
-        aceptar_meseros.setText("aceptar");
+        aceptar_meseros.setText("Aceptar");
         aceptar_meseros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptar_meserosActionPerformed(evt);

@@ -106,8 +106,8 @@ public class archivoPlatos {
                 if(dato[1].equals(filtro)){
                     retorno=dato[2];  
                 }
-                
-            }
+    
+ }
          }catch(IOException e){
            System.out.print("Error creando archivo");
         }
@@ -122,5 +122,4 @@ public class archivoPlatos {
         }
     return retorno;
     }
-   
 }

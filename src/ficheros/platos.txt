@@ -1,4 +1,5 @@
-Bebidas;colombiana;2500;Almuerzo;Ternera a la llanera;2500;carne;papa;yuca;platano;
+Bebidas;colombiana;2500;
+Almuerzo;Ternera a la llanera;2500;carne;papa;yuca;platano;
 Almuerzo;Bandeja Paisa;12000;huevo;arepa;arroz;frijoles;
 Almuerzo;Ternera a la llanera;20000;carne;opapa;yuca;
 Almuerzo;Mazamorra ;6000;

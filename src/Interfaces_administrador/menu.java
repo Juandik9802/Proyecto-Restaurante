@@ -38,7 +38,7 @@ public class menu extends javax.swing.JPanel {
         icono_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/menu.png"))); // NOI18N
 
         gruposMenu.add(menuDia);
-        menuDia.setText("Menu Dia");
+        menuDia.setText("Editar menu de un Dia");
         menuDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuDiaActionPerformed(evt);
@@ -46,7 +46,7 @@ public class menu extends javax.swing.JPanel {
         });
 
         gruposMenu.add(menuSemana);
-        menuSemana.setText("Menu Semana");
+        menuSemana.setText("Crear Menu de la semana");
         menuSemana.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSemanaActionPerformed(evt);
@@ -60,17 +60,17 @@ public class menu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(icono_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(menuDia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
-                        .addComponent(menuSemana)
-                        .addGap(127, 127, 127))
-                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(contenedorMenus)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(menuSemana)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
+                        .addComponent(menuDia)
+                        .addGap(91, 91, 91))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,9 +81,9 @@ public class menu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(menuDia)
-                    .addComponent(menuSemana))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(menuSemana)
+                    .addComponent(menuDia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(contenedorMenus))
         );
     }// </editor-fold>//GEN-END:initComponents

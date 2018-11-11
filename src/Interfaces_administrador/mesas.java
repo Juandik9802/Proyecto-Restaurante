@@ -5,6 +5,8 @@
  */
 package Interfaces_administrador;
 
+import java.io.File;
+
 /**
  *
  * @author josep
@@ -38,6 +40,12 @@ public class mesas extends javax.swing.JPanel {
         jLabel1.setText("Cantidad de mesas:");
         add(jLabel1);
         jLabel1.setBounds(20, 90, 130, 20);
+
+        cantidad_Mesas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cantidad_MesasKeyTyped(evt);
+            }
+        });
         add(cantidad_Mesas);
         cantidad_Mesas.setBounds(150, 80, 230, 30);
 
@@ -54,11 +62,22 @@ public class mesas extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(230, 70, 590, 310);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    File file =new File ("src/ficheros/mesas.txt");
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         String numero=null;
         num_mesas=Integer.parseInt(cantidad_Mesas.getText());
+        if(file.exists()){
+            codigo.archivoGeneral.archivoCrear(num_mesas);
+        }else{
+            codigo.archivoGeneral.crear(num_mesas);
+        }
     }//GEN-LAST:event_aceptarActionPerformed
+
+    private void cantidad_MesasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidad_MesasKeyTyped
+        char c =evt.getKeyChar();
+        if (c<'0'||c>'9')evt.consume();
+    }//GEN-LAST:event_cantidad_MesasKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

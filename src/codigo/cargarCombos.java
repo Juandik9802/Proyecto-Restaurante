@@ -11,7 +11,7 @@ package codigo;
  */
 public class cargarCombos {
     String tipo,nombre;
-
+    
     public cargarCombos(String tipo, String nombre) {
         this.tipo = tipo;
         this.nombre = nombre;

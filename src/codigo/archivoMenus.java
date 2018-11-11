@@ -173,13 +173,13 @@ public class archivoMenus {
                 for (int i = 1; i <= 3; i++) {
                     Almuerzo.add(dato[i]);
                 }
-                for (int i = 4; i <= 7; i++) {
+                for (int i = 4; i < 7; i++) {
                     cena.add(dato[i]);
                 }
-                for (int i = 8; i <= 10; i++) {
+                for (int i = 7; i < 10; i++) {
                     bebida.add(dato[i]);
                 }
-                for (int i = 11; i <13; i++) {
+                for (int i = 10; i <13; i++) {
                     postre.add(dato[i]);
                 }
                 añadirMenu(Dia, Almuerzo, cena, bebida, postre);

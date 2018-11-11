@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * @author Juan Diego
  */
 public class listaMeseros {
-    private static ArrayList<datosMesero> meseros = new ArrayList();
+    public static ArrayList<datosMesero> meseros = new ArrayList();
     
     public static void añadirMesero(String nombre,String apellido,int codigo){
         meseros.add(new datosMesero(nombre,apellido,codigo));        
@@ -72,15 +72,11 @@ public class listaMeseros {
         }catch (Exception e) {
             //JOptionPane.showMessageDialog(null, "Error al leer archivo: "+e.getMessage());
         }
-        for (datosMesero mesero : meseros) {
-            System.out.println(mesero.getCodigo()+" codigo");
-        }
     }
     
     public static boolean isCodigo(int codigo){
         boolean existe=false;
         for (datosMesero mesero : meseros) {
-            System.out.println(mesero.getCodigo()+" "+codigo);
            if (mesero.getCodigo()==codigo){
                existe=true;
            } 
