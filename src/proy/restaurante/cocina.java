@@ -210,4 +210,15 @@ public class cocina extends javax.swing.JFrame {
     }
     
 }
-;
+/*
+SDCDSFGDNJKJDNFVKNDFKJVNFDJKVN
+KJDBVKJCBDJVBAKJVBKJCHVDJV
+DJHFUDHFJHDJFHKJDHFIU
+HDSJHFJDHJFHJSDHSFJDF
+DHFJHJDHFJdhsfhsbdfhd
+dnfjhdjfhdjshfjdshjdhfh
+ndjhfjdhfjdhfjd
+
+
+
+*/
