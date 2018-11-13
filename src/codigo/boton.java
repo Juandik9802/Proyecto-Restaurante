@@ -5,6 +5,7 @@
  */
 package codigo;
 
+import interfaces_caja.verPedido;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -63,8 +64,8 @@ public class boton extends  javax.swing.JButton implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("hola");
-        //proy.restaurante.caja.
+        verPedido ver=new verPedido(this.numeroMesa);
+        ver.setVisible(true);
     } 
     
     private void estado(){
