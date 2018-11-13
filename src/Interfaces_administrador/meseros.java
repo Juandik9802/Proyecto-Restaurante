@@ -90,7 +90,7 @@ public static String nom_mesero,apellido;
 
         jLabel4.setText("Apellido del mesero");
         add(jLabel4);
-        jLabel4.setBounds(10, 104, 110, 20);
+        jLabel4.setBounds(10, 104, 120, 20);
     }// </editor-fold>//GEN-END:initComponents
 /***
  * 
