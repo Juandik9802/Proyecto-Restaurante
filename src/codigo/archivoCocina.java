@@ -8,9 +8,7 @@ package codigo;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -18,48 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author Juan Diego
  */
-public class archivoPedido {
-    private static FileWriter archivo_pedidos=null;
-    private static PrintWriter linea=null;
-    public static ArrayList<pedido> pedidos=new ArrayList();
-    
-    public static void crear(){
-        String pedido;
-        int cont=pedidos.size()-1;
-        try {
-            archivo_pedidos= new FileWriter("src/ficheros/pedidos.txt",true);
-            linea=new PrintWriter(archivo_pedidos);
-            pedido=pedidos.get(cont).getNumMesas()+";"+pedidos.get(cont).getPlato()+";"+pedidos.get(cont).getBebida()+";"+pedidos.get(cont).getPostre()+";"+pedidos.get(cont).getAñadirPorcion()+";"+pedidos.get(cont).getQuitarPotcion()+";"+pedidos.get(cont).getPrecio()+";"+pedidos.get(cont).getFecha()+";"+pedidos.get(cont).isEntregado()+";"+pedidos.get(cont).isEstado()+";";
-            linea.println(pedido);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Error creando el archivo");
-        } finally{
-            try{
-                if(archivo_pedidos != null){
-                    archivo_pedidos.close();
-                }
-            }catch(IOException e1){
-                    JOptionPane.showMessageDialog(null, "Error cerrando el archivo");
-            }
-        }
-        try {
-            archivo_pedidos= new FileWriter("src/ficheros/cocina.txt",true);
-            linea=new PrintWriter(archivo_pedidos);
-            pedido=pedidos.get(cont).getNumMesas()+";"+pedidos.get(cont).getPlato()+";"+pedidos.get(cont).getBebida()+";"+pedidos.get(cont).getPostre()+";"+pedidos.get(cont).getAñadirPorcion()+";"+pedidos.get(cont).getQuitarPotcion()+";"+pedidos.get(cont).getPrecio()+";"+pedidos.get(cont).getFecha()+";"+pedidos.get(cont).isEntregado()+";"+pedidos.get(cont).isEstado()+";";
-            linea.println(pedido);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Error creando el archivo");
-        } finally{
-            try{
-                if(archivo_pedidos != null){
-                    archivo_pedidos.close();
-                }
-            }catch(IOException e1){
-                    JOptionPane.showMessageDialog(null, "Error cerrando el archivo");
-            }
-        }
-    }
-    
+public class archivoCocina {
     public static void añadirArray(int numMesas, String plato, String bebida, String Postre, String añadirPorcion, String quitarPotcion, int precio, String fecha, boolean entregado,boolean estado){
         pedidos.add(new pedido(numMesas,plato,bebida,Postre,añadirPorcion,quitarPotcion,precio,fecha,entregado,estado));
     }
@@ -72,7 +29,7 @@ public class archivoPedido {
             int numeroMesa,precio;
             String nombre,bebida,postre,añadir,quitar,hora;
             boolean entrega,estado;
-            archivo = new File("src/ficheros/pedidos.txt");
+            archivo = new File("src/ficheros/cocina.txt");
             contenido = new FileReader(archivo);
             linea = new BufferedReader(contenido);
             String cadena; 
@@ -101,7 +58,7 @@ public class archivoPedido {
         FileReader contenido = null ;  //acceder a todo el contenido del archivo
         BufferedReader linea ; //accede linea a linea al contenido
         try{
-            archivo = new File("src/ficheros/pedidos.txt");
+            archivo = new File("src/ficheros/cocina.txt");
             contenido = new FileReader(archivo);
             linea = new BufferedReader(contenido);
             String cadena; //variable captura los datos del archivo
@@ -138,4 +95,6 @@ public class archivoPedido {
             }
         }
     }
+    
+    public static ArrayList<pedido> pedidos=new ArrayList();
 }

@@ -196,6 +196,9 @@ public class pedido extends javax.swing.JPanel {
                 hora=hora+";"+String.valueOf(calendario.get(Calendar.MINUTE));
                 codigo.archivoPedido.añadirArray(Integer.parseInt(numero_mesa.getText()),(String)combo_platos.getSelectedItem(),(String)comboBebidas.getSelectedItem(),(String)comboPostres.getSelectedItem(),
                 (String)añadir.getSelectedItem(), (String)quitar.getSelectedItem(), Integer.parseInt(codigo.archivoPlatos.buscar((String)combo_platos.getSelectedItem())), hora,false,true);
+                codigo.archivoCocina.añadirArray(Integer.parseInt(numero_mesa.getText()),(String)combo_platos.getSelectedItem(),(String)comboBebidas.getSelectedItem(),(String)comboPostres.getSelectedItem(),
+                (String)añadir.getSelectedItem(), (String)quitar.getSelectedItem(), Integer.parseInt(codigo.archivoPlatos.buscar((String)combo_platos.getSelectedItem())), hora,false,true);
+                
                 codigo.archivoPedido.crear();
                 int contador=codigo.archivoPedido.pedidos.size()-1;
                 model.insertRow(cont, new Object[]{});

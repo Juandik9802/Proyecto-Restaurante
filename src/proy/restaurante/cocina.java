@@ -174,36 +174,28 @@ public class cocina extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    ArrayList<codigo.pedido> lista= new ArrayList();
+    
+    DefaultListModel listModel;
     public void buscarPedidos(){
-      //Crear un objeto DefaultListModel
-     DefaultListModel listModel = new DefaultListModel();
-     for(int i=0; i<=pedido; i++){
-     listModel.addElement("Mesa:"+codigo.archivoPedido.pedidos.get(i).getNumMesas()+" : "+codigo.archivoPedido.pedidos.get(i).getPlato());
-     
-     }
-     pendientes.setModel(listModel);
-     
-    /*//Recorrer el contenido del ArrayList
-      for(int i=0; i<codigo.archivoPedido.pedidos.size(); i++) {
-    //Añadir cada elemento del ArrayList en el modelo de la lista
-    listModel.add(i, codigo.archivoPedido.pedidos.get(i).getPlato());
-    }
-    //Asociar el modelo de lista al JList*/
-    //pendientes.setModel(listModel);   
+        //Crear un objeto DefaultListModel
+        listModel = new DefaultListModel();
+        for(int i=0; i<codigo.archivoCocina.pedidos.size(); i++){
+            listModel.addElement("Mesa:"+codigo.archivoPedido.pedidos.get(i).getNumMesas()+" : "+codigo.archivoPedido.pedidos.get(i).getPlato());
+        }
+        pendientes.setModel(listModel);
     }
    
     private void preparandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preparandoActionPerformed
-   
-   
+        listModel.addElement(pendientes.getSelectedValue());
+        preparandoplato.setModel(listModel);
+        codigo.archivoCocina.pedidos.remove(0);
+        listModel.remove(0);
+        //codigo.archivoCocina.lista.remove(0);
     }//GEN-LAST:event_preparandoActionPerformed
 
     private void pendientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendientesMouseClicked
-        // TODO add your handling code here:
-    DefaultListModel listMode2 = new DefaultListModel();   
-    listMode2.addElement(pendientes.getSelectedValue());
-    preparandoplato.setModel(listMode2);
-    listMode2.remove(1);
+       
+    
     }//GEN-LAST:event_pendientesMouseClicked
     
 

@@ -95,7 +95,7 @@ public class archivoMenus {
     * @param bebida
     * @param postre 
     */
-   public static void añadirModificacion(String Dia,ArrayList<String> Almuerzo,ArrayList<String> cena,ArrayList<String> bebida, ArrayList<String> postre){
+    public static void añadirModificacion(String Dia,ArrayList<String> Almuerzo,ArrayList<String> cena,ArrayList<String> bebida, ArrayList<String> postre){
         modificar.add(new menusCarga(Dia));
         int cont=modificar.size()-1;
         for (String string : postre) {

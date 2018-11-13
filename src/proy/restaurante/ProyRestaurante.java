@@ -17,6 +17,7 @@ public class ProyRestaurante {
     static  File pedido=new File("src/ficheros/pedidos.txt");
     static  File mesero=new File("src/ficheros/Meseros.txt");
     static  File general=new File("src/ficheros/ConfiguracionGeneral.txt");
+    static  File cocina=new File("src/ficheros/cocina.txt");
     /**
      * @param args the command line arguments
      */
@@ -28,6 +29,9 @@ public class ProyRestaurante {
             codigo.listaMeseros.llenarArray();
         }if(pedido.exists()){
             codigo.archivoPedido.iniciarArray();
+        }
+        if(cocina.exists()){
+            codigo.archivoCocina.iniciarArray();
         }
         Principal obt =new Principal();
         obt.setVisible(true);
