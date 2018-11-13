@@ -58,7 +58,7 @@ public class mesas extends javax.swing.JPanel {
         add(aceptar);
         aceptar.setBounds(80, 160, 200, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/mesa.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mesa.png"))); // NOI18N
         add(jLabel3);
         jLabel3.setBounds(230, 70, 590, 310);
     }// </editor-fold>//GEN-END:initComponents

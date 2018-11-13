@@ -95,7 +95,7 @@ public class platos extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         jLabel5.setText("Comidas");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/comida.jpg"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/comida.jpg"))); // NOI18N
 
         tomarPlato.setText("Limpiar");
         tomarPlato.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +200,7 @@ public class platos extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -55,7 +55,7 @@ public class Informe_tiempo extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Tiempo.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Tiempo.jpg"))); // NOI18N
 
         jButton1.setText("Imprimir");
 

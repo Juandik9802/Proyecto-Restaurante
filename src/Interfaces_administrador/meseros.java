@@ -64,7 +64,7 @@ public static String nom_mesero,apellido;
         add(aceptar_meseros);
         aceptar_meseros.setBounds(60, 270, 150, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/meseros-1.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/meseros-1.png"))); // NOI18N
         add(jLabel3);
         jLabel3.setBounds(340, 10, 470, 390);
 

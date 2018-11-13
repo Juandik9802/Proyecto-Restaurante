@@ -78,7 +78,7 @@ public class Informe_meseros extends javax.swing.JPanel {
 
         jLabel1.setText("Total:");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/meseros3.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/meseros3.jpg"))); // NOI18N
 
         jButton1.setText("Imprimir");
 

@@ -76,7 +76,7 @@ public static Principal i;
             }
         });
 
-        icono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/1.png"))); // NOI18N
+        icono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

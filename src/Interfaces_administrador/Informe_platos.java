@@ -60,7 +60,7 @@ public class Informe_platos extends javax.swing.JPanel {
 
         jLabel1.setText("Total de platos pedidos en el día:");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Comida_1.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Comida_1.jpg"))); // NOI18N
 
         jLabel3.setText("jLabel3");
 

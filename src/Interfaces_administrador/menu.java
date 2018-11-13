@@ -35,7 +35,7 @@ public class menu extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        icono_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/menu.png"))); // NOI18N
+        icono_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu.png"))); // NOI18N
 
         gruposMenu.add(menuDia);
         menuDia.setText("Editar menu de un Dia");
