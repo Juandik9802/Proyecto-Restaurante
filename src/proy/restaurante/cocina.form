@@ -36,7 +36,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="nombrePlato" min="-2" pref="78" max="-2" attributes="0"/>
-                      <EmptySpace min="151" pref="151" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
                       <Component id="estado" min="-2" pref="94" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane2" min="-2" pref="322" max="-2" attributes="0"/>

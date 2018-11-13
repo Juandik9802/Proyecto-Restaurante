@@ -5,18 +5,38 @@
  */
 package proy.restaurante;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan Diego Pachón
  */
 public class cocina extends javax.swing.JFrame {
-
+    
+    Timer timer;
+    TimerTask tarea;
     /**
      * Creates new form cocina
      */
     public cocina() {
         initComponents();
         this.setLocationRelativeTo(null);
+        tarea =new TimerTask() {
+            @Override
+            public void run() {
+                buscarPedidos();
+                
+            }
+        };
+        timer=new Timer();
+        timer.scheduleAtFixedRate(tarea, 2000, 2000);
     }
 
     /**
@@ -138,7 +158,7 @@ public class cocina extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -161,4 +181,10 @@ public class cocina extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel nombrePlato;
     // End of variables declaration//GEN-END:variables
+    
+    ArrayList<codigo.pedido> lista= new ArrayList();
+    public void buscarPedidos(){
+        
+    }
+    
 }

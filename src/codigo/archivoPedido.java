@@ -72,7 +72,7 @@ public class archivoPedido {
                 hora=dato[7]+";"+dato[8];
                 entrega=Boolean.parseBoolean(dato[9]);
                 estado=Boolean.parseBoolean(dato[10]);
-                añadirArray(numeroMesa, postre, bebida, postre, añadir, quitar, precio, hora, entrega,estado);
+                añadirArray(numeroMesa, nombre, bebida, postre, añadir, quitar, precio, hora, entrega,estado);
             }   
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al leer archivo: "+e.getMessage());
@@ -110,6 +110,16 @@ public class archivoPedido {
                 System.out.print("Error cerrando archivo");
             }
         }
-    return retorno;
+        return retorno;
+    }
+    
+    public static ArrayList<pedido> lista =new ArrayList();
+    public static  void busqueda(int index){
+        for (pedido pedido : pedidos) {
+            int numero=pedido.getNumMesas();
+            if (index==numero){
+                lista.add(new codigo.pedido(pedido.getNumMesas(),pedido.getPlato() , pedido.getBebida(), pedido.getPostre(), pedido.getAñadirPorcion(), pedido.getQuitarPotcion(), pedido.getPrecio(), pedido.getFecha(), pedido.isEntregado(), pedido.isEstado()));
+            }
+        }
     }
 }

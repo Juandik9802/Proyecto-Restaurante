@@ -13,6 +13,7 @@ import java.util.TimerTask;
 import javax.swing.Action;
 import javax.swing.Icon;
 
+
 /**
  *
  * @author Juan Diego
@@ -62,8 +63,8 @@ public class boton extends  javax.swing.JButton implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("mesa "+numeroMesa);        
-        //proy.restaurante.caja.class.
+        System.out.println("hola");
+        //proy.restaurante.caja.
     } 
     
     private void estado(){

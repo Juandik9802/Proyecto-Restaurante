@@ -160,12 +160,9 @@ public static Principal i;
         caja caja = new caja();
         caja.setVisible(true);
     }//GEN-LAST:event_menuParaCajaActionPerformed
-
     /**
      * @param args the command line arguments
-     */
-    
-
+     */ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel icono;
     private javax.swing.JButton menuParaAdmin;

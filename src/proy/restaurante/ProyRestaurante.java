@@ -31,8 +31,6 @@ public class ProyRestaurante {
         }
         Principal obt =new Principal();
         obt.setVisible(true);
-        
-        
     }
     
 }
