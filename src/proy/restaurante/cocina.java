@@ -5,6 +5,7 @@
  */
 package proy.restaurante;
 
+import codigo.pedido;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -53,7 +54,7 @@ public class cocina extends javax.swing.JFrame {
         pendientes = new javax.swing.JList<>();
         nombrePlato = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
+        preparandoplato = new javax.swing.JList<>();
         preparando = new javax.swing.JButton();
         finalizar = new javax.swing.JButton();
         estado = new javax.swing.JLabel();
@@ -61,17 +62,22 @@ public class cocina extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jList4 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        pendientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pendientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(pendientes);
 
         nombrePlato.setText("Plato");
 
-        jScrollPane3.setViewportView(jList3);
+        jScrollPane3.setViewportView(preparandoplato);
 
         preparando.setText("Preparando");
         preparando.addActionListener(new java.awt.event.ActionListener() {
@@ -92,15 +98,7 @@ public class cocina extends javax.swing.JFrame {
 
         jLabel1.setText("Entregados");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane4.setViewportView(jTable1);
+        jScrollPane5.setViewportView(jList4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,63 +114,97 @@ public class cocina extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(nombrePlato, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(151, 151, 151)
-                                .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(130, 130, 130))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(preparando, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(finalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jScrollPane3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(preparando, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(finalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(117, 117, 117))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addComponent(jLabel1)
+                .addContainerGap(117, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(666, 666, 666)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGap(20, 20, 20)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addComponent(Pendientes)
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombrePlato, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(preparando)
-                .addGap(18, 18, 18)
-                .addComponent(finalizar)
-                .addGap(16, 16, 16)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabel1)
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(Pendientes)
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombrePlato, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(preparando)
+                            .addComponent(finalizar))
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jLabel1)))
+                .addGap(82, 82, 82))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(160, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(85, 85, 85)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    ArrayList<codigo.pedido> lista= new ArrayList();
+    public void buscarPedidos(){
+      //Crear un objeto DefaultListModel
+     DefaultListModel listModel = new DefaultListModel();
+     for(int i=0; i<=pedido; i++){
+     listModel.addElement("Mesa:"+codigo.archivoPedido.pedidos.get(i).getNumMesas()+" : "+codigo.archivoPedido.pedidos.get(i).getPlato());
+     
+     }
+     pendientes.setModel(listModel);
+     
+    /*//Recorrer el contenido del ArrayList
+      for(int i=0; i<codigo.archivoPedido.pedidos.size(); i++) {
+    //Añadir cada elemento del ArrayList en el modelo de la lista
+    listModel.add(i, codigo.archivoPedido.pedidos.get(i).getPlato());
+    }
+    //Asociar el modelo de lista al JList*/
+    //pendientes.setModel(listModel);   
+    }
+   
     private void preparandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preparandoActionPerformed
-
+   
+   
     }//GEN-LAST:event_preparandoActionPerformed
+
+    private void pendientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendientesMouseClicked
+        // TODO add your handling code here:
+    DefaultListModel listMode2 = new DefaultListModel();   
+    listMode2.addElement(pendientes.getSelectedValue());
+    preparandoplato.setModel(listMode2);
+    listMode2.remove(1);
+    }//GEN-LAST:event_pendientesMouseClicked
     
 
     /**
@@ -184,41 +216,17 @@ public class cocina extends javax.swing.JFrame {
     private javax.swing.JLabel estado;
     private javax.swing.JButton finalizar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList3;
+    private javax.swing.JList<String> jList4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel nombrePlato;
     private javax.swing.JList<String> pendientes;
     private javax.swing.JButton preparando;
+    private javax.swing.JList<String> preparandoplato;
     // End of variables declaration//GEN-END:variables
     
-    ArrayList<codigo.pedido> lista= new ArrayList();
-    public void buscarPedidos(){
-      //Crear un objeto DefaultListModel
-     DefaultListModel listModel = new DefaultListModel();
-    //Recorrer el contenido del ArrayList
-      for(int i=0; i<codigo.archivoPedido.pedidos.size(); i++) {
-    //Añadir cada elemento del ArrayList en el modelo de la lista
-    listModel.add(i, codigo.archivoPedido.pedidos.get(i).getPlato());
-    }
-    //Asociar el modelo de lista al JList
-    pendientes.setModel(listModel);   
-    }
-    
+        
 }
-/*
-SDCDSFGDNJKJDNFVKNDFKJVNFDJKVN
-KJDBVKJCBDJVBAKJVBKJCHVDJV
-DJHFUDHFJHDJFHKJDHFIU
-HDSJHFJDHJFHJSDHSFJDF
-DHFJHJDHFJdhsfhsbdfhd
-dnfjhdjfhdjshfjdshjdhfh
-ndjhfjdhfjdhfjd
-
-
-
-*/
