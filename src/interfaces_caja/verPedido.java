@@ -8,6 +8,7 @@ package interfaces_caja;
 import codigo.pedido;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,9 +16,11 @@ import javax.swing.table.DefaultTableModel;
  * @author Juan Diego
  */
 public class verPedido extends javax.swing.JFrame {
-    private int numero;
+    private final int numero;
+    public JComboBox jcb;
     /**
      * Creates new form verPedido
+     * @param num
      */
     public verPedido(int num) {
         this.numero=num;
@@ -25,6 +28,7 @@ public class verPedido extends javax.swing.JFrame {
         numeroMesa.setText(String.valueOf(numero));
         iniciarTabla();
         llenarTabla();
+        obtener_tabla();
         codigo.archivoPedido.lista.clear();
                 
     }
@@ -102,11 +106,11 @@ public class verPedido extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String[] list = {"Efectivo", "Targeta de credito", "Targeta de Debito"};
-        JComboBox jcb = new JComboBox(list);
+        jcb = new JComboBox(list);
         jcb.setEditable(true);
         JOptionPane.showMessageDialog( null, jcb, "Tipo de Pago", JOptionPane.QUESTION_MESSAGE);
         if(jcb.getSelectedItem()=="Efectivo"){
-            pago_efectivo efectivo=new pago_efectivo();
+            pago_efectivo efectivo=new pago_efectivo(tablaPedido);
             efectivo.setVisible(true);
         }else{
             if(jcb.getSelectedItem()=="Targeta de credito"){
@@ -124,10 +128,12 @@ public class verPedido extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField numeroMesa;
-    private javax.swing.JTable tablaPedido;
+    public javax.swing.JTable tablaPedido;
     // End of variables declaration//GEN-END:variables
     
     private DefaultTableModel model= new DefaultTableModel();
+    
+    
     
     private void iniciarTabla() {
         model.addColumn("Nombre");
@@ -144,4 +150,27 @@ public class verPedido extends javax.swing.JFrame {
             model.setValueAt(object.getPrecio(), cont, 1);
         }
     }
+    private void obtener_tabla(){
+        int fila = tablaPedido.getRowCount();
+        int i;
+        String valores="";
+        for (i = 0; i < fila; i++) {
+            int valor = (int) tablaPedido.getValueAt(i, 1);
+            valores += valor;
+            // Con esta condición solo ponemos comas hasta el penúltimo valor :)
+            if (i < (fila-1)) {
+                valores += ", ";
+            }
+        }
+        JOptionPane.showMessageDialog(null, "valores de la columna1: " + valores);
+    }
+
+    public JTable getTablaPedido() {
+        return tablaPedido;
+    }
+
+    public void setTablaPedido(JTable tablaPedido) {
+        this.tablaPedido = tablaPedido;
+    }
+    
 }
