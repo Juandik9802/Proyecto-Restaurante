@@ -60,22 +60,22 @@ public class archivoCocina {
     //public static ArrayList<pedido> lista =new ArrayList();
     
     public static ArrayList<pedido> pedidos=new ArrayList();
-    private static File borrarcocina=new File("src/ficheros/cocina.txt");
-      public static void borrar (){
-        try
-        {
+    private static File borrarCocina=new File("src/ficheros/cocina.txt");
+      
+    public static void borrar (File Ffichero){
+        try{
            // Comprovamos si el fichero existe  de ser así procedemos a borrar el archivo
-            if(borrarcocina.exists()){
-                borrarcocina.delete();
+            if(Ffichero.exists()){
+                Ffichero.delete();
+                System.out.println("hola");
             }
-
         }catch(Exception e){
-            System.out.println("no existe");
+            System.out.println("no se borro el archivo");
         }
     }
       
       public static void moficar(){
-          borrar();
+          borrar(borrarCocina);
           crear();
       }
 
@@ -89,7 +89,8 @@ public class archivoCocina {
             linea=new PrintWriter(archivo_pedidos);
             for (pedido pedido1 : pedidos) {
                 pedido=pedido1.getNumMesas()+";"+pedido1.getPlato()+";"+pedido1.getBebida()+";"+pedido1.getPostre()+";"+pedido1.getAñadirPorcion()+";"+pedido1.getQuitarPotcion()+";"+pedido1.getPrecio()+";"+pedido1.getFecha()+";"+pedido1.isEntregado()+";"+pedido1.isEstado()+";";
-                linea.println(pedidos);
+                System.out.println(pedido);
+                linea.println(pedido);
             }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Error creando el archivo");

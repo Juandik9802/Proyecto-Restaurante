@@ -154,7 +154,6 @@ public class archivoMenus {
         }
     }
     
-    
     public static void llenarArray(){    
         File archivo;  //apuntar al archivo almancenado DD
         FileReader contenido = null ;  //acceder a todo el contenido del archivo
