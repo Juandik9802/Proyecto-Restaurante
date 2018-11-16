@@ -5,6 +5,7 @@
  */
 package proy.restaurante;
 
+import codigo.datosMesero;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,6 +24,13 @@ public static Principal i;
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                close();
+            }
+        });
     }
     private final String contra="1";
     /**
@@ -150,10 +158,22 @@ public static Principal i;
         cocina cocina = new cocina();
         cocina.setVisible(true);
     }//GEN-LAST:event_menuParaCocinaActionPerformed
-
+    int cont=0;
     private void menumeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menumeseroActionPerformed
-        mesero mesero = new mesero();
-        mesero.setVisible(true);
+        int cod =Integer.parseInt(JOptionPane.showInputDialog(null, "Digite su codigo"));
+        boolean exist=false;
+        for (datosMesero object : codigo.listaMeseros.meseros) {
+            if (object.getCodigo()==cod){
+                mesero mesero = new mesero();
+                mesero.setVisible(true);
+                mesero.setTitle(object.getNombre());
+                exist=true;
+            }
+        }     
+        if (!exist){
+            JOptionPane.showMessageDialog(null, "codigo no exixste");
+        }
+        
     }//GEN-LAST:event_menumeseroActionPerformed
 
     private void menuParaCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaCajaActionPerformed
@@ -170,4 +190,10 @@ public static Principal i;
     private javax.swing.JButton menuParaCocina;
     private javax.swing.JButton menumesero;
     // End of variables declaration//GEN-END:variables
+    
+    private void close(){
+        if (JOptionPane.showConfirmDialog(rootPane, "¿Desea realmente salir del sistema?",
+                "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+            System.exit(0);
+    }
 }

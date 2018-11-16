@@ -7,3 +7,4 @@ Bebidas;Pony Malta;1500;
 Bebidas;Pepsy;2000;
 Cena;vagre;12000;vagre;arroz;arepa;
 Postres;Tarta;1500;
+Postres;Brauny;1200;

@@ -28,9 +28,9 @@ public class verPedido extends javax.swing.JFrame {
         numeroMesa.setText(String.valueOf(numero));
         iniciarTabla();
         llenarTabla();
-        obtener_tabla();
+        //obtener_tabla();
         codigo.archivoPedido.lista.clear();
-                
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -49,6 +49,7 @@ public class verPedido extends javax.swing.JFrame {
         numeroMesa = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         tablaPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,8 +134,6 @@ public class verPedido extends javax.swing.JFrame {
     
     private DefaultTableModel model= new DefaultTableModel();
     
-    
-    
     private void iniciarTabla() {
         model.addColumn("Nombre");
         model.addColumn("Precio");
@@ -148,6 +147,12 @@ public class verPedido extends javax.swing.JFrame {
             model.insertRow(cont, new Object[]{});
             model.setValueAt(object.getPlato(), cont, 0);
             model.setValueAt(object.getPrecio(), cont, 1);
+            model.insertRow(cont, new Object[]{});
+            model.setValueAt(object.getBebida(), cont, 0);
+            model.setValueAt(Integer.parseInt(codigo.archivoPlatos.buscar(object.getBebida())), cont, 1);
+            model.insertRow(cont, new Object[]{});
+            model.setValueAt(object.getPostre(), cont, 0);
+            model.setValueAt(Integer.parseInt(codigo.archivoPlatos.buscar(object.getPostre())), cont, 1);
         }
     }
     private void obtener_tabla(){

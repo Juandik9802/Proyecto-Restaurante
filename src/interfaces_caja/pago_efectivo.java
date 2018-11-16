@@ -33,17 +33,16 @@ public class pago_efectivo extends javax.swing.JFrame {
     //Este método toma los valores de todos los platos para poderlos facturar.
     private void obtener_tabla() {
         int fila =tabla_pedido.getRowCount();
-        int i;
         int total_por_mesa = 0;
-        for (i = 0; i < fila; i++) {
+        for (int i = 0; i < fila; i++) {
+        
             int valor = (int) tabla_pedido.getValueAt(i, 1);
-            
             total_por_mesa=total_por_mesa+valor;
             // Con esta condición solo ponemos comas hasta el penúltimo valor :)
         }
         valores += total_por_mesa;
         cant_pagar.setText(valores);
-        JOptionPane.showMessageDialog(null, "valores de la columna1: " + valores);
+        //JOptionPane.showMessageDialog(null, "valores de la columna1: " + valores);
     }
     
 
