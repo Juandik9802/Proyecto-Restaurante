@@ -165,7 +165,7 @@ public class cocina extends javax.swing.JFrame {
     
     DefaultListModel listModel;
     DefaultListModel listModel2;
-    DefaultListModel listModel3;
+    DefaultListModel listModel3 = new DefaultListModel();;
     public void buscarPedidos(){
         //Crear un objeto DefaultListModel
         listModel = new DefaultListModel();
@@ -186,7 +186,6 @@ public class cocina extends javax.swing.JFrame {
     }//GEN-LAST:event_preparandoActionPerformed
 
     private void finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarActionPerformed
-        listModel3 = new DefaultListModel();
         listModel3.addElement(preparandoplato.getSelectedValue());
         entregados.setModel(listModel3);
         listModel2.remove(0);

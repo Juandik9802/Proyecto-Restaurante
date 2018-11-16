@@ -67,6 +67,7 @@ public class archivoCocina {
            // Comprovamos si el fichero existe  de ser así procedemos a borrar el archivo
             if(Ffichero.exists()){
                 Ffichero.delete();
+                System.out.println("hola");
             }
         }catch(Exception e){
             System.out.println("no se borro el archivo");
@@ -88,7 +89,6 @@ public class archivoCocina {
             linea=new PrintWriter(archivo_pedidos);
             for (pedido pedido1 : pedidos) {
                 pedido=pedido1.getNumMesas()+";"+pedido1.getPlato()+";"+pedido1.getBebida()+";"+pedido1.getPostre()+";"+pedido1.getAñadirPorcion()+";"+pedido1.getQuitarPotcion()+";"+pedido1.getPrecio()+";"+pedido1.getFecha()+";"+pedido1.isEntregado()+";"+pedido1.isEstado()+";";
-                System.out.println(pedido);
                 linea.println(pedido);
             }
         } catch (IOException ex) {

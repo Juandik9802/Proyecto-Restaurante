@@ -1,4 +1,0 @@
-4;Ternera a la llanera;colombiana;Tarta;--Seleccionar--;--Seleccionar--;20000;15;18;false;true;
-4;Mazamorra ;Pony Malta;Tarta;--Seleccionar--;--Seleccionar--;6000;15;18;false;true;
-1;Mazamorra ;colombiana;Tarta;--Seleccionar--;--Seleccionar--;6000;15;20;false;true;
-1;Mazamorra ;colombiana;Tarta;--Seleccionar--;--Seleccionar--;6000;15;20;false;true;
