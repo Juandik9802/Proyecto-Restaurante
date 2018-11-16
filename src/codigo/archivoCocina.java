@@ -5,10 +5,13 @@
  */
 package codigo;
 
+import static codigo.archivoPedido.pedidos;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -52,49 +55,52 @@ public class archivoCocina {
         }
     }
     
-    public static boolean buscar(int numMesa){
-        boolean retorno=false;
-        File archivo;  //apuntar al archivo almancenado DD
-        FileReader contenido = null ;  //acceder a todo el contenido del archivo
-        BufferedReader linea ; //accede linea a linea al contenido
-        try{
-            archivo = new File("src/ficheros/cocina.txt");
-            contenido = new FileReader(archivo);
-            linea = new BufferedReader(contenido);
-            String cadena; //variable captura los datos del archivo
-            while((cadena=linea.readLine()) != null){ //recorre todo el archivo
-                String dato[] = cadena.split(";");
-                int mesaEvaluar=Integer.parseInt(dato[0]);
-                if(mesaEvaluar==numMesa){
-                    if(Boolean.parseBoolean(dato[10])){
-                        retorno=true;
-                    }  
-                }  
-            }
-        }catch(IOException e){
-            
-        }
-        finally{
-            try{
-                if(contenido != null){
-                    contenido.close();
-                }
-            }catch(IOException e1){
-                System.out.print("Error cerrando archivo");
-            }
-        }
-        return retorno;
-    }
     
-    public static ArrayList<pedido> lista =new ArrayList();
-    public static  void busqueda(int index){
-        for (pedido pedido : pedidos) {
-            int numero=pedido.getNumMesas();
-            if (index==numero){
-                lista.add(new codigo.pedido(pedido.getNumMesas(),pedido.getPlato() , pedido.getBebida(), pedido.getPostre(), pedido.getAñadirPorcion(), pedido.getQuitarPotcion(), pedido.getPrecio(), pedido.getFecha(), pedido.isEntregado(), pedido.isEstado()));
-            }
-        }
-    }
+    
+    //public static ArrayList<pedido> lista =new ArrayList();
     
     public static ArrayList<pedido> pedidos=new ArrayList();
+    private static File borrarcocina=new File("src/ficheros/cocina.txt");
+      public static void borrar (){
+        try
+        {
+           // Comprovamos si el fichero existe  de ser así procedemos a borrar el archivo
+            if(borrarcocina.exists()){
+                borrarcocina.delete();
+            }
+
+        }catch(Exception e){
+            System.out.println("no existe");
+        }
+    }
+      
+      public static void moficar(){
+          borrar();
+          crear();
+      }
+
+    private static FileWriter archivo_pedidos=null;      
+    private static PrintWriter linea=null;
+    
+    private static void crear() {
+        String pedido;
+        try {
+            archivo_pedidos= new FileWriter("src/ficheros/cocina.txt",true);
+            linea=new PrintWriter(archivo_pedidos);
+            for (pedido pedido1 : pedidos) {
+                pedido=pedido1.getNumMesas()+";"+pedido1.getPlato()+";"+pedido1.getBebida()+";"+pedido1.getPostre()+";"+pedido1.getAñadirPorcion()+";"+pedido1.getQuitarPotcion()+";"+pedido1.getPrecio()+";"+pedido1.getFecha()+";"+pedido1.isEntregado()+";"+pedido1.isEstado()+";";
+                linea.println(pedidos);
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Error creando el archivo");
+        } finally{
+            try{
+                if(archivo_pedidos != null){
+                    archivo_pedidos.close();
+                }
+            }catch(IOException e1){
+                    JOptionPane.showMessageDialog(null, "Error cerrando el archivo");
+            }
+        }
+    }
 }

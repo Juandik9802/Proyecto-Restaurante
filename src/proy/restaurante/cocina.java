@@ -30,6 +30,7 @@ public class cocina extends javax.swing.JFrame {
     public cocina() {
         initComponents();
         this.setLocationRelativeTo(null);
+        buscarPedidos();
         tarea =new TimerTask() {
             @Override
             public void run() {
@@ -38,7 +39,7 @@ public class cocina extends javax.swing.JFrame {
             }
         };
         timer=new Timer();
-        timer.scheduleAtFixedRate(tarea, 2000, 2000);
+        timer.scheduleAtFixedRate(tarea, 5000, 5000);
     }
 
     /**
@@ -52,30 +53,21 @@ public class cocina extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         pendientes = new javax.swing.JList<>();
-        nombrePlato = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         preparandoplato = new javax.swing.JList<>();
         preparando = new javax.swing.JButton();
         finalizar = new javax.swing.JButton();
-        estado = new javax.swing.JLabel();
         Pendientes = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList<>();
+        entregados = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        pendientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pendientesMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(pendientes);
-
-        nombrePlato.setText("Plato");
 
         jScrollPane3.setViewportView(preparandoplato);
 
@@ -87,8 +79,11 @@ public class cocina extends javax.swing.JFrame {
         });
 
         finalizar.setText("Finalizado");
-
-        estado.setText("Estado");
+        finalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalizarActionPerformed(evt);
+            }
+        });
 
         Pendientes.setText("pendientes");
 
@@ -98,41 +93,37 @@ public class cocina extends javax.swing.JFrame {
 
         jLabel1.setText("Entregados");
 
-        jScrollPane5.setViewportView(jList4);
+        jScrollPane5.setViewportView(entregados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Pendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(Pendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nombrePlato, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(151, 151, 151)
-                                .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(130, 130, 130))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(preparando, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(62, 62, 62)
                         .addComponent(finalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(73, 73, 73))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(666, 666, 666)
@@ -142,61 +133,65 @@ public class cocina extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addComponent(Pendientes)
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombrePlato, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(preparando)
                             .addComponent(finalizar))
-                        .addGap(40, 40, 40)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jLabel1)))
-                .addGap(82, 82, 82))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(160, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(85, 85, 85)))
+                    .addContainerGap(66, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(61, 61, 61)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     DefaultListModel listModel;
+    DefaultListModel listModel2;
+    DefaultListModel listModel3;
     public void buscarPedidos(){
         //Crear un objeto DefaultListModel
         listModel = new DefaultListModel();
+        
         for(int i=0; i<codigo.archivoCocina.pedidos.size(); i++){
-            listModel.addElement("Mesa:"+codigo.archivoPedido.pedidos.get(i).getNumMesas()+" : "+codigo.archivoPedido.pedidos.get(i).getPlato());
+            listModel.addElement("Mesa:"+codigo.archivoCocina.pedidos.get(i).getNumMesas()+" : "+codigo.archivoCocina.pedidos.get(i).getPlato());
         }
         pendientes.setModel(listModel);
     }
    
     private void preparandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preparandoActionPerformed
-        listModel.addElement(pendientes.getSelectedValue());
-        preparandoplato.setModel(listModel);
+        listModel2= new DefaultListModel();
+        listModel2.addElement(pendientes.getSelectedValue());
+        preparandoplato.setModel(listModel2);
         codigo.archivoCocina.pedidos.remove(0);
         listModel.remove(0);
         //codigo.archivoCocina.lista.remove(0);
     }//GEN-LAST:event_preparandoActionPerformed
 
-    private void pendientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendientesMouseClicked
-       
-    
-    }//GEN-LAST:event_pendientesMouseClicked
+    private void finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarActionPerformed
+        listModel3 = new DefaultListModel();
+        listModel3.addElement(preparandoplato.getSelectedValue());
+        entregados.setModel(listModel3);
+        listModel2.remove(0);
+        codigo.archivoCocina.moficar();
+    }//GEN-LAST:event_finalizarActionPerformed
     
 
     /**
@@ -205,16 +200,14 @@ public class cocina extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Pendientes;
-    private javax.swing.JLabel estado;
+    private javax.swing.JList<String> entregados;
     private javax.swing.JButton finalizar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel nombrePlato;
     private javax.swing.JList<String> pendientes;
     private javax.swing.JButton preparando;
     private javax.swing.JList<String> preparandoplato;

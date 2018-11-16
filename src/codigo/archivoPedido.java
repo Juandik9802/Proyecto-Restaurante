@@ -42,6 +42,7 @@ public class archivoPedido {
                     JOptionPane.showMessageDialog(null, "Error cerrando el archivo");
             }
         }
+        // crea 
         try {
             archivo_pedidos= new FileWriter("src/ficheros/cocina.txt",true);
             linea=new PrintWriter(archivo_pedidos);
