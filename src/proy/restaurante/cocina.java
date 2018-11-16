@@ -31,6 +31,7 @@ public class cocina extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         buscarPedidos();
+        finalizar.setEnabled(false);
         tarea =new TimerTask() {
             @Override
             public void run() {
@@ -163,9 +164,9 @@ public class cocina extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    DefaultListModel listModel;
-    DefaultListModel listModel2;
-    DefaultListModel listModel3 = new DefaultListModel();;
+    DefaultListModel listModel= new DefaultListModel();
+    DefaultListModel listModel2= new DefaultListModel();
+    DefaultListModel listModel3 = new DefaultListModel();
     public void buscarPedidos(){
         //Crear un objeto DefaultListModel
         listModel = new DefaultListModel();
@@ -177,11 +178,13 @@ public class cocina extends javax.swing.JFrame {
     }
    
     private void preparandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preparandoActionPerformed
-        listModel2= new DefaultListModel();
+        //listModel2= new DefaultListModel();
         listModel2.addElement(pendientes.getSelectedValue());
         preparandoplato.setModel(listModel2);
         codigo.archivoCocina.pedidos.remove(0);
         listModel.remove(0);
+        preparando.setEnabled(false);
+        finalizar.setEnabled(true);
         //codigo.archivoCocina.lista.remove(0);
     }//GEN-LAST:event_preparandoActionPerformed
 
@@ -190,6 +193,9 @@ public class cocina extends javax.swing.JFrame {
         entregados.setModel(listModel3);
         listModel2.remove(0);
         codigo.archivoCocina.moficar();
+        preparando.setEnabled(true);
+        finalizar.setEnabled(false);
+        
     }//GEN-LAST:event_finalizarActionPerformed
     
 
