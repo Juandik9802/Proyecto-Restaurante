@@ -67,7 +67,6 @@ public class archivoCocina {
            // Comprovamos si el fichero existe  de ser así procedemos a borrar el archivo
             if(Ffichero.exists()){
                 Ffichero.delete();
-                System.out.println("hola");
             }
         }catch(Exception e){
             System.out.println("no se borro el archivo");
