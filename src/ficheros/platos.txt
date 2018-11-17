@@ -1,10 +1,12 @@
-Bebidas;colombiana;2500;
 Almuerzo;Ternera a la llanera;2500;carne;papa;yuca;platano;
 Almuerzo;Bandeja Paisa;12000;huevo;arepa;arroz;frijoles;
 Almuerzo;Ternera a la llanera;20000;carne;opapa;yuca;
 Almuerzo;Mazamorra ;6000;
 Bebidas;Pony Malta;1500;
 Bebidas;Pepsy;2000;
-Cena;vagre;12000;vagre;arroz;arepa;
+Cena;vagre;12000;
+vagre;arroz;arepa;
 Postres;Tarta;1500;
 Postres;Brauny;1200;
+Almuerzo;lenteja con sanchi;60000;
+

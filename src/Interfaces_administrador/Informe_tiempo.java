@@ -5,17 +5,22 @@
  */
 package Interfaces_administrador;
 
+import codigo.cargarCombos;
+import codigo.datosMesero;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author josep
  */
 public class Informe_tiempo extends javax.swing.JPanel {
-
+DefaultTableModel model = new DefaultTableModel();
     /**
      * Creates new form Informe_tiempo
      */
     public Informe_tiempo() {
         initComponents();
+        incertarColunas();
     }
 
     /**
@@ -88,7 +93,27 @@ public class Informe_tiempo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+private void incertarColunas() {
+        
+        model.addColumn("Dia");
+        for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+            model.addColumn(object.getNombre());
+            System.out.println(object);
+        
+    }
+        
+        jTable1.setModel(model);
+    }
 
+    private void incertarFila() {
+        for (datosMesero carga : codigo.listaMeseros.meseros) {
+            String[] agregar=new String[3];
+            agregar[0]=String.valueOf(carga.getCodigo());
+            agregar[1]=carga.getNombre();
+            agregar[2]=carga.getApellido();
+            model.addRow(agregar);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

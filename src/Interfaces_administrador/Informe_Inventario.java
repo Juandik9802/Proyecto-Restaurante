@@ -5,17 +5,22 @@
  */
 package Interfaces_administrador;
 
+import codigo.cargarCombos;
+import codigo.datosMesero;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author josep
  */
 public class Informe_Inventario extends javax.swing.JPanel {
-
+ DefaultTableModel model = new DefaultTableModel();
     /**
      * Creates new form Informe_Inventario
      */
     public Informe_Inventario() {
         initComponents();
+         incertarColunas();
     }
 
     /**
@@ -33,23 +38,15 @@ public class Informe_Inventario extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Ingrediente 1", "Ingrediente 2", "Ingrediente 3", "Ingrediente 4"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/almacen.jpg"))); // NOI18N
@@ -78,7 +75,27 @@ public class Informe_Inventario extends javax.swing.JPanel {
                 .addGap(39, 39, 39))
         );
     }// </editor-fold>//GEN-END:initComponents
+private void incertarColunas() {
+        
+        model.addColumn("Dia");
+        for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+            model.addColumn(object.getNombre());
+            System.out.println(object);
+        
+    }
+        
+        jTable1.setModel(model);
+    }
 
+    private void incertarFila() {
+        for (datosMesero carga : codigo.listaMeseros.meseros) {
+            String[] agregar=new String[3];
+            agregar[0]=String.valueOf(carga.getCodigo());
+            agregar[1]=carga.getNombre();
+            agregar[2]=carga.getApellido();
+            model.addRow(agregar);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

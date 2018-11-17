@@ -5,17 +5,23 @@
  */
 package Interfaces_administrador;
 
+import codigo.cargarCombos;
+import codigo.datosMesero;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author josep
  */
 public class Informe_Cantidad extends javax.swing.JPanel {
-
+ DefaultTableModel model = new DefaultTableModel();
     /**
      * Creates new form Informe_Cantidad
      */
     public Informe_Cantidad() {
         initComponents();
+        incertarColunas();
     }
 
     /**
@@ -28,7 +34,7 @@ public class Informe_Cantidad extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaCantidad = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -37,26 +43,15 @@ public class Informe_Cantidad extends javax.swing.JPanel {
 
         setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCantidad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Dia", "Plato 1", "Plato 2", "Plato 3", "Plato 4"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Short.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        ));
+        jScrollPane1.setViewportView(tablaCantidad);
 
         add(jScrollPane1);
         jScrollPane1.setBounds(40, 260, 452, 100);
@@ -95,7 +90,27 @@ public class Informe_Cantidad extends javax.swing.JPanel {
         add(imprimir);
         imprimir.setBounds(420, 230, 73, 23);
     }// </editor-fold>//GEN-END:initComponents
+private void incertarColunas() {
+        
+        model.addColumn("Dia");
+        for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+            model.addColumn(object.getNombre());
+            System.out.println(object);
+        
+    }
+        
+        tablaCantidad.setModel(model);
+    }
 
+    private void incertarFila() {
+        for (datosMesero carga : codigo.listaMeseros.meseros) {
+            String[] agregar=new String[3];
+            agregar[0]=String.valueOf(carga.getCodigo());
+            agregar[1]=carga.getNombre();
+            agregar[2]=carga.getApellido();
+            model.addRow(agregar);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton imprimir;
@@ -103,7 +118,7 @@ public class Informe_Cantidad extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable tablaCantidad;
     // End of variables declaration//GEN-END:variables
 }

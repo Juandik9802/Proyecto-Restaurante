@@ -1,11 +1,1 @@
-2;Ternera a la llanera;Pony Malta;Tarta;--Seleccionar--;--Seleccionar--;20000;16;2;false;true;
-13;Ternera a la llanera;Pony Malta;Tarta;--Seleccionar--;--Seleccionar--;20000;16;4;false;true;
-13;Ternera a la llanera;Pony Malta;Tarta;--Seleccionar--;--Seleccionar--;20000;16;4;false;true;
-13;Ternera a la llanera;Pony Malta;Tarta;--Seleccionar--;--Seleccionar--;20000;16;4;false;true;
-13;Ternera a la llanera;Pony Malta;Tarta;--Seleccionar--;--Seleccionar--;20000;16;4;false;true;
-13;Ternera a la llanera;Pony Malta;Tarta;--Seleccionar--;--Seleccionar--;20000;16;4;false;true;
-13;Ternera a la llanera;Pony Malta;Tarta;--Seleccionar--;--Seleccionar--;20000;16;4;false;true;
-13;Ternera a la llanera;Pony Malta;Tarta;--Seleccionar--;--Seleccionar--;20000;16;4;false;true;
-13;Ternera a la llanera;Pony Malta;Tarta;--Seleccionar--;--Seleccionar--;20000;16;4;false;true;
-1;Bandeja Paisa;colombiana;Tarta;--Seleccionar--;--Seleccionar--;12000;16;10;false;true;
-1;Ternera a la llanera;Pony Malta;Tarta;--Seleccionar--;--Seleccionar--;20000;16;10;false;true;
+1;Mazamorra ;colombiana;Tarta;--Seleccionar--;--Seleccionar--;6000;9;55;false;true;

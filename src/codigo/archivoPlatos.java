@@ -22,9 +22,13 @@ import javax.swing.JOptionPane;
  */
  
 public class archivoPlatos {
+    public static void llenarplatos(){
+    
+    
+    }
     
     public static ArrayList<cargarCombos> mostrarPlato= new ArrayList();
-    //public static ArrayList<cargarCombos> mostrar= new ArrayList();
+    
     
     /**
      * crea el archivo
