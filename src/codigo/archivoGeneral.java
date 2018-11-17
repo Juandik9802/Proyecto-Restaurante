@@ -21,6 +21,8 @@ public class archivoGeneral {
     private static File file = new File("src/ficheros/mesas.txt");
     private static FileWriter archivo_pedidos=null;
     private static PrintWriter linea=null;
+    public static int numeroMesas;
+    
     public static void crear(int mesas){
         try {
             archivo_pedidos= new FileWriter("src/ficheros/mesas.txt",true);
@@ -42,6 +44,7 @@ public class archivoGeneral {
     public static  void archivoCrear(int mesas){
         borrar(file);
         crear(mesas);
+        numeroMesas=mesas;
     }
     
     private  static void borrar (File Ffichero){
@@ -56,7 +59,10 @@ public class archivoGeneral {
         }catch(Exception e){
         }
     }
-    
+    /**
+     * busca la cantidad de mesas
+     * @return 
+     */
     public static int buscar(){
         int retorno = 10;
         File archivo;  //apuntar al archivo almancenado DD
@@ -83,6 +89,7 @@ public class archivoGeneral {
                 System.out.print("Error cerrando archivo");
             }
         }
+        numeroMesas=retorno;
     return retorno;    
     }
 }
