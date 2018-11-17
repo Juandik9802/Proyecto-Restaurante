@@ -160,8 +160,10 @@ public static Principal i;
     }//GEN-LAST:event_menuParaCocinaActionPerformed
     int cont=0;
     private void menumeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menumeseroActionPerformed
-        int cod =Integer.parseInt(JOptionPane.showInputDialog(null, "Digite su codigo"));
+        try{
+         int cod =Integer.parseInt(JOptionPane.showInputDialog(null, "Digite su codigo"));
         boolean exist=false;
+       
         for (datosMesero object : codigo.listaMeseros.meseros) {
             if (object.getCodigo()==cod){
                 mesero mesero = new mesero();
@@ -173,6 +175,11 @@ public static Principal i;
         if (!exist){
             JOptionPane.showMessageDialog(null, "codigo no exixste");
         }
+        }catch (Exception e){
+        
+            System.out.println("cancelado");
+        }
+        
         
     }//GEN-LAST:event_menumeseroActionPerformed
 
