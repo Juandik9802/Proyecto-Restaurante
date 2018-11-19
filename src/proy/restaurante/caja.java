@@ -28,14 +28,10 @@ import javax.swing.JTextField;
  */
 public class caja extends javax.swing.JFrame{
     
-    public void crea_mesas(){
-        cant_mesas=codigo.archivoGeneral.buscar();
-    }
-    
     public ArrayList<boton> botones= new ArrayList();
     public int indice;
     public short cont=1;
-    public int cant_mesas;
+    public static int cant_mesas;
     public boton boton;
     
     /**
@@ -45,13 +41,14 @@ public class caja extends javax.swing.JFrame{
         initComponents();
         this.setLocationRelativeTo(null);
         indice=1;
-        crea_mesas();
+        //crea_mesas();
         espacio_mesas();
        
     }
     
     public void espacio_mesas(){
-        while(cont<=cant_mesas){
+        System.out.println(codigo.archivoGeneral.numeroMesas);
+        while(cont<=codigo.archivoGeneral.numeroMesas){
             ImageIcon icono=new ImageIcon("src/imagenes/iconoMesa.png");
             boton=new boton(indice,false, "mesa "+String.valueOf(indice), icono);
             mesas_caja.add(boton);

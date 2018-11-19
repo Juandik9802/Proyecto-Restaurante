@@ -5,7 +5,9 @@
  */
 package interfaces_mesero;
 
+
 import codigo.menusCarga;
+import codigo.platillo;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,12 +23,13 @@ import javax.swing.table.DefaultTableModel;
 public class pedido extends javax.swing.JPanel {
 
     int cont=0;
+    private String nombreMesero;
     /**
      * Creates new form pedido
      */
-    public pedido() {/**
+    public pedido(String nombre) {/**
      * "Mesa","Plato","Bebidas","Postre","Añadir","Quitar","Precio"
-     */ 
+     */ this.nombreMesero= nombre;
         initComponents();
         cargartabla();
         cargarComidas();
@@ -60,6 +63,11 @@ public class pedido extends javax.swing.JPanel {
         jLabel1.setText("Mesa:");
 
         combo_platos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Comida--" }));
+        combo_platos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combo_platosItemStateChanged(evt);
+            }
+        });
 
         jLabel3.setText("Quitar porcion:");
 
@@ -192,12 +200,13 @@ public class pedido extends javax.swing.JPanel {
             int mesa=Integer.parseInt(numero_mesa.getText());
             if(!(mesa>codigo.archivoGeneral.buscar())){
                 Calendar calendario = Calendar.getInstance();
-                String hora=String.valueOf(calendario.get(Calendar.HOUR_OF_DAY));
-                hora=hora+";"+String.valueOf(calendario.get(Calendar.MINUTE));
+                String hora=String.valueOf(calendario.get(Calendar.HOUR_OF_DAY));//tomar la hora del sistema
+                hora=hora+";"+String.valueOf(calendario.get(Calendar.MINUTE));//tomar los minutos del sistema
+                //añadiendo al arreglo;
                 codigo.archivoPedido.añadirArray(Integer.parseInt(numero_mesa.getText()),(String)combo_platos.getSelectedItem(),(String)comboBebidas.getSelectedItem(),(String)comboPostres.getSelectedItem(),
-                (String)añadir.getSelectedItem(), (String)quitar.getSelectedItem(), Integer.parseInt(codigo.archivoPlatos.buscar((String)combo_platos.getSelectedItem())), hora,false,true);
+                (String)añadir.getSelectedItem(), (String)quitar.getSelectedItem(), Integer.parseInt(codigo.archivoPlatos.busqueda((String)combo_platos.getSelectedItem())), hora,this.nombreMesero,true);
                 codigo.archivoCocina.añadirArray(Integer.parseInt(numero_mesa.getText()),(String)combo_platos.getSelectedItem(),(String)comboBebidas.getSelectedItem(),(String)comboPostres.getSelectedItem(),
-                (String)añadir.getSelectedItem(), (String)quitar.getSelectedItem(), Integer.parseInt(codigo.archivoPlatos.buscar((String)combo_platos.getSelectedItem())), hora,false,true);
+                (String)añadir.getSelectedItem(), (String)quitar.getSelectedItem(), Integer.parseInt(codigo.archivoPlatos.busqueda((String)combo_platos.getSelectedItem())), hora,this.nombreMesero,true);
                 
                 codigo.archivoPedido.crear();
                 int contador=codigo.archivoPedido.pedidos.size()-1;
@@ -231,6 +240,14 @@ public class pedido extends javax.swing.JPanel {
          char c =evt.getKeyChar();
         if (c<'0'||c>'9')evt.consume();
     }//GEN-LAST:event_numero_mesaKeyTyped
+
+    private void combo_platosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_platosItemStateChanged
+        añadir.removeAllItems();
+        quitar.removeAllItems();
+        añadir.addItem("Nada");
+        quitar.addItem("Nada");
+        llenarPorciones();        
+    }//GEN-LAST:event_combo_platosItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -304,5 +321,16 @@ public class pedido extends javax.swing.JPanel {
         model.addColumn("Quitar");
         model.addColumn("Precio");
         TablaMesero.setModel(model);
+    }
+    
+    private void llenarPorciones(){        
+        for (platillo plato : codigo.archivoPlatos.platos) {
+            if(plato.getNombre().equals(combo_platos.getSelectedItem())){
+                for (String object : plato.getPorcion()) {
+                    añadir.addItem(object);
+                    quitar.addItem(object);
+                }
+            }
+        }
     }
 }

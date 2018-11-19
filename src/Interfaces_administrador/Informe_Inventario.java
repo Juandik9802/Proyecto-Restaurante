@@ -5,7 +5,6 @@
  */
 package Interfaces_administrador;
 
-import codigo.cargarCombos;
 import codigo.datosMesero;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +19,7 @@ public class Informe_Inventario extends javax.swing.JPanel {
      */
     public Informe_Inventario() {
         initComponents();
-         incertarColunas();
+         //incertarColunas();
     }
 
     /**
@@ -75,7 +74,8 @@ public class Informe_Inventario extends javax.swing.JPanel {
                 .addGap(39, 39, 39))
         );
     }// </editor-fold>//GEN-END:initComponents
-private void incertarColunas() {
+    /*
+    private void incertarColunas() {
         
         model.addColumn("Dia");
         for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
@@ -86,7 +86,7 @@ private void incertarColunas() {
         
         jTable1.setModel(model);
     }
-
+*/
     private void incertarFila() {
         for (datosMesero carga : codigo.listaMeseros.meseros) {
             String[] agregar=new String[3];

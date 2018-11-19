@@ -14,38 +14,43 @@ import java.util.TimerTask;
 import javax.swing.Action;
 import javax.swing.Icon;
 
-
 /**
  *
  * @author Juan Diego
  */
-public class boton extends  javax.swing.JButton implements ActionListener{
-    
+public class boton extends javax.swing.JButton implements ActionListener {
+
     int numeroMesa;
     boolean estadoMesa;
     private Timer timer;
     private TimerTask tarea;
-    
+
     public boton(int numeroMesa, boolean estadoMesa, String text, Icon icon) {
         super(text, icon);
         this.numeroMesa = numeroMesa;
         this.estadoMesa = estadoMesa;
         this.addActionListener(this);
-         
-        tarea=new TimerTask() {
+
+        tarea = new TimerTask() {
             @Override
             public void run() {
-                if(codigo.archivoPedido.buscar(numeroMesa)){
+                if (codigo.archivoPedido.buscar(numeroMesa)) {
                     estado();
+                }else{
+                    estado2();
+                }
+                for (platosEntregados entregado : codigo.archivoEntregados.entregados) {
+                    if (entregado.getNumMesas() == numeroMesa) {
+                        estado1();
+                    }
                 }
             }
         };
         //this.setIcon(icon);
-        timer=new Timer();
+        timer = new Timer();
         timer.scheduleAtFixedRate(tarea, 2000, 2000);
-   }
-    
-    
+    }
+
     public int getNumeroMesa() {
         return numeroMesa;
     }
@@ -61,14 +66,24 @@ public class boton extends  javax.swing.JButton implements ActionListener{
     public void setEstadoMesa(boolean estadoMesa) {
         this.estadoMesa = estadoMesa;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        verPedido ver=new verPedido(this.numeroMesa);
+        verPedido ver = new verPedido(this.numeroMesa,estadoMesa);
         ver.setVisible(true);
-    } 
-    
-    private void estado(){
+    }
+
+    private void estado() {
         this.setBackground(Color.BLUE);
+        estadoMesa=false;
+    }
+
+    private void estado1() {
+        this.setBackground(Color.GREEN);
+        estadoMesa=true;
+    }
+    private void estado2(){
+        this.setBackground(null);
+        estadoMesa=false;
     }
 }

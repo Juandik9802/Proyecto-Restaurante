@@ -74,9 +74,12 @@ public class mesero extends javax.swing.JFrame {
         pedido(cantidadPedido);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private interfaces_mesero.pedido pedido;
+    /**
+     * control de numero de pedido
+     * @param numero 
+     */
     private void pedido(int numero){
-        pedido pedido = new pedido();
+        pedido pedido = new pedido(this.getTitle());
         Bandeja.add("Pedido "+numero,pedido);
         this.cantidadPedido++;
     }

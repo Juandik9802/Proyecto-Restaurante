@@ -12,29 +12,40 @@ import java.io.File;
  * @author josep
  */
 public class ProyRestaurante {
-    
-    static  File nuevo=new File("src/ficheros/Menu.txt");
-    static  File pedido=new File("src/ficheros/pedidos.txt");
-    static  File mesero=new File("src/ficheros/Meseros.txt");
-    static  File general=new File("src/ficheros/ConfiguracionGeneral.txt");
-    static  File cocina=new File("src/ficheros/cocina.txt");
+
+    static File nuevo = new File("src/ficheros/Menu.txt");
+    static File pedido = new File("src/ficheros/pedidos.txt");
+    static File mesero = new File("src/ficheros/Meseros.txt");
+    static File general = new File("src/ficheros/mesas.txt");
+    static File cocina = new File("src/ficheros/cocina.txt");
+    static File platos = new File("src/ficheros/platos.txt");
+    static File entregados = new File("src/ficheros/entregados.bin");
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        if (nuevo.exists()){
+        if (nuevo.exists()) {
             codigo.archivoMenus.llenarArray();
         }
-        if(mesero.exists()){
+        if (mesero.exists()) {
             codigo.listaMeseros.llenarArray();
-        }if(pedido.exists()){
+        }
+        if (pedido.exists()) {
             codigo.archivoPedido.iniciarArray();
         }
-        if(cocina.exists()){
+        if (cocina.exists()) {
             codigo.archivoCocina.iniciarArray();
         }
-        Principal obt =new Principal();
+        if (platos.exists()) {
+            codigo.archivoPlatos.mostrar();
+        }if (entregados.exists()){
+            codigo.archivoEntregados.leer();
+        }
+        
+        codigo.archivoGeneral.numeroMesas = codigo.archivoGeneral.buscar();
+        Principal obt = new Principal();
         obt.setVisible(true);
     }
-    
+
 }

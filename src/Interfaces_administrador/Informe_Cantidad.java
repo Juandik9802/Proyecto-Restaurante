@@ -5,7 +5,6 @@
  */
 package Interfaces_administrador;
 
-import codigo.cargarCombos;
 import codigo.datosMesero;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,7 +20,7 @@ public class Informe_Cantidad extends javax.swing.JPanel {
      */
     public Informe_Cantidad() {
         initComponents();
-        incertarColunas();
+        //incertarColunas();
     }
 
     /**
@@ -90,7 +89,8 @@ public class Informe_Cantidad extends javax.swing.JPanel {
         add(imprimir);
         imprimir.setBounds(420, 230, 73, 23);
     }// </editor-fold>//GEN-END:initComponents
-private void incertarColunas() {
+/*
+    private void incertarColunas() {
         
         model.addColumn("Dia");
         for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
@@ -101,7 +101,7 @@ private void incertarColunas() {
         
         tablaCantidad.setModel(model);
     }
-
+*/
     private void incertarFila() {
         for (datosMesero carga : codigo.listaMeseros.meseros) {
             String[] agregar=new String[3];

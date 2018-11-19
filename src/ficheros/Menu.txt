@@ -1,7 +1,7 @@
-Lunes;Bandeja Paisa;Ternera a la llanera;Mazamorra ;vagre;vagre;vagre;colombiana;Pony Malta;Pepsy;Tarta;Tarta;Tarta;
-Martes;Bandeja Paisa;Ternera a la llanera;Mazamorra ;vagre;vagre;vagre;colombiana;Pony Malta;Pepsy;Tarta;Tarta;Tarta;
-Miercoles;Bandeja Paisa;Ternera a la llanera;Mazamorra ;vagre;vagre;vagre;colombiana;Pony Malta;Pepsy;Tarta;Tarta;Tarta;
-Jueves;Bandeja Paisa;Ternera a la llanera;Mazamorra ;vagre;vagre;vagre;colombiana;Pony Malta;Pepsy;Tarta;Tarta;Tarta;
-Viernes;Bandeja Paisa;Ternera a la llanera;Mazamorra ;vagre;vagre;vagre;colombiana;Pony Malta;Pepsy;Tarta;Tarta;Tarta;
-Sabado;Bandeja Paisa;Ternera a la llanera;Mazamorra ;vagre;vagre;vagre;colombiana;Pony Malta;Pepsy;Tarta;Tarta;Tarta;
-Domingo;Bandeja Paisa;Ternera a la llanera;Mazamorra ;vagre;vagre;vagre;colombiana;Pony Malta;Pepsy;Tarta;Tarta;Tarta;
+Lunes;ternera a la llanera;bandeja paisa;mazamorra;pechuga a la pancha;brochetas de pavo;cubios;colombiana;pepsy;pepsy;tarta;arroz con leche;torta de chocolate;
+Martes;ternera a la llanera;bandeja paisa;mazamorra;pechuga a la pancha;brochetas de pavo;cubios;colombiana;pepsy;pepsy;tarta;arroz con leche;torta de chocolate;
+Miercoles;ternera a la llanera;bandeja paisa;mazamorra;pechuga a la pancha;brochetas de pavo;cubios;colombiana;pepsy;pepsy;tarta;arroz con leche;torta de chocolate;
+Jueves;ternera a la llanera;bandeja paisa;mazamorra;pechuga a la pancha;brochetas de pavo;cubios;colombiana;pepsy;pepsy;tarta;arroz con leche;torta de chocolate;
+Viernes;ternera a la llanera;bandeja paisa;mazamorra;pechuga a la pancha;brochetas de pavo;cubios;colombiana;pepsy;pepsy;tarta;arroz con leche;torta de chocolate;
+Sabado;ternera a la llanera;bandeja paisa;mazamorra;pechuga a la pancha;brochetas de pavo;cubios;colombiana;pepsy;pepsy;tarta;arroz con leche;torta de chocolate;
+Domingo;ternera a la llanera;bandeja paisa;mazamorra;pechuga a la pancha;brochetas de pavo;cubios;colombiana;pepsy;pepsy;tarta;arroz con leche;torta de chocolate;

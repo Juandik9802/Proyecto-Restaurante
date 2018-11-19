@@ -5,7 +5,6 @@
  */
 package Interfaces_administrador;
 
-import codigo.cargarCombos;
 import codigo.datosMesero;
 import javax.swing.table.DefaultTableModel;
 
@@ -129,13 +128,13 @@ DefaultTableModel model = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 private void incertarColunas() {
         
-        model.addColumn("Dia");
+        model.addColumn("Dia");/*
         for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
             model.addColumn(object.getNombre());
             System.out.println(object);
         
     }
-        
+        */
         jTable1.setModel(model);
     }
 

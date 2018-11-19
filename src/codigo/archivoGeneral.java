@@ -44,7 +44,7 @@ public class archivoGeneral {
     public static  void archivoCrear(int mesas){
         borrar(file);
         crear(mesas);
-        numeroMesas=mesas;
+        archivoGeneral.numeroMesas=mesas;
     }
     
     private  static void borrar (File Ffichero){
@@ -89,7 +89,6 @@ public class archivoGeneral {
                 System.out.print("Error cerrando archivo");
             }
         }
-        numeroMesas=retorno;
     return retorno;    
     }
 }

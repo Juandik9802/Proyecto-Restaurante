@@ -362,15 +362,14 @@ public class menuSemana extends javax.swing.JPanel {
         cenaActualizar();
         bebidasActualizar();
         postresActualizar();
-        codigo.archivoPlatos.mostrarPlato.clear();
     }
     
     private void almuerzoActualizar() {        
         int contador = 0;
         boolean control;
-        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+        for (codigo.platillo object : codigo.archivoPlatos.platos) {
             control=false;
-            String datosRevisar = codigo.archivoPlatos.mostrarPlato.get(contador).getNombre();
+            String datosRevisar = codigo.archivoPlatos.platos.get(contador).getNombre();
             for (int j=0;j< primerAlmuerzo.getItemCount();j++) {
                 String comparar= primerAlmuerzo.getItemAt(j);
                 if  (comparar.equals(datosRevisar)){
@@ -378,11 +377,11 @@ public class menuSemana extends javax.swing.JPanel {
                 }
             }
             if(control==false){
-                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                String evaluar=codigo.archivoPlatos.platos.get(contador).getTipo();
                 if (evaluar.equals("Almuerzo") ){
-                    primerAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
-                    segundoAlmuerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
-                    tercerAlmerzo.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    primerAlmuerzo.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
+                    segundoAlmuerzo.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
+                    tercerAlmerzo.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
                 }
             }
             contador++;
@@ -392,7 +391,7 @@ public class menuSemana extends javax.swing.JPanel {
     private void cenaActualizar() {
         int contador = 0;
         boolean control;
-        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+        for (codigo.platillo object : codigo.archivoPlatos.platos) {
             control=false;
             String datosRevisar = object.getNombre();
             for (int j=0;j< cenaUno.getItemCount();j++) {
@@ -402,11 +401,11 @@ public class menuSemana extends javax.swing.JPanel {
                 }
             }
             if(control==false){
-                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                String evaluar=codigo.archivoPlatos.platos.get(contador).getTipo();
                 if (evaluar.equals("Cena") ){
-                    cenaUno.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
-                    cenaDos.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
-                    cenaTres.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    cenaUno.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
+                    cenaDos.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
+                    cenaTres.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
                 }
             } 
             contador++;
@@ -416,9 +415,9 @@ public class menuSemana extends javax.swing.JPanel {
     private void bebidasActualizar() {
         int contador = 0;
         boolean control;
-        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+        for (codigo.platillo object : codigo.archivoPlatos.platos) {
             control=false;
-            String datosRevisar = codigo.archivoPlatos.mostrarPlato.get(contador).getNombre();
+            String datosRevisar = codigo.archivoPlatos.platos.get(contador).getNombre();
             for (int j=0;j< primeraBebida.getItemCount();j++) {
                 String comparar= primeraBebida.getItemAt(j); 
                 if  (comparar.equals(datosRevisar)){
@@ -426,11 +425,11 @@ public class menuSemana extends javax.swing.JPanel {
                 }
             }
             if(control==false){
-                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                String evaluar=codigo.archivoPlatos.platos.get(contador).getTipo();
                 if (evaluar.equals("Bebidas") ){
-                    primeraBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
-                    segundaBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
-                    trecerBebida.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    primeraBebida.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
+                    segundaBebida.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
+                    trecerBebida.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
                 }
             }
             contador++;
@@ -440,9 +439,9 @@ public class menuSemana extends javax.swing.JPanel {
     private void postresActualizar() {
         int contador = 0;
         boolean control;
-        for (codigo.cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
+        for (codigo.platillo object : codigo.archivoPlatos.platos) {
             control=false;
-            String datosRevisar = codigo.archivoPlatos.mostrarPlato.get(contador).getNombre();
+            String datosRevisar = codigo.archivoPlatos.platos.get(contador).getNombre();
             for (int j=0;j< postreUno.getItemCount();j++) {
                 String comparar= postreUno.getItemAt(j); 
                 if  (comparar.equals(datosRevisar)){
@@ -450,11 +449,11 @@ public class menuSemana extends javax.swing.JPanel {
                 }
             }
             if(control==false){
-                String evaluar=codigo.archivoPlatos.mostrarPlato.get(contador).getTipo();
+                String evaluar=codigo.archivoPlatos.platos.get(contador).getTipo();
                 if (evaluar.equals("Postres") ){
-                    postreUno.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
-                    prostreDos.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
-                    postreTres.addItem(codigo.archivoPlatos.mostrarPlato.get(contador).getNombre());
+                    postreUno.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
+                    prostreDos.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
+                    postreTres.addItem(codigo.archivoPlatos.platos.get(contador).getNombre());
                 }
             }
             contador++;

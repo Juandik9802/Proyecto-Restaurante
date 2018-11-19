@@ -27,8 +27,8 @@ public class archivoPlatos {
     
     }
     
-    public static ArrayList<cargarCombos> mostrarPlato= new ArrayList();
-    
+    //public static ArrayList<platillo> mostrarPlato= new ArrayList();
+    public static ArrayList<platillo> platos= new ArrayList();
     
     /**
      * crea el archivo
@@ -77,8 +77,11 @@ public class archivoPlatos {
             String cadena; //variable captura los datos del archivo
             while((cadena=linea.readLine()) != null){ //recorre todo el archivo
                 String dato[] = cadena.split(";");
-                mostrarPlato.add(new cargarCombos(dato[0],dato[1]));
-
+                platos.add(new platillo(dato[0],dato[1],Integer.parseInt(dato[2])));
+                int cont=platos.size()-1;
+                for (int i = 3; i < dato.length; i++) {
+                    platos.get(cont).getPorcion().add(dato[i]);
+                }
             }
          }catch(IOException e){
             JOptionPane.showMessageDialog(null, "Error lectutra de datos. Achivo esta vacio");
@@ -95,7 +98,8 @@ public class archivoPlatos {
         //return mostrarPlato;
     }
     
-    public static String buscar(String filtro){
+    public static String busqueda(String filtro){
+        System.out.println(filtro);
         String retorno = null;
         File archivo;  //apuntar al archivo almancenado DD
         FileReader contenido = null ;  //acceder a todo el contenido del archivo

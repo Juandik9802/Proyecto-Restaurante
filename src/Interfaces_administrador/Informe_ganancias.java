@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Interfaces_administrador;
-import codigo.cargarCombos;
 import codigo.datosMesero;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -18,7 +17,7 @@ DefaultTableModel model = new DefaultTableModel();
      */
     public Informe_ganancias() {
         initComponents();
-        incertarColunas();
+    //    incertarColunas();
     }
 
     /**
@@ -104,7 +103,8 @@ DefaultTableModel model = new DefaultTableModel();
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-private void incertarColunas() {
+    /*
+    private void incertarColunas() {
         
         model.addColumn("Dia");
         for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
@@ -115,7 +115,7 @@ private void incertarColunas() {
         
         datos.setModel(model);
     }
-
+*/
     private void incertarFila() {
         for (datosMesero carga : codigo.listaMeseros.meseros) {
             String[] agregar=new String[3];

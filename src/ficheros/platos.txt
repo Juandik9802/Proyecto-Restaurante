@@ -1,12 +1,11 @@
-Almuerzo;Ternera a la llanera;2500;carne;papa;yuca;platano;
-Almuerzo;Bandeja Paisa;12000;huevo;arepa;arroz;frijoles;
-Almuerzo;Ternera a la llanera;20000;carne;opapa;yuca;
-Almuerzo;Mazamorra ;6000;
-Bebidas;Pony Malta;1500;
-Bebidas;Pepsy;2000;
-Cena;vagre;12000;
-vagre;arroz;arepa;
-Postres;Tarta;1500;
-Postres;Brauny;1200;
-Almuerzo;lenteja con sanchi;60000;
-
+Almuerzo;ternera a la llanera;6000;carne;papa;yuca;arroz;
+Almuerzo;bandeja paisa;7000;frijoles;arroz;arepa paisa;
+Almuerzo;mazamorra;5000;
+Cena;brochetas de pavo;3000;pavo;tomate cherry;pepino;
+Cena;pechuga a la pancha;4500;pechuga;pepeno;
+Postres;tarta;1500;
+Postres;torta de chocolate;1500;
+Postres;arroz con leche;1300;
+Cena;cubios;500;
+Bebidas;colombiana;2500;
+Bebidas;pepsy;2600;
