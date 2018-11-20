@@ -6,6 +6,8 @@
 package Interfaces_administrador;
 
 import codigo.datosMesero;
+import java.text.MessageFormat;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,7 +36,7 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla_Pagos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -43,26 +45,15 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_Pagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Mesa", "Efectivo", "Crédito", "Débito"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Short.class, java.lang.Short.class, java.lang.Short.class, java.lang.Short.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        ));
+        jScrollPane1.setViewportView(tabla_Pagos);
 
         jLabel1.setText("Total:");
 
@@ -87,6 +78,11 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pagos.png"))); // NOI18N
 
         generar.setText("Generar PDF");
+        generar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -126,7 +122,18 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
                 .addContainerGap(156, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-private void incertarColunas() {
+
+    private void generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarActionPerformed
+       MessageFormat Header = new MessageFormat("Menu");
+        MessageFormat footer = new MessageFormat("Page[0,number,integer]");
+        //String valores=llenar_tabla();
+        try { 
+            tabla_Pagos.print(JTable.PrintMode.NORMAL,Header,footer);
+        } catch (java.awt.print.PrinterException ex) {
+            System.out.println("Error al crear el archivo.");
+        }
+    }//GEN-LAST:event_generarActionPerformed
+    private void incertarColunas() {
         
         model.addColumn("Dia");/*
         for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
@@ -135,7 +142,7 @@ private void incertarColunas() {
         
         }
         */
-        jTable1.setModel(model);
+        tabla_Pagos.setModel(model);
     }
 
     private void incertarFila() {
@@ -154,7 +161,7 @@ private void incertarColunas() {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable tabla_Pagos;
     // End of variables declaration//GEN-END:variables
 }

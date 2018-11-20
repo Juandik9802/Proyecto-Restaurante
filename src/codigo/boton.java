@@ -24,6 +24,7 @@ public class boton extends javax.swing.JButton implements ActionListener {
     boolean estadoMesa;
     private Timer timer;
     private TimerTask tarea;
+    private String nombreMesero,fechaPedido,fechaEntregado;
 
     public boton(int numeroMesa, boolean estadoMesa, String text, Icon icon) {
         super(text, icon);
@@ -42,6 +43,9 @@ public class boton extends javax.swing.JButton implements ActionListener {
                 for (platosEntregados entregado : codigo.archivoEntregados.entregados) {
                     if (entregado.getNumMesas() == numeroMesa) {
                         estado1();
+                        nombreMesero=entregado.getNombreMesero();
+                        fechaPedido=entregado.getFecha();
+                        fechaEntregado=entregado.getEntregado();
                     }
                 }
             }
@@ -67,9 +71,19 @@ public class boton extends javax.swing.JButton implements ActionListener {
         this.estadoMesa = estadoMesa;
     }
 
+    public String getNombreMesero() {
+        return nombreMesero;
+    }
+
+    public void setNombreMesero(String nombreMesero) {
+        this.nombreMesero = nombreMesero;
+    }
+    
+    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        verPedido ver = new verPedido(this.numeroMesa,estadoMesa);
+        verPedido ver = new verPedido(this.numeroMesa,estadoMesa,nombreMesero,fechaPedido,fechaEntregado);
         ver.setVisible(true);
     }
 

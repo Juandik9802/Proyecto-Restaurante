@@ -5,6 +5,8 @@
  */
 package Interfaces_administrador;
 import codigo.datosMesero;
+import java.text.MessageFormat;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -48,6 +50,11 @@ DefaultTableModel model = new DefaultTableModel();
         jScrollPane1.setViewportView(datos);
 
         generar.setText("Generar PDF");
+        generar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generarActionPerformed(evt);
+            }
+        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -103,6 +110,18 @@ DefaultTableModel model = new DefaultTableModel();
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarActionPerformed
+        MessageFormat Header = new MessageFormat("Menu");
+        MessageFormat footer = new MessageFormat("Page[0,number,integer]");
+        //String valores=llenar_tabla();
+        String valores="ñaosdhfñakjsdhfñausdjhf";
+        try { 
+            datos.print(JTable.PrintMode.NORMAL,Header,footer);
+        } catch (java.awt.print.PrinterException ex) {
+            System.out.println("Error al crear el archivo. "+ex);
+        }
+    }//GEN-LAST:event_generarActionPerformed
     /*
     private void incertarColunas() {
         

@@ -6,6 +6,8 @@
 package Interfaces_administrador;
 
 import codigo.datosMesero;
+import java.text.MessageFormat;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -86,22 +88,28 @@ public class Informe_Cantidad extends javax.swing.JPanel {
         jLabel2.setBounds(10, 10, 330, 210);
 
         imprimir.setText("Imprimir");
+        imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirActionPerformed(evt);
+            }
+        });
         add(imprimir);
         imprimir.setBounds(420, 230, 73, 23);
     }// </editor-fold>//GEN-END:initComponents
-/*
-    private void incertarColunas() {
-        
-        model.addColumn("Dia");
-        for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
-            model.addColumn(object.getNombre());
-            System.out.println(object);
-        
-    }
-        
-        tablaCantidad.setModel(model);
-    }
-*/
+
+    private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
+        MessageFormat Header = new MessageFormat("Menu");
+        MessageFormat footer = new MessageFormat("Page[0,number,integer]");
+        //String valores=llenar_tabla();
+        String valores="ñaosdhfñakjsdhfñausdjhf";
+        try { 
+            tablaCantidad.print(JTable.PrintMode.NORMAL,Header,footer);
+        } catch (java.awt.print.PrinterException ex) {
+            System.out.println("Error al crear el archivo. "+ex);
+        }
+    }//GEN-LAST:event_imprimirActionPerformed
+    
+    
     private void incertarFila() {
         for (datosMesero carga : codigo.listaMeseros.meseros) {
             String[] agregar=new String[3];

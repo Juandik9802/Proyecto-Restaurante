@@ -5,13 +5,14 @@
  */
 package codigo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Juan Diego
  */
-public class facturacion {
+public class facturacion implements Serializable{
     int numero;
     ArrayList<String> platos;
     String fechaPedido;
@@ -75,6 +76,5 @@ public class facturacion {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+        
 }

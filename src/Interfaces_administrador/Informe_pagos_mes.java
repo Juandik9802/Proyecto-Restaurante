@@ -6,6 +6,8 @@
 package Interfaces_administrador;
 
 import codigo.datosMesero;
+import java.text.MessageFormat;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,26 +43,20 @@ DefaultTableModel model = new DefaultTableModel();
 
         tabla_reporte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Dia", "Efectivo", "Crédito", "Débito"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Short.class, java.lang.Short.class, java.lang.Short.class, java.lang.Short.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         jScrollPane1.setViewportView(tabla_reporte);
 
         imprimir.setText("Imprimir");
+        imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Total:");
@@ -119,6 +115,16 @@ DefaultTableModel model = new DefaultTableModel();
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
+        MessageFormat Header = new MessageFormat("Menu");
+        MessageFormat footer = new MessageFormat("Page[0,number,integer]");
+        try { 
+            tabla_reporte.print(JTable.PrintMode.NORMAL,Header,footer);
+        } catch (java.awt.print.PrinterException ex) {
+            System.out.println("Error al crear el archivo. "+ex);
+        }
+    }//GEN-LAST:event_imprimirActionPerformed
 private void incertarColunas() {
         
         model.addColumn("Dia");/*

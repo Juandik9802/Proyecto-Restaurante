@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class archivoFacturados {
 
-    public static ArrayList<platosEntregados> facturados = new ArrayList();
+    public static ArrayList<facturacion> facturados = new ArrayList();
     private static File file = new File("src/ficheros/Facturados.bin");
     private static FileOutputStream fileOutputStream;
     private static ObjectOutputStream objectOutputStream;
@@ -46,7 +46,7 @@ public class archivoFacturados {
             fileInputStream = new FileInputStream(file);
             inputStream = new ObjectInputStream(fileInputStream);
             Object data = inputStream.readObject();
-            facturados = (ArrayList<platosEntregados>) data;
+            facturados = (ArrayList<facturacion>) data;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(archivoEntregados.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException | ClassNotFoundException ex) {
@@ -54,7 +54,7 @@ public class archivoFacturados {
         }
     }
 
-    public static void añadir(int numero, String plato, String bebida, String postre, String fecha, String entregado, String nombreMesero) {
-        facturados.add(new platosEntregados(numero, plato, bebida, postre, fecha, entregado, nombreMesero));
+    public static void añadir(int numero, ArrayList<String> plato, String fechaPedido, String fechaEntregado, String fechaFacturad, String nombre) {
+        facturados.add(new facturacion(numero, plato, fechaPedido, fechaEntregado, fechaFacturad, nombre));
     }
 }

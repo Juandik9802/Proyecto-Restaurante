@@ -6,6 +6,8 @@
 package Interfaces_administrador;
 
 import codigo.datosMesero;
+import java.text.MessageFormat;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,7 +34,7 @@ DefaultTableModel model = new DefaultTableModel();
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla_meseros = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -41,26 +43,15 @@ DefaultTableModel model = new DefaultTableModel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_meseros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Código del mesero", "Nombre", "Mesas atendidas", "Cantidad cobrada", "Propinas", "Cantidad a pagar"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Short.class, java.lang.String.class, java.lang.Byte.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        ));
+        jScrollPane1.setViewportView(tabla_meseros);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,6 +76,11 @@ DefaultTableModel model = new DefaultTableModel();
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/meseros3.jpg"))); // NOI18N
 
         jButton1.setText("Imprimir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -121,6 +117,17 @@ DefaultTableModel model = new DefaultTableModel();
                 .addContainerGap(94, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MessageFormat Header = new MessageFormat("Menu");
+        MessageFormat footer = new MessageFormat("Page[0,number,integer]");
+        //String valores=llenar_tabla();
+        try { 
+            tabla_meseros.print(JTable.PrintMode.NORMAL,Header,footer);
+        } catch (java.awt.print.PrinterException ex) {
+            System.out.println("Error al crear el archivo. "+ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
   private void incertarColunas() {
         
         model.addColumn("Dia");
@@ -130,7 +137,7 @@ DefaultTableModel model = new DefaultTableModel();
         
     }
         */
-        jTable1.setModel(model);
+        tabla_meseros.setModel(model);
     }
 
     private void incertarFila() {
@@ -149,7 +156,7 @@ DefaultTableModel model = new DefaultTableModel();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable tabla_meseros;
     // End of variables declaration//GEN-END:variables
 }

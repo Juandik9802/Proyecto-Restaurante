@@ -6,8 +6,6 @@
 package interfaces_caja;
 
 import codigo.pedido;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -21,14 +19,18 @@ public class verPedido extends javax.swing.JFrame {
 
     private final int numero;
     public JComboBox jcb;
+    public String nombre,fechaPedido,fechaEntrega;
 
     /**
      * Creates new form verPedido
      *
      * @param num
      */
-    public verPedido(int num,boolean estado) {
+    public verPedido(int num,boolean estado,String nombreMesero,String fechaPedido,String fechaEntrega) {
         this.numero = num;
+        this.nombre =nombreMesero;
+        this.fechaPedido=fechaPedido;
+        this.fechaEntrega=fechaEntrega;
         initComponents();
         numeroMesa.setText(String.valueOf(numero));
         iniciarTabla();
@@ -135,16 +137,19 @@ public class verPedido extends javax.swing.JFrame {
         String[] list = {"Seleccionar","Efectivo", "Targeta de credito", "Targeta de Debito"};
         jcb = new JComboBox(list);
         jcb.setEditable(true);
+        
         JOptionPane.showMessageDialog(null, jcb, "Tipo de Pago", JOptionPane.QUESTION_MESSAGE);
         if (jcb.getSelectedItem() == "Efectivo") {
-            pago_efectivo efectivo = new pago_efectivo(tablaPedido);
+            pago_efectivo efectivo = new pago_efectivo(tablaPedido,nombre,fechaPedido,fechaEntrega,numero);
             efectivo.setVisible(true);
         } else {
             if (jcb.getSelectedItem() == "Targeta de credito") {
-                System.err.println("2");
+                pago_credito credito = new pago_credito(tablaPedido);
+                credito.setVisible(true);
             } else {
                 if (jcb.getSelectedItem() == "Targeta de Debito") {
-                    System.err.println("3");
+                    pago_debito debito=new pago_debito(tablaPedido);
+                    debito.setVisible(true);
                 }
             }
         }
