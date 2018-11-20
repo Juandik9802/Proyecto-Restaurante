@@ -11,7 +11,8 @@ import java.io.Serializable;
  *
  * @author Juan Diego
  */
-public class platosEntregados implements Serializable{
+public class platosEntregados implements Serializable {
+
     private int numMesas;
     private String plato;
     private String bebida;
@@ -85,6 +86,5 @@ public class platosEntregados implements Serializable{
     public void setNombreMesero(String nombreMesero) {
         this.nombreMesero = nombreMesero;
     }
-    
-    
+
 }

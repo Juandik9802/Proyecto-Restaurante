@@ -5,7 +5,6 @@
  */
 package codigo;
 
-import static codigo.archivoPedido.pedidos;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

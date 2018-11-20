@@ -94,7 +94,7 @@ public class pago_efectivo extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        facturar = new javax.swing.JButton();
         cant_pagar = new javax.swing.JTextField();
         vueltas = new javax.swing.JTextField();
 
@@ -116,14 +116,16 @@ public class pago_efectivo extends javax.swing.JFrame {
 
         jLabel6.setText("cantidad a devolver:");
 
-        jButton1.setText("Aceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        facturar.setText("Aceptar");
+        facturar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                facturarActionPerformed(evt);
             }
         });
 
         cant_pagar.setEditable(false);
+
+        vueltas.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,7 +148,7 @@ public class pago_efectivo extends javax.swing.JFrame {
                             .addComponent(vueltas)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(facturar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(160, 160, 160)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -173,7 +175,7 @@ public class pago_efectivo extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(vueltas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
-                .addComponent(jButton1))
+                .addComponent(facturar))
         );
 
         pack();
@@ -187,14 +189,14 @@ public class pago_efectivo extends javax.swing.JFrame {
         vueltas.setText(cambio1);
     }//GEN-LAST:event_cant_recibidaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void facturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturarActionPerformed
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_facturarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cant_pagar;
     private javax.swing.JTextField cant_recibida;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton facturar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

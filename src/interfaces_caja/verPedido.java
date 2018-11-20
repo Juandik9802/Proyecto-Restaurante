@@ -70,6 +70,9 @@ public class verPedido extends javax.swing.JFrame {
 
             }
         ));
+        tablaPedido.setEnabled(false);
+        tablaPedido.setFocusable(false);
+        tablaPedido.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(tablaPedido);
 
         facturar.setText("Facturar");
@@ -82,6 +85,7 @@ public class verPedido extends javax.swing.JFrame {
         jLabel1.setText("Mesa:");
 
         numeroMesa.setEditable(false);
+        numeroMesa.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         eliminarPedido.setText("Eliminar ");
         eliminarPedido.addActionListener(new java.awt.event.ActionListener() {
