@@ -13,61 +13,25 @@ import javax.swing.JTable;
 
 /**
  *
- * @author josep
+ * @author Juan Diego
  */
-public class pago_debito extends javax.swing.JPanel {
+public class pagoDebito extends javax.swing.JFrame {
 
-    String valores="";
+    String valores = "";
     JTable tabla_pedido;
-    public int total_por_mesa=0;
+    public int total_por_mesa = 0;
+
     /**
-     * Creates new form pago_debito
-     * @param tablaPedido
+     * Creates new form pagoCredito
      */
-    public pago_debito(JTable tablaPedido) {
+    public pagoDebito(JTable tablaPedido) {
         initComponents();
         this.setLocation(500, 300);
         obtener_precio();
-        tabla_pedido=tablaPedido;
+        tabla_pedido = tablaPedido;
+        initComponents();
     }
 
-    private void obtener_precio() {
-        int fila =tabla_pedido.getRowCount();
-        for (int i = 0; i < fila; i++) {
-        
-            int valor = (int) tabla_pedido.getValueAt(i, 1);
-            total_por_mesa=total_por_mesa+valor;
-            // Con esta condición solo ponemos comas hasta el penúltimo valor :)
-        }
-        valores += total_por_mesa;
-        cant_pagar.setText(valores);
-        //JOptionPane.showMessageDialog(null, "valores de la columna1: " + valores);
-    }
-    private void guarda_precios(){
-        FileWriter fichero = null;  //objeto principal (archivo)
-        PrintWriter linea;   //objeto de contenido de archivo
-        try{
-            fichero = new FileWriter("src/ficheros/Precios efectivo.txt",true); //crea el archivo 
-            linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
-            // Inicia  
-            String cadena = null;
-            cadena =Integer.toString(total_por_mesa)+";"+"Debito"+";";
-            linea.println(cadena);
-                        
-             //escribiendo en el archivo            
-        }catch(IOException e){
-            JOptionPane.showMessageDialog(null,"Error creando archivo");
-        }
-        finally{
-            try{
-                if(fichero != null){
-                    fichero.close();
-                }
-            }catch(IOException e1){
-                JOptionPane.showMessageDialog(null,"Error cerrando archivo");
-            }
-        }
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,9 +46,11 @@ public class pago_debito extends javax.swing.JPanel {
         cant_pagar = new javax.swing.JTextField();
         confirmar = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         jLabel1.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Debito");
+        jLabel1.setText("debito");
 
         jLabel3.setText("Cantidad a pagar:");
 
@@ -97,30 +63,30 @@ public class pago_debito extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cant_pagar, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                .addGap(75, 75, 75))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(123, 123, 123)
                         .addComponent(confirmar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
+                        .addGap(110, 110, 110)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(141, 141, 141))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(cant_pagar)
+                .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -128,14 +94,53 @@ public class pago_debito extends javax.swing.JPanel {
                     .addComponent(cant_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(confirmar)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         guarda_precios();
     }//GEN-LAST:event_confirmarActionPerformed
 
+    private void obtener_precio() {
+        int fila = tabla_pedido.getRowCount();
+        for (int i = 0; i < fila; i++) {
+
+            int valor = (int) tabla_pedido.getValueAt(i, 1);
+            total_por_mesa = total_por_mesa + valor;
+            // Con esta condición solo ponemos comas hasta el penúltimo valor :)
+        }
+        valores += total_por_mesa;
+        cant_pagar.setText(valores);
+        //JOptionPane.showMessageDialog(null, "valores de la columna1: " + valores);
+    }
+
+    private void guarda_precios() {
+        FileWriter fichero = null;  //objeto principal (archivo)
+        PrintWriter linea;   //objeto de contenido de archivo
+        try {
+            fichero = new FileWriter("src/ficheros/Precios efectivo.txt", true); //crea el archivo 
+            linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
+            // Inicia  
+            String cadena = null;
+            cadena = Integer.toString(total_por_mesa) + ";" + "Debito" + ";";
+            linea.println(cadena);
+
+            //escribiendo en el archivo            
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error creando archivo");
+        } finally {
+            try {
+                if (fichero != null) {
+                    fichero.close();
+                }
+            } catch (IOException e1) {
+                JOptionPane.showMessageDialog(null, "Error cerrando archivo");
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cant_pagar;
@@ -143,5 +148,4 @@ public class pago_debito extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
-
 }

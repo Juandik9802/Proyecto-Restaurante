@@ -144,11 +144,11 @@ public class verPedido extends javax.swing.JFrame {
             efectivo.setVisible(true);
         } else {
             if (jcb.getSelectedItem() == "Targeta de credito") {
-                pago_credito credito = new pago_credito(tablaPedido);
+                pagoCredito credito = new pagoCredito(tablaPedido);
                 credito.setVisible(true);
             } else {
                 if (jcb.getSelectedItem() == "Targeta de Debito") {
-                    pago_debito debito=new pago_debito(tablaPedido);
+                    pagoDebito debito=new pagoDebito(tablaPedido);
                     debito.setVisible(true);
                 }
             }
