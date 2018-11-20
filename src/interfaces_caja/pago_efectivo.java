@@ -117,6 +117,11 @@ public class pago_efectivo extends javax.swing.JFrame {
         jLabel6.setText("cantidad a devolver:");
 
         jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         cant_pagar.setEditable(false);
 
@@ -175,13 +180,16 @@ public class pago_efectivo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cant_recibidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cant_recibidaActionPerformed
-        
         int cantidad_pagar = Integer.parseInt(cant_pagar.getText());
         int cantidad_recibida=Integer.parseInt(cant_recibida.getText());
         int cambio=cantidad_recibida-cantidad_pagar;
         String cambio1=Integer.toString(cambio);
         vueltas.setText(cambio1);
     }//GEN-LAST:event_cant_recibidaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cant_pagar;

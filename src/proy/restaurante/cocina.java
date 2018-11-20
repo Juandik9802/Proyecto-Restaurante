@@ -5,18 +5,10 @@
  */
 package proy.restaurante;
 
-import codigo.pedido;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
-import javafx.scene.chart.Chart;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -256,7 +248,6 @@ public class cocina extends javax.swing.JFrame {
 
     private void preparandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preparandoActionPerformed
         plato.setText((String) listModel.elementAt(0));
-        //listModel2.addElement();
         listModel4 = new DefaultListModel();
         String n = plato.getText();
         for (int i = 0; i <= codigo.archivoGeneral.numeroMesas; i++) {
