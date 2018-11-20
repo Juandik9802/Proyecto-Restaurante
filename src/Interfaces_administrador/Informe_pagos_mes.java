@@ -128,7 +128,7 @@ DefaultTableModel model = new DefaultTableModel();
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void iniciar_tabla(){
-        model.addColumn("Mesa");
+        model.addColumn("Día");
         model.addColumn("Efectivo");
         model.addColumn("Débito");
         model.addColumn("Crédito");

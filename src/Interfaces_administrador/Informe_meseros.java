@@ -131,10 +131,10 @@ DefaultTableModel model = new DefaultTableModel();
     }//GEN-LAST:event_jButton1ActionPerformed
   
     private void iniciar_tabla(){
-        model.addColumn("Mesa");
-        model.addColumn("Efectivo");
-        model.addColumn("Débito");
-        model.addColumn("Crédito");
+        model.addColumn("Código");
+        model.addColumn("Nombre");
+        model.addColumn("Mesas atendidas");
+        model.addColumn("Cantidad a pagar");
         tabla_meseros.setModel(model);
     }
     

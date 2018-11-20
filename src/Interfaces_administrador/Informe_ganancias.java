@@ -138,10 +138,10 @@ DefaultTableModel model = new DefaultTableModel();
 */
     
     private void iniciar_tabla(){
-        model.addColumn("Mesa");
-        model.addColumn("Efectivo");
-        model.addColumn("Débito");
-        model.addColumn("Crédito");
+        model.addColumn("Vendido");
+        model.addColumn("Meseros");
+        model.addColumn("Platos");
+        model.addColumn("Total");
         datos.setModel(model);
     }
     
