@@ -22,7 +22,8 @@ DefaultTableModel model = new DefaultTableModel();
      */
     public Informe_tiempo() {
         initComponents();
-        incertarColunas();
+        iniciar_tabla();
+        //incertarColunas();
     }
 
     /**
@@ -101,15 +102,12 @@ DefaultTableModel model = new DefaultTableModel();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-private void incertarColunas() {
-        
-        model.addColumn("Dia");/*
-        for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
-            model.addColumn(object.getNombre());
-            System.out.println(object);
-        
-    }
-       */ 
+    
+    private void iniciar_tabla(){
+        model.addColumn("Mesa");
+        model.addColumn("Efectivo");
+        model.addColumn("Débito");
+        model.addColumn("Crédito");
         tabla_tiempos.setModel(model);
     }
 

@@ -21,7 +21,8 @@ DefaultTableModel model = new DefaultTableModel();
      */
     public Informe_pagos_mes() {
         initComponents();
-        incertarColunas();
+        iniciar_tabla();
+        //incertarColunas();
     }
 
     /**
@@ -125,15 +126,12 @@ DefaultTableModel model = new DefaultTableModel();
             System.out.println("Error al crear el archivo. "+ex);
         }
     }//GEN-LAST:event_imprimirActionPerformed
-private void incertarColunas() {
-        
-        model.addColumn("Dia");/*
-        for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
-            model.addColumn(object.getNombre());
-            System.out.println(object);
-        
-    }
-        */
+
+    private void iniciar_tabla(){
+        model.addColumn("Día");
+        model.addColumn("Efectivo");
+        model.addColumn("Débito");
+        model.addColumn("Crédito");
         tabla_reporte.setModel(model);
     }
 

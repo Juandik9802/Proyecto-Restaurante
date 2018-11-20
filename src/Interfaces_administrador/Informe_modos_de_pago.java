@@ -6,6 +6,11 @@
 package Interfaces_administrador;
 
 import codigo.datosMesero;
+import codigo.pedido;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.MessageFormat;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -21,8 +26,14 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
      */
     public Informe_modos_de_pago() {
         initComponents();
-        incertarColunas();
+        iniciar_tabla();
+        llenar_tabla();
     }
+    
+    public int numero_mesa;
+
+    byte cont;
+    interfaces_caja.verPedido obt;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,6 +144,81 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
             System.out.println("Error al crear el archivo.");
         }
     }//GEN-LAST:event_generarActionPerformed
+    
+    private void iniciar_tabla(){
+        model.addColumn("Mesa");
+        model.addColumn("Efectivo");
+        model.addColumn("Débito");
+        model.addColumn("Crédito");
+        tabla_Pagos.setModel(model);
+    }
+    
+    private void llenar_tabla(){
+        codigo.archivoPedido.busqueda(numero_mesa);
+        File archivo_lector;
+        FileReader lector = null;
+        BufferedReader linea;
+        try {
+            int retorno;
+
+            archivo_lector = new File("src/ficheros/Precios efectivo.txt");
+            lector = new FileReader(archivo_lector);
+            linea = new BufferedReader(lector);
+            String cadena;
+            String tipo_de_pago;
+            while((cadena=linea.readLine()) != null){ //recorre todo el archivo
+                String dato[] = cadena.split(";");
+                retorno=Integer.parseInt(dato[0]);
+                tipo_de_pago=dato[1];
+                if("Efectivo".equals(tipo_de_pago)){
+                    int contador = 0;
+                    for (pedido object : codigo.archivoPedido.lista) {
+                        model.addRow(dato);
+                        model.setValueAt(numero_mesa, contador, 0);
+                        model.setValueAt(retorno, contador, 1);
+                        model.setValueAt(0, contador, 2);
+                        model.setValueAt(0, contador, 3);
+                        tabla_Pagos.setModel(model);
+                    }
+                }else{
+                    if("Debito".equals(tipo_de_pago)){
+                        int contador = 0;
+                        for (pedido object : codigo.archivoPedido.lista) {
+                            model.insertRow(contador, new Object[]{});
+                            model.setValueAt(numero_mesa, contador, 0);
+                            model.setValueAt(0, contador, 1);
+                            model.setValueAt(retorno, contador, 2);
+                            model.setValueAt(0, contador, 3);
+                            tabla_Pagos.setModel(model);
+                        }
+                    }else{
+                        int contador = 0;
+                        for (pedido object : codigo.archivoPedido.lista) {
+                            model.insertRow(contador, new Object[]{});
+                            model.setValueAt(numero_mesa, contador, 0);
+                            model.setValueAt(0, contador, 1);
+                            model.setValueAt(0, contador, 2);
+                            model.setValueAt(retorno, contador, 3);
+                            tabla_Pagos.setModel(model);
+                        }
+                    }
+                }
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Error abriendo/leyendo el archivo "+e);
+        }finally{
+            try {
+                if (lector!=null) {
+                    lector.close();
+                } else {
+                }
+            } catch (IOException e) {
+                System.out.println("Error cerrando el archivo "+e);
+            }
+        }
+        
+    }
+    
     private void incertarColunas() {
         
         model.addColumn("Dia");/*

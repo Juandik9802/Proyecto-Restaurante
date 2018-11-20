@@ -21,7 +21,8 @@ DefaultTableModel model = new DefaultTableModel();
      */
     public Informe_platos() {
         initComponents();
-        incertarColunas();
+        iniciar_tabla();
+        //incertarColunas();
     }
 
     /**
@@ -134,15 +135,9 @@ DefaultTableModel model = new DefaultTableModel();
             System.out.println("Error al crear el archivo. "+ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-private void incertarColunas() {
-        
-        model.addColumn("Dia");/*
-        for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
-            model.addColumn(object.getNombre());
-            System.out.println(object);
-        
-    }
-        */
+    private void iniciar_tabla(){
+        model.addColumn("Plato");
+        model.addColumn("Cantidad");
         tabla_platos.setModel(model);
     }
 

@@ -103,8 +103,8 @@ public class muestraMenuSemana extends javax.swing.JPanel {
     }//GEN-LAST:event_menuDiaItemStateChanged
     
     private void añadirColumnas(){
-            model.addColumn("Tipo");
             model.addColumn("Nombre");
+            model.addColumn("Tipo");
             muestraMenu.setModel(model);
         }
 

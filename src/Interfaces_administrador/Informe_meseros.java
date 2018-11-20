@@ -21,7 +21,8 @@ DefaultTableModel model = new DefaultTableModel();
      */
     public Informe_meseros() {
         initComponents();
-        incertarColunas();
+        iniciar_tabla();
+        //incertarColunas();
     }
 
     /**
@@ -128,7 +129,16 @@ DefaultTableModel model = new DefaultTableModel();
             System.out.println("Error al crear el archivo. "+ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-  private void incertarColunas() {
+  
+    private void iniciar_tabla(){
+        model.addColumn("Código");
+        model.addColumn("Nombre");
+        model.addColumn("Mesas atendidas");
+        model.addColumn("Cantidad a pagar");
+        tabla_meseros.setModel(model);
+    }
+    
+    private void incertarColunas() {
         
         model.addColumn("Dia");
         /*for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
