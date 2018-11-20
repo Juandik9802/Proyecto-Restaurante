@@ -19,6 +19,7 @@ DefaultTableModel model = new DefaultTableModel();
      */
     public Informe_ganancias() {
         initComponents();
+        iniciar_tabla();
     //    incertarColunas();
     }
 
@@ -135,6 +136,15 @@ DefaultTableModel model = new DefaultTableModel();
         datos.setModel(model);
     }
 */
+    
+    private void iniciar_tabla(){
+        model.addColumn("Mesa");
+        model.addColumn("Efectivo");
+        model.addColumn("Débito");
+        model.addColumn("Crédito");
+        datos.setModel(model);
+    }
+    
     private void incertarFila() {
         for (datosMesero carga : codigo.listaMeseros.meseros) {
             String[] agregar=new String[3];

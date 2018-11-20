@@ -22,6 +22,7 @@ public class Informe_Cantidad extends javax.swing.JPanel {
      */
     public Informe_Cantidad() {
         initComponents();
+        iniciar_tabla();
         //incertarColunas();
     }
 
@@ -109,6 +110,13 @@ public class Informe_Cantidad extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_imprimirActionPerformed
     
+    private void iniciar_tabla(){
+        model.addColumn("Mesa");
+        model.addColumn("Efectivo");
+        model.addColumn("Débito");
+        model.addColumn("Crédito");
+        tablaCantidad.setModel(model);
+    }
     
     private void incertarFila() {
         for (datosMesero carga : codigo.listaMeseros.meseros) {

@@ -21,6 +21,7 @@ public class Informe_Inventario extends javax.swing.JPanel {
      */
     public Informe_Inventario() {
         initComponents();
+        iniciar_tabla();
          //incertarColunas();
     }
 
@@ -34,11 +35,11 @@ public class Informe_Inventario extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla_inventario = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         generar_pdf = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_inventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -49,7 +50,7 @@ public class Informe_Inventario extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla_inventario);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/almacen.jpg"))); // NOI18N
 
@@ -95,12 +96,20 @@ public class Informe_Inventario extends javax.swing.JPanel {
         //String valores=llenar_tabla();
         String valores="ñaosdhfñakjsdhfñausdjhf";
         try {
-            jTable1.print(JTable.PrintMode.NORMAL,Header,footer);
+            tabla_inventario.print(JTable.PrintMode.NORMAL,Header,footer);
         } catch (java.awt.print.PrinterException ex) {
             System.out.println("Error al crear el archivo. "+ex);
         }
     }//GEN-LAST:event_generar_pdfActionPerformed
    
+    private void iniciar_tabla(){
+        model.addColumn("Mesa");
+        model.addColumn("Efectivo");
+        model.addColumn("Débito");
+        model.addColumn("Crédito");
+        tabla_inventario.setModel(model);
+    }
+    
     private void incertarFila() {
         for (datosMesero carga : codigo.listaMeseros.meseros) {
             String[] agregar=new String[3];
@@ -115,6 +124,6 @@ public class Informe_Inventario extends javax.swing.JPanel {
     private javax.swing.JButton generar_pdf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabla_inventario;
     // End of variables declaration//GEN-END:variables
 }
