@@ -215,4 +215,14 @@ public class archivoPedido {
         codigo.archivoMenus.borrar(file);
         crearModificacion();
     }
+    
+    public static void eliminarRegistro(int numeroMesa) {
+        for (int i = 0; i < pedidos.size(); i++) {
+            if (pedidos.get(i).getNumMesas() == numeroMesa) {
+                    pedidos.remove(i);
+                    eliminarRegistro(numeroMesa);
+            }
+        }
+        modificar();
+    }
 }

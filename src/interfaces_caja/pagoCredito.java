@@ -8,6 +8,9 @@ package interfaces_caja;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -20,15 +23,25 @@ public class pagoCredito extends javax.swing.JFrame {
     String valores = "";
     JTable tabla_pedido;
     public int total_por_mesa = 0;
+    String nombre, fechaPedido, fechaEntrega, fechaFacturado;
+    ArrayList<String> platos = new ArrayList();
+    int numero, pago;
 
     /**
      * Creates new form pagoCredito
      */
-    public pagoCredito(JTable tablaPedido) {
+    public pagoCredito(JTable tablaPedido, String nombre, String fechaPedido, String fechaEntrega, int num) {
         initComponents();
+        this.nombre = nombre;
+        this.fechaPedido = fechaPedido;
+        this.fechaEntrega = fechaEntrega;
+        this.numero = num;
+        this.setTitle("Credito");
         this.setLocation(500, 300);
-        obtener_precio();
         tabla_pedido = tablaPedido;
+        obtener_precio();
+        pago = Integer.parseInt(cant_pagar.getText());
+
     }
 
     private void obtener_precio() {
@@ -42,31 +55,6 @@ public class pagoCredito extends javax.swing.JFrame {
         valores += total_por_mesa;
         cant_pagar.setText(valores);
         //JOptionPane.showMessageDialog(null, "valores de la columna1: " + valores);
-    }
-
-    private void guarda_precios() {
-        FileWriter fichero = null;  //objeto principal (archivo)
-        PrintWriter linea;   //objeto de contenido de archivo
-        try {
-            fichero = new FileWriter("src/ficheros/Precios efectivo.txt", true); //crea el archivo 
-            linea = new PrintWriter(fichero); //apunta el PrintWriter al archivo creado
-            // Inicia  
-            String cadena = null;
-            cadena = Integer.toString(total_por_mesa) + ";" + "Debito" + ";";
-            linea.println(cadena);
-
-            //escribiendo en el archivo            
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Error creando archivo");
-        } finally {
-            try {
-                if (fichero != null) {
-                    fichero.close();
-                }
-            } catch (IOException e1) {
-                JOptionPane.showMessageDialog(null, "Error cerrando archivo");
-            }
-        }
     }
 
     /**
@@ -138,10 +126,40 @@ public class pagoCredito extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
-        guarda_precios();
+        optenerPlatos();
+        tomarFecha();
+        codigo.archivoFacturados.añadir(numero, this.getTitle(), platos, fechaPedido, fechaEntrega, fechaFacturado, nombre, pago);
+        codigo.archivoFacturados.escribir();
+        facturaPDF();
+        codigo.archivoPedido.eliminarRegistro(numero);
+        codigo.archivoEntregados.eliminarRegistro(numero);
     }//GEN-LAST:event_confirmarActionPerformed
 
-   
+        private void optenerPlatos() {
+        int fila = tabla_pedido.getRowCount();
+        for (int i = 0; i < fila; i++) {
+            platos.add((String) tabla_pedido.getValueAt(i, 0));
+        }
+    }
+
+    private void tomarFecha() {
+        Calendar calendario = Calendar.getInstance();
+        fechaFacturado = String.valueOf(calendario.get(Calendar.HOUR_OF_DAY));//tomar la hora del sistema
+        fechaFacturado = fechaFacturado + ";" + String.valueOf(calendario.get(Calendar.MINUTE));
+    }
+
+    private void facturaPDF() {
+        MessageFormat Header = new MessageFormat("Factura " + numero);
+        MessageFormat footer = new MessageFormat(" ");
+        try {
+            tabla_pedido.print(JTable.PrintMode.NORMAL, Header, footer);
+        } catch (java.awt.print.PrinterException ex) {
+            System.out.println("Error al crear el archivo. " + ex);
+        } catch (Exception e) {
+
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cant_pagar;
     private javax.swing.JButton confirmar;

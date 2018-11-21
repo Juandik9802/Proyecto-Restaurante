@@ -56,4 +56,14 @@ public class archivoEntregados {
     public static void añadir(int numero,String plato,String bebida,String postre,String fecha,String entregado,String nombreMesero){
         entregados.add(new platosEntregados(numero, plato, bebida, postre, fecha, entregado, nombreMesero));
     }
+    
+    public static void eliminarRegistro(int numeroMesa) {
+        for (int i = 0; i < entregados.size(); i++) {
+            if (entregados.get(i).getNumMesas() == numeroMesa) {
+                    entregados.remove(i);
+                    eliminarRegistro(numeroMesa);
+            }
+        }
+        escribir();
+    }
 }

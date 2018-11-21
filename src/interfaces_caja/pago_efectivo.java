@@ -5,6 +5,7 @@ package interfaces_caja;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JTable;
@@ -17,33 +18,34 @@ public class pago_efectivo extends javax.swing.JFrame {
 
     String valores = "";
     JTable tabla_pedido;
-    int numero;
+    int numero, pago;
+
+    ;
 
     /**
      * Creates new form pago_efectivo
      *
      * @param tablaPedido
      */
-    public pago_efectivo(JTable tablaPedido,String nombre,String fechaPedido,String fechaEntrega,int num) {
-        this.nombre=nombre;
-        this.fechaPedido=fechaPedido;
-        this.fechaEntrega=fechaEntrega;
-        this.numero=num;
+    public pago_efectivo(JTable tablaPedido, String nombre, String fechaPedido, String fechaEntrega, int num) {
+        this.nombre = nombre;
+        this.fechaPedido = fechaPedido;
+        this.fechaEntrega = fechaEntrega;
+        this.numero = num;
+        this.setTitle("Efectivo");
         initComponents();
         this.setLocationRelativeTo(null);
         tabla_pedido = tablaPedido;
         obtener_tabla();
+        pago = Integer.parseInt(cant_pagar.getText());
     }
-    /*Este método es una adaptación del encontrado en http://www.forosdelweb.com/f45/como-obtener-valores-toda-columna-jtable-java-usando-netbeans-1098950/*/
-    //Este método toma los valores de todos los platos para poderlos facturar.
+
     private void obtener_tabla() {
         int fila = tabla_pedido.getRowCount();
         int total_por_mesa = 0;
         for (int i = 0; i < fila; i++) {
-
             int valor = (int) tabla_pedido.getValueAt(i, 1);
             total_por_mesa = total_por_mesa + valor;
-
         }
         valores += total_por_mesa;
         cant_pagar.setText(valores);
@@ -163,7 +165,7 @@ public class pago_efectivo extends javax.swing.JFrame {
         }
     }
 
-    String fechaPedido,fechaEntrega,fechaFacturado;
+    String fechaPedido, fechaEntrega, fechaFacturado;
 
     private void tomarFecha() {
         Calendar calendario = Calendar.getInstance();
@@ -178,13 +180,26 @@ public class pago_efectivo extends javax.swing.JFrame {
         String cambio1 = Integer.toString(cambio);
         vueltas.setText(cambio1);
     }//GEN-LAST:event_cant_recibidaActionPerformed
-    private String nombre;
+    private final String nombre;
+    
     private void facturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturarActionPerformed
         optenerPlatos();
         tomarFecha();
-        codigo.archivoFacturados.añadir(numero, platos, fechaPedido, fechaEntrega, fechaFacturado, nombre);
+        codigo.archivoFacturados.añadir(numero, this.getTitle(), platos, fechaPedido, fechaEntrega, fechaFacturado, nombre, pago);
         codigo.archivoFacturados.escribir();
+        codigo.archivoPedido.eliminarRegistro(numero);
+        codigo.archivoEntregados.eliminarRegistro(numero);
     }//GEN-LAST:event_facturarActionPerformed
+
+    private void facturaPDF() {
+        MessageFormat Header = new MessageFormat("Mesa " + numero);
+        MessageFormat footer = new MessageFormat("Page[0,number,integer]");
+        try {
+            tabla_pedido.print(JTable.PrintMode.NORMAL, Header, footer);
+        } catch (java.awt.print.PrinterException ex) {
+            System.out.println("Error al crear el archivo. " + ex);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cant_pagar;

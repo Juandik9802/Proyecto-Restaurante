@@ -14,19 +14,23 @@ import java.util.ArrayList;
  */
 public class facturacion implements Serializable{
     int numero;
+    String tipo;
     ArrayList<String> platos;
     String fechaPedido;
     String fechaEntregado;
     String FechaFacturado;
     String nombre;
+    int cantidadPaga;
 
-    public facturacion(int numero, ArrayList<String> platos, String fechaPedido, String fechaEntregado, String FechaFacturado, String nombre) {
+    public facturacion(int numero, String tipo, ArrayList<String> platos, String fechaPedido, String fechaEntregado, String FechaFacturado, String nombre, int cantidadPaga) {
         this.numero = numero;
+        this.tipo = tipo;
         this.platos = platos;
         this.fechaPedido = fechaPedido;
         this.fechaEntregado = fechaEntregado;
         this.FechaFacturado = FechaFacturado;
         this.nombre = nombre;
+        this.cantidadPaga = cantidadPaga;
     }
 
     public int getNumero() {
@@ -35,6 +39,14 @@ public class facturacion implements Serializable{
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public ArrayList<String> getPlatos() {
@@ -76,5 +88,13 @@ public class facturacion implements Serializable{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-        
+
+    public int getCantidadPaga() {
+        return cantidadPaga;
+    }
+
+    public void setCantidadPaga(int cantidadPaga) {
+        this.cantidadPaga = cantidadPaga;
+    }
+
 }

@@ -5,9 +5,10 @@
  */
 package Interfaces_administrador;
 
-
 import codigo.datosMesero;
 import java.text.MessageFormat;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,14 +17,27 @@ import javax.swing.table.DefaultTableModel;
  * @author josep
  */
 public class Informe_tiempo extends javax.swing.JPanel {
-DefaultTableModel model = new DefaultTableModel();
+
+    DefaultTableModel model;
+    Timer timer;
+    TimerTask timerTask;
+
     /**
      * Creates new form Informe_tiempo
      */
     public Informe_tiempo() {
         initComponents();
         iniciar_tabla();
-        //incertarColunas();
+        incertarFila();
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                iniciar_tabla();
+                incertarFila();
+            }
+        };
+        timer = new Timer();
+        timer.scheduleAtFixedRate(timerTask, 2000, 2000);
     }
 
     /**
@@ -91,19 +105,17 @@ DefaultTableModel model = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MessageFormat Header = new MessageFormat("Menu");
+        MessageFormat Header = new MessageFormat("Informe de tiempos");
         MessageFormat footer = new MessageFormat("Page[0,number,integer]");
-        //String valores=llenar_tabla();
-        String valores="ñaosdhfñakjsdhfñausdjhf";
-        try { 
-            tabla_tiempos.print(JTable.PrintMode.NORMAL,Header,footer);
+        try {
+            tabla_tiempos.print(JTable.PrintMode.NORMAL, Header, footer);
         } catch (java.awt.print.PrinterException ex) {
-            System.out.println("Error al crear el archivo. "+ex);
+            System.out.println("Error al crear el archivo. " + ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
-    private void iniciar_tabla(){
+    private void iniciar_tabla() {
+        model = new DefaultTableModel();
         model.addColumn("Mesa");
         model.addColumn("Efectivo");
         model.addColumn("Débito");
@@ -112,11 +124,12 @@ DefaultTableModel model = new DefaultTableModel();
     }
 
     private void incertarFila() {
-        for (datosMesero carga : codigo.listaMeseros.meseros) {
-            String[] agregar=new String[3];
-            agregar[0]=String.valueOf(carga.getCodigo());
-            agregar[1]=carga.getNombre();
-            agregar[2]=carga.getApellido();
+        for (codigo.facturacion carga : codigo.archivoFacturados.facturados) {
+            String[] agregar = new String[4];
+            agregar[0] = String.valueOf(carga.getNumero());
+            agregar[1] = carga.getFechaPedido();
+            agregar[2] = carga.getFechaEntregado();
+            agregar[3] = carga.getFechaEntregado();
             model.addRow(agregar);
         }
     }

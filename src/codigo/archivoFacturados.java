@@ -54,7 +54,7 @@ public class archivoFacturados {
         }
     }
 
-    public static void añadir(int numero, ArrayList<String> plato, String fechaPedido, String fechaEntregado, String fechaFacturad, String nombre) {
-        facturados.add(new facturacion(numero, plato, fechaPedido, fechaEntregado, fechaFacturad, nombre));
+    public static void añadir(int numero,String tipoPago, ArrayList<String> plato, String fechaPedido, String fechaEntregado, String fechaFacturad, String nombre,int pago){
+        facturados.add(new facturacion(numero, tipoPago, plato, fechaPedido, fechaEntregado, fechaFacturad, nombre, pago));
     }
 }
