@@ -60,6 +60,12 @@ public class platos extends javax.swing.JPanel {
 
         labelNombre.setText("Nombre del plato");
 
+        nombrePlato.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombrePlatoKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("Precio");
 
         precioPlato.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -77,6 +83,12 @@ public class platos extends javax.swing.JPanel {
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Porcion");
+
+        detalles.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                detallesKeyTyped(evt);
+            }
+        });
 
         agregarPorcion.setText("Agregar");
         agregarPorcion.addActionListener(new java.awt.event.ActionListener() {
@@ -285,6 +297,18 @@ public class platos extends javax.swing.JPanel {
         char c =evt.getKeyChar();
         if (c<'0'||c>'9')evt.consume();
     }//GEN-LAST:event_precioPlatoKeyTyped
+
+    private void nombrePlatoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombrePlatoKeyTyped
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if (c<'a'||c>'z')evt.consume();
+    }//GEN-LAST:event_nombrePlatoKeyTyped
+
+    private void detallesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_detallesKeyTyped
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if (c<'a'||c>'z')evt.consume();
+    }//GEN-LAST:event_detallesKeyTyped
     
     private void cargar() {
         listaPlatos.add(new platillo(tipo,nombre,precio));
