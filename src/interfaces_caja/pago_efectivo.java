@@ -34,7 +34,7 @@ public class pago_efectivo extends javax.swing.JFrame {
         tabla_pedido = tablaPedido;
         obtener_tabla();
     }
-
+    /*Este método es una adaptación del encontrado en http://www.forosdelweb.com/f45/como-obtener-valores-toda-columna-jtable-java-usando-netbeans-1098950/*/
     //Este método toma los valores de todos los platos para poderlos facturar.
     private void obtener_tabla() {
         int fila = tabla_pedido.getRowCount();
@@ -43,7 +43,7 @@ public class pago_efectivo extends javax.swing.JFrame {
 
             int valor = (int) tabla_pedido.getValueAt(i, 1);
             total_por_mesa = total_por_mesa + valor;
-            // Con esta condición solo ponemos comas hasta el penúltimo valor :)
+
         }
         valores += total_por_mesa;
         cant_pagar.setText(valores);
