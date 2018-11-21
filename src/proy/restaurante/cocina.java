@@ -259,8 +259,8 @@ public class cocina extends javax.swing.JFrame {
                 postre.setText(p[3]);
                 platoNombre = p[4];
                 numeroMesa = Integer.parseInt(p[5]);
-                fecha = p[5] + ":" + p[6];
-                nombreMesero = p[7];
+                fecha = p[6] + ":" + p[7];
+                nombreMesero = p[8];
             }
         }
         preparandoplato.setModel(listModel2);

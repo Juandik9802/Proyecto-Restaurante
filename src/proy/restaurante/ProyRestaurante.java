@@ -20,6 +20,7 @@ public class ProyRestaurante {
     static File cocina = new File("src/ficheros/cocina.txt");
     static File platos = new File("src/ficheros/platos.txt");
     static File entregados = new File("src/ficheros/entregados.bin");
+    static File facturados = new File("src/ficheros/Facturados.bin");
 
     /**
      * @param args the command line arguments
@@ -41,6 +42,9 @@ public class ProyRestaurante {
             codigo.archivoPlatos.mostrar();
         }if (entregados.exists()){
             codigo.archivoEntregados.leer();
+        }
+        if (facturados.exists()){
+            codigo.archivoFacturados.leer();
         }
         
         codigo.archivoGeneral.numeroMesas = codigo.archivoGeneral.buscar();
