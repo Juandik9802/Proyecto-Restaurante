@@ -22,7 +22,7 @@ DefaultTableModel model = new DefaultTableModel();
     public Informe_pagos_mes() {
         initComponents();
         iniciar_tabla();
-        //incertarColunas();
+        //insertarColunas();
     }
 
     /**
@@ -135,7 +135,7 @@ DefaultTableModel model = new DefaultTableModel();
         tabla_reporte.setModel(model);
     }
 
-    private void incertarFila() {
+    private void insertarFila() {
         for (datosMesero carga : codigo.listaMeseros.meseros) {
             String[] agregar=new String[3];
             agregar[0]=String.valueOf(carga.getCodigo());
@@ -144,7 +144,6 @@ DefaultTableModel model = new DefaultTableModel();
             model.addRow(agregar);
         }
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton imprimir;
