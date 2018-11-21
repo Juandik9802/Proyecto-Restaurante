@@ -85,6 +85,11 @@ public class pago_efectivo extends javax.swing.JFrame {
                 cant_recibidaActionPerformed(evt);
             }
         });
+        cant_recibida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cant_recibidaKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("cantidad recibida:");
 
@@ -190,7 +195,14 @@ public class pago_efectivo extends javax.swing.JFrame {
         codigo.archivoPedido.eliminarRegistro(numero);
         codigo.archivoEntregados.eliminarRegistro(numero);
         facturaPDF();
+        this.dispose();
     }//GEN-LAST:event_facturarActionPerformed
+
+    private void cant_recibidaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cant_recibidaKeyTyped
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if (c<'0'||c>'9')evt.consume();
+    }//GEN-LAST:event_cant_recibidaKeyTyped
 
     private void facturaPDF() {
         MessageFormat Header = new MessageFormat("Mesa " + numero);
