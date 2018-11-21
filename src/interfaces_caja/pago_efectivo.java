@@ -189,6 +189,7 @@ public class pago_efectivo extends javax.swing.JFrame {
         codigo.archivoFacturados.escribir();
         codigo.archivoPedido.eliminarRegistro(numero);
         codigo.archivoEntregados.eliminarRegistro(numero);
+        facturaPDF();
     }//GEN-LAST:event_facturarActionPerformed
 
     private void facturaPDF() {
