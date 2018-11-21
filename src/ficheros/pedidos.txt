@@ -1,3 +1,0 @@
-1;ternera a la llanera;colombiana;arroz con leche;Nada;Nada;6000;7;30;dimedes;true;
-1;bandeja paisa;colombiana;arroz con leche;Nada;Nada;7000;8;6;dimedes;true;
-8;bandeja paisa;colombiana;arroz con leche;frijoles;arroz;7000;8;44;dimedes;true;

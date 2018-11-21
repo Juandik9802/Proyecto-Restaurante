@@ -5,24 +5,27 @@
  */
 package Interfaces_administrador;
 
-import codigo.datosMesero;
+import codigo.facturacion;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
  * @author josep
  */
 public class Informe_Cantidad extends javax.swing.JPanel {
- DefaultTableModel model = new DefaultTableModel();
+
+    DefaultTableModel model = new DefaultTableModel();
+
     /**
      * Creates new form Informe_Cantidad
      */
     public Informe_Cantidad() {
         initComponents();
         iniciar_tabla();
+        llenarfila();
         //incertarColunas();
     }
 
@@ -37,8 +40,6 @@ public class Informe_Cantidad extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCantidad = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         imprimir = new javax.swing.JButton();
@@ -57,27 +58,6 @@ public class Informe_Cantidad extends javax.swing.JPanel {
 
         add(jScrollPane1);
         jScrollPane1.setBounds(40, 260, 452, 100);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "", "", "", ""
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable2);
-
-        add(jScrollPane2);
-        jScrollPane2.setBounds(130, 390, 360, 40);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Total:");
@@ -99,31 +79,62 @@ public class Informe_Cantidad extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-        MessageFormat Header = new MessageFormat("Menu");
+        MessageFormat Header = new MessageFormat("Informe cantida");
         MessageFormat footer = new MessageFormat("Page[0,number,integer]");
-        //String valores=llenar_tabla();
-        String valores="ñaosdhfñakjsdhfñausdjhf";
-        try { 
-            tablaCantidad.print(JTable.PrintMode.NORMAL,Header,footer);
+        try {
+            tablaCantidad.print(JTable.PrintMode.NORMAL, Header, footer);
         } catch (java.awt.print.PrinterException ex) {
-            System.out.println("Error al crear el archivo. "+ex);
+            System.out.println("Error al crear el archivo. " + ex);
         }
     }//GEN-LAST:event_imprimirActionPerformed
-    
-    private void iniciar_tabla(){
-        model.addColumn("Día");
+
+    private void iniciar_tabla() {
+        model.addColumn("Nombre del platos");
         model.addColumn("Cantidad de platos");
         tablaCantidad.setModel(model);
     }
-    
-    private void incertarFila() {
-        for (datosMesero carga : codigo.listaMeseros.meseros) {
-            String[] agregar=new String[3];
-            agregar[0]=String.valueOf(carga.getCodigo());
-            agregar[1]=carga.getNombre();
-            agregar[2]=carga.getApellido();
-            model.addRow(agregar);
+
+    int j = 0;
+
+    private void llenarfila() {
+        int i = 0;
+        for (codigo.facturacion object : codigo.archivoFacturados.facturados) {
+            for (String plato : object.getPlatos()) {                
+                if (platoBusqueda(plato)) {
+                    model.insertRow(i, new Object[]{});
+                    model.setValueAt(plato, j, 0);
+                    model.setValueAt(buscar(plato), j, 1);
+                }
+            }
+            i++;
         }
+    }
+    private ArrayList<String> platosCargados = new ArrayList();
+
+    private boolean platoBusqueda(String recibido) {
+        boolean entregar = true;
+        for (int i=0;i<model.getDataVector().size();i++) {
+            if (model.getValueAt(i,0).equals(recibido)){
+                entregar = false;
+            } else {
+                platosCargados.add(recibido);
+                System.out.println(platosCargados);
+            }
+        }
+        return entregar;
+    }
+
+    private int buscar(String p) {
+        int contador = 0;
+        for (facturacion facturado : codigo.archivoFacturados.facturados) {
+            for (String plato : facturado.getPlatos()) {
+                if (plato.equals(p)) {
+                    contador++;
+
+                }
+            }
+        }
+        return contador;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -131,8 +142,6 @@ public class Informe_Cantidad extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable tablaCantidad;
     // End of variables declaration//GEN-END:variables
 }
