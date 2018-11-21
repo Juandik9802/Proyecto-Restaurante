@@ -6,6 +6,7 @@
 package Interfaces_administrador;
 
 import codigo.datosMesero;
+import codigo.facturacion;
 import java.text.MessageFormat;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -15,13 +16,16 @@ import javax.swing.table.DefaultTableModel;
  * @author josep
  */
 public class Informe_meseros extends javax.swing.JPanel {
-DefaultTableModel model = new DefaultTableModel();
+
+    DefaultTableModel model = new DefaultTableModel();
+
     /**
      * Creates new form Informe_meseros
      */
     public Informe_meseros() {
         initComponents();
         iniciar_tabla();
+        llenarTabla();
         //incertarColunas();
     }
 
@@ -36,9 +40,6 @@ DefaultTableModel model = new DefaultTableModel();
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_meseros = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -53,26 +54,6 @@ DefaultTableModel model = new DefaultTableModel();
             }
         ));
         jScrollPane1.setViewportView(tabla_meseros);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "", "", "", ""
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable2);
-
-        jLabel1.setText("Total:");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/meseros3.jpg"))); // NOI18N
 
@@ -89,17 +70,12 @@ DefaultTableModel model = new DefaultTableModel();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -110,12 +86,8 @@ DefaultTableModel model = new DefaultTableModel();
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,50 +95,53 @@ DefaultTableModel model = new DefaultTableModel();
         MessageFormat Header = new MessageFormat("Menu");
         MessageFormat footer = new MessageFormat("Page[0,number,integer]");
         //String valores=llenar_tabla();
-        try { 
-            tabla_meseros.print(JTable.PrintMode.NORMAL,Header,footer);
+        try {
+            tabla_meseros.print(JTable.PrintMode.NORMAL, Header, footer);
         } catch (java.awt.print.PrinterException ex) {
-            System.out.println("Error al crear el archivo. "+ex);
+            System.out.println("Error al crear el archivo. " + ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-  
-    private void iniciar_tabla(){
+
+    private void iniciar_tabla() {
         model.addColumn("Código");
         model.addColumn("Nombre");
         model.addColumn("Mesas atendidas");
-        model.addColumn("Cantidad a pagar");
         tabla_meseros.setModel(model);
     }
     
-    private void incertarColunas() {
-        
-        model.addColumn("Dia");
-        /*for (cargarCombos object : codigo.archivoPlatos.mostrarPlato) {
-            model.addColumn(object.getNombre());
-            System.out.println(object);
-        
-    }
-        */
-        tabla_meseros.setModel(model);
-    }
-
-    private void incertarFila() {
-        for (datosMesero carga : codigo.listaMeseros.meseros) {
-            String[] agregar=new String[3];
-            agregar[0]=String.valueOf(carga.getCodigo());
-            agregar[1]=carga.getNombre();
-            agregar[2]=carga.getApellido();
+    private void llenarTabla(){
+       for (codigo.facturacion carga : codigo.archivoFacturados.facturados) {
+            String[] agregar = new String[3];
+            agregar[0] = String.valueOf(busquedaCodigo(carga.getNombre()));
+            agregar[1] = carga.getNombre();
+            agregar[2] = String.valueOf(mesasAtendidas(carga.getNombre()));
             model.addRow(agregar);
         }
     }
-
+    
+    private int busquedaCodigo(String nombre){
+        int cod=0;
+        for (datosMesero mesero : codigo.listaMeseros.meseros) {
+            if (mesero.getNombre().equals(nombre)){
+                cod=mesero.getCodigo();
+            }
+        }
+        return cod;
+    }
+    
+    private int  mesasAtendidas(String num){
+        int numero = 0;
+        for (facturacion facturado : codigo.archivoFacturados.facturados) {
+            if(facturado.getNombre().equals(num)){
+                numero++;
+            }
+        }
+        return numero;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable tabla_meseros;
     // End of variables declaration//GEN-END:variables
 }

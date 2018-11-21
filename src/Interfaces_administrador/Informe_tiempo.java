@@ -117,9 +117,9 @@ public class Informe_tiempo extends javax.swing.JPanel {
     private void iniciar_tabla() {
         model = new DefaultTableModel();
         model.addColumn("Mesa");
-        model.addColumn("Efectivo");
-        model.addColumn("Débito");
-        model.addColumn("Crédito");
+        model.addColumn("Toma de pedido");
+        model.addColumn("Enrega del pedido");
+        model.addColumn("Facturacion");
         tabla_tiempos.setModel(model);
     }
 
