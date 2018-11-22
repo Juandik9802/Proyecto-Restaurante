@@ -28,7 +28,12 @@ public class pagoCredito extends javax.swing.JFrame {
     int numero, pago;
 
     /**
-     * Creates new form pagoCredito
+     *
+     * @param tablaPedido
+     * @param nombre
+     * @param fechaPedido
+     * @param fechaEntrega
+     * @param num
      */
     public pagoCredito(JTable tablaPedido, String nombre, String fechaPedido, String fechaEntrega, int num) {
         initComponents();
@@ -136,7 +141,7 @@ public class pagoCredito extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_confirmarActionPerformed
 
-        private void optenerPlatos() {
+    private void optenerPlatos() {
         int fila = tabla_pedido.getRowCount();
         for (int i = 0; i < fila; i++) {
             platos.add((String) tabla_pedido.getValueAt(i, 0));

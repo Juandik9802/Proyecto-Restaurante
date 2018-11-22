@@ -9,6 +9,7 @@ import codigo.pedido;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -60,6 +61,8 @@ public class verPedido extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         numeroMesa = new javax.swing.JTextField();
         eliminarPedido = new javax.swing.JButton();
+        cant_pagar = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -96,6 +99,10 @@ public class verPedido extends javax.swing.JFrame {
             }
         });
 
+        cant_pagar.setEditable(false);
+
+        jLabel3.setText("Total:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,15 +111,21 @@ public class verPedido extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(93, 93, 93)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(numeroMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(eliminarPedido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(facturar)
                 .addGap(67, 67, 67))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cant_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,8 +135,12 @@ public class verPedido extends javax.swing.JFrame {
                     .addComponent(numeroMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cant_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(facturar)
                     .addComponent(eliminarPedido))
@@ -153,7 +170,7 @@ public class verPedido extends javax.swing.JFrame {
                 }
             }
         }
-        this.dispose();
+        
     }//GEN-LAST:event_facturarActionPerformed
 
     private void eliminarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPedidoActionPerformed
@@ -167,15 +184,19 @@ public class verPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarPedidoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cant_pagar;
     private javax.swing.JButton eliminarPedido;
     private javax.swing.JButton facturar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField numeroMesa;
     public javax.swing.JTable tablaPedido;
     // End of variables declaration//GEN-END:variables
 
     private DefaultTableModel model = new DefaultTableModel();
+
+
 
     private void iniciarTabla() {
         model.addColumn("Nombre");
@@ -197,22 +218,24 @@ public class verPedido extends javax.swing.JFrame {
             model.setValueAt(object.getPostre(), cont, 0);
             model.setValueAt(Integer.parseInt(codigo.archivoPlatos.busqueda(object.getPostre())), cont, 1);
         }
+       
+        int fila = tablaPedido.getRowCount();
+        int total_por_mesa=0;
+        String valores=" ";
+        
+        for (int i = 0; i < fila; i++) {
+
+            int valor = (int) tablaPedido.getValueAt(i, 1);
+            total_por_mesa = total_por_mesa + valor;
+            // Con esta condición solo ponemos comas hasta el penúltimo valor :)
+        }
+        valores += total_por_mesa;
+        cant_pagar.setText(valores);
+        //JOptionPane.showMessageDialog(null, "valores de la columna1: " + valores);
+    
     }
 
-    private void obtener_tabla() {
-        int fila = tablaPedido.getRowCount();
-        int i;
-        String valores = "";
-        for (i = 0; i < fila; i++) {
-            int valor = (int) tablaPedido.getValueAt(i, 1);
-            valores += valor;
-            // Con esta condición solo ponemos comas hasta el penúltimo valor :)
-            if (i < (fila - 1)) {
-                valores += ", ";
-            }
-        }
-        JOptionPane.showMessageDialog(null, "valores de la columna1: " + valores);
-    }
+
 
     public JTable getTablaPedido() {
         return tablaPedido;

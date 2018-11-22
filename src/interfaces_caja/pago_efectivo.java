@@ -166,8 +166,7 @@ public class pago_efectivo extends javax.swing.JFrame {
         int fila = tabla_pedido.getRowCount();
         for (int i = 0; i < fila; i++) {
             platos.add((String) tabla_pedido.getValueAt(i, 0));
-            // Con esta condición solo ponemos comas hasta el penúltimo valor :)
-        }
+        }    
     }
 
     String fechaPedido, fechaEntrega, fechaFacturado;

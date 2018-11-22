@@ -140,7 +140,7 @@ public class Informes extends javax.swing.JPanel {
         informe_meseros = new javax.swing.JButton();
         informe_tiempo = new javax.swing.JButton();
         informe_pago_mes = new javax.swing.JButton();
-        informe_ganancias = new javax.swing.JButton();
+        Ingresos = new javax.swing.JButton();
         adiciones = new javax.swing.JButton();
         platos_mes = new javax.swing.JButton();
 
@@ -181,10 +181,10 @@ public class Informes extends javax.swing.JPanel {
             }
         });
 
-        informe_ganancias.setText("Ganancias");
-        informe_ganancias.addActionListener(new java.awt.event.ActionListener() {
+        Ingresos.setText("Ingresos");
+        Ingresos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                informe_gananciasActionPerformed(evt);
+                IngresosActionPerformed(evt);
             }
         });
 
@@ -218,12 +218,12 @@ public class Informes extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(informe_pago_mes)
                 .addGap(18, 18, 18)
-                .addComponent(informe_ganancias)
+                .addComponent(Ingresos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(adiciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(platos_mes)
-                .addContainerGap(366, Short.MAX_VALUE))
+                .addContainerGap(372, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(principal_informes)
@@ -239,7 +239,7 @@ public class Informes extends javax.swing.JPanel {
                     .addComponent(informe_meseros)
                     .addComponent(informe_tiempo)
                     .addComponent(informe_pago_mes)
-                    .addComponent(informe_ganancias)
+                    .addComponent(Ingresos)
                     .addComponent(adiciones)
                     .addComponent(platos_mes))
                 .addGap(18, 18, 18)
@@ -269,9 +269,9 @@ public class Informes extends javax.swing.JPanel {
         Abrir_pagos_mes();
     }//GEN-LAST:event_informe_pago_mesActionPerformed
 
-    private void informe_gananciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informe_gananciasActionPerformed
+    private void IngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresosActionPerformed
         Abrir_ganancia();
-    }//GEN-LAST:event_informe_gananciasActionPerformed
+    }//GEN-LAST:event_IngresosActionPerformed
 
     private void adicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionesActionPerformed
         Abrir_inventario();
@@ -283,8 +283,8 @@ public class Informes extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Ingresos;
     private javax.swing.JButton adiciones;
-    private javax.swing.JButton informe_ganancias;
     private javax.swing.JButton informe_meseros;
     private javax.swing.JButton informe_pago_mes;
     private javax.swing.JButton informe_tiempo;

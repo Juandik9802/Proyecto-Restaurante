@@ -5,10 +5,8 @@
  */
 package Interfaces_administrador;
 
-import codigo.datosMesero;
 import codigo.facturacion;
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JTable;
@@ -20,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Informe_platos extends javax.swing.JPanel {
 
-    DefaultTableModel model ;
+    DefaultTableModel model;
     Timer timer;
     TimerTask timerTask;
 
@@ -29,8 +27,13 @@ public class Informe_platos extends javax.swing.JPanel {
      */
     public Informe_platos() {
         initComponents();
-        iniciar_tabla();
-        llenarfila();
+        try {
+
+            iniciar_tabla();
+            llenarfila();
+        } catch (Exception e) {
+
+        }
 
         timerTask = new TimerTask() {
             @Override
@@ -39,7 +42,8 @@ public class Informe_platos extends javax.swing.JPanel {
                 llenarfila();
             }
         };
-        //incertarColunas();
+        timer=new Timer();
+        timer.scheduleAtFixedRate(timerTask, 1000, 1000);
     }
 
     /**
@@ -53,10 +57,7 @@ public class Informe_platos extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_platos = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -71,29 +72,7 @@ public class Informe_platos extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tabla_platos);
 
-        jLabel1.setText("Total de platos pedidos en el día:");
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Comida_1.jpg"))); // NOI18N
-
-        jLabel3.setText("jLabel3");
-
-        jLayeredPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
-        );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         jButton1.setText("Imprimir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -112,12 +91,6 @@ public class Informe_platos extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -133,11 +106,7 @@ public class Informe_platos extends javax.swing.JPanel {
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -159,16 +128,18 @@ public class Informe_platos extends javax.swing.JPanel {
 
     int j = 0;
 
-    private void llenarfila() {
+    private void llenarfila() {       
         int i = 0;
-        for (codigo.facturacion object : codigo.archivoFacturados.facturados) {
-            for (String plato : object.getPlatos()) {
-                if (platoBusqueda(plato)) {
-                    model.insertRow(i, new Object[]{});
-                    model.setValueAt(plato, j, 0);
-                    model.setValueAt(buscar(plato), j, 1);
-                }
+        for (codigo.pedidos object : codigo.archivoAdiciones.adiciones) {
+            if (platoBusqueda(object.getPlato())){
+                String[] agregar =new String[2];
+                agregar[0]=object.getPlato();
+                agregar[1]=String.valueOf(buscar(object.getPlato()));
+                model.addRow(agregar);
             }
+                    
+                
+            
             i++;
         }
     }
@@ -176,9 +147,14 @@ public class Informe_platos extends javax.swing.JPanel {
     private boolean platoBusqueda(String recibido) {
         boolean entregar = true;
         for (int i = 0; i < model.getDataVector().size(); i++) {
-            if (model.getValueAt(i, 0).equals(recibido)) {
+            if (model.getValueAt(i, 0).equals(null)) {
                 entregar = false;
+            }else{
+                if (model.getValueAt(i, 0).equals(recibido)) {
+                    entregar = false;
+                }
             }
+
         }
         return entregar;
     }
@@ -198,10 +174,7 @@ public class Informe_platos extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla_platos;
     // End of variables declaration//GEN-END:variables

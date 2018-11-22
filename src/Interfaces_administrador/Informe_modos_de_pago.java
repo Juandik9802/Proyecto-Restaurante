@@ -7,10 +7,8 @@ package Interfaces_administrador;
 
 import codigo.facturacion;
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -260,6 +258,16 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
         credito.setText(valores);
     }
 
+    public JTable getTabla_Pagos() {
+        return tabla_Pagos;
+    }
+
+    public void setTabla_Pagos(JTable tabla_Pagos) {
+        this.tabla_Pagos = tabla_Pagos;
+    }
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField credito;
     private javax.swing.JTextField debito;
@@ -270,6 +278,6 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla_Pagos;
+    public javax.swing.JTable tabla_Pagos;
     // End of variables declaration//GEN-END:variables
 }

@@ -52,9 +52,23 @@ public class archivoFacturados {
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(archivoEntregados.class.getName()).log(Level.SEVERE, null, ex);
         }
+        imprimir();
     }
 
     public static void añadir(int numero,String tipoPago, ArrayList<String> plato, String fechaPedido, String fechaEntregado, String fechaFacturad, String nombre,int pago){
         facturados.add(new facturacion(numero, tipoPago, plato, fechaPedido, fechaEntregado, fechaFacturad, nombre, pago));
+    }
+
+    private static void imprimir() {
+        for (facturacion facturado : facturados) {
+            System.out.println(facturado.getFechaEntregado());
+            System.out.println(facturado.getFechaFacturado());
+            System.out.println(facturado.getFechaPedido());
+            System.out.println(facturado.getNombre());
+            System.out.println(facturado.getNumero());
+            System.out.println(facturado.getPlatos());
+            System.out.println(facturado.getTipo());
+            System.out.println("/////////");
+        }
     }
 }

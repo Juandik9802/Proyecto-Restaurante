@@ -30,13 +30,13 @@ public class Informe_Cantidad extends javax.swing.JPanel {
         initComponents();
         iniciar_tabla();
         llenarfila();
-        catidad();
+        cantidad();
         timerTask = new TimerTask() {
             @Override
             public void run() {
                 iniciar_tabla();
                 llenarfila();
-                catidad();
+                cantidad();
             }
         };
         timer=new Timer();
@@ -74,7 +74,7 @@ public class Informe_Cantidad extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tablaCantidad);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(40, 260, 452, 100);
+        jScrollPane1.setBounds(40, 260, 640, 100);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Total:");
@@ -92,7 +92,7 @@ public class Informe_Cantidad extends javax.swing.JPanel {
             }
         });
         add(imprimir);
-        imprimir.setBounds(420, 230, 73, 23);
+        imprimir.setBounds(583, 230, 100, 23);
 
         cantidad.setEditable(false);
         add(cantidad);
@@ -118,28 +118,34 @@ public class Informe_Cantidad extends javax.swing.JPanel {
     }
 
     int j = 0;
-
-    private void llenarfila() {
+    String data;
+    private void llenarfila() {       
         int i = 0;
-        for (codigo.facturacion object : codigo.archivoFacturados.facturados) {
-            for (String plato : object.getPlatos()) {
-                if (platoBusqueda(plato) && !plato.equals("")) {
-                    model.insertRow(i, new Object[]{});
-                    model.setValueAt(plato, j, 0);
-                    model.setValueAt(buscar(plato), j, 1);
-                }
+        for (codigo.pedidos object : codigo.archivoAdiciones.adiciones) {
+            if (platoBusqueda(object.getPlato())){
+                String[] agregar =new String[2];
+                agregar[0]=object.getPlato();
+                agregar[1]=String.valueOf(buscar(object.getPlato()));
+                model.addRow(agregar);
             }
+                    
+                
+            
             i++;
         }
-
     }
 
     private boolean platoBusqueda(String recibido) {
         boolean entregar = true;
         for (int i = 0; i < model.getDataVector().size(); i++) {
-            if (model.getValueAt(i, 0).equals(recibido)) {
+            if (model.getValueAt(i, 0).equals(null)) {
                 entregar = false;
+            }else{
+                if (model.getValueAt(i, 0).equals(recibido)) {
+                    entregar = false;
+                }
             }
+
         }
         return entregar;
     }
@@ -150,24 +156,12 @@ public class Informe_Cantidad extends javax.swing.JPanel {
             for (String plato : facturado.getPlatos()) {
                 if (plato.equals(p)) {
                     contador++;
+
                 }
             }
         }
         return contador;
     }
-
-    private void catidad() {
-        String valores = "";
-        int fila = tablaCantidad.getRowCount();
-        int total_por_mesa = 0;
-        for (int i = 0; i < fila; i++) {
-            int valor = (int) tablaCantidad.getValueAt(i, 1);
-            total_por_mesa = total_por_mesa + valor;
-        }
-        valores += total_por_mesa;
-        cantidad.setText(valores);
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cantidad;
     private javax.swing.JButton imprimir;
@@ -176,4 +170,16 @@ public class Informe_Cantidad extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaCantidad;
     // End of variables declaration//GEN-END:variables
+
+    private void cantidad() {       
+        String valores="";
+        int fila = tablaCantidad.getRowCount();
+        int total_por_mesa = 0;
+        for (int i = 0; i < fila; i++) {
+            int valor = Integer.parseInt((String) tablaCantidad.getValueAt(i, 1));
+            total_por_mesa = total_por_mesa + valor;
+        }
+        valores += total_por_mesa;        
+        cantidad.setText(valores);
+    }
 }

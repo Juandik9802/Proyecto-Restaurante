@@ -35,12 +35,12 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="informe_pago_mes" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="informe_ganancias" min="-2" max="-2" attributes="0"/>
+              <Component id="Ingresos" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="adiciones" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="platos_mes" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="366" max="32767" attributes="0"/>
+              <EmptySpace pref="372" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
@@ -59,7 +59,7 @@
                   <Component id="informe_meseros" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="informe_tiempo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="informe_pago_mes" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="informe_ganancias" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Ingresos" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="adiciones" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="platos_mes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -115,12 +115,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="informe_pago_mesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="informe_ganancias">
+    <Component class="javax.swing.JButton" name="Ingresos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ganancias"/>
+        <Property name="text" type="java.lang.String" value="Ingresos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="informe_gananciasActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IngresosActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="adiciones">
