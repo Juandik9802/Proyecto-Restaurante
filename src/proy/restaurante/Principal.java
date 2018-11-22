@@ -12,12 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
 /**
- * @author 
- *  @author juan diego 
+ * @author @author juan diego
  * @author josep
  */
 public class Principal extends javax.swing.JFrame {
-public static Principal i;
+
+    public static Principal i;
+
     /**
      * Creates new form Principal
      */
@@ -32,7 +33,8 @@ public static Principal i;
             }
         });
     }
-    private final String contra="1";
+    private final String contra = "1";
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -126,7 +128,7 @@ public static Principal i;
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuParaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaAdminActionPerformed
-        String pas=null;
+        String pas = null;
         JPanel panel = new JPanel();
         JLabel label = new JLabel("Ingrese la Contraseña:");
         JPasswordField pass = new JPasswordField(10);
@@ -134,53 +136,53 @@ public static Principal i;
         panel.add(pass);
         String[] options = new String[]{"OK", "Cancel"};
         int option = JOptionPane.showOptionDialog(null, panel, "Contraseña Administrador",
-                         JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
-                         null, options, options[1]);
-        if(option == 0){
+                JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, options[1]);
+        if (option == 0) {
             char[] password = pass.getPassword();
-            pas=String.valueOf(password);
-            if (this.contra.equals(pas)){
-                administrador adm =new administrador();
+            pas = String.valueOf(password);
+            if (this.contra.equals(pas)) {
+                administrador adm = new administrador();
                 adm.setVisible(true);
-            }else{
+            } else {
                 String vacio = "";
-                if(pas.equals(vacio)){
-                    JOptionPane.showMessageDialog(null,"Debe ingresar  una contraseña");
-                }else{
-                    JOptionPane.showMessageDialog(null,"Error de contraseña");
+                if (pas.equals(vacio)) {
+                    JOptionPane.showMessageDialog(null, "Debe ingresar  una contraseña");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error de contraseña");
                 }
-            }            
-            
+            }
+
         }
     }//GEN-LAST:event_menuParaAdminActionPerformed
-    
+
     private void menuParaCocinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaCocinaActionPerformed
         cocina cocina = new cocina();
         cocina.setVisible(true);
     }//GEN-LAST:event_menuParaCocinaActionPerformed
-    int cont=0;
+    int cont = 0;
     private void menumeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menumeseroActionPerformed
-        try{
-         int cod =Integer.parseInt(JOptionPane.showInputDialog(null, "Digite su codigo"));
-        boolean exist=false;
-       
-        for (datosMesero object : codigo.listaMeseros.meseros) {
-            if (object.getCodigo()==cod){
-                mesero mesero = new mesero();
-                mesero.setVisible(true);
-                mesero.setTitle(object.getNombre());
-                exist=true;
+        try {
+            int cod = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite su codigo"));
+            boolean exist = false;
+
+            for (datosMesero object : codigo.listaMeseros.meseros) {
+                if (object.getCodigo() == cod) {
+                    mesero mesero = new mesero();
+                    mesero.setVisible(true);
+                    mesero.setTitle(object.getNombre());
+                    exist = true;
+                }
             }
-        }     
-        if (!exist){
-            JOptionPane.showMessageDialog(null, "codigo no exixste");
-        }
-        }catch (Exception e){
-        
+            if (!exist) {
+                JOptionPane.showMessageDialog(null, "codigo no existe");
+            }
+        } catch (Exception e) {
+
             System.out.println("cancelado");
         }
-        
-        
+
+
     }//GEN-LAST:event_menumeseroActionPerformed
 
     private void menuParaCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParaCajaActionPerformed
@@ -189,7 +191,7 @@ public static Principal i;
     }//GEN-LAST:event_menuParaCajaActionPerformed
     /**
      * @param args the command line arguments
-     */ 
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel icono;
     private javax.swing.JButton menuParaAdmin;
@@ -197,10 +199,11 @@ public static Principal i;
     private javax.swing.JButton menuParaCocina;
     private javax.swing.JButton menumesero;
     // End of variables declaration//GEN-END:variables
-    
-    private void close(){
+
+    private void close() {
         if (JOptionPane.showConfirmDialog(rootPane, "¿Desea realmente salir del sistema?",
-                "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
+        }
     }
 }

@@ -8,6 +8,8 @@ package Interfaces_administrador;
 import codigo.datosMesero;
 import codigo.facturacion;
 import java.text.MessageFormat;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +19,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Informe_meseros extends javax.swing.JPanel {
 
-    DefaultTableModel model = new DefaultTableModel();
+    DefaultTableModel model;
+    Timer timer;
+    TimerTask timerTask;
 
     /**
      * Creates new form Informe_meseros
@@ -26,6 +30,15 @@ public class Informe_meseros extends javax.swing.JPanel {
         initComponents();
         iniciar_tabla();
         llenarTabla();
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                iniciar_tabla();
+                llenarTabla();
+            }
+        };
+        timer = new Timer();
+        timer.scheduleAtFixedRate(timerTask, 1000, 1000);
         //incertarColunas();
     }
 
@@ -103,45 +116,61 @@ public class Informe_meseros extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void iniciar_tabla() {
+        model=new DefaultTableModel();
         model.addColumn("Código");
         model.addColumn("Nombre");
         model.addColumn("Mesas atendidas");
         tabla_meseros.setModel(model);
     }
-    
-    private void llenarTabla(){
-       for (codigo.facturacion carga : codigo.archivoFacturados.facturados) {
-            String[] agregar = new String[3];
-            agregar[0] = String.valueOf(busquedaCodigo(carga.getNombre()));
-            agregar[1] = carga.getNombre();
-            agregar[2] = String.valueOf(mesasAtendidas(carga.getNombre()));
-            model.addRow(agregar);
+
+    private void llenarTabla() {
+        for (codigo.facturacion carga : codigo.archivoFacturados.facturados) {
+            if (verificarRepetido(carga.getNombre())) {
+                String[] agregar = new String[3];
+                agregar[0] = String.valueOf(busquedaCodigo(carga.getNombre()));
+                agregar[1] = carga.getNombre();
+                agregar[2] = String.valueOf(mesasAtendidas(carga.getNombre()));
+                model.addRow(agregar);
+            }
+
         }
     }
-    
-    private int busquedaCodigo(String nombre){
-        int cod=0;
+
+    private int busquedaCodigo(String nombre) {
+        int cod = 0;
         for (datosMesero mesero : codigo.listaMeseros.meseros) {
-            if (mesero.getNombre().equals(nombre)){
-                cod=mesero.getCodigo();
+            if (mesero.getNombre().equals(nombre)) {
+                cod = mesero.getCodigo();
             }
         }
         return cod;
     }
-    
-    private int  mesasAtendidas(String num){
+
+    private int mesasAtendidas(String num) {
         int numero = 0;
         for (facturacion facturado : codigo.archivoFacturados.facturados) {
-            if(facturado.getNombre().equals(num)){
+            if (facturado.getNombre().equals(num)) {
                 numero++;
             }
         }
         return numero;
     }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla_meseros;
     // End of variables declaration//GEN-END:variables
+
+    private boolean verificarRepetido(String nombre) {
+        boolean retorno = true;
+        for (int i = 0; i < model.getDataVector().size(); i++) {
+            if (model.getValueAt(i, 1).equals(nombre)) {
+                retorno = false;
+            }
+        }
+        return retorno;
+    }
 }

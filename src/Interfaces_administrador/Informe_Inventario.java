@@ -5,8 +5,9 @@
  */
 package Interfaces_administrador;
 
-import codigo.datosMesero;
 import java.text.MessageFormat;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,14 +16,28 @@ import javax.swing.table.DefaultTableModel;
  * @author josep
  */
 public class Informe_Inventario extends javax.swing.JPanel {
- DefaultTableModel model = new DefaultTableModel();
+
+    DefaultTableModel model;
+    Timer time;
+    TimerTask timerTask;
+
     /**
      * Creates new form Informe_Inventario
      */
     public Informe_Inventario() {
         initComponents();
         iniciar_tabla();
-         //incertarColunas();
+        incertarFila();
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                iniciar_tabla();
+                incertarFila();
+            }
+        };
+        
+        time=new Timer();
+        time.scheduleAtFixedRate(timerTask, 10000, 10000);
     }
 
     /**
@@ -65,27 +80,29 @@ public class Informe_Inventario extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(generar_pdf, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(64, 64, 64)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(125, 125, 125)
+                        .addComponent(generar_pdf, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(generar_pdf)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(generar_pdf)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                 .addGap(39, 39, 39))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -93,29 +110,29 @@ public class Informe_Inventario extends javax.swing.JPanel {
     private void generar_pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar_pdfActionPerformed
         MessageFormat Header = new MessageFormat("Menu");
         MessageFormat footer = new MessageFormat("Page[0,number,integer]");
-        //String valores=llenar_tabla();
-        String valores="ñaosdhfñakjsdhfñausdjhf";
         try {
-            tabla_inventario.print(JTable.PrintMode.NORMAL,Header,footer);
+            tabla_inventario.print(JTable.PrintMode.NORMAL, Header, footer);
         } catch (java.awt.print.PrinterException ex) {
-            System.out.println("Error al crear el archivo. "+ex);
+            System.out.println("Error al crear el archivo. " + ex);
         }
     }//GEN-LAST:event_generar_pdfActionPerformed
-   
-    private void iniciar_tabla(){
+
+    private void iniciar_tabla() {
+        model = new DefaultTableModel();
         model.addColumn("Mesa");
-        model.addColumn("Efectivo");
-        model.addColumn("Débito");
-        model.addColumn("Crédito");
+        model.addColumn("Plato");
+        model.addColumn("Añadio");
+        model.addColumn("Quito");
         tabla_inventario.setModel(model);
     }
-    
+
     private void incertarFila() {
-        for (datosMesero carga : codigo.listaMeseros.meseros) {
-            String[] agregar=new String[3];
-            agregar[0]=String.valueOf(carga.getCodigo());
-            agregar[1]=carga.getNombre();
-            agregar[2]=carga.getApellido();
+        for (codigo.pedidos carga : codigo.archivoAdiciones.adiciones) {
+            String[] agregar = new String[4];
+            agregar[0] = String.valueOf(carga.getNumMesas());
+            agregar[1] = carga.getPlato();
+            agregar[2] = carga.getAñadirPorcion();
+            agregar[3] = carga.getQuitarPotcion();
             model.addRow(agregar);
         }
     }

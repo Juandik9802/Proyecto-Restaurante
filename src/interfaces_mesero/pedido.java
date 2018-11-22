@@ -5,12 +5,8 @@
  */
 package interfaces_mesero;
 
-
 import codigo.menusCarga;
 import codigo.platillo;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -22,19 +18,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class pedido extends javax.swing.JPanel {
 
-    int cont=0;
+    int cont = 0;
     private String nombreMesero;
+
     /**
      * Creates new form pedido
      */
-    public pedido(String nombre) {/**
-     * "Mesa","Plato","Bebidas","Postre","Añadir","Quitar","Precio"
-     */ this.nombreMesero= nombre;
+    public pedido(String nombre) {
+        /**
+         * "Mesa","Plato","Bebidas","Postre","Añadir","Quitar","Precio"
+         */
+        this.nombreMesero = nombre;
         initComponents();
         cargartabla();
         cargarComidas();
     }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -189,27 +188,30 @@ public class pedido extends javax.swing.JPanel {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-    
-    private DefaultTableModel model= new DefaultTableModel();
-    private ArrayList<codigo.pedido> Array=new ArrayList();
-    
+
+    private DefaultTableModel model = new DefaultTableModel();
+    private ArrayList<codigo.pedido> Array = new ArrayList();
+
     private void cargar_pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargar_pedidoActionPerformed
-        if(combo_platos.getSelectedItem()=="--Comida--"||comboBebidas.getSelectedItem()=="--Bebida--"||comboPostres.getSelectedItem()=="--Postres--"||numero_mesa.getText().equals("")){
+        if (combo_platos.getSelectedItem() == "--Comida--" || comboBebidas.getSelectedItem() == "--Bebida--" || comboPostres.getSelectedItem() == "--Postres--" || numero_mesa.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Error. verifique que los campos esten llenos");
-        }else{
-            int mesa=Integer.parseInt(numero_mesa.getText());
-            if(!(mesa>codigo.archivoGeneral.buscar())){
+        } else {
+            int mesa = Integer.parseInt(numero_mesa.getText());
+            if (!(mesa > codigo.archivoGeneral.buscar())) {
                 Calendar calendario = Calendar.getInstance();
-                String hora=String.valueOf(calendario.get(Calendar.HOUR_OF_DAY));//tomar la hora del sistema
-                hora=hora+";"+String.valueOf(calendario.get(Calendar.MINUTE));//tomar los minutos del sistema
+                String hora = String.valueOf(calendario.get(Calendar.HOUR_OF_DAY));//tomar la hora del sistema
+                hora = hora + ";" + String.valueOf(calendario.get(Calendar.MINUTE));//tomar los minutos del sistema
                 //añadiendo al arreglo;
-                codigo.archivoPedido.añadirArray(Integer.parseInt(numero_mesa.getText()),(String)combo_platos.getSelectedItem(),(String)comboBebidas.getSelectedItem(),(String)comboPostres.getSelectedItem(),
-                (String)añadir.getSelectedItem(), (String)quitar.getSelectedItem(), Integer.parseInt(codigo.archivoPlatos.busqueda((String)combo_platos.getSelectedItem())), hora,this.nombreMesero,true);
-                codigo.archivoCocina.añadirArray(Integer.parseInt(numero_mesa.getText()),(String)combo_platos.getSelectedItem(),(String)comboBebidas.getSelectedItem(),(String)comboPostres.getSelectedItem(),
-                (String)añadir.getSelectedItem(), (String)quitar.getSelectedItem(), Integer.parseInt(codigo.archivoPlatos.busqueda((String)combo_platos.getSelectedItem())), hora,this.nombreMesero,true);
-                
+                codigo.archivoPedido.añadirArray(Integer.parseInt(numero_mesa.getText()), (String) combo_platos.getSelectedItem(), (String) comboBebidas.getSelectedItem(), (String) comboPostres.getSelectedItem(),
+                        (String) añadir.getSelectedItem(), (String) quitar.getSelectedItem(), Integer.parseInt(codigo.archivoPlatos.busqueda((String) combo_platos.getSelectedItem())), hora, this.nombreMesero, true);
+                codigo.archivoCocina.añadirArray(Integer.parseInt(numero_mesa.getText()), (String) combo_platos.getSelectedItem(), (String) comboBebidas.getSelectedItem(), (String) comboPostres.getSelectedItem(),
+                        (String) añadir.getSelectedItem(), (String) quitar.getSelectedItem(), Integer.parseInt(codigo.archivoPlatos.busqueda((String) combo_platos.getSelectedItem())), hora, this.nombreMesero, true);
+
+                codigo.archivoAdiciones.añadir(Integer.parseInt(numero_mesa.getText()), (String) combo_platos.getSelectedItem(), (String) comboBebidas.getSelectedItem(), (String) comboPostres.getSelectedItem(),
+                        (String) añadir.getSelectedItem(), (String) quitar.getSelectedItem(), Integer.parseInt(codigo.archivoPlatos.busqueda((String) combo_platos.getSelectedItem())), hora, this.nombreMesero, true);;
+
                 codigo.archivoPedido.crear();
-                int contador=codigo.archivoPedido.pedidos.size()-1;
+                int contador = codigo.archivoPedido.pedidos.size() - 1;
                 model.insertRow(cont, new Object[]{});
                 model.setValueAt(codigo.archivoPedido.pedidos.get(contador).getNumMesas(), cont, 0);
                 model.setValueAt(codigo.archivoPedido.pedidos.get(contador).getPlato(), cont, 1);
@@ -219,26 +221,28 @@ public class pedido extends javax.swing.JPanel {
                 model.setValueAt(codigo.archivoPedido.pedidos.get(contador).getQuitarPotcion(), cont, 5);
                 model.setValueAt(codigo.archivoPedido.pedidos.get(contador).getPrecio(), cont, 6);
                 cont++;
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Mesa no existe");
             }
         }
-        
+
     }//GEN-LAST:event_cargar_pedidoActionPerformed
 
     private void bloquearPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloquearPedidoActionPerformed
-       comboBebidas.setEnabled(false);
-       comboPostres.setEnabled(false);
-       combo_platos.setEnabled(false);
-       añadir.setEnabled(false);
-       quitar.setEnabled(false);
-       numero_mesa.setEnabled(false);
-       cargar_pedido.setEnabled(false);
+        comboBebidas.setEnabled(false);
+        comboPostres.setEnabled(false);
+        combo_platos.setEnabled(false);
+        añadir.setEnabled(false);
+        quitar.setEnabled(false);
+        numero_mesa.setEnabled(false);
+        cargar_pedido.setEnabled(false);
     }//GEN-LAST:event_bloquearPedidoActionPerformed
 
     private void numero_mesaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numero_mesaKeyTyped
-         char c =evt.getKeyChar();
-        if (c<'0'||c>'9')evt.consume();
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
     }//GEN-LAST:event_numero_mesaKeyTyped
 
     private void combo_platosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_platosItemStateChanged
@@ -246,7 +250,7 @@ public class pedido extends javax.swing.JPanel {
         quitar.removeAllItems();
         añadir.addItem("Nada");
         quitar.addItem("Nada");
-        llenarPorciones();        
+        llenarPorciones();
     }//GEN-LAST:event_combo_platosItemStateChanged
 
 
@@ -265,17 +269,17 @@ public class pedido extends javax.swing.JPanel {
     private javax.swing.JTextField numero_mesa;
     private javax.swing.JComboBox<String> quitar;
     // End of variables declaration//GEN-END:variables
-    
-    private void cargarComidas(){
+
+    private void cargarComidas() {
         String Dia = null;
         Calendar calendario = Calendar.getInstance();
-        int dia=calendario.get(Calendar.DAY_OF_WEEK);
-        switch(dia){
+        int dia = calendario.get(Calendar.DAY_OF_WEEK);
+        switch (dia) {
             case 1:
                 Dia = "Domingo";
                 break;
             case 2:
-                Dia="Lunes";
+                Dia = "Lunes";
                 break;
             case 3:
                 Dia = "Martes";
@@ -295,22 +299,22 @@ public class pedido extends javax.swing.JPanel {
         }
         //codigo.archivoMenus.mostrarPlato;
         for (menusCarga carga : codigo.archivoMenus.mostrarMenu) {
-            if (Dia.equals(carga.getDia())){
-                for (String string : carga.getAlmuerzos()){
+            if (Dia.equals(carga.getDia())) {
+                for (String string : carga.getAlmuerzos()) {
                     combo_platos.addItem(string);
                 }
-                for (String string : carga.getCenas()){
+                for (String string : carga.getCenas()) {
                     combo_platos.addItem(string);
                 }
-                for (String string : carga.getBebidas()){
+                for (String string : carga.getBebidas()) {
                     comboBebidas.addItem(string);
                 }
-                for (String string : carga.getPostres()){
+                for (String string : carga.getPostres()) {
                     comboPostres.addItem(string);
                 }
-            }            
+            }
         }
-    }    
+    }
 
     private void cargartabla() {
         model.addColumn("Mesa");
@@ -322,10 +326,10 @@ public class pedido extends javax.swing.JPanel {
         model.addColumn("Precio");
         TablaMesero.setModel(model);
     }
-    
-    private void llenarPorciones(){        
+
+    private void llenarPorciones() {
         for (platillo plato : codigo.archivoPlatos.platos) {
-            if(plato.getNombre().equals(combo_platos.getSelectedItem())){
+            if (plato.getNombre().equals(combo_platos.getSelectedItem())) {
                 for (String object : plato.getPorcion()) {
                     añadir.addItem(object);
                     quitar.addItem(object);

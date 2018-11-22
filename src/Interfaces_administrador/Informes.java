@@ -10,15 +10,15 @@ package Interfaces_administrador;
  * @author josep
  */
 public class Informes extends javax.swing.JPanel {
-    
+
     /**
      * Creates new form Informes
      */
     public Informes() {
         initComponents();
-        
+
     }
-   
+
     Interfaces_administrador.Informe_modos_de_pago panelpagos;
     Interfaces_administrador.Informe_platos panelplatos;
     Interfaces_administrador.Informe_meseros panelmeseros;
@@ -27,97 +27,104 @@ public class Informes extends javax.swing.JPanel {
     Interfaces_administrador.Informe_ganancias panel_ganancia;
     Interfaces_administrador.Informe_Inventario panel_inventario;
     Interfaces_administrador.Informe_Cantidad panel_cantidad;
-    
-    private String vp1="0";
-    private String vp2="0";
-    private String vp3="0";
-    private String vp4="0";
-    private String vp5="0";
-    private String vp6="0";
-    private String vp7="0";
-    private String vp8="0";
-    
-    private void Abrir_pagos(){
-        if(vp1.equals("0")){
-        panelpagos=new Interfaces_administrador.Informe_modos_de_pago();
-        principal_informes.addTab("Informe de pagos", panelpagos);
-        principal_informes.setSelectedComponent(panelpagos);
-        }else{
-        principal_informes.setSelectedComponent(panelpagos);
+
+    private String vp1 = "0";
+    private String vp2 = "0";
+    private String vp3 = "0";
+    private String vp4 = "0";
+    private String vp5 = "0";
+    private String vp6 = "0";
+    private String vp7 = "0";
+    private String vp8 = "0";
+
+    private void Abrir_pagos() {
+        if (vp1.equals("0")) {
+            panelpagos = new Interfaces_administrador.Informe_modos_de_pago();
+            principal_informes.addTab("Informe de pagos", panelpagos);
+            principal_informes.setSelectedComponent(panelpagos);
+        } else {
+            principal_informes.setSelectedComponent(panelpagos);
         }
-        vp1="1";
+        vp1 = "1";
     }
-    
-    private void Abrir_platos(){
-        if(vp2.equals("0")){
-        panelplatos=new Interfaces_administrador.Informe_platos();
-        principal_informes.addTab("Platos del día", panelplatos);
-        principal_informes.setSelectedComponent(panelplatos);
-        }else{
-        principal_informes.setSelectedComponent(panelplatos);
+
+    private void Abrir_platos() {
+        if (vp2.equals("0")) {
+            panelplatos = new Interfaces_administrador.Informe_platos();
+            principal_informes.addTab("Platos del día", panelplatos);
+            principal_informes.setSelectedComponent(panelplatos);
+        } else {
+            principal_informes.setSelectedComponent(panelplatos);
         }
-        vp2="1";
+        vp2 = "1";
     }
-    private void Abrir_meseros(){
-        if(vp3.equals("0")){
-        panelmeseros=new Interfaces_administrador.Informe_meseros();
-        principal_informes.addTab("Informes meseros", panelmeseros);
-        principal_informes.setSelectedComponent(panelmeseros);
-        }else{
-        principal_informes.setSelectedComponent(panelmeseros);
+
+    private void Abrir_meseros() {
+        if (vp3.equals("0")) {
+            panelmeseros = new Interfaces_administrador.Informe_meseros();
+            principal_informes.addTab("Informes meseros", panelmeseros);
+            principal_informes.setSelectedComponent(panelmeseros);
+        } else {
+            principal_informes.setSelectedComponent(panelmeseros);
         }
-        vp3="1";
+        vp3 = "1";
     }
-    private void Abrir_tiempo(){
-        if(vp4.equals("0")){
-        paneltiempos=new Interfaces_administrador.Informe_tiempo();
-        principal_informes.addTab("Informes tiempo", paneltiempos);
-        principal_informes.setSelectedComponent(paneltiempos);
-        }else{
-        principal_informes.setSelectedComponent(paneltiempos);
+
+    private void Abrir_tiempo() {
+        if (vp4.equals("0")) {
+            paneltiempos = new Interfaces_administrador.Informe_tiempo();
+            principal_informes.addTab("Informes tiempo", paneltiempos);
+            principal_informes.setSelectedComponent(paneltiempos);
+        } else {
+            principal_informes.setSelectedComponent(paneltiempos);
         }
-        vp4="1";
+        vp4 = "1";
     }
-    private void Abrir_pagos_mes(){
-        if(vp5.equals("0")){
-        panel_pago_mes=new Interfaces_administrador.Informe_pagos_mes();
-        principal_informes.addTab("Informes de pagos en el mes", panel_pago_mes);
-        principal_informes.setSelectedComponent(panel_pago_mes);
-        }else{
-        principal_informes.setSelectedComponent(panel_pago_mes);
+
+    private void Abrir_pagos_mes() {
+        if (vp5.equals("0")) {
+            panel_pago_mes = new Interfaces_administrador.Informe_pagos_mes();
+            principal_informes.addTab("Informes de pagos en el mes", panel_pago_mes);
+            principal_informes.setSelectedComponent(panel_pago_mes);
+        } else {
+            principal_informes.setSelectedComponent(panel_pago_mes);
         }
-        vp5="1";
+        vp5 = "1";
     }
-    private void Abrir_ganancia(){
-        if(vp6.equals("0")){
-        panel_ganancia=new Interfaces_administrador.Informe_ganancias();
-        principal_informes.addTab("Informes de ganancias", panel_ganancia);
-        principal_informes.setSelectedComponent(panel_ganancia);
-        }else{
-        principal_informes.setSelectedComponent(panel_ganancia);
+
+    private void Abrir_ganancia() {
+        if (vp6.equals("0")) {
+            panel_ganancia = new Interfaces_administrador.Informe_ganancias();
+            principal_informes.addTab("Informes de ganancias", panel_ganancia);
+            principal_informes.setSelectedComponent(panel_ganancia);
+        } else {
+            principal_informes.setSelectedComponent(panel_ganancia);
         }
-        vp6="1";
+        vp6 = "1";
     }
-    private void Abrir_inventario(){
-        if(vp7.equals("0")){
-        panel_inventario=new Interfaces_administrador.Informe_Inventario();
-        principal_informes.addTab("Inventario", panel_inventario);
-        principal_informes.setSelectedComponent(panel_inventario);
-        }else{
-        principal_informes.setSelectedComponent(panel_inventario);
+
+    private void Abrir_inventario() {
+        if (vp7.equals("0")) {
+            panel_inventario = new Interfaces_administrador.Informe_Inventario();
+            principal_informes.addTab("Porciones", panel_inventario);
+            principal_informes.setSelectedComponent(panel_inventario);
+        } else {
+            principal_informes.setSelectedComponent(panel_inventario);
         }
-        vp7="1";
+        vp7 = "1";
     }
-    private void Abrir_cantidad(){
-        if(vp8.equals("0")){
-        panel_cantidad=new Interfaces_administrador.Informe_Cantidad();
-        principal_informes.addTab("Cantidad de platos en el mes", panel_cantidad);
-        principal_informes.setSelectedComponent(panel_cantidad);
-        }else{
-        principal_informes.setSelectedComponent(panel_cantidad);
+
+    private void Abrir_cantidad() {
+        if (vp8.equals("0")) {
+            panel_cantidad = new Interfaces_administrador.Informe_Cantidad();
+            principal_informes.addTab("Cantidad de platos en el mes", panel_cantidad);
+            principal_informes.setSelectedComponent(panel_cantidad);
+        } else {
+            principal_informes.setSelectedComponent(panel_cantidad);
         }
-        vp8="1";
+        vp8 = "1";
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -134,7 +141,7 @@ public class Informes extends javax.swing.JPanel {
         informe_tiempo = new javax.swing.JButton();
         informe_pago_mes = new javax.swing.JButton();
         informe_ganancias = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        adiciones = new javax.swing.JButton();
         platos_mes = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -181,10 +188,10 @@ public class Informes extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("Inventario");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        adiciones.setText("Porciones ");
+        adiciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                adicionesActionPerformed(evt);
             }
         });
 
@@ -213,10 +220,10 @@ public class Informes extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(informe_ganancias)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(adiciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(platos_mes)
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addContainerGap(380, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(principal_informes)
@@ -233,7 +240,7 @@ public class Informes extends javax.swing.JPanel {
                     .addComponent(informe_tiempo)
                     .addComponent(informe_pago_mes)
                     .addComponent(informe_ganancias)
-                    .addComponent(jButton3)
+                    .addComponent(adiciones)
                     .addComponent(platos_mes))
                 .addGap(18, 18, 18)
                 .addComponent(principal_informes, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
@@ -266,9 +273,9 @@ public class Informes extends javax.swing.JPanel {
         Abrir_ganancia();
     }//GEN-LAST:event_informe_gananciasActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void adicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionesActionPerformed
         Abrir_inventario();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_adicionesActionPerformed
 
     private void platos_mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_platos_mesActionPerformed
         Abrir_cantidad();
@@ -276,16 +283,15 @@ public class Informes extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adiciones;
     private javax.swing.JButton informe_ganancias;
     private javax.swing.JButton informe_meseros;
     private javax.swing.JButton informe_pago_mes;
     private javax.swing.JButton informe_tiempo;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton modo_pago;
     private javax.swing.JButton platos_dia;
     private javax.swing.JButton platos_mes;
     private javax.swing.JTabbedPane principal_informes;
     // End of variables declaration//GEN-END:variables
 
-    
 }

@@ -8,6 +8,8 @@ package Interfaces_administrador;
 import codigo.facturacion;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +19,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Informe_Cantidad extends javax.swing.JPanel {
 
-    DefaultTableModel model = new DefaultTableModel();
+    DefaultTableModel model;
+    Timer timer;
+    TimerTask timerTask;
 
     /**
      * Creates new form Informe_Cantidad
@@ -26,7 +30,17 @@ public class Informe_Cantidad extends javax.swing.JPanel {
         initComponents();
         iniciar_tabla();
         llenarfila();
-        //incertarColunas();
+        catidad();
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                iniciar_tabla();
+                llenarfila();
+                catidad();
+            }
+        };
+        timer=new Timer();
+        timer.scheduleAtFixedRate(timerTask, 1000, 1000);
     }
 
     /**
@@ -43,6 +57,7 @@ public class Informe_Cantidad extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         imprimir = new javax.swing.JButton();
+        cantidad = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -54,6 +69,8 @@ public class Informe_Cantidad extends javax.swing.JPanel {
 
             }
         ));
+        tablaCantidad.setEnabled(false);
+        tablaCantidad.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(tablaCantidad);
 
         add(jScrollPane1);
@@ -76,6 +93,10 @@ public class Informe_Cantidad extends javax.swing.JPanel {
         });
         add(imprimir);
         imprimir.setBounds(420, 230, 73, 23);
+
+        cantidad.setEditable(false);
+        add(cantidad);
+        cantidad.setBounds(169, 400, 140, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
@@ -89,9 +110,11 @@ public class Informe_Cantidad extends javax.swing.JPanel {
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void iniciar_tabla() {
-        model.addColumn("Nombre del platos");
-        model.addColumn("Cantidad de platos");
+        model = new DefaultTableModel();
+        model.addColumn("Se a despachado");
+        model.addColumn("Cantidad");
         tablaCantidad.setModel(model);
+
     }
 
     int j = 0;
@@ -99,8 +122,8 @@ public class Informe_Cantidad extends javax.swing.JPanel {
     private void llenarfila() {
         int i = 0;
         for (codigo.facturacion object : codigo.archivoFacturados.facturados) {
-            for (String plato : object.getPlatos()) {                
-                if (platoBusqueda(plato)) {
+            for (String plato : object.getPlatos()) {
+                if (platoBusqueda(plato) && !plato.equals("")) {
                     model.insertRow(i, new Object[]{});
                     model.setValueAt(plato, j, 0);
                     model.setValueAt(buscar(plato), j, 1);
@@ -108,17 +131,14 @@ public class Informe_Cantidad extends javax.swing.JPanel {
             }
             i++;
         }
+
     }
-    private ArrayList<String> platosCargados = new ArrayList();
 
     private boolean platoBusqueda(String recibido) {
         boolean entregar = true;
-        for (int i=0;i<model.getDataVector().size();i++) {
-            if (model.getValueAt(i,0).equals(recibido)){
+        for (int i = 0; i < model.getDataVector().size(); i++) {
+            if (model.getValueAt(i, 0).equals(recibido)) {
                 entregar = false;
-            } else {
-                platosCargados.add(recibido);
-                System.out.println(platosCargados);
             }
         }
         return entregar;
@@ -130,14 +150,26 @@ public class Informe_Cantidad extends javax.swing.JPanel {
             for (String plato : facturado.getPlatos()) {
                 if (plato.equals(p)) {
                     contador++;
-
                 }
             }
         }
         return contador;
     }
 
+    private void catidad() {
+        String valores = "";
+        int fila = tablaCantidad.getRowCount();
+        int total_por_mesa = 0;
+        for (int i = 0; i < fila; i++) {
+            int valor = (int) tablaCantidad.getValueAt(i, 1);
+            total_por_mesa = total_por_mesa + valor;
+        }
+        valores += total_por_mesa;
+        cantidad.setText(valores);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cantidad;
     private javax.swing.JButton imprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

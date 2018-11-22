@@ -5,16 +5,12 @@
  */
 package Interfaces_administrador;
 
-import codigo.datosMesero;
 import codigo.facturacion;
-import codigo.pedido;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -39,6 +35,9 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
             public void run() {
                 iniciar_tabla();
                 llenar_tabla();
+                totalFormas();
+                tomaDatos();
+                tomaCredito();
             }
         };
         timer = new Timer();
@@ -62,10 +61,13 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_Pagos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         generar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        efectivo = new javax.swing.JTextField();
+        credito = new javax.swing.JTextField();
+        debito = new javax.swing.JTextField();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -79,25 +81,7 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tabla_Pagos);
 
-        jLabel1.setText("Total:");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "", "", ""
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable2);
+        jLabel1.setText("Total Efectivo");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pagos.png"))); // NOI18N
 
@@ -108,26 +92,52 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setText("Total Debito");
+
+        jLabel4.setText("Total Credito");
+
+        efectivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                efectivoActionPerformed(evt);
+            }
+        });
+
+        credito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creditoActionPerformed(evt);
+            }
+        });
+
+        debito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                debitoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(generar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(generar))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(debito, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(295, 295, 295)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(credito, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -138,12 +148,18 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(debito, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(credito, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -158,6 +174,18 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_generarActionPerformed
 
+    private void efectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_efectivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_efectivoActionPerformed
+
+    private void creditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_creditoActionPerformed
+
+    private void debitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_debitoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_debitoActionPerformed
+
     private void iniciar_tabla() {
         model = new DefaultTableModel();
         model.addColumn("Mesa");
@@ -169,41 +197,79 @@ public class Informe_modos_de_pago extends javax.swing.JPanel {
 
     private void llenar_tabla() {
         for (facturacion facturado : codigo.archivoFacturados.facturados) {
-            if (facturado.getTipo().equals("Efectivo")){
+            if (facturado.getTipo().equals("Efectivo")) {
                 Integer[] agregar = new Integer[4];
-                agregar[0]=facturado.getNumero();
-                agregar[1]=facturado.getCantidadPaga();
-                agregar[2]=0;
-                agregar[3]=0;
+                agregar[0] = facturado.getNumero();
+                agregar[1] = facturado.getCantidadPaga();
+                agregar[2] = 0;
+                agregar[3] = 0;
                 model.addRow(agregar);
             }
-            if (facturado.getTipo().equals("Credito")){
+            if (facturado.getTipo().equals("Credito")) {
                 Integer[] agregar = new Integer[4];
-                agregar[0]=facturado.getNumero();
-                agregar[1]=0;
-                agregar[2]=0;
-                agregar[3]=facturado.getCantidadPaga();
+                agregar[0] = facturado.getNumero();
+                agregar[1] = 0;
+                agregar[2] = 0;
+                agregar[3] = facturado.getCantidadPaga();
                 model.addRow(agregar);
             }
-            if (facturado.getTipo().equals("Debito")){
+            if (facturado.getTipo().equals("Debito")) {
                 Integer[] agregar = new Integer[4];
-                agregar[0]=facturado.getNumero();
-                agregar[1]=0;
-                agregar[2]=facturado.getCantidadPaga();
-                agregar[3]=0;
+                agregar[0] = facturado.getNumero();
+                agregar[1] = 0;
+                agregar[2] = facturado.getCantidadPaga();
+                agregar[3] = 0;
                 model.addRow(agregar);
             }
         }
-
     }
-    
+
+    private void totalFormas() {
+        String valores="";
+        int fila = tabla_Pagos.getRowCount();
+        int total_por_mesa = 0;
+        for (int i = 0; i < fila; i++) {
+            int valor = (int) tabla_Pagos.getValueAt(i, 1);
+            total_por_mesa = total_por_mesa + valor;
+        }
+        valores += total_por_mesa;        
+        efectivo.setText(valores);
+    }
+
+    private void tomaDatos() {
+        String valores="";
+        int fila = tabla_Pagos.getRowCount();
+        int total_por_mesa = 0;
+        for (int i = 0; i < fila; i++) {
+            int valor = (int) tabla_Pagos.getValueAt(i, 2);
+            total_por_mesa = total_por_mesa + valor;
+        }
+        valores += total_por_mesa; 
+        debito.setText(valores);
+    }
+
+    private void tomaCredito() {
+        String valores="";
+        int fila = tabla_Pagos.getRowCount();
+        int total_por_mesa = 0;
+        for (int i = 0; i < fila; i++) {
+            int valor = (int) tabla_Pagos.getValueAt(i, 3);
+            total_por_mesa = total_por_mesa + valor;
+        }
+        valores += total_por_mesa; 
+        credito.setText(valores);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField credito;
+    private javax.swing.JTextField debito;
+    private javax.swing.JTextField efectivo;
     private javax.swing.JButton generar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable tabla_Pagos;
     // End of variables declaration//GEN-END:variables
 }

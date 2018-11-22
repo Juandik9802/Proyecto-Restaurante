@@ -37,10 +37,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="informe_ganancias" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+              <Component id="adiciones" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="platos_mes" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="378" max="32767" attributes="0"/>
+              <EmptySpace pref="380" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
@@ -60,7 +60,7 @@
                   <Component id="informe_tiempo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="informe_pago_mes" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="informe_ganancias" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="adiciones" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="platos_mes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -123,12 +123,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="informe_gananciasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="adiciones">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Inventario"/>
+        <Property name="text" type="java.lang.String" value="Porciones "/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adicionesActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="platos_mes">
