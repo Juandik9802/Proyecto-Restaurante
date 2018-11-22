@@ -133,6 +133,7 @@ public class pagoCredito extends javax.swing.JFrame {
         facturaPDF();
         codigo.archivoPedido.eliminarRegistro(numero);
         codigo.archivoEntregados.eliminarRegistro(numero);
+        this.dispose();
     }//GEN-LAST:event_confirmarActionPerformed
 
         private void optenerPlatos() {

@@ -153,6 +153,7 @@ public class verPedido extends javax.swing.JFrame {
                 }
             }
         }
+        this.dispose();
     }//GEN-LAST:event_facturarActionPerformed
 
     private void eliminarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPedidoActionPerformed

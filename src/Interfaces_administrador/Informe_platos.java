@@ -172,16 +172,12 @@ public class Informe_platos extends javax.swing.JPanel {
             i++;
         }
     }
-    private ArrayList<String> platosCargados = new ArrayList();
 
     private boolean platoBusqueda(String recibido) {
         boolean entregar = true;
         for (int i = 0; i < model.getDataVector().size(); i++) {
             if (model.getValueAt(i, 0).equals(recibido)) {
                 entregar = false;
-            } else {
-                platosCargados.add(recibido);
-                System.out.println(platosCargados);
             }
         }
         return entregar;

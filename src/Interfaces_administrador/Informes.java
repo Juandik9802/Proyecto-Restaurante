@@ -117,7 +117,7 @@ public class Informes extends javax.swing.JPanel {
     private void Abrir_cantidad() {
         if (vp8.equals("0")) {
             panel_cantidad = new Interfaces_administrador.Informe_Cantidad();
-            principal_informes.addTab("Cantidad de platos en el mes", panel_cantidad);
+            principal_informes.addTab("Cantida de postres vendidos", panel_cantidad);
             principal_informes.setSelectedComponent(panel_cantidad);
         } else {
             principal_informes.setSelectedComponent(panel_cantidad);
@@ -174,7 +174,7 @@ public class Informes extends javax.swing.JPanel {
             }
         });
 
-        informe_pago_mes.setText("Pagos del mes");
+        informe_pago_mes.setText("Postres vendidos");
         informe_pago_mes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 informe_pago_mesActionPerformed(evt);
@@ -223,7 +223,7 @@ public class Informes extends javax.swing.JPanel {
                 .addComponent(adiciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(platos_mes)
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addContainerGap(366, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(principal_informes)

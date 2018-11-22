@@ -188,6 +188,7 @@ public class pago_efectivo extends javax.swing.JFrame {
     private final String nombre;
     
     private void facturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturarActionPerformed
+
         optenerPlatos();
         tomarFecha();
         codigo.archivoFacturados.añadir(numero, this.getTitle(), platos, fechaPedido, fechaEntrega, fechaFacturado, nombre, pago);

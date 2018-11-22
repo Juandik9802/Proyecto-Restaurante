@@ -22,6 +22,7 @@ DefaultTableModel model = new DefaultTableModel();
     public Informe_pagos_mes() {
         initComponents();
         iniciar_tabla();
+        insertarFila();
         //insertarColunas();
     }
 
@@ -37,9 +38,6 @@ DefaultTableModel model = new DefaultTableModel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_reporte = new javax.swing.JTable();
         imprimir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         tabla_reporte.setModel(new javax.swing.table.DefaultTableModel(
@@ -59,21 +57,6 @@ DefaultTableModel model = new DefaultTableModel();
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Total:");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "", "", ""
-            }
-        ));
-        jTable2.setRequestFocusEnabled(false);
-        jTable2.setRowHeight(1);
-        jScrollPane2.setViewportView(jTable2);
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/estadistica.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -87,15 +70,9 @@ DefaultTableModel model = new DefaultTableModel();
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(123, 123, 123)
                         .addComponent(imprimir))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(190, 190, 190)
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(90, 90, 90)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -108,11 +85,7 @@ DefaultTableModel model = new DefaultTableModel();
                         .addGap(220, 220, 220)
                         .addComponent(imprimir)))
                 .addGap(7, 7, 7)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -128,30 +101,24 @@ DefaultTableModel model = new DefaultTableModel();
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void iniciar_tabla(){
-        model.addColumn("Día");
-        model.addColumn("Efectivo");
-        model.addColumn("Débito");
-        model.addColumn("Crédito");
+        model.addColumn("Mesa");
+        model.addColumn("Postre");
         tabla_reporte.setModel(model);
     }
 
     private void insertarFila() {
-        for (datosMesero carga : codigo.listaMeseros.meseros) {
-            String[] agregar=new String[3];
-            agregar[0]=String.valueOf(carga.getCodigo());
-            agregar[1]=carga.getNombre();
-            agregar[2]=carga.getApellido();
+        for ( codigo.pedidos carga : codigo.archivoAdiciones.adiciones) {
+            String[] agregar=new String[2];
+            agregar[0]=String.valueOf(carga.getNumMesas());
+            agregar[1]=carga.getPostre();
             model.addRow(agregar);
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton imprimir;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable tabla_reporte;
     // End of variables declaration//GEN-END:variables
 }
